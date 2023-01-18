@@ -1,10 +1,10 @@
-#include "main.hpp"
-
-#include <iostream>
+#include "scene.h"
+#include "main.h"
 
 int main(void) {
+    
+    Core::Scene sc = Core::Scene(800, 600);
+    sc.renderLoop();
 
-    std::cout << "Hello world!" << std::endl;
-
-    return EXIT_SUCCESS;
+    return 0;
 }
