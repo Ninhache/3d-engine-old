@@ -13,7 +13,6 @@ Mesh::Mesh(std::vector<float> vertices, std::vector<float> indices, std::vector<
 }
 
 void Mesh::configureBuffers() {
-
 }
 void Mesh::draw(const Shader& shader) {
 
