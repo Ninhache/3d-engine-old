@@ -11,10 +11,9 @@ public:
 	void draw(const Shader& shader);
 	void configureBuffers();
 	void associateTextures();
-	~Mesh();
 
 private:
-	std::vector<float> vetices, indices, normals;
+	std::vector<float> vertices, indices, normals;
 	std::vector<Texture> textures;
 	uint32_t VAO, VBO, VEO;
 	std::vector<Mesh> children;
