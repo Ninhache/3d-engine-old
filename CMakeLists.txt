@@ -12,7 +12,7 @@ add_executable(3d-engine
 )
 
 include_directories(lib/glm)
-include_directories(src/includes)
+include_directories(src/headers)
 
 target_include_directories(3d-engine PRIVATE src lib)
 target_link_libraries(3d-engine PRIVATE glfw ImGui)
