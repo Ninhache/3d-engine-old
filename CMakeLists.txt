@@ -9,6 +9,7 @@ add_subdirectory(lib)
 add_executable(3d-engine
         lib/glad/glad.c
         src/main.cpp
+        src/scene.cpp
 )
 
 include_directories(lib/glm)
