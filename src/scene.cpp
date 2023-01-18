@@ -1,5 +1,5 @@
-#include "logger.h"
-#include "scene.h"
+#include "headers/logger.h"
+#include "headers/scene.h"
 
 #include <iostream>
 

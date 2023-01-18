@@ -1,5 +1,5 @@
-#include "scene.h"
-#include "main.h"
+#include "headers/scene.h"
+#include "headers/main.h"
 
 int main(void) {
     
