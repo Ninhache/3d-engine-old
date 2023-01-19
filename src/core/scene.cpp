@@ -1,25 +1,18 @@
 #include "headers/logger.h"
 #include "headers/scene.h"
 
-#include <iostream>
-
 Core::Scene::Scene(uint16_t width, uint16_t height) {
     this->m_width = width;
     this->m_height = height;
     
-    this->m_window = this->initWindow();
+    this->m_pWindow = this->initWindow();
 }
 
 Core::Scene::~Scene() {
-    glfwDestroyWindow(m_window);
+    glfwDestroyWindow(m_pWindow);
     glfwTerminate();
 }
 
-/**
- * @brief Init all the libraries and generate a windows
- * 
- * @return GLFWwindow* 
- */
 GLFWwindow* Core::Scene::initWindow() {
     Core::Scene::initGLFW();
     GLFWwindow* window = Core::Scene::createWindow();
@@ -37,11 +30,6 @@ void Core::Scene::initGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-/**
- * @brief create a window from glfw
- * 
- * @return GLFWwindow* program can exit if window finish as null
- */
 GLFWwindow* Core::Scene::createWindow() {
     
     GLFWwindow* window = glfwCreateWindow(this->m_width, this->m_height, "3D engine", NULL, NULL);
@@ -62,10 +50,6 @@ GLFWwindow* Core::Scene::createWindow() {
     return window;
 }
 
-/**
- * @brief Init the GLAD Library : 
- * GLAD manages function pointers for OpenGL so we want to initialize GLAD before we call any OpenGL function.
- */
 void Core::Scene::initGLAD() {
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         exit(EXIT_FAILURE);
@@ -73,12 +57,16 @@ void Core::Scene::initGLAD() {
 }
 
 void Core::Scene::renderLoop() {
-    while(!glfwWindowShouldClose(m_window)) {
+    while(!glfwWindowShouldClose(m_pWindow)) {
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glfwSwapBuffers(m_window);
+        glfwSwapBuffers(m_pWindow);
         glfwPollEvents();    
     }
+}
+
+void Core::Scene::initWindowKeyCallback() {
+    throw std::invalid_argument("Unintialized function");
 }
