@@ -1,4 +1,7 @@
-#pragma once
+
+#ifndef MESH_H
+#define MESH_H
+
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
 #include "Texture.h"
@@ -27,3 +30,4 @@ private:
 	std::vector<Mesh> m_children;
 };
 
+#endif

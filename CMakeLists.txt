@@ -9,11 +9,13 @@ add_subdirectory(lib)
 add_executable(3d-engine
         lib/glad/glad.c
         src/main.cpp
-        src/scene.cpp
+        src/core/scene.cpp
         src/shader.cpp
+        src/mesh.cpp
 )
 
 include_directories(lib/glm)
+include_directories(lib/assimp)
 include_directories(src/headers)
 
 target_include_directories(3d-engine PRIVATE src lib)
