@@ -1,5 +1,5 @@
-#include "headers/logger.h"
-#include "headers/scene.h"
+#include "../headers/logger.h"
+#include "../headers/scene.h"
 
 Core::Scene::Scene(uint16_t width, uint16_t height) {
     this->m_width = width;
