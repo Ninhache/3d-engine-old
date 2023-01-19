@@ -4,18 +4,26 @@
 #include "Texture.h"
 #include "shader.h"
 
+struct Vertex {
+	glm::vec3 position;
+	glm::vec3 normal;
+	glm::vec2 textCoord;
+};
+
 class Mesh
 {
 public:
-	Mesh(std::vector<float> vertices, std::vector<float> indices, std::vector<float> normals, std::vector<Texture> textures);
+	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures);
 	void draw(const Shader& shader);
-	void configureBuffers();
 	void associateTextures();
+	void addChild(Mesh mesh);
 
 private:
-	std::vector<float> vertices, indices, normals;
-	std::vector<Texture> textures;
-	uint32_t VAO, VBO, VEO;
-	std::vector<Mesh> children;
+	void configureBuffers();
+	std::vector<Vertex> m_vertices;
+	std::vector<uint32_t> m_indices;
+	std::vector<Texture> m_textures;
+	uint32_t m_VAO, m_VBO, m_VEO;
+	std::vector<Mesh> m_children;
 };
 

@@ -1,23 +1,48 @@
 #include "headers/Mesh.h"
 
-std::vector<float> vertices, indices, normals;
-uint32_t VAO, VBO, VEO;
-std::vector<Texture> textures;
-std::vector<Mesh> children;
-
-Mesh::Mesh(std::vector<float> vertices, std::vector<float> indices, std::vector<float> normals, std::vector<Texture> textures) {
-	this->vertices = vertices;
-	this->indices = indices;
-	this->normals = normals;
-	this->textures = textures;
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures) {
+	this->m_vertices = vertices;
+	this->m_indices = indices;
+	this->m_textures = textures;
+	configureBuffers();
 }
 
 void Mesh::configureBuffers() {
 
-}
-void Mesh::draw(const Shader& shader) {
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
+	glGenBuffers(1, &m_VEO);
+
+	glBindVertexArray(m_VAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)*m_vertices.size(), &m_vertices[0], GL_STATIC_DRAW);
+	
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_VEO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Vertex) * m_indices.size(), &m_indices[0], GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) 0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, position));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex,normal));
+
+	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(1);
+	glEnableVertexAttribArray(2);
+
+	glBindVertexArray(0);
 
 }
+void Mesh::draw(const Shader& shader) {
+	glUseProgram(shader.ID);
+	glBindVertexArray(m_VAO);
+	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,0);
+}
+
+//Not passing by reference to prevent mesh from being destroyed
+void Mesh::addChild(Mesh mesh) {
+	m_children.push_back(mesh);
+}
+
 void Mesh::associateTextures() {
 
 }
