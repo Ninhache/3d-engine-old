@@ -1,4 +1,4 @@
-#include "headers/Mesh.h"
+#include "headers/mesh.h"
 
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures) {
 	this->m_vertices = vertices;

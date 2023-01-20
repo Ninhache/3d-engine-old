@@ -4,7 +4,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
-#include "Texture.h"
+#include "texture.h"
 #include "shader.h"
 
 struct Vertex {
