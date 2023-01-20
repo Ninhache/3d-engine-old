@@ -14,7 +14,6 @@ class Shader {
     public:
         Shader(const char* vertexPath, const char* fragmentPath);
         void use();
-        void unuse();
         void setBool(const std::string&, const bool&) const;
         void setInt(const std::string&, const int&) const;
         void setFloat(const std::string&, const float&) const;

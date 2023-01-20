@@ -8,7 +8,6 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vec
 }
 
 void Mesh::configureBuffers() {
-
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
 	glGenBuffers(1, &m_VEO);
@@ -32,8 +31,8 @@ void Mesh::configureBuffers() {
 	glBindVertexArray(0);
 
 }
-void Mesh::draw(const Shader& shader) {
-	glUseProgram(shader.getId());
+void Mesh::draw(Shader shader) {
+	shader.use();
 	glBindVertexArray(m_VAO);
 	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,0);
 }
