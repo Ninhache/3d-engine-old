@@ -25,7 +25,7 @@ private:
 	std::vector<Vertex> m_vertices;
 	std::vector<uint32_t> m_indices;
 	std::vector<Texture> m_textures;
-	uint32_t m_VAO, m_VBO, m_VEO;
+	uint32_t m_VAO, m_VBO, m_EBO;
 };
 
 #endif
