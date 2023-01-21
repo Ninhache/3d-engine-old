@@ -19,7 +19,6 @@ public:
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures);
 	void draw(Shader shader);
 	void associateTextures();
-	void addChild(Mesh mesh);
 
 private:
 	void configureBuffers();
@@ -27,7 +26,6 @@ private:
 	std::vector<uint32_t> m_indices;
 	std::vector<Texture> m_textures;
 	uint32_t m_VAO, m_VBO, m_VEO;
-	std::vector<Mesh> m_children;
 };
 
 #endif

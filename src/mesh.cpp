@@ -1,5 +1,6 @@
 #include "headers/mesh.h"
 
+
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures) {
 	this->m_vertices = vertices;
 	this->m_indices = indices;
@@ -8,6 +9,7 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vec
 }
 
 void Mesh::configureBuffers() {
+
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
 	glGenBuffers(1, &m_VEO);
@@ -32,14 +34,10 @@ void Mesh::configureBuffers() {
 
 }
 void Mesh::draw(Shader shader) {
+	std::cout << "drawn" << std::endl;
 	shader.use();
 	glBindVertexArray(m_VAO);
 	glDrawElements(GL_TRIANGLES, m_indices.size(), GL_UNSIGNED_INT,0);
-}
-
-//Not passing by reference to prevent mesh from being destroyed
-void Mesh::addChild(Mesh mesh) {
-	m_children.push_back(mesh);
 }
 
 void Mesh::associateTextures() {
