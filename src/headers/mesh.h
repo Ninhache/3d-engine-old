@@ -30,7 +30,6 @@ private:
 	std::vector<Texture> m_textures;
 	aiMatrix4x4 localTransform;
 	uint32_t m_VAO, m_VBO, m_EBO;
-	float a, b, c;
 };
 
 #endif

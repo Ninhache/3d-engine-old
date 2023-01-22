@@ -2,19 +2,13 @@
 #include "headers/logger.h"
 
 
+//leave this empty for now
 Model::Model() {
-	this->m_localTransform = aiMatrix4x4{};
 }
 
 Model::Model(const std::string& path)
 {
 	loadModel(path);
-}
-
-Model::Model(const Model& model) {
-	this->m_children = model.m_children;
-	this->m_localTransform = model.m_localTransform;
-	this->m_meshes = model.m_meshes;
 }
 
 void Model::loadModel(const std::string& path) {

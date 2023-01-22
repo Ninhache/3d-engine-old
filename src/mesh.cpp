@@ -6,9 +6,6 @@ Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vec
 	this->m_textures = textures;
 	this->localTransform = localTransform;
 	configureBuffers();
-	this->a = (float)rand() / RAND_MAX;
-	this->b = (float)rand() / RAND_MAX;
-	this->c = (float)rand() / RAND_MAX;
 }
 
 void Mesh::configureBuffers() {
@@ -37,7 +34,7 @@ void Mesh::configureBuffers() {
 
 }
 void Mesh::draw(Shader shader) {
-	//We set the correct model for the Mesh (this is the localTransform according to its parents)
+	//We set the correct model for the Mesh (this is the localTransform according to its parents, so its world transform)
 	glm::mat4 model = glm::transpose(glm::make_mat4(&this->localTransform.a1));
 	shader.setMatrix("model", model);
 	shader.use();

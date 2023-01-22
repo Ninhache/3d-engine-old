@@ -12,7 +12,6 @@ class Model
 public:
 	Model();
 	Model(const std::string& path);
-	Model(const Model& model);
 	void loadModel(const std::string& path);
 	void parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform);
 	void draw(Shader& shader);
