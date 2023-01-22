@@ -2,17 +2,13 @@
 #include "headers/logger.h"
 
 
-Model::Model() {}
+//leave this empty for now
+Model::Model() {
+}
 
 Model::Model(const std::string& path)
 {
 	loadModel(path);
-}
-
-Model::Model(const Model& model) {
-	this->m_children = model.m_children;
-	this->m_localTransform = model.m_localTransform;
-	this->m_meshes = model.m_meshes;
 }
 
 void Model::loadModel(const std::string& path) {
@@ -23,7 +19,8 @@ void Model::loadModel(const std::string& path) {
 		return;
 	}
 
-	parseNodes(scene->mRootNode, scene, *this);
+	aiMatrix4x4 mat{};
+	parseNodes(scene->mRootNode, scene, *this, mat);
 }
 
 /**
@@ -34,32 +31,33 @@ void Model::loadModel(const std::string& path) {
 *@param scene
 *@param parent
 */
-void Model::parseNodes(aiNode* node, const aiScene* scene, Model& parent) {
+void Model::parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform) {
 	
 	Model model;
-	
+	//To calculate the world transform of a mesh, we need to multiply
+	//the localTransform of his all parents with its own localTransform matrix.
+	aiMatrix4x4 localTransform = transform * node->mTransformation;
+
 	for (size_t i = 0; i < node->mNumMeshes; i++)
 	{
 		unsigned int currentMesh = node->mMeshes[i];
-		Mesh mesh = createMesh(scene->mMeshes[currentMesh], scene);
+		Mesh mesh = createMesh(scene->mMeshes[currentMesh], scene, localTransform);
 		model.addMesh(mesh);
 	}
 
-	//To calculate the world transform of a mesh, we will need to multiply
-	//the localTransform of his all parents with its own localTransform matrix.
-	model.m_localTransform = node->mTransformation * parent.m_localTransform;
+	
 	//optimisation is made here to skip a node that contains 0 meshes,
 	//but we still want to keep its transformation
 	Model& addedModel = node->mNumMeshes > 0 ? parent.addChild(model) : parent;
-	
+
 	for (size_t i = 0; i < node->mNumChildren; i++)
 	{
-		parseNodes(node->mChildren[i], scene, addedModel);
+		parseNodes(node->mChildren[i], scene, addedModel, localTransform);
 	}
 }
 
 
-Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene) {
+Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTransform) {
 	std::vector<Vertex> vertices;
 	std::vector<uint32_t> indices;
 	std::vector<Texture> textures;
@@ -97,10 +95,10 @@ Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene) {
 		}
 	}
 
-	return Mesh{ vertices, indices, textures };
+	return Mesh{ vertices, indices, textures, localTransform };
 }
 
-void Model::draw(Shader shader) {
+void Model::draw(Shader& shader) {
 	//avoiding copying by passing reference
 	for (Model& model : this->m_children) {
 		model.draw(shader);
