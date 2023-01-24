@@ -1,4 +1,5 @@
 #include "headers/texture.h"
+#include "headers/logger.h"
 
 std::map<std::string, Texture*> Texture::m_map;
 
@@ -7,7 +8,7 @@ Texture::Texture(std::string filename) {
     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
     
     if (data == nullptr) {
-        throw std::runtime_error("Failed to load texture: " + filename);
+        logger.log("Failed to load texture: " + filename);
     }
 
     glGenTextures(1, &m_texture);
