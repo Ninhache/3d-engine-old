@@ -25,7 +25,7 @@ private:
 
 	float fov = 45.0f;
 	const float minFov = 44.4, maxFov = 45.6, scrollMult = 0.2, cameraSensitivity = 8.0f;
-	float yaw = -90.0f, pitch = 0.0f, mouseSensitivity = 0.2f;
+	float yaw = -90.0f, pitch = 0.0f, mouseSensitivity = 0.2f; 
 };
 
 #endif
