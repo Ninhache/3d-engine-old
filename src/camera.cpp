@@ -2,8 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "headers/Shader.h"
-#include "headers/Camera.h"
+#include "headers/shader.h"
+#include "headers/camera.h"
 #include <iostream>
 
 /**
