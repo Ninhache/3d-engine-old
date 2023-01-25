@@ -12,13 +12,13 @@ class Texture
 	public:
 		static void loadTextureInMemory(std::string, aiTextureType);
 		static Texture getTextureFromFile(std::string, aiTextureType);
-
-		~Texture();
+		aiTextureType getType();
+		GLuint getID();
 
 	private:
-		GLuint m_texture;
-		std::string m_filename;
+		GLuint m_ID;
 		aiTextureType m_texture_type;
+		std::string m_filename;
 		static std::map<std::string, Texture> m_map;
 
 		Texture(std::string, aiTextureType texture_type);

@@ -7,13 +7,14 @@ std::map<std::string, Texture> Texture::m_map;
 
 Texture::Texture(std::string filename, aiTextureType texture_type) {
     int width, height, channels;
+    stbi_set_flip_vertically_on_load(true);
     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
 
     if (data == nullptr) {
         logger.log("Failed to load texture: " + filename);
     }
 
-    GLenum channels_type;
+    GLenum channels_type = 0;
     if (channels == 1) {
       channels_type = GL_RED;
     } else if (channels == 3) {
@@ -22,22 +23,21 @@ Texture::Texture(std::string filename, aiTextureType texture_type) {
       channels_type = GL_RGBA;
     }
 
-    glGenTextures(1, &m_texture);
-    glBindTexture(GL_TEXTURE_2D, m_texture);
+    glGenTextures(1, &this->m_ID);
+    glBindTexture(GL_TEXTURE_2D, this->m_ID);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, channels_type, width, height, 0, channels_type, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
 
     this->m_filename = filename;
     this->m_texture_type = texture_type;
 
     stbi_image_free(data);
-}
-
-Texture::~Texture() {
-    glDeleteTextures(1, &m_texture);
 }
 
 void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type) {
@@ -48,11 +48,16 @@ void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_ty
 }
 
 Texture Texture::getTextureFromFile(std::string filename, aiTextureType texture_type) {
-  if (m_map.count(filename)) {
-    return Texture::m_map.at(filename);
-  } else {
+   
     loadTextureInMemory(filename, texture_type);
-  }
+  
+   return Texture::m_map.at(filename);
+}
 
-  return Texture::m_map.at(filename);
+aiTextureType Texture::getType() {
+    return this->m_texture_type;
+}
+
+GLuint Texture::getID() {
+    return this->m_ID;  
 }
