@@ -18,9 +18,12 @@ public:
 	void addMesh(Mesh mesh);
 	Mesh createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTransform);
 	Model& addChild(Model& child);
+
 private:
+	std::string dir;
 	std::vector<Mesh> m_meshes;
 	std::vector<Model> m_children;
+	std::vector<Texture> loadMaterial(aiMaterial* material, aiTextureType type);
 };
 
 #endif // !OBJECT_MODEL_H

@@ -1,6 +1,13 @@
+const char pathSeparator =
+#ifdef _WIN32
+	'\\';
+#else
+	'/';
+#endif
+
+
 #include "headers/model.h"
 #include "headers/logger.h"
-
 
 //leave this empty for now
 Model::Model() {
@@ -12,6 +19,7 @@ Model::Model(const std::string& path)
 }
 
 void Model::loadModel(const std::string& path) {
+
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_OptimizeMeshes);
 	if (!scene) {
@@ -19,6 +27,7 @@ void Model::loadModel(const std::string& path) {
 		return;
 	}
 
+	this->dir = path.substr(0, path.find_last_of(pathSeparator));
 	aiMatrix4x4 mat{};
 	parseNodes(scene->mRootNode, scene, *this, mat);
 }
@@ -95,6 +104,16 @@ Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTra
 		}
 	}
 
+	
+	std::vector<Texture> normalMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_NORMALS);
+	textures.insert(textures.end(), normalMap.begin(), normalMap.end());
+	std::vector<Texture> specularMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_SPECULAR);
+	textures.insert(textures.end(), specularMap.begin(), specularMap.end());
+	std::vector<Texture> diffuseMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_DIFFUSE);
+	textures.insert(textures.end(), diffuseMap.begin(), diffuseMap.end());
+	std::vector<Texture> heightMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_HEIGHT);
+	textures.insert(textures.end(), heightMap.begin(), heightMap.end());
+
 	return Mesh{ vertices, indices, textures, localTransform };
 }
 
@@ -116,4 +135,19 @@ Model& Model::addChild(Model& child) {
 
 void Model::addMesh(Mesh mesh) {
 	this->m_meshes.push_back(mesh);
+}
+
+std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType type) {
+	std::vector<Texture> textures;
+
+	for (int i = 0; i < material->GetTextureCount(type); i++)
+	{
+		aiString path;
+		material->GetTexture(type, i, &path);
+		std::string filename = dir + pathSeparator + path.C_Str();
+		Texture texture = Texture::getTextureFromFile(filename, type);
+		textures.push_back(texture);
+	}
+
+	return textures;
 }
