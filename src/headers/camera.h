@@ -1,6 +1,8 @@
 #ifndef CAMERA_CLASS_HEADER
 #define CAMERA_CLASS_HEADER
+
 #include <glm/glm.hpp>
+
 #include "shader.h"
 
 class Camera {

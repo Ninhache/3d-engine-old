@@ -1,10 +1,12 @@
 #ifndef OBJECT_MODEL_H
 #define OBJECT_MODEL_H
-#include "mesh.h"
-#include "vector"
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>          
-#include <assimp/postprocess.h>   
+#include <assimp/postprocess.h>
+
+#include "mesh.h"
+#include "vector"
 #include "iostream"
 
 class Model
