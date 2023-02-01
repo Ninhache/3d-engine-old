@@ -45,7 +45,7 @@ class Logger {
 
 
     private:
-        bool m_consoleLog = false, m_fileLog = true;
+        bool m_consoleLog = true, m_fileLog = true;
         std::ofstream m_logfile;
 };
 

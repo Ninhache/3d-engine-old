@@ -34,3 +34,12 @@
 # Ide settings
 .vscode/*
 build/*
+
+/*Custom*/
+.vs/
+*.sln
+*.vcxproj
+*.filters
+*.user
+log.txt
+x64/
