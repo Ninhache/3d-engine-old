@@ -11,7 +11,7 @@ add_executable(3d-engine
         lib/glad/glad.c
         lib/stb/stb.c
         src/main.cpp
-        src/core/scene.cpp
+        src/scene.cpp
         src/shader.cpp
 	src/model.cpp
         src/mesh.cpp

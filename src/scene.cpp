@@ -1,4 +1,4 @@
-#include "../headers/scene.h"
+#include "headers/scene.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -8,27 +8,27 @@ float lastX, lastY;
 
 Camera camera;
 
-Core::Scene::Scene(uint16_t width, uint16_t height) {
+Scene::Scene(uint16_t width, uint16_t height) {
     this->m_width = width;
     this->m_height = height;
 
     this->m_pWindow = this->initWindow();
 }
 
-Core::Scene::~Scene() {
+Scene::~Scene() {
     glfwDestroyWindow(m_pWindow);
     glfwTerminate();
 }
 
-GLFWwindow* Core::Scene::initWindow() {
-    Core::Scene::initGLFW();
-    GLFWwindow* window = Core::Scene::createWindow();
-    Core::Scene::initGLAD();
+GLFWwindow* Scene::initWindow() {
+    Scene::initGLFW();
+    GLFWwindow* window = Scene::createWindow();
+    Scene::initGLAD();
 
     return window;
 }
 
-void Core::Scene::initGLFW() {
+void Scene::initGLFW() {
     glfwInit();
 
     // Define OpenGl version to use
@@ -37,7 +37,7 @@ void Core::Scene::initGLFW() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-GLFWwindow* Core::Scene::createWindow() {
+GLFWwindow* Scene::createWindow() {
 
     GLFWwindow* window = glfwCreateWindow(this->m_width, this->m_height, "3D engine", NULL, NULL);
 
@@ -57,16 +57,15 @@ GLFWwindow* Core::Scene::createWindow() {
     return window;
 }
 
-void Core::Scene::initGLAD() {
+void Scene::initGLAD() {
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         exit(EXIT_FAILURE);
     }
 }
 
-void Core::Scene::renderLoop() {
-    Model model{ "C:\\Users\\vmoug\\source\\repos\\3DEngineVS\\3DEngineVS\\3dengine\\models\\backpack\\backpack.obj" };
-    Shader shader{ "C:\\Users\\vmoug\\source\\repos\\3DEngineVS\\3DEngineVS\\3dengine\\shaders\\default.vs","C:\\Users\\vmoug\\source\\repos\\3DEngineVS\\3DEngineVS\\3dengine\\shaders\\default.fs" };
-
+void Scene::renderLoop() {
+    Model model{ "../models/backpack/backpack.obj" };
+    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -75,6 +74,7 @@ void Core::Scene::renderLoop() {
     float lastFrame = 0.0f;
 
     int frame = 0;
+    glEnable(GL_DEPTH_TEST);
     while (!glfwWindowShouldClose(m_pWindow)) {
 
         current = glfwGetTime();
@@ -98,10 +98,6 @@ void Core::Scene::renderLoop() {
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
     }
-}
-
-void Core::Scene::initCallbacks() {
-    throw std::invalid_argument("Unintialized function");
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
