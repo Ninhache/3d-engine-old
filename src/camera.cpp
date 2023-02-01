@@ -26,8 +26,6 @@ void Camera::scrollUpdate(double yoffset) {
 	else if (fov < minFov)
 		fov = minFov;
 
-	std::cout << fov << std::endl;
-
 }
 
 /**
@@ -48,10 +46,10 @@ void Camera::processInput(GLFWwindow* window, float deltaTime) {
 		cameraPos -= cameraSpeed * cameraFront;
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		cameraPos -= cameraSpeed * cameraSide;
+		cameraPos -= cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		cameraPos += cameraSpeed * cameraSide;
+		cameraPos += cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
 	}
 
 }
@@ -67,8 +65,8 @@ void Camera::mouseUpdate(float xoff, float yoff) {
 	yaw += (xoff * mouseSensitivity);
 	pitch += (yoff * mouseSensitivity);
 
-	pitch = pitch > 89.0f ? 89.0f : pitch;
-	pitch = pitch < -89.0f ? -89.0f : pitch;
+	pitch = pitch > 89.0 ? 89.0 : pitch;
+	pitch = pitch < -89.0 ? -89.0 : pitch;
 
 	updateVectors();
 }
@@ -100,5 +98,5 @@ void Camera::updateVectors() {
 	//and the world Up vector (pointing toward +Y) which gives us the X axis vector relative to the camera
 	cameraSide = glm::normalize(glm::cross(cameraFront, glm::vec3(0.0f,1.0f,0.0f)));
 	//Same logic as cameraSide
-	cameraUp = glm::normalize(glm::cross(cameraFront, cameraSide));
+	cameraUp = glm::normalize(glm::cross(cameraSide,cameraFront));
 }
