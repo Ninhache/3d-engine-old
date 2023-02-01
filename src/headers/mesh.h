@@ -19,16 +19,18 @@ struct Vertex {
 class Mesh
 {
 public:
+	Mesh();
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures, aiMatrix4x4 localTransform);
 	void draw(Shader shader);
 	void associateTextures();
 
-private:
-	void configureBuffers();
+protected:
 	std::vector<Vertex> m_vertices;
 	std::vector<uint32_t> m_indices;
 	std::vector<Texture> m_textures;
 	aiMatrix4x4 localTransform;
+private:
+	void configureBuffers();
 	uint32_t m_VAO, m_VBO, m_EBO;
 };
 

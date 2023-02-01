@@ -1,6 +1,7 @@
 #include "headers/mesh.h"
 
-static bool tec = false;
+Mesh::Mesh() {}
+
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures, aiMatrix4x4 localTransform) {
 	this->m_vertices = vertices;
 	this->m_indices = indices;
