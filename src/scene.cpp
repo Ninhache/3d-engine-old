@@ -1,4 +1,5 @@
 #include "headers/scene.h"
+#include "headers/light.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -39,7 +40,7 @@ void Scene::initGLFW() {
 
 GLFWwindow* Scene::createWindow() {
 
-    GLFWwindow* window = glfwCreateWindow(this->m_width, this->m_height, "3D engine", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(Scene::m_width, Scene::m_height, "3D engine", NULL, NULL);
 
     if (window == NULL) {
         glfwTerminate();
@@ -64,8 +65,10 @@ void Scene::initGLAD() {
 }
 
 void Scene::renderLoop() {
+    Light light(glm::vec3(0.8f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
     Model model{ "../models/backpack/backpack.obj" };
     Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
+    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -81,7 +84,7 @@ void Scene::renderLoop() {
         deltaTime = current - lastFrame;
         lastFrame = current;
 
-        glClearColor(0.1f, 0.5f, 0.1f, 1.0f);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         camera.processInput(this->m_pWindow, deltaTime);
@@ -90,10 +93,23 @@ void Scene::renderLoop() {
         glm::mat4 projection;					   //FOV	         //Aspect ratio
         projection = glm::perspective(glm::radians(camera.getFov()), (float)m_width / (float)m_height, 0.1f, 100.0f);
 
-        shader.setMatrix("view", camera.getLookAtMatrix());
-        shader.setMatrix("projection", projection);
+        //Must use the shader before calling glUniform()
+        shader.use();
+        //Model
+        shader.setVec3("lightColor", light.getLightColor());
+        shader.setVec3("lightPos", light.getPos());
 
+        shader.setVec3("viewPos", camera.getPos());
+        shader.setMatrix4("view", camera.getLookAtMatrix());
+
+        shader.setMatrix4("projection", projection);
         model.draw(shader);
+
+        //Light
+        lightShader.use();
+        lightShader.setMatrix4("view", camera.getLookAtMatrix());
+        lightShader.setMatrix4("projection", projection);
+        light.draw(lightShader);
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
@@ -115,3 +131,4 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
 
     camera.mouseUpdate(xoffset, yoffset);
 }
+

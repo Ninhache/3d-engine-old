@@ -35,7 +35,7 @@ void Mesh::configureBuffers() {
 	glBindVertexArray(0);
 
 }
-void Mesh::draw(Shader shader) {
+void Mesh::draw(Shader& shader) {
 	int diffuseCpt = 0, normalCpt = 0, specularCpt=0, heightCpt = 0;
 	int counter = 0;
 	std::string samplerName;
@@ -75,8 +75,12 @@ void Mesh::draw(Shader shader) {
 	shader.use();
 	//We set the correct model for the Mesh (this is the localTransform according to its parents, so its world transform)
 	glm::mat4 model = glm::transpose(glm::make_mat4(&this->localTransform.a1));
-	shader.setMatrix("model", model);
+	//Matrix used to transform normal vectors to world coordinates
+	glm::mat3 normalMatrix = glm::transpose(glm::inverse(model));
 	
+	shader.setMatrix3("normalMatrix", normalMatrix);
+	shader.setMatrix4("model", model);
+
 	glBindVertexArray(this->m_VAO);
 	glDrawElements(GL_TRIANGLES, this->m_indices.size(), GL_UNSIGNED_INT,0);
 	//Reset to default
