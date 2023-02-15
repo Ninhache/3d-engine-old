@@ -1,5 +1,6 @@
 #include "headers/scene.h"
 #include "headers/light.h"
+#include "headers/logger.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -14,6 +15,8 @@ Scene::Scene(uint16_t width, uint16_t height) {
     this->m_height = height;
 
     this->m_pWindow = this->initWindow();
+    std::vector<DefaultGui*> list = { new UserParameters(true) };
+    this->m_gui = DefaultGui(true, list);
 }
 
 Scene::~Scene() {
@@ -65,11 +68,12 @@ void Scene::initGLAD() {
 }
 
 void Scene::renderLoop() {
-    Light light(glm::vec3(0.8f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
-    Model model{ "../models/backpack/backpack.obj" };
-    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
-    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
-
+    
+    Light light(glm::vec3(0.8f, 0.2f, 0.3f), glm::vec3(1.0f, 0.f, 0.f));
+    Model model{ "models/backpack/backpack.obj" };
+    Shader shader{ "shaders/default.vs", "shaders/default.fs" };
+    Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
+    
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -78,13 +82,16 @@ void Scene::renderLoop() {
 
     int frame = 0;
     glEnable(GL_DEPTH_TEST);
+
+    this->m_gui.init(m_pWindow);
+    
     while (!glfwWindowShouldClose(m_pWindow)) {
 
         current = glfwGetTime();
         deltaTime = current - lastFrame;
         lastFrame = current;
 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClearColor(0.0f,0.0f,0.0f,0.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         camera.processInput(this->m_pWindow, deltaTime);
@@ -111,6 +118,9 @@ void Scene::renderLoop() {
         lightShader.setMatrix4("projection", projection);
         light.draw(lightShader);
 
+
+        this->m_gui.render();
+        
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
     }

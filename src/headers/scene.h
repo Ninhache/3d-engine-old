@@ -6,6 +6,7 @@
 
 #include "camera.h"
 #include "model.h"
+#include "gui.h"
 
   
 class Scene {
@@ -35,6 +36,7 @@ private:
     uint16_t m_width;
     uint16_t m_height;
     GLFWwindow* m_pWindow;
+    DefaultGui m_gui;
 
     /**
      * @brief Init all the libraries and generate a windows
