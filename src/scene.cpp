@@ -67,9 +67,10 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     PointLight pointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
-    Model model{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\models\\backpack\\backpack.obj" };
-    Shader shader{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.vs", "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.fs" };
-    Shader lightShader{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.vs", "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\light.fs" };
+    Model model{ "../models/backpack/backpack.obj" };
+    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
+    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
+
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
