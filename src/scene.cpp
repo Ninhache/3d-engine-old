@@ -1,6 +1,7 @@
 #include "headers/scene.h"
 #include "headers/light.h"
 #include "headers/logger.h"
+#include "headers/pointLight.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -103,8 +104,8 @@ void Scene::renderLoop() {
         //Must use the shader before calling glUniform()
         shader.use();
         //Model
-        shader.setVec3("lightColor", light.getLightColor());
-        shader.setVec3("lightPos", light.getPos());
+        shader.setVec3("lightColor", pointLight.getLightColor());
+        shader.setVec3("lightPos", pointLight.getPos());
 
         shader.setVec3("viewPos", camera.getPos());
         shader.setMatrix4("view", camera.getLookAtMatrix());
@@ -116,7 +117,7 @@ void Scene::renderLoop() {
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
-        light.draw(lightShader);
+        pointLight.draw(shader, lightShader);
 
 
         this->m_gui.render();

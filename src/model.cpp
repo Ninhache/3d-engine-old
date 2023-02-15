@@ -18,6 +18,7 @@ Model::Model(const std::string& path)
 	loadModel(path);
 }
 
+
 void Model::loadModel(const std::string& path) {
 
 	Assimp::Importer importer;
@@ -27,19 +28,11 @@ void Model::loadModel(const std::string& path) {
 		return;
 	}
 
-	this->dir = path.substr(0, path.find_last_of(pathSeparator));
+	this->m_directory = path.substr(0, path.find_last_of("\\"));
 	aiMatrix4x4 mat{};
 	parseNodes(scene->mRootNode, scene, *this, mat);
 }
 
-/**
-* Parses all the nodes in the aiScene wich containes 0 or N Meshes
-* it creates a Model for each node and add it as a child of the parent Model
-*
-*@param node
-*@param scene
-*@param parent
-*/
 void Model::parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform) {
 	
 	Model model;
@@ -144,7 +137,7 @@ std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType typ
 	{
 		aiString path;
 		material->GetTexture(type, i, &path);
-		std::string filename = dir + pathSeparator + path.C_Str();
+		std::string filename = m_directory + pathSeparator + path.C_Str();
 		Texture texture = Texture::getTextureFromFile(filename, type);
 		textures.push_back(texture);
 	}
