@@ -70,10 +70,11 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     
-    Light light(glm::vec3(0.8f, 0.2f, 0.3f), glm::vec3(1.0f, 0.f, 0.f));
-    Model model{ "models/backpack/backpack.obj" };
-    Shader shader{ "shaders/default.vs", "shaders/default.fs" };
-    Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
+    PointLight pointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
+    Model model{ "../models/backpack/backpack.obj" };
+    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
+    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
+
     
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
