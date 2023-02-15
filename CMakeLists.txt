@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(ASSIMP_INCLUDE_DIR ~/assimp/include)
 set(ASSIMP_LIBRARIES ~/assimp/bin/libassimp.so.5.2.5)
 
+#set(CMAKE_BUILD_TYPE Debug)
+
 add_subdirectory(lib)
 
 add_executable(3d-engine
@@ -17,6 +19,9 @@ add_executable(3d-engine
         src/mesh.cpp
         src/texture.cpp
 	src/camera.cpp
+        src/meshes/light.cpp
+        src/gui/gui.cpp
+        src/gui/userParametersGui.cpp
 )
 
 
