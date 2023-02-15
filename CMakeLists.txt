@@ -20,6 +20,7 @@ add_executable(3d-engine
         src/texture.cpp
 	src/camera.cpp
         src/meshes/light.cpp
+        src/meshes/pointLight.cpp
         src/gui/gui.cpp
         src/gui/userParametersGui.cpp
 )
