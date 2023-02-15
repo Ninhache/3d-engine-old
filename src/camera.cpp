@@ -13,11 +13,6 @@ void Camera::update() {
 	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 }
 
-
-/**
-* Changes Field of view into values between maxFov and minFov according to yoffset
-@param yoffset - Amount scrolled vertically
-*/
 void Camera::scrollUpdate(double yoffset) {
 
 	fov -= (float)yoffset * scrollMult;
@@ -28,10 +23,6 @@ void Camera::scrollUpdate(double yoffset) {
 
 }
 
-/**
-@param window
-@param deltaTime - Time it took to render the last frame, helps keeping camera speed constant
-*/
 void Camera::processInput(GLFWwindow* window, float deltaTime) {
 
 	const float cameraSpeed = cameraSensitivity * deltaTime;
@@ -54,12 +45,6 @@ void Camera::processInput(GLFWwindow* window, float deltaTime) {
 
 }
 
-/**
-* Updates yaw and pitch based on mouse coordinates which will influence camera rotation
-* The pitch is kept under 90 degrees to prevent scene from being reversed
-@param xoff - Difference between last x and current x of cursor
-@param yoff - Difference between last y and current y of cursor
-*/
 void Camera::mouseUpdate(float xoff, float yoff) {
 
 	yaw += (xoff * mouseSensitivity);
@@ -83,9 +68,6 @@ float Camera::getFov() {
 	return fov;
 }
 
-/**
-* Updates camera x,y,z directional vectors
-*/
 void Camera::updateVectors() {
 
 	glm::vec3 direction;

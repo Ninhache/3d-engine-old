@@ -1,5 +1,6 @@
 #include "headers/scene.h"
 #include "headers/light.h"
+#include "headers/pointLight.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -65,10 +66,10 @@ void Scene::initGLAD() {
 }
 
 void Scene::renderLoop() {
-    Light light(glm::vec3(0.8f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
-    Model model{ "../models/backpack/backpack.obj" };
-    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
-    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
+    PointLight pointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
+    Model model{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\models\\backpack\\backpack.obj" };
+    Shader shader{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.vs", "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.fs" };
+    Shader lightShader{ "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\default.vs", "C:\\Users\\vmoug\\Bureau\\Bureau\\Programmation\\C++\\3DOpengl\\shaders\\light.fs" };
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -96,8 +97,8 @@ void Scene::renderLoop() {
         //Must use the shader before calling glUniform()
         shader.use();
         //Model
-        shader.setVec3("lightColor", light.getLightColor());
-        shader.setVec3("lightPos", light.getPos());
+        shader.setVec3("lightColor", pointLight.getLightColor());
+        shader.setVec3("lightPos", pointLight.getPos());
 
         shader.setVec3("viewPos", camera.getPos());
         shader.setMatrix4("view", camera.getLookAtMatrix());
@@ -109,7 +110,7 @@ void Scene::renderLoop() {
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
-        light.draw(lightShader);
+        pointLight.draw(shader, lightShader);
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
