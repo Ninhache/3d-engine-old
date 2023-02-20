@@ -28,7 +28,7 @@ void Model::loadModel(const std::string& path) {
 		return;
 	}
 
-	this->m_directory = path.substr(0, path.find_last_of("\\"));
+	this->m_directory = path.substr(0, path.find_last_of('/'));
 	aiMatrix4x4 mat{};
 	parseNodes(scene->mRootNode, scene, *this, mat);
 }
