@@ -2,6 +2,8 @@
 #include "headers/light.h"
 #include "headers/logger.h"
 #include "headers/pointLight.h"
+#include "headers/cubemap.h"
+#include "headers/directionalLight.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -54,8 +56,7 @@ GLFWwindow* Scene::createWindow() {
     // Define the created window as the main context
     glfwMakeContextCurrent(window);
 
-    /*Before we can start rendering we have to do one last thing.
-    We have to tell OpenGL the size of the rendering window so
+    /*We have to tell OpenGL the size of the rendering window so
     OpenGL knows how we want to display the data and coordinates with respect to the window*/
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
@@ -71,11 +72,13 @@ void Scene::initGLAD() {
 void Scene::renderLoop() {
     
     PointLight pointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
+    DirectionalLight dirLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5f, 0.1f);
+
     Model model{ "models/backpack/backpack.obj" };
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
+    CubeMap yokohama{ "models/skybox/ocean&mountains",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
 
-    
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -102,6 +105,8 @@ void Scene::renderLoop() {
         glm::mat4 projection;					   //FOV	         //Aspect ratio
         projection = glm::perspective(glm::radians(camera.getFov()), (float)m_width / (float)m_height, 0.1f, 100.0f);
 
+        yokohama.draw(camera.getLookAtMatrix(), projection);
+        
         //Must use the shader before calling glUniform()
         shader.use();
         //Model
@@ -118,8 +123,8 @@ void Scene::renderLoop() {
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
-        pointLight.draw(shader, lightShader);
-
+        //pointLight.draw(shader, lightShader);
+        dirLight.draw(shader, lightShader);
 
         this->m_gui.render();
         
