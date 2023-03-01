@@ -1,12 +1,14 @@
 #include "../headers/pointLight.h"
 #include <glm/gtc/matrix_transform.hpp>
 
+int PointLight::pointID = 0;
 PointLight::PointLight(glm::vec3 position, glm::vec3 color, float constant, float linear, float quadratic, float specular, float ambiant) : Light(position, color){
     this->m_constant = constant;
     this->m_linear = linear;
     this->m_quadratic = quadratic;
     this->m_specularStr = specular;
     this->m_ambiantStr = ambiant;
+    this->lightID = PointLight::pointID++;
     this->setupMesh();
 }
 
@@ -44,11 +46,21 @@ void PointLight::setupMesh(){
 
 void PointLight::setUniforms(Shader& shader) {
     shader.use();
-    shader.setVec3("pLight.lightPos", this->lightPos);
-    shader.setFloat("pLight.specularStr", this->m_specularStr);
-    shader.setFloat("pLight.ambiantStr", this->m_ambiantStr);
-    shader.setVec3("pLight.lightColor", this->lightColor);
-    shader.setFloat("pLight.constant", this->m_constant);
-    shader.setFloat("pLight.linear", this->m_linear);
-    shader.setFloat("pLight.quadratic", this->m_quadratic);
+
+    std::string currentID = std::to_string(this->lightID);
+
+    std::string lightColor = "pLights[" + currentID + "].lightColor";
+    std::string lightPos = "pLights[" + currentID + "].lightPos";
+    std::string specularStr = "pLights[" + currentID + "].specularStr";
+    std::string ambiantStr = "pLights[" + currentID + "].ambiantStr";
+    std::string constant = "pLights[" + currentID + "].constant";
+    std::string quadratic = "pLights[" + currentID + "].quadratic";
+
+    shader.setVec3(lightColor, this->lightColor);
+    shader.setVec3(lightPos, this->lightPos);
+    shader.setFloat(specularStr, this->m_specularStr);
+    shader.setFloat(ambiantStr, this->m_ambiantStr);
+    shader.setFloat(constant, this->m_constant);
+    shader.setFloat(quadratic, this->m_quadratic);
+
 }

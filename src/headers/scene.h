@@ -27,14 +27,10 @@ public:
      */
     void renderLoop();
 
-    uint16_t getWidth() { return m_width; }
-    uint16_t getHeight() { return m_height; }
-    void setWidth(uint16_t width) { this->m_width = width; }
-    void setHeight(uint16_t height) { this->m_height = height; }
+    static uint16_t width;
+    static uint16_t height;
 
 private:
-    uint16_t m_width;
-    uint16_t m_height;
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
 
@@ -73,6 +69,8 @@ private:
      */
     static void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
         glViewport(0, 0, width, height);
+        Scene::width = width;
+        Scene::height = height;
     }
     
 };

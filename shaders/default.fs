@@ -21,18 +21,27 @@ struct DirLight{
     float specularStr;
 };
 
-uniform PointLight pLight;
+#define MAX_POINT_LIGHTS 4
+uniform PointLight pLights[MAX_POINT_LIGHTS];
 uniform DirLight dLight;
+
 uniform vec3 viewPos;
 vec3 pointLight(PointLight plight, vec3 normalN);
 vec3 directionalLight(DirLight light, vec3 normalN);
 
 void main() {
+    
     vec3 normalN = normalize(normal);
-    FragColor = vec4(directionalLight(dLight, normalN) + pointLight(pLight, normalN),1.0);
+    vec3 lightOutput = vec3(0.0);
+
+    for(int i = 0; i < MAX_POINT_LIGHTS; i++){
+        lightOutput += pointLight(pLights[i], normalN);
+    }
+    
+    FragColor = vec4(directionalLight(dLight, normalN) + lightOutput,1.0);
 }
 
-vec3 pointLight(PointLight plight, vec3 normalN){
+vec3 pointLight(PointLight pLight, vec3 normalN){
 
     //vector which points from the fragment position to the light source
     vec3 lightDirection = normalize(pLight.lightPos - fragPos);

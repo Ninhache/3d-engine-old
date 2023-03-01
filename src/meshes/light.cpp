@@ -1,5 +1,6 @@
 #include "../headers/light.h"
 
+
 Light::Light(glm::vec3 position, glm::vec3 color){
     this->lightPos = position;
     this->lightColor = color;
