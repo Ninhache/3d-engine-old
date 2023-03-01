@@ -2,12 +2,11 @@
 
 Mesh::Mesh() {}
 
-Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position, bool hasTextures) {
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position) {
 	this->m_vertices = vertices;
 	this->m_indices = indices;
 	this->m_textures = textures;
 	this->localTransform = localTransform;
-	this->hasTextures = hasTextures;
 	this->position = position;
 	configureBuffers();
 }
@@ -78,11 +77,16 @@ void Mesh::draw(Shader& shader) {
 	shader.use();
 	//We set the correct model for the Mesh (this is the localTransform according to its parents, so its world transform)
 	glm::mat4 model = glm::transpose(glm::make_mat4(&this->localTransform.a1));
+	
+	//scaling the model down (primarily useful for fbx models)
+	//Models with an x of 1 are usually of good size so we scale by that factor
+	model = glm::scale(model, glm::vec3(std::min(1.0f / model[0].x,1.0f)));
 	model = glm::translate(model, this->position);
+
 	//Matrix used to transform normal vectors to world coordinates
 	glm::mat3 normalMatrix = glm::transpose(glm::inverse(model));
 	
-	shader.setBool("hasTextures", this->hasTextures);
+	shader.setBool("hasDiffuse", diffuseCpt);
 	shader.setMatrix3("normalMatrix", normalMatrix);
 	shader.setMatrix4("model", model);
 

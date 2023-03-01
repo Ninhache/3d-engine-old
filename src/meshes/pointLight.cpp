@@ -55,6 +55,7 @@ void PointLight::setUniforms(Shader& shader) {
     std::string ambiantStr = "pLights[" + currentID + "].ambiantStr";
     std::string constant = "pLights[" + currentID + "].constant";
     std::string quadratic = "pLights[" + currentID + "].quadratic";
+    std::string linear = "pLights[" + currentID + "].linear";
 
     shader.setVec3(lightColor, this->lightColor);
     shader.setVec3(lightPos, this->lightPos);
@@ -62,5 +63,6 @@ void PointLight::setUniforms(Shader& shader) {
     shader.setFloat(ambiantStr, this->m_ambiantStr);
     shader.setFloat(constant, this->m_constant);
     shader.setFloat(quadratic, this->m_quadratic);
+    shader.setFloat(linear, this->m_linear);
 
 }

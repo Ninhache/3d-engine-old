@@ -98,22 +98,16 @@ Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTra
 		}
 	}
 
-	bool hasTextures = true;
-	if (scene->mMaterials[mesh->mMaterialIndex]->GetTextureCount(aiTextureType_DIFFUSE)) {
-		std::vector<Texture> normalMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_NORMALS);
-		textures.insert(textures.end(), normalMap.begin(), normalMap.end());
-		std::vector<Texture> specularMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_SPECULAR);
-		textures.insert(textures.end(), specularMap.begin(), specularMap.end());
-		std::vector<Texture> diffuseMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_DIFFUSE);
-		textures.insert(textures.end(), diffuseMap.begin(), diffuseMap.end());
-		std::vector<Texture> heightMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_HEIGHT);
-		textures.insert(textures.end(), heightMap.begin(), heightMap.end());
-	}
-	else {
-		hasTextures = false;
-	}
+	std::vector<Texture> normalMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_NORMALS);
+	textures.insert(textures.end(), normalMap.begin(), normalMap.end());
+	std::vector<Texture> specularMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_SPECULAR);
+	textures.insert(textures.end(), specularMap.begin(), specularMap.end());
+	std::vector<Texture> diffuseMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_DIFFUSE);
+	textures.insert(textures.end(), diffuseMap.begin(), diffuseMap.end());
+	std::vector<Texture> heightMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_HEIGHT);
+	textures.insert(textures.end(), heightMap.begin(), heightMap.end());
 
-	return Mesh{ vertices, indices, textures, localTransform, this->position, hasTextures };
+	return Mesh{ vertices, indices, textures, localTransform, this->position };
 }
 
 void Model::draw(Shader& shader) {
