@@ -34,8 +34,6 @@ public:
     Camera getCamera();
 
 private:
-    uint16_t m_width;
-    uint16_t m_height;
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
     bool renderOptions_draw_light = true;
@@ -75,6 +73,8 @@ private:
      */
     static void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
         glViewport(0, 0, width, height);
+        Scene::width = width;
+        Scene::height = height;
     }
     
 };

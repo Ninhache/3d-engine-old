@@ -11,6 +11,7 @@ public:
 	glm::vec3 getLightColor();
 	virtual void setupMesh() = 0;
 	virtual void setUniforms(Shader& shader) = 0;
+	int lightID;
 protected:
 	//Default light position
 	glm::vec3 lightPos = glm::vec3(1.8f, 0.2f, 0.3f);

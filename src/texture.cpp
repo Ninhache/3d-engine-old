@@ -3,7 +3,7 @@
 
 std::map<std::string, Texture> Texture::m_map;
 
-
+Texture::Texture() {}
 
 Texture::Texture(std::string filename, aiTextureType texture_type) {
     int width, height, channels;
@@ -38,6 +38,37 @@ Texture::Texture(std::string filename, aiTextureType texture_type) {
     this->m_texture_type = texture_type;
 
     stbi_image_free(data);
+}
+
+Texture Texture::loadCubemap(std::vector<std::string> paths) {
+    
+    Texture t;
+    stbi_set_flip_vertically_on_load(false);
+    glGenTextures(1, &t.m_ID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, t.m_ID);
+
+    int width, height, nrChannels;
+    for (int i = 0; i < paths.size(); i++)
+    {
+        unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
+        
+        if (data == nullptr) {
+            stbi_image_free(data);
+            logger.log("Failed to load texture: " + paths[i]);
+            break;
+        }
+
+        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        stbi_image_free(data);
+    }
+
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    return t;
 }
 
 void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type) {
