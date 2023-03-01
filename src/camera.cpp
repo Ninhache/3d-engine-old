@@ -30,16 +30,18 @@ void Camera::processInput(GLFWwindow* window, float deltaTime) {
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 		cameraPos += cameraSpeed * cameraFront;
 	}
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+	else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
 		cameraPos -= cameraSpeed * cameraFront;
 	}
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+	else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
 		cameraPos -= cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
 	}
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+	else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
 		cameraPos += cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
 	}
-
+	else if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, true);
+	}
 }
 
 void Camera::mouseUpdate(float xoff, float yoff) {
