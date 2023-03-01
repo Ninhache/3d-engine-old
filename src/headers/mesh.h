@@ -4,8 +4,10 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <vector>
+
 #include "texture.h"
 #include "shader.h"
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>          
 #include <assimp/postprocess.h>   
