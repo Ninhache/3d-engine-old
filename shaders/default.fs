@@ -24,6 +24,7 @@ struct DirLight{
 #define MAX_POINT_LIGHTS 4
 uniform PointLight pLights[MAX_POINT_LIGHTS];
 uniform DirLight dLight;
+uniform bool hasTextures;
 
 uniform vec3 viewPos;
 vec3 pointLight(PointLight plight, vec3 normalN);
@@ -42,12 +43,19 @@ void main() {
 }
 
 vec3 pointLight(PointLight pLight, vec3 normalN){
-
+    
+    vec3 diffuseText;
+    if(hasTextures){
+        diffuseText = vec3(texture(diffuseMap0,textCoord));
+    }
+    else{
+        diffuseText = vec3(1.0);
+    }
     //vector which points from the fragment position to the light source
     vec3 lightDirection = normalize(pLight.lightPos - fragPos);
     
     //calculate the diffuse impact on a fragment, the greater the angle between the normal and the lightDirection
-    //the darker the it will get
+    //the darker the it will get    
     float diffuseShading = max(dot(normalN, lightDirection),0.0);
     
     /* Specular */
@@ -59,15 +67,23 @@ vec3 pointLight(PointLight pLight, vec3 normalN){
     float specAmount = pow(max(dot(viewDirection,reflectDirection),0.0),32);
     /* --------- */
     
-    vec3 ambiant = pLight.ambiantStr * vec3(texture(diffuseMap0,textCoord));
+    vec3 ambiant = pLight.ambiantStr * diffuseText;
     vec3 specular = pLight.specularStr * specAmount * pLight.lightColor * vec3(texture(specularMap0, textCoord));
-    vec3 diffuse = diffuseShading * pLight.lightColor * vec3(texture(diffuseMap0,textCoord));
+    vec3 diffuse = diffuseShading * pLight.lightColor * diffuseText;
 
     //ambiant and diffuse lightning
     return (ambiant + diffuse + specular);
 }
 
 vec3 directionalLight(DirLight light, vec3 normalN){
+
+    vec3 diffuseText;
+    if(hasTextures){
+        diffuseText = vec3(texture(diffuseMap0,textCoord));
+    }
+    else{
+        diffuseText = vec3(1.0,1.0,1.0);
+    }
 
     vec3 lightDir = normalize(-light.lightDir);
     float diffuseShading = max(dot(normalN,lightDir),0.0);
@@ -78,8 +94,8 @@ vec3 directionalLight(DirLight light, vec3 normalN){
     float specAmount = pow(max(dot(viewDirection,reflectDirection),0.0),32);
     
     vec3 specular = light.specularStr * specAmount * vec3(texture(specularMap0,textCoord));
-    vec3 diffuse = diffuseShading * light.lightColor * vec3(texture(diffuseMap0,textCoord));
-    vec3 ambiant = light.ambiantStr * vec3(texture(diffuseMap0,textCoord));
+    vec3 diffuse = diffuseShading * light.lightColor * diffuseText;
+    vec3 ambiant = light.ambiantStr * diffuseText;
 
     return (ambiant + diffuse + specular);
 }

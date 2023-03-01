@@ -13,7 +13,7 @@ class Model
 {
 public:
 	Model();
-	Model(const std::string& path);
+	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f));
 	
 	/**
 	*Load a model from path using assimp
@@ -33,7 +33,7 @@ public:
 	* @param mesh - assimp mesh object, used to retrieve informations such as vertices,indices,normals and texture coordinates
 	* @param scene - used to get materials
 	* @param localTransform - transformation matrix which is used to get the mesh position relative to parent
-	*@return the created mesh
+	* @return the created mesh
 	*/
 	Mesh createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTransform);
 	
@@ -43,12 +43,12 @@ public:
 	void draw(Shader& shader);
 	void addMesh(Mesh mesh);
 	Model& addChild(Model& child);
-
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;
 	std::vector<Model> m_children;
 	std::vector<Texture> loadMaterial(aiMaterial* material, aiTextureType type);
+	glm::vec3 position;
 };
 
 #endif // !OBJECT_MODEL_H

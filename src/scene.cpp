@@ -78,10 +78,15 @@ void Scene::renderLoop() {
         new PointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(0.549f, 0.110f, 0.353f)),
         new PointLight(glm::vec3(-2.0f, 0.2f, 0.3f), glm::vec3(0.949f, 0.341f, 0.675f)),
         new PointLight(glm::vec3(0.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)),
-        //new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5f, 0.1f)
+        new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5f, 0.1f)
     };
 
-    Model model{ "models/backpack/backpack.obj" };
+    Model models[] = { 
+        Model("models/backpack/backpack.obj",glm::vec3(-3.0f,0.0f,0.0f)), 
+        Model("models/blitz.fbx", glm::vec3(3.0f,0.0f,0.0f)),
+        Model("models/raptor/Raptor.fbx", glm::vec3(6.0f,0.0f,0.0f)),
+    };
+    
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
     CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
@@ -121,7 +126,10 @@ void Scene::renderLoop() {
         shader.setVec3("viewPos", camera.getPos());
         shader.setMatrix4("view", camera.getLookAtMatrix());
         shader.setMatrix4("projection", projection);
-        model.draw(shader);
+        
+        for (Model model : models) {
+            model.draw(shader);
+        }
 
 
         //Lights
