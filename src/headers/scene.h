@@ -8,6 +8,7 @@
 #include "model.h"
 #include "gui.h"
 
+  
 class Scene {
     
 public:
@@ -26,17 +27,16 @@ public:
      */
     void renderLoop();
 
-    uint16_t getWidth() { return m_width; }
-    uint16_t getHeight() { return m_height; }
-    void setWidth(uint16_t width) { this->m_width = width; }
-    void setHeight(uint16_t height) { this->m_height = height; }
     bool& getDrawLights();
     Camera getCamera();
+
+    static uint16_t width;
+    static uint16_t height;
 
 private:
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
-    bool renderOptions_draw_light = true;
+    bool renderOptions_draw_lights = true;
 
     /**
      * @brief Init all the libraries and generate a windows

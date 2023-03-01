@@ -6,12 +6,14 @@
 #include "headers/directionalLight.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 float deltaTime = 0;
 bool firstMouse = true;
 float lastX, lastY;
 
 Camera camera;
+bool camera_control = false;
 
 uint16_t Scene::width = 800;
 uint16_t Scene::height = 600;
@@ -45,6 +47,14 @@ void Scene::initGLFW() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+}
+
+Camera Scene::getCamera() {
+    return camera;
+}
+
+bool& Scene::getDrawLights() {
+    return this->renderOptions_draw_lights;
 }
 
 GLFWwindow* Scene::createWindow() {
@@ -88,6 +98,7 @@ void Scene::renderLoop() {
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetKeyCallback(this->m_pWindow, key_callback);
 
     double current = 0;
     float lastFrame = 0.0f;
@@ -133,7 +144,7 @@ void Scene::renderLoop() {
             light->draw(shader,lightShader);
         };
 
-        this->m_gui.render();
+        this->m_gui.render(this);
         
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
@@ -142,17 +153,32 @@ void Scene::renderLoop() {
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
  
-    if (firstMouse) {
+    if (!camera_control) {
+        if (firstMouse) {
+            lastX = xpos;
+            lastY = ypos;
+            firstMouse = false;
+        }
+
+        float xoffset = xpos - lastX;
+        float yoffset = lastY - ypos;
         lastX = xpos;
         lastY = ypos;
-        firstMouse = false;
+
+        camera.mouseUpdate(xoffset, yoffset);
     }
-
-    float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos;
-    lastX = xpos;
-    lastY = ypos;
-
-    camera.mouseUpdate(xoffset, yoffset);
 }
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        camera_control = !camera_control;
+
+        if (!camera_control) {
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        } else {
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
+    }
+
+}
