@@ -2,6 +2,8 @@
 #include "headers/light.h"
 #include "headers/logger.h"
 #include "headers/pointLight.h"
+#include "headers/cubemap.h"
+#include "headers/directionalLight.h"
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
@@ -11,9 +13,12 @@ float lastX, lastY;
 
 Camera camera;
 
+uint16_t Scene::width = 800;
+uint16_t Scene::height = 600;
+
 Scene::Scene(uint16_t width, uint16_t height) {
-    this->m_width = width;
-    this->m_height = height;
+    Scene::width = width;
+    Scene::height = height;
 
     this->m_pWindow = this->initWindow();
     std::vector<DefaultGui*> list = { new UserParameters(true) };
@@ -44,7 +49,7 @@ void Scene::initGLFW() {
 
 GLFWwindow* Scene::createWindow() {
 
-    GLFWwindow* window = glfwCreateWindow(Scene::m_width, Scene::m_height, "3D engine", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(Scene::width, Scene::height, "3D engine", NULL, NULL);
 
     if (window == NULL) {
         glfwTerminate();
@@ -54,8 +59,7 @@ GLFWwindow* Scene::createWindow() {
     // Define the created window as the main context
     glfwMakeContextCurrent(window);
 
-    /*Before we can start rendering we have to do one last thing.
-    We have to tell OpenGL the size of the rendering window so
+    /*We have to tell OpenGL the size of the rendering window so
     OpenGL knows how we want to display the data and coordinates with respect to the window*/
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 
@@ -70,12 +74,18 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     
-    PointLight pointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(1.0f, 1.0f, 1.0f));
-    Model model{ "../models/backpack/backpack.obj" };
-    Shader shader{ "../shaders/default.vs", "../shaders/default.fs" };
-    Shader lightShader{ "../shaders/default.vs", "../shaders/light.fs" };
+    Light* lights[] = {
+        new PointLight(glm::vec3(2.0f, 0.2f, 0.3f), glm::vec3(0.549f, 0.110f, 0.353f)),
+        new PointLight(glm::vec3(-2.0f, 0.2f, 0.3f), glm::vec3(0.949f, 0.341f, 0.675f)),
+        new PointLight(glm::vec3(0.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)),
+        //new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5f, 0.1f)
+    };
 
-    
+    Model model{ "models/backpack/backpack.obj" };
+    Shader shader{ "shaders/default.vs", "shaders/default.fs" };
+    Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
+    CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
+
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -100,26 +110,28 @@ void Scene::renderLoop() {
         camera.update();
         
         glm::mat4 projection;					   //FOV	         //Aspect ratio
-        projection = glm::perspective(glm::radians(camera.getFov()), (float)m_width / (float)m_height, 0.1f, 100.0f);
+        projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 100.0f);
 
+        yokohama.draw(camera.getLookAtMatrix(), projection);
+        
         //Must use the shader before calling glUniform()
         shader.use();
-        //Model
-        shader.setVec3("lightColor", pointLight.getLightColor());
-        shader.setVec3("lightPos", pointLight.getPos());
 
+        //Model
         shader.setVec3("viewPos", camera.getPos());
         shader.setMatrix4("view", camera.getLookAtMatrix());
-
         shader.setMatrix4("projection", projection);
         model.draw(shader);
 
-        //Light
+
+        //Lights
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
-        pointLight.draw(shader, lightShader);
 
+        for (Light* light : lights) {
+            light->draw(shader,lightShader);
+        };
 
         this->m_gui.render();
         

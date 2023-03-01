@@ -5,6 +5,7 @@ UserParameters::UserParameters(bool show) : DefaultGui() {
 	this->show = show;
 }
 
+<<<<<<< HEAD
 void UserParameters::render(Scene* scene) {
     ImGui::Begin("Scene parameters", &this->show);
     ImGui::Text("Camera");
@@ -18,5 +19,10 @@ void UserParameters::render(Scene* scene) {
     ImGui::Text("Button on/off skybox");
     ImGui::Text("Bouton open pour changer la skybox / couleur du fond");
 
+=======
+void UserParameters::render() {
+    ImGui::Begin("Another Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+    ImGui::Text("Hello from another window!");
+>>>>>>> 177b45202733dc165b233a3f3d51f91745844476
     ImGui::End();
 }

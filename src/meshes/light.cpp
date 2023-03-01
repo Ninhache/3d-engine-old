@@ -1,5 +1,6 @@
 #include "../headers/light.h"
 
+
 Light::Light(glm::vec3 position, glm::vec3 color){
     this->lightPos = position;
     this->lightColor = color;
@@ -10,7 +11,6 @@ void Light::draw(Shader& shader, Shader& lightShader) {
     this->setUniforms(shader);
     
     lightShader.use();
-    //We set the correct model for the Mesh (this is the localTransform according to its parents, so its world transform)
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, this->lightPos);
     model = glm::scale(model, glm::vec3(0.4f));
