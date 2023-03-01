@@ -27,12 +27,16 @@ public:
      */
     void renderLoop();
 
+    bool& getDrawLights();
+    Camera getCamera();
+
     static uint16_t width;
     static uint16_t height;
 
 private:
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
+    bool renderOptions_draw_lights = true;
 
     /**
      * @brief Init all the libraries and generate a windows
@@ -74,4 +78,5 @@ private:
     }
     
 };
+
 #endif

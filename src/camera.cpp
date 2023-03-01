@@ -27,9 +27,6 @@ void Camera::processInput(GLFWwindow* window, float deltaTime) {
 
 	const float cameraSpeed = cameraSensitivity * deltaTime;
 
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-		glfwSetWindowShouldClose(window, true);
-	}
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
 		cameraPos += cameraSpeed * cameraFront;
 	}
@@ -67,6 +64,15 @@ glm::vec3 Camera::getPos() {
 float Camera::getFov() {
 	return fov;
 }
+
+float& Camera::getMouseSensitivity() {
+	return this->mouseSensitivity;
+}
+
+float& Camera::getCameraSensitivity() {
+	return this->cameraSensitivity;
+}
+
 
 void Camera::updateVectors() {
 

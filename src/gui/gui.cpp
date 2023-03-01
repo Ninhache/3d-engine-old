@@ -1,4 +1,5 @@
 #include "../headers/gui.h"
+#include "../headers/scene.h"
 
 #include <iostream>
 
@@ -7,22 +8,13 @@ DefaultGui::DefaultGui(bool show, std::vector<DefaultGui*> list) {
     this->uiList = list;
 }
 
-void DefaultGui::render() {
+void DefaultGui::render(Scene* scene) {
     ImGui_ImplGlfw_NewFrame();
     ImGui_ImplOpenGL3_NewFrame();
     ImGui::NewFrame();
-
-    ImGui::Begin("Another Window");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::Text("Hello from another window!");
-    ImGui::End();
-
-
-    ImGui::Begin("Another Window 2");   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-    ImGui::Text("Hello from another window! 2");
-    ImGui::End();
     
     for(auto gui : this->uiList) {
-        if (gui->isShowing()) gui->render();
+        if (gui->isShowing()) gui->render(scene);
     }
 
     ImGui::Render();
