@@ -32,7 +32,7 @@ void DefaultGui::init(GLFWwindow* window) {
     ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void DefaultGui::shutdown() {
+void DefaultGui::closeLibrary() {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();

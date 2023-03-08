@@ -33,6 +33,7 @@ Scene::Scene(uint16_t width, uint16_t height) {
 }
 
 Scene::~Scene() {
+    this->m_gui.closeLibrary();
     glfwDestroyWindow(m_pWindow);
     glfwTerminate();
 }
@@ -58,9 +59,11 @@ Camera Scene::getCamera() {
     return camera;
 }
 
+/*
 bool& Scene::getDrawLights() {
     return this->renderOptions_draw_lights;
 }
+*/
 
 void Scene::addModel(Model* model) {
     this->modelPool.push_back(model);
