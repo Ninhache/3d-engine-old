@@ -8,8 +8,8 @@ UserParameters::UserParameters(bool show) : DefaultGui() {
 void UserParameters::render(Scene* scene) {
     ImGui::Begin("Scene parameters", &this->show);
     ImGui::Text("Camera");
-    ImGui::SliderFloat("Mouse sensivity", &scene->getCamera().getMouseSensitivity(), 0.1f, 1.0f, "Mouse sensivity : %.1f");
-    ImGui::SliderFloat("Camera speed", &scene->getCamera().getCameraSensitivity(), 1.f, 30.0f, "Camera sensivity : %.1f");
+    ImGui::SliderFloat("Mouse sensivity", &camera.getMouseSensitivity(), 0.1f, 1.0f, "Mouse sensivity : %.1f");
+    ImGui::SliderFloat("Camera speed", &camera.getCameraSensitivity(), 1.f, 30.0f, "Camera sensivity : %.1f");
     ImGui::Separator();
     ImGui::Text("Scène");
     ImGui::Checkbox("Light", &scene->getDrawLights());
