@@ -25,19 +25,19 @@ void Camera::scrollUpdate(double yoffset) {
 
 void Camera::processInput(GLFWwindow* window, float deltaTime) {
 
-	const float cameraSpeed = cameraSensitivity * deltaTime;
+	const float cameraVelocity = cameraSpeed * deltaTime;
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		cameraPos += cameraSpeed * cameraFront;
+		cameraPos += cameraVelocity * cameraFront;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-		cameraPos -= cameraSpeed * cameraFront;
+		cameraPos -= cameraVelocity * cameraFront;
 	}
 	else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-		cameraPos -= cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
+		cameraPos -= cameraVelocity * glm::normalize(cross(cameraFront, cameraUp));
 	}
 	else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-		cameraPos += cameraSpeed * glm::normalize(cross(cameraFront, cameraUp));
+		cameraPos += cameraVelocity * glm::normalize(cross(cameraFront, cameraUp));
 	}
 	else if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
@@ -71,8 +71,8 @@ float& Camera::getMouseSensitivity() {
 	return this->mouseSensitivity;
 }
 
-float& Camera::getCameraSensitivity() {
-	return this->cameraSensitivity;
+float& Camera::getCameraSpeed() {
+	return this->cameraSpeed;
 }
 
 
