@@ -9,11 +9,15 @@
 #include "gui.h"
 #include "light.h"
 
-  
 class Scene {
     
 public:
-    Scene(uint16_t, uint16_t);
+
+    Scene(uint16_t width, uint16_t height);
+
+    /**
+     * @brief Destructor cleans the libraries
+    */
     ~Scene();
     
     /**
@@ -28,14 +32,38 @@ public:
      */
     void renderLoop();
 
-
-    bool& getDrawLights();
+    // Non sense function
+    // bool& getDrawLights();
     Camera getCamera();
 
+    /**
+     * @brief Add a model to the scene
+     * 
+     * @param model
+    */
     void addModel(Model*);
+
+    /**
+     * @brief Remove a model to the scene
+     * 
+     * @param model
+    */
     void removeModel(Model*);
+
+    /**
+     * @brief Remove a light to the scene
+     * 
+     * @param light
+    */
     void addLight(Light*);
+
+    /**
+     * @brief Remove a light to the scene
+     * 
+     * @param light
+    */
     void removeLight(Light*);
+
     std::vector<Light*> getLights();
     std::vector<Model*> getModels();
 
@@ -45,7 +73,7 @@ public:
 private:
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
-    bool renderOptions_draw_lights = true;
+    // bool renderOptions_draw_lights = true;
     std::vector<Light*> lightPool;
     std::vector<Model*> modelPool;
 
