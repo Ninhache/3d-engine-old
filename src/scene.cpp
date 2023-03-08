@@ -134,12 +134,14 @@ void Scene::renderLoop() {
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetKeyCallback(this->m_pWindow, key_callback);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
 
     double current = 0;
     float lastFrame = 0.0f;
 
     int frame = 0;
-    glEnable(GL_DEPTH_TEST);
 
     this->m_gui.init(m_pWindow);
     
