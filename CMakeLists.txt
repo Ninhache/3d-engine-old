@@ -19,6 +19,7 @@ add_executable(3d-engine
         src/mesh.cpp
         src/texture.cpp
 	src/camera.cpp
+        src/cubemap.cpp
         src/meshes/light.cpp
         src/meshes/pointLight.cpp
         src/meshes/directionalLight.cpp
