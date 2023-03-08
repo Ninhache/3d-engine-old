@@ -37,7 +37,7 @@ void Mesh::configureBuffers() {
 	glBindVertexArray(0);
 
 }
-void Mesh::draw(Shader& shader) {
+void Mesh::draw(Shader& shader, float scale) {
 	int diffuseCpt = 0, normalCpt = 0, specularCpt=0, heightCpt = 0;
 	int counter = 0;
 	std::string samplerName;
@@ -80,7 +80,10 @@ void Mesh::draw(Shader& shader) {
 	
 	//scaling the model down (primarily useful for fbx models)
 	//Models with an x of 1 are usually of good size so we scale by that factor
-	model = glm::scale(model, glm::vec3(std::min(1.0f / model[0].x,1.0f)));
+	//this does not work on all models though
+	model = glm::scale(model, glm::vec3(std::min(1.0f / model[0].x, 1.0f)));
+
+	model = glm::scale(model, glm::vec3(scale));
 	model = glm::translate(model, this->position);
 
 	//Matrix used to transform normal vectors to world coordinates

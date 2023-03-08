@@ -119,13 +119,15 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     
-    this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 1.0f), glm::vec3(0.549f, 0.110f, 0.353f)));
+    this->addLight(new PointLight(glm::vec3(8.0f, 15.0f, 10.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
     this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
-    this->addLight(new PointLight(glm::vec3(10.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)));
-    //this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f)));
+    this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.3));
 
-    this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)));
-    this->addModel(new Model("models/blitz.fbx", glm::vec3(20.0f,0.0f,0.0f)));
+    //this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)));
+    //this->addModel(new Model("models/blitz.fbx", glm::vec3(20.0f, 0.0f, 0.0f)));
+    //this->addModel(new Model("models/satellite/satellite.obj", glm::vec3(8.0f,0.0f,0.0f)));
+    //this->addModel(new Model("models/household/household.fbx", glm::vec3(0.0f, 0.0f, 0.0f)));
+    this->addModel(new Model("models/fortressObj/fortress.obj", glm::vec3(0.0f,0.0f,3.0f),5.0f));
     
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };

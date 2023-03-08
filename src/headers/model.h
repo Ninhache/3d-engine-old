@@ -12,8 +12,8 @@
 class Model
 {
 public:
-	Model();
-	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f));
+	Model(glm::vec3 position, float scale);
+	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 1.0f);
 	
 	/**
 	*Load a model from path using assimp
@@ -46,12 +46,15 @@ public:
 	std::vector<Mesh>& getMeshes();
 	std::vector<Model>& getChildren();
 	Model& addChild(Model& child);
+	void setScale(float scale);
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;
 	std::vector<Model> m_children;
 	std::vector<Texture> loadMaterial(aiMaterial* material, aiTextureType type);
 	glm::vec3 position;
+	float scale;
+	//User must indicate wether or not a texture should be flipped
 };
 
 #endif // !OBJECT_MODEL_H

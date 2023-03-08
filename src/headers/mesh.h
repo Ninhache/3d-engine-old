@@ -23,7 +23,7 @@ class Mesh
 public:
 	Mesh();
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position);
-	void draw(Shader& shader);
+	void draw(Shader& shader, float scale);
 	std::vector<Vertex> getVertices();
 	std::vector<uint32_t> getIndices();
 protected:

@@ -9,13 +9,13 @@ const char pathSeparator =
 #include "headers/model.h"
 #include "headers/logger.h"
 
-//leave this empty for now
-Model::Model() {
+Model::Model(glm::vec3 position, float scale) {
+	this->position = position;
+	this->scale = scale;
 }
 
-Model::Model(const std::string& path, glm::vec3 position)
+Model::Model(const std::string& path, glm::vec3 position, float scale) : Model(position, scale)
 {
-	this->position = position;
 	loadModel(path);
 }
 
@@ -36,7 +36,8 @@ void Model::loadModel(const std::string& path) {
 
 void Model::parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform) {
 	
-	Model model;
+	Model model{this->position,this->scale};
+
 	//To calculate the world transform of a mesh, we need to multiply
 	//the localTransform of his all parents with its own localTransform matrix.
 	aiMatrix4x4 localTransform = transform * node->mTransformation;
@@ -117,7 +118,7 @@ void Model::draw(Shader& shader) {
 	}
 
 	for (Mesh& mesh : this->m_meshes) {
-		mesh.draw(shader);
+		mesh.draw(shader, this->scale);
 	}
 }
 
@@ -151,4 +152,12 @@ std::vector<Mesh>& Model::getMeshes() {
 
 std::vector<Model>& Model::getChildren() {
 	return this->m_children;
+}
+
+void Model::setScale(float scale) {
+	
+	this->scale = scale;
+	for (Model model : m_children) {
+		model.setScale(scale);
+	}
 }
