@@ -42,7 +42,7 @@ public:
 	glm::vec3 getPos();
 	glm::mat4 getLookAtMatrix();
 	float& getMouseSensitivity();
-	float& getCameraSensitivity();
+	float& getCameraSpeed();
 	
 private:
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -51,7 +51,7 @@ private:
 	glm::vec3 cameraSide = glm::vec3(1.0f, 0.0f, 0.0f);
 	glm::mat4 view = glm::mat4(1.0f);
 
-	float sWidth = 800, sHeight = 600, mouseSensitivity = 0.1f, cameraSensitivity = 6.0f, scrollMult=0.2;
+	float sWidth = 800, sHeight = 600, mouseSensitivity = 0.1f, cameraSpeed = 6.0f, scrollMult=0.2;
 	const float maxFov = 45.6, minFov = 44.4;
 	float yaw = -90.0f, pitch = 0.0f, fov = 45.0f;
 };
