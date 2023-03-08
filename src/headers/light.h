@@ -16,6 +16,7 @@ protected:
 	//Default light position
 	glm::vec3 lightPos = glm::vec3(1.8f, 0.2f, 0.3f);
 	glm::vec3 lightColor = glm::vec3(0.0f, 0.678f, 0.827f);
+	float scale;
 };
 
 #endif // LIGHT_CLASS_HEADER

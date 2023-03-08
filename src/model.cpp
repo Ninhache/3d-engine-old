@@ -9,12 +9,13 @@ const char pathSeparator =
 #include "headers/model.h"
 #include "headers/logger.h"
 
-Model::Model(glm::vec3 position, float scale) {
+Model::Model(glm::vec3 position, float scale, bool flipTextures) {
 	this->position = position;
 	this->scale = scale;
+	this->flipTextures = flipTextures;
 }
 
-Model::Model(const std::string& path, glm::vec3 position, float scale) : Model(position, scale)
+Model::Model(const std::string& path, glm::vec3 position, float scale, bool flipTextures) : Model(position, scale, flipTextures)
 {
 	loadModel(path);
 }
@@ -36,7 +37,7 @@ void Model::loadModel(const std::string& path) {
 
 void Model::parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform) {
 	
-	Model model{this->position,this->scale};
+	Model model{this->position,this->scale, this->flipTextures};
 
 	//To calculate the world transform of a mesh, we need to multiply
 	//the localTransform of his all parents with its own localTransform matrix.
@@ -139,7 +140,7 @@ std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType typ
 		aiString path;
 		material->GetTexture(type, i, &path);
 		std::string filename = m_directory + pathSeparator + path.C_Str();
-		Texture texture = Texture::getTextureFromFile(filename, type);
+		Texture texture = Texture::getTextureFromFile(filename, type, this->flipTextures);
 		textures.push_back(texture);
 	}
 

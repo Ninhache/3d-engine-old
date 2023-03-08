@@ -5,9 +5,10 @@ std::map<std::string, Texture> Texture::m_map;
 
 Texture::Texture() {}
 
-Texture::Texture(std::string filename, aiTextureType texture_type) {
+Texture::Texture(std::string filename, aiTextureType texture_type, bool flipTexture) {
     int width, height, channels;
-    stbi_set_flip_vertically_on_load(true);
+    
+    stbi_set_flip_vertically_on_load(flipTexture);
     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
 
     if (data == nullptr) {
@@ -71,18 +72,16 @@ Texture Texture::loadCubemap(std::vector<std::string> paths) {
     return t;
 }
 
-void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type) {
+void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type, bool flipTextures) {
     if (!m_map.count(filename)) {
-      Texture texture { filename, texture_type };
+      Texture texture { filename, texture_type, flipTextures };
       Texture::m_map.insert(std::make_pair(filename, texture));
     }
 }
 
-Texture Texture::getTextureFromFile(std::string filename, aiTextureType texture_type) {
-   
-    loadTextureInMemory(filename, texture_type);
-  
-   return Texture::m_map.at(filename);
+Texture Texture::getTextureFromFile(std::string filename, aiTextureType texture_type, bool flipTextures) {
+    loadTextureInMemory(filename, texture_type, flipTextures);
+    return Texture::m_map.at(filename);
 }
 
 aiTextureType Texture::getType() {

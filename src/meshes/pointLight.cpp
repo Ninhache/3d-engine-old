@@ -3,13 +3,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 int PointLight::pointID = 0;
-PointLight::PointLight(glm::vec3 position, glm::vec3 color, float constant, float linear, float quadratic, float specular, float ambiant) : Light(position, color){
+PointLight::PointLight(glm::vec3 position, glm::vec3 color, float scale, float specular, float ambiant, float constant, float linear, float quadratic) : Light(position, color){
     this->m_constant = constant;
     this->m_linear = linear;
     this->m_quadratic = quadratic;
     this->m_specularStr = specular;
     this->m_ambiantStr = ambiant;
     this->lightID = PointLight::pointID++;
+    this->scale = scale;
     this->setupMesh();
 }
 

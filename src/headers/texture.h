@@ -11,8 +11,8 @@
 class Texture
 {
 	public:
-		static void loadTextureInMemory(std::string, aiTextureType);
-		static Texture getTextureFromFile(std::string, aiTextureType);
+		static void loadTextureInMemory(std::string, aiTextureType, bool flipTextures);
+		static Texture getTextureFromFile(std::string, aiTextureType, bool flipTextures);
 		static Texture loadCubemap(std::vector<std::string> paths);
 		aiTextureType getType();
 		GLuint getID();
@@ -23,7 +23,7 @@ class Texture
 		aiTextureType m_texture_type;
 		std::string m_filename;
 		static std::map<std::string, Texture> m_map;
-		Texture(std::string, aiTextureType texture_type);
+		Texture(std::string, aiTextureType texture_type, bool flipTextures);
 
 };
 

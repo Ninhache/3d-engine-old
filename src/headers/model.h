@@ -12,8 +12,8 @@
 class Model
 {
 public:
-	Model(glm::vec3 position, float scale);
-	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 1.0f);
+	Model(glm::vec3 position, float scale, bool flipTextures);
+	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 10.0f, bool flipTextures = true);
 	
 	/**
 	*Load a model from path using assimp
@@ -55,6 +55,7 @@ private:
 	glm::vec3 position;
 	float scale;
 	//User must indicate wether or not a texture should be flipped
+	bool flipTextures;
 };
 
 #endif // !OBJECT_MODEL_H

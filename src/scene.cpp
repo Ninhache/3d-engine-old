@@ -122,15 +122,13 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     
-    this->addLight(new PointLight(glm::vec3(8.0f, 15.0f, 10.0f), glm::vec3(1.0f, 1.0f, 1.0f)));
-    this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
+    //this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
+    //this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.3));
 
     //this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)));
-    //this->addModel(new Model("models/blitz.fbx", glm::vec3(20.0f, 0.0f, 0.0f)));
     //this->addModel(new Model("models/satellite/satellite.obj", glm::vec3(8.0f,0.0f,0.0f)));
-    //this->addModel(new Model("models/household/household.fbx", glm::vec3(0.0f, 0.0f, 0.0f)));
-    this->addModel(new Model("models/fortressObj/fortress.obj", glm::vec3(0.0f,0.0f,3.0f),5.0f));
+    this->addModel(new Model("models/fortressScaled/fortress.obj", glm::vec3(0.0f,-2.0f,-15.0f),1.0f,false));
     
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
@@ -162,10 +160,10 @@ void Scene::renderLoop() {
         camera.processInput(this->m_pWindow, deltaTime);
         camera.update();
         
-        glm::mat4 projection;					   //FOV	         //Aspect ratio
-        projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 100.0f);
+        glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
+        projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
 
-        yokohama.draw(camera.getLookAtMatrix(), projection);
+        //yokohama.draw(camera.getLookAtMatrix(), projection);
         
         //Must use the shader before calling glUniform()
         shader.use();
