@@ -43,3 +43,5 @@ build/*
 *.user
 log.txt
 x64/
+
+imgui.ini

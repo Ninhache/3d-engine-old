@@ -30,6 +30,7 @@ public:
 	void parseNodes(aiNode* node, const aiScene* scene, Model& parent, aiMatrix4x4& transform);
 
 	/**
+	* Creates a Mesh object which is a part of the Model
 	* @param mesh - assimp mesh object, used to retrieve informations such as vertices,indices,normals and texture coordinates
 	* @param scene - used to get materials
 	* @param localTransform - transformation matrix which is used to get the mesh position relative to parent
@@ -42,6 +43,8 @@ public:
 	*/
 	void draw(Shader& shader);
 	void addMesh(Mesh mesh);
+	std::vector<Mesh>& getMeshes();
+	std::vector<Model>& getChildren();
 	Model& addChild(Model& child);
 private:
 	std::string m_directory;

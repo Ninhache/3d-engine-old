@@ -144,3 +144,11 @@ std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType typ
 
 	return textures;
 }
+
+std::vector<Mesh>& Model::getMeshes() {
+	return this->m_meshes;
+}
+
+std::vector<Model>& Model::getChildren() {
+	return this->m_children;
+}

@@ -1,3 +1,4 @@
+#include "../headers/model.h"
 #include "../headers/pointLight.h"
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -13,32 +14,20 @@ PointLight::PointLight(glm::vec3 position, glm::vec3 color, float constant, floa
 }
 
 void PointLight::setupMesh(){
+    
+    //Making light extend Model would be too troublesome
+    //So using this method instead at the cost of performance
+    Model model{ "models/light/sphere.fbx" };
+    //The first model is the root node and generaly empty
+    Model LightModel = model.getChildren()[0];
+    Mesh mesh = LightModel.getMeshes()[0];
+    
+    std::vector<uint32_t> indices = mesh.getIndices();
+    std::vector<Vertex> vertices = mesh.getVertices();
 
-    this->m_indices = {
-        //Top
-        2, 6, 7, 2, 3, 7,
-        //Bottom
-        0, 4, 5, 0, 1, 5,
-        //Left
-        0, 2, 6, 0, 4, 6,
-        //Right
-        1, 3, 7, 1, 5, 7,
-        //Front
-        0, 2, 3, 0, 1, 3,
-        //Back
-        4, 6, 7, 4, 5, 7
-    };
-    this->m_vertices = {
-        Vertex{glm::vec3(-1, -1,  0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(1, -1,  0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(-1,  1,  0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(1,  1,  0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(-1, -1, -0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(1, -1, -0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(-1,  1, -0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-        Vertex{glm::vec3(1,  1, -0.5),glm::vec3(0.0f,0.0f,0.0f)}, //0
-    };
-
+    this->m_indices.insert(this->m_indices.begin(), indices.begin(), indices.end());
+    this->m_vertices.insert(this->m_vertices.begin(), vertices.begin(), vertices.end());
+    
     this->configureBuffers();
     //working with aiMatrix is tricky, so we might want to change this to glm if it needs to
     this->localTransform = aiMatrix4x4();

@@ -96,6 +96,9 @@ void Mesh::draw(Shader& shader) {
 	glActiveTexture(GL_TEXTURE0);
 }
 
-void Mesh::associateTextures() {
-		
+std::vector<Vertex> Mesh::getVertices() {
+	return this->m_vertices;
+}
+std::vector<uint32_t> Mesh::getIndices() {
+	return this->m_indices;
 }

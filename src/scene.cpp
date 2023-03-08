@@ -122,7 +122,7 @@ void Scene::renderLoop() {
     this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 1.0f), glm::vec3(0.549f, 0.110f, 0.353f)));
     this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new PointLight(glm::vec3(10.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)));
-    this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f)));
+    //this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f)));
 
     this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)));
     this->addModel(new Model("models/blitz.fbx", glm::vec3(20.0f,0.0f,0.0f)));
