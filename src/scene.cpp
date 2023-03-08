@@ -1,9 +1,12 @@
 #include "headers/scene.h"
 #include "headers/light.h"
+#include "headers/model.h"
 #include "headers/logger.h"
 #include "headers/pointLight.h"
 #include "headers/cubemap.h"
 #include "headers/directionalLight.h"
+
+#include <iostream>
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
@@ -23,7 +26,9 @@ Scene::Scene(uint16_t width, uint16_t height) {
     Scene::height = height;
 
     this->m_pWindow = this->initWindow();
-    std::vector<DefaultGui*> list = { new UserParameters(true) };
+    std::vector<DefaultGui*> list = {
+        new UserParameters(true)
+    };
     this->m_gui = DefaultGui(true, list);
 }
 
@@ -57,6 +62,36 @@ bool& Scene::getDrawLights() {
     return this->renderOptions_draw_lights;
 }
 
+void Scene::addModel(Model* model) {
+    this->modelPool.push_back(model);
+}
+
+void Scene::removeModel(Model* model) {
+    auto it = std::find(this->modelPool.begin(), this->modelPool.end(), model);
+
+    if(it != this->modelPool.end())
+        this->modelPool.erase(it);
+}
+
+void Scene::addLight(Light* light) {
+    this->lightPool.push_back(light);
+}
+
+void Scene::removeLight(Light* light) {
+    auto it = std::find(this->lightPool.begin(), this->lightPool.end(), light);
+
+    if(it != this->lightPool.end())
+        this->lightPool.erase(it);
+}
+
+std::vector<Light*> Scene::getLights() {
+    return this->lightPool;
+}
+
+std::vector<Model*> Scene::getModels() {
+    return this->modelPool;
+}
+
 GLFWwindow* Scene::createWindow() {
 
     GLFWwindow* window = glfwCreateWindow(Scene::width, Scene::height, "3D engine", NULL, NULL);
@@ -84,19 +119,13 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
     
-    Light* lights[] = {
-        new PointLight(glm::vec3(0.0f, 0.2f, 1.0f), glm::vec3(0.549f, 0.110f, 0.353f)),
-        new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)),
-        new PointLight(glm::vec3(10.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)),
-        new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f))
-    };
+    this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 1.0f), glm::vec3(0.549f, 0.110f, 0.353f)));
+    this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
+    this->addLight(new PointLight(glm::vec3(10.0f, 2.0f, 0.0f), glm::vec3(0.016f, 0.749f, 0.749f)));
+    this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f)));
 
-    Model models[] = { 
-        //Model("models/palace/perico.fbx", glm::vec3(0.0f,0.0f,0.0f)),
-        Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)), 
-        Model("models/blitz.fbx", glm::vec3(20.0f,0.0f,0.0f)),
-        //Model("models/raptor/Raptor.fbx", glm::vec3(25.0f,0.0f,0.0f)),
-    };
+    this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,0.0f,0.0f)));
+    this->addModel(new Model("models/blitz.fbx", glm::vec3(20.0f,0.0f,0.0f)));
     
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
@@ -139,8 +168,8 @@ void Scene::renderLoop() {
         shader.setMatrix4("view", camera.getLookAtMatrix());
         shader.setMatrix4("projection", projection);
 
-        for (Model model : models) {
-            model.draw(shader);
+        for (Model* model : this->getModels()) {
+            model->draw(shader);
         }
 
 
@@ -149,7 +178,7 @@ void Scene::renderLoop() {
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
 
-        for (Light* light : lights) {
+        for (Light* light : this->getLights()) {
             light->draw(shader,lightShader);
         };
 

@@ -7,6 +7,7 @@
 #include "camera.h"
 #include "model.h"
 #include "gui.h"
+#include "light.h"
 
   
 class Scene {
@@ -27,8 +28,16 @@ public:
      */
     void renderLoop();
 
+
     bool& getDrawLights();
     Camera getCamera();
+
+    void addModel(Model*);
+    void removeModel(Model*);
+    void addLight(Light*);
+    void removeLight(Light*);
+    std::vector<Light*> getLights();
+    std::vector<Model*> getModels();
 
     static uint16_t width;
     static uint16_t height;
@@ -37,6 +46,8 @@ private:
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;
     bool renderOptions_draw_lights = true;
+    std::vector<Light*> lightPool;
+    std::vector<Model*> modelPool;
 
     /**
      * @brief Init all the libraries and generate a windows
@@ -78,5 +89,7 @@ private:
     }
     
 };
+
+extern Camera camera;
 
 #endif
