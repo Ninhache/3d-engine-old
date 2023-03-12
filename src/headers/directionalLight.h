@@ -1,6 +1,9 @@
 #ifndef DIRECTIONAL_LIGHT_HEADER
 #define DIRECTIONAL_LIGHT_HEADER
+
 #include "light.h"
+
+#include <string>
 
 class DirectionalLight : public Light
 {
@@ -9,6 +12,11 @@ public:
 	virtual void setupMesh();
 	virtual void setUniforms(Shader& shader);
 	static int dirID;
+
+	std::string getClassName() override {
+		return "Directional light";
+	};
+
 private:
 	//directional Light does not have position
 	glm::vec3 lightDir;
