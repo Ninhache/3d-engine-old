@@ -1,6 +1,8 @@
 #include "../headers/gui.h"
 #include "../headers/scene.h"
-#include "headers/logger.h"
+#include "../headers/logger.h"
+
+#define IM_ARRAYSIZE(_ARR)          ((int)(sizeof(_ARR) / sizeof(*(_ARR))))     // Size of a static C-style array. Don't use on pointers!
 
 UserParameters::UserParameters(bool show) : DefaultGui() {
 	this->show = show;
@@ -25,55 +27,35 @@ void UserParameters::render(Scene* scene) {
     ImGui::Separator();
     ImGui::Text("Scène");
 
-    /*
-    // Old method, not deleted atm
-    ImGui::BeginListBox("jsp");
-    static int item_current_idx = 0;
-    for (int n = 0; n < scene->getLights().size(); n++) {
-        const bool is_selected = (item_current_idx == n);
+    static int selected_index = 0;
+    static Light* selected_light = nullptr;
 
-        //std::string strNew = *pStr;
-        auto light = scene->getLights().at(n);
-        const char* type = light->getClassName().c_str();
+    const int maxItemsToShow = 3;
 
-        if (ImGui::Selectable(type, is_selected)) {
-            item_current_idx = n;
-        }
+    const float item_height = ImGui::GetTextLineHeightWithSpacing();
+    const float item_spacing = ImGui::GetStyle().ItemSpacing.y;
+    const float list_height = item_height * maxItemsToShow + item_spacing * (maxItemsToShow - 1);
+    
 
-        if (is_selected) {
-            ImGui::SetItemDefaultFocus();
+    ImGui::Text("Lights");
+    ImGui::Spacing();
+    ImGui::BeginListBox("##Lights", ImVec2(-1, list_height));
+    for (int i = 0; i < scene->getLights().size(); i++) {
+        if (ImGui::Selectable((scene->getLights()[i]->getClassName() + "##" + std::to_string(i)).c_str(), selected_index == i)) {
+            selected_index = i;
         }
     }
     ImGui::EndListBox();
-    */
+       
+    if (selected_index >= 0 && selected_index < scene->getLights().size()) {
+        selected_light = scene->getLights()[selected_index];
 
-    static int selectedLightIndex = 0;
-    const char* items[scene->getLights().size()];
+        auto options = selected_light->getOptions();
 
-    for (size_t i = 0; i < scene->getLights().size(); i++) {
-        items[i] = scene->getLights()[i]->getClassName().c_str();
+        for (const auto& option : options) {
+            ImGui::SliderFloat(option.first.c_str(), &option.second, 0.0f, 1.0f);
+        }
     }
-
-    ImGui::ListBox("Lights", &selectedLightIndex, items, scene->getLights().size());
-    Light* selectedLight = scene->getLights()[selectedLightIndex];
-    
-    showLightOptions(selectedLight);
-
-
-    /*
-    // POUR ITERER SUR LES OPTIONS :
-
-    // Boucle for-each pour afficher les clés et les valeurs
-    for (const auto& option : options) {
-        std::cout << "Key: " << option.first << ", Value: " << option.second << std::endl;
-    }
-
-    // Boucle for pour afficher les clés et les valeurs
-    for (size_t i = 0; i < options.size(); ++i) {
-        std::cout << "Key: " << options[i].first << ", Value: " << options[i].second << std::endl;
-    }
-    */
-
 
     ImGui::Text("Slider Intensité light");
     ImGui::Text("Bouton open pour changer le modèle");
