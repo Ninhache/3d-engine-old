@@ -7,11 +7,11 @@ set(ASSIMP_LIBRARIES ~/assimp/bin/libassimp.so.5.2.5)
 
 #set(CMAKE_BUILD_TYPE Debug)
 
-add_subdirectory(lib)
+add_subdirectory(include)
 
 add_executable(3d-engine
-        lib/glad/glad.c
-        lib/stb/stb.c
+        include/glad/glad.c
+        include/stb/stb.c
         src/main.cpp
         src/scene.cpp
         src/shader.cpp
@@ -28,12 +28,12 @@ add_executable(3d-engine
 )
 
 
-include_directories(lib/glm)
-include_directories(lib/assimp)
-include_directories(lib/stb)
+include_directories(include/glm)
+include_directories(include/assimp)
+include_directories(include/stb)
 include_directories(src/headers)
 include_directories(${ASSIMP_INCLUDE_DIRS})
 
-target_include_directories(3d-engine PRIVATE src lib)
+target_include_directories(3d-engine PRIVATE src include)
 target_link_libraries(3d-engine PRIVATE glfw ImGui ${ASSIMP_LIBRARIES})
 
