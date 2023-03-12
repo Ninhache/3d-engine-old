@@ -34,6 +34,18 @@ void PointLight::setupMesh(){
     this->localTransform = aiMatrix4x4();
 }
 
+std::vector<std::pair<std::string, float&>> PointLight::getOptions() {
+    static std::vector<std::pair<std::string, float&>> options {
+        { "constant", this->m_constant },
+        { "linear", this->m_linear },
+        { "quadratic", this->m_quadratic },
+        { "specular strength", this->m_specularStr },
+        { "ambiant strength", this->m_ambiantStr },
+    };
+
+    return options;
+}
+
 void PointLight::setUniforms(Shader& shader) {
     shader.use();
 
@@ -49,10 +61,10 @@ void PointLight::setUniforms(Shader& shader) {
 
     shader.setVec3(lightColor, this->lightColor);
     shader.setVec3(lightPos, this->lightPos);
+    
     shader.setFloat(specularStr, this->m_specularStr);
     shader.setFloat(ambiantStr, this->m_ambiantStr);
     shader.setFloat(constant, this->m_constant);
     shader.setFloat(quadratic, this->m_quadratic);
     shader.setFloat(linear, this->m_linear);
-
 }

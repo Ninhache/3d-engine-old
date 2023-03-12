@@ -22,10 +22,10 @@ void Light::draw(Shader& shader, Shader& lightShader) {
     glDrawElements(GL_TRIANGLES, this->m_indices.size(), GL_UNSIGNED_INT, 0);
 }
 
-glm::vec3 Light::getPos() {
+glm::vec3& Light::getPos() {
     return this->lightPos;
 }
 
-glm::vec3 Light::getLightColor() {
+glm::vec3& Light::getLightColor() {
     return this->lightColor;
 }

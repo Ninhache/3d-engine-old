@@ -10,8 +10,8 @@ class Light : public Mesh
 public:
 	Light(glm::vec3 position, glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f));
 	void draw(Shader& shader, Shader& lightShader);
-	glm::vec3 getPos();
-	glm::vec3 getLightColor();
+	glm::vec3& getPos();
+	glm::vec3& getLightColor();
 	virtual void setupMesh() = 0;
 	virtual void setUniforms(Shader& shader) = 0;
 	int lightID;
@@ -19,6 +19,9 @@ public:
 	virtual std::string getClassName() {
 		return "Light";
 	}
+
+	virtual std::vector<std::pair<std::string, float&>> getOptions() = 0;
+	// std::vector<Light*>
 
 protected:
 	//Default light position
