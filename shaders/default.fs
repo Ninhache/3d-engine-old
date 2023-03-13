@@ -13,12 +13,14 @@ struct PointLight{
     vec3 lightColor, lightPos;
     float constant, linear, quadratic;
     float ambiantStr, specularStr;
+    bool active;
 };
 
 struct DirLight{
     vec3 lightDir, lightColor;
     float ambiantStr;
     float specularStr;
+    bool activated;
 };
 
 #define MAX_LIGHTS 4
@@ -36,8 +38,7 @@ void main() {
     vec3 lightOutput = vec3(0.0);
 
     for(int i = 0; i < MAX_LIGHTS; i++){
-        //if the constant of the light is equal to 0 then light does not exist (and we risk dividing by 0 in the attenuation calcul)
-        if(pLights[i].constant != 0){
+        if(pLights[i].active == true){
             lightOutput += pointLight(pLights[i], normalN);
         }
         lightOutput += directionalLight(dLight[i], normalN);

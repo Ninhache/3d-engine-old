@@ -125,6 +125,7 @@ void Scene::renderLoop() {
     //this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
     //this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.5));
+    this->lightPool[0]->setActive(false);
 
     //this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,-2.0f,0.0f)));
     this->addModel(new Model("models/fortressScaled/fortress.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));

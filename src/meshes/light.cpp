@@ -29,3 +29,7 @@ glm::vec3& Light::getPos() {
 glm::vec3& Light::getLightColor() {
     return this->lightColor;
 }
+
+void Light::setActive(bool active) {
+    this->activated = active;
+}
