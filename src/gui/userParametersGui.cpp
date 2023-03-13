@@ -1,6 +1,9 @@
 #include "../headers/gui.h"
 #include "../headers/scene.h"
 #include "../headers/logger.h"
+#include "../headers/triple.h"
+
+#include <limits.h>
 
 #define IM_ARRAYSIZE(_ARR)          ((int)(sizeof(_ARR) / sizeof(*(_ARR))))     // Size of a static C-style array. Don't use on pointers!
 
@@ -18,16 +21,6 @@ static void HelpMarker(const char* desc)
         ImGui::TextUnformatted(desc);
         ImGui::PopTextWrapPos();
         ImGui::EndTooltip();
-    }
-}
-
-void showLightOptions(Light* light) {
-    // Récupération des options de la lumière sélectionnée
-    auto options = light->getOptions();
-
-    // Affichage des sliders pour chaque option
-    for (const auto& option : options) {
-        ImGui::SliderFloat(option.first.c_str(), &option.second, 0.0f, 1.0f);
     }
 }
 
@@ -54,9 +47,6 @@ void UserParameters::render(Scene* scene) {
         ImGui::Text("Lights");
         ImGui::SameLine(); HelpMarker("Lights that have been added to the scene");
         
-        static float vec4f[4] = { 0.10f, 0.20f, 0.30f, 0.44f };
-        ImGui::SliderFloat4("slider float4", vec4f, 0.0f, 1.0f);
-        
         ImGui::Spacing();
         ImGui::BeginListBox("##Lights", ImVec2(-1, list_height));
         for (int i = 0; i < scene->getLights().size(); i++) {
@@ -69,11 +59,35 @@ void UserParameters::render(Scene* scene) {
         if (selected_index >= 0 && selected_index < scene->getLights().size()) {
             selected_light = scene->getLights()[selected_index];
 
-            auto options = selected_light->getOptions();
+            std::vector<Triple<std::string, std::string, float &>> options = selected_light->getOptions();
+            
+            float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 20;
 
-            for (const auto& option : options) {
-                ImGui::SliderFloat(option.first.c_str(), &option.second, 0.0f, 1.0f);
-                ImGui::SameLine(); HelpMarker("Only makes a difference if the popup is larger than the combo");
+            float x = selected_light->getPos().x;
+            ImGui::SetNextItemWidth(dragWidth);
+            if (ImGui::DragFloat("x", &x)) {
+                selected_light->getPos().x = x;
+            }
+
+            float y = selected_light->getPos().y;
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(dragWidth);
+            if (ImGui::DragFloat("y", &y)) {
+                selected_light->getPos().y = y;
+            }
+
+
+            float z = selected_light->getPos().z;
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(dragWidth);
+            if (ImGui::DragFloat("z", &z)) {
+                selected_light->getPos().z = z;
+            }
+
+
+            for (Triple<std::string, std::string, float&>& option : options) {
+                ImGui::SliderFloat(option.first().c_str(), &option.third(), 0.0f, 1.0f);
+                ImGui::SameLine(); HelpMarker(option.second().c_str());
             }
         }
     }

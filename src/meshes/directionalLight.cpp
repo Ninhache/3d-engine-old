@@ -1,4 +1,5 @@
 #include "../headers/directionalLight.h"
+#include "../headers/triple.h"
 #include <glm/gtc/matrix_transform.hpp>
 
 int DirectionalLight::dirID = 0;
@@ -15,11 +16,11 @@ void DirectionalLight::setupMesh() {
     //Directional light does not have a mesh
 }
 
-std::vector<std::pair<std::string, float&>> DirectionalLight::getOptions() {
+std::vector<Triple<std::string, std::string, float&>> DirectionalLight::getOptions() {
     
-    static std::vector<std::pair<std::string, float&>> options {
-        { "specular strength", this->m_specularStr },
-        { "ambiant strength", this->m_ambiantStr },
+    static std::vector<Triple<std::string, std::string, float&>> options{
+        Triple<std::string, std::string, float&>("specular strength", "specular strength helper", this->m_specularStr),
+        Triple<std::string, std::string, float&>("ambiant strength", "ambiant strength helper", this->m_ambiantStr),
     };
 
     return options;

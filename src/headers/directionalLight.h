@@ -2,7 +2,7 @@
 #define DIRECTIONAL_LIGHT_HEADER
 
 #include "light.h"
-
+#include "triple.h"
 #include <string>
 
 class DirectionalLight : public Light
@@ -17,7 +17,7 @@ public:
 		return "Directional light";
 	};
 
-	virtual std::vector<std::pair<std::string, float&>> getOptions();
+	virtual std::vector<Triple<std::string, std::string, float&>> getOptions();
 
 private:
 	//directional Light does not have position

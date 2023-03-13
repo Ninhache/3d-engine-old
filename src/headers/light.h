@@ -2,6 +2,7 @@
 #define LIGHT_CLASS_HEADER
 
 #include "mesh.h"
+#include "triple.h"
 
 #include <string>
 
@@ -20,7 +21,7 @@ public:
 		return "Light";
 	}
 
-	virtual std::vector<std::pair<std::string, float&>> getOptions() = 0;
+	virtual std::vector<Triple<std::string, std::string, float&>> getOptions() = 0;
 	// std::vector<Light*>
 
 protected:

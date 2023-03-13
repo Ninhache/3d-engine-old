@@ -34,13 +34,14 @@ void PointLight::setupMesh(){
     this->localTransform = aiMatrix4x4();
 }
 
-std::vector<std::pair<std::string, float&>> PointLight::getOptions() {
-    static std::vector<std::pair<std::string, float&>> options {
-        { "constant", this->m_constant },
-        { "linear", this->m_linear },
-        { "quadratic", this->m_quadratic },
-        { "specular strength", this->m_specularStr },
-        { "ambiant strength", this->m_ambiantStr },
+std::vector<Triple<std::string, std::string, float&>> PointLight::getOptions() {
+
+    static std::vector<Triple<std::string, std::string, float&>> options{
+        Triple<std::string, std::string, float&>("constant", "constant helper", this->m_constant),
+        Triple<std::string, std::string, float&>("linear", "linear helper", this->m_linear),
+        Triple<std::string, std::string, float&>("quadratic", "quadratic helper", this->m_quadratic),
+        Triple<std::string, std::string, float&>("specular strength", "specular strength helper", this->m_specularStr),
+        Triple<std::string, std::string, float&>("ambiant strength", "ambiant strength helper", this->m_ambiantStr),
     };
 
     return options;
