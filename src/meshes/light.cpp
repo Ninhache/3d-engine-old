@@ -1,9 +1,10 @@
 #include "../headers/light.h"
 
 
-Light::Light(glm::vec3 position, glm::vec3 color){
+Light::Light(glm::vec3 position, glm::vec3 color, bool activated){
     this->lightPos = position;
     this->lightColor = color;
+    this->activated = activated;
 }
 
 void Light::draw(Shader& shader, Shader& lightShader) {

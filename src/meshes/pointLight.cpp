@@ -60,7 +60,7 @@ void PointLight::setUniforms(Shader& shader) {
     std::string quadratic = "pLights[" + currentID + "].quadratic";
     std::string linear = "pLights[" + currentID + "].linear";
 
-    std::string active = "pLights[" + currentID + "].active";
+    std::string active = "pLights[" + currentID + "].activeLight";
 
     shader.setVec3(lightColor, this->lightColor);
     shader.setVec3(lightPos, this->lightPos);

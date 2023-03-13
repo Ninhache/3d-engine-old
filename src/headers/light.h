@@ -8,7 +8,7 @@
 class Light : public Mesh
 {
 public:
-	Light(glm::vec3 position, glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f));
+	Light(glm::vec3 position, glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f), bool activated = true);
 	void draw(Shader& shader, Shader& lightShader);
 	glm::vec3& getPos();
 	glm::vec3& getLightColor();
@@ -27,7 +27,7 @@ protected:
 	glm::vec3 lightPos = glm::vec3(1.8f, 0.2f, 0.3f);
 	glm::vec3 lightColor = glm::vec3(0.0f, 0.678f, 0.827f);
 	float scale;
-	bool activated = true;
+	bool activated = false;
 };
 
 #endif // LIGHT_CLASS_HEADER

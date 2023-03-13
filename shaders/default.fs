@@ -13,14 +13,14 @@ struct PointLight{
     vec3 lightColor, lightPos;
     float constant, linear, quadratic;
     float ambiantStr, specularStr;
-    bool active;
+    bool activeLight;
 };
 
 struct DirLight{
     vec3 lightDir, lightColor;
     float ambiantStr;
     float specularStr;
-    bool activated;
+    bool activeLight;
 };
 
 #define MAX_LIGHTS 4
@@ -38,10 +38,12 @@ void main() {
     vec3 lightOutput = vec3(0.0);
 
     for(int i = 0; i < MAX_LIGHTS; i++){
-        if(pLights[i].active == true){
+        if(pLights[i].activeLight == true){
             lightOutput += pointLight(pLights[i], normalN);
         }
-        lightOutput += directionalLight(dLight[i], normalN);
+        if(dLight[i].activeLight == true){
+            lightOutput += directionalLight(dLight[i], normalN);
+        }
     }
     
     FragColor = vec4(lightOutput,1.0);
