@@ -11,6 +11,8 @@ public:
 	void setScale(float scale);
 	static int pointID;
 
+	virtual std::vector<std::pair<std::string, float&>> getOptions();
+
 private:
 	float m_constant, m_linear, m_quadratic;
 	float m_specularStr, m_ambiantStr;
