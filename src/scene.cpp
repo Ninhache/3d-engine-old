@@ -126,20 +126,25 @@ void Scene::renderLoop() {
     //this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.5));
 
-    //this->addModel(new Model("models/backpack/backpack.obj",glm::vec3(0.0f,-2.0f,0.0f)));
-    this->addModel(new Model("models/fortressScaled/fortress.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
+    //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
+    this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
     //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 8.0f, -12.0f), 0.7f, false));
     
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
+    Shader outlineShader{ "shaders/default.vs", "shaders/outline.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
     CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
 
     glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
     glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     glfwSetKeyCallback(this->m_pWindow, key_callback);
-    glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_STENCIL_TEST);
+
+    //Keep if either of the stencil or depth test fails
+    //and replace if both succeed
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
     double current = 0;
     float lastFrame = 0.0f;
@@ -155,14 +160,15 @@ void Scene::renderLoop() {
         lastFrame = current;
 
         glClearColor(0.0f,0.0f,0.0f,0.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
         camera.processInput(this->m_pWindow, deltaTime);
         camera.update();
         
         glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
         projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
-
+        
+        glStencilMask(0x00);
         yokohama.draw(camera.getLookAtMatrix(), projection);
         
         //Must use the shader before calling glUniform()
@@ -173,10 +179,9 @@ void Scene::renderLoop() {
         shader.setMatrix4("view", camera.getLookAtMatrix());
         shader.setMatrix4("projection", projection);
 
-        for (Model* model : this->getModels()) {
-            model->draw(shader);
-        }
-
+        outlineShader.use();
+        outlineShader.setMatrix4("view", camera.getLookAtMatrix());
+        outlineShader.setMatrix4("projection", projection);
 
         //Lights
         lightShader.use();
@@ -189,6 +194,24 @@ void Scene::renderLoop() {
 
         this->m_gui.render(this);
         
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        glStencilMask(0xFF);
+        for (Model* model : this->getModels()) {
+            model->draw(shader);
+        }
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        for (Model* upScaledModel : this->getModels()) {
+            upScaledModel->setScale(upScaledModel->getScale() + 0.03);
+            upScaledModel->draw(outlineShader);
+            upScaledModel->setScale(upScaledModel->getScale() - 0.03);
+        }
+        glStencilMask(0xFF);
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        glEnable(GL_DEPTH_TEST);
+
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
     }

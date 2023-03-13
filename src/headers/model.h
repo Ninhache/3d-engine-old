@@ -13,7 +13,7 @@ class Model
 {
 public:
 	Model(glm::vec3 position, float scale, bool flipTextures);
-	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 10.0f, bool flipTextures = true);
+	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 1.0f, bool flipTextures = true);
 	
 	/**
 	*Load a model from path using assimp
@@ -47,6 +47,7 @@ public:
 	std::vector<Model>& getChildren();
 	Model& addChild(Model& child);
 	void setScale(float scale);
+	float getScale();
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;

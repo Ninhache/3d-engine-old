@@ -158,7 +158,11 @@ std::vector<Model>& Model::getChildren() {
 void Model::setScale(float scale) {
 	
 	this->scale = scale;
-	for (Model model : m_children) {
-		model.setScale(scale);
+	for (Model& model : m_children) {
+		model.setScale(this->scale);
 	}
+}
+
+float Model::getScale() {
+	return this->scale;
 }
