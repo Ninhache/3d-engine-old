@@ -17,12 +17,17 @@ public:
 		return "Directional light";
 	};
 
+	virtual const bool hasPosition() {
+		return false;
+	}
+
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions();
 
 private:
 	//directional Light does not have position
 	glm::vec3 lightDir;
 	float m_specularStr, m_ambiantStr;
+	const bool hasAPosition = false;
 };
 
 #endif // DIRECTIONAL_LIGHT_HEADER

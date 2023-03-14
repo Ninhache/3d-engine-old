@@ -18,11 +18,16 @@ public:
 		return "Point light";
 	};
 
+	virtual const bool hasPosition() {
+		return true;
+	}
+
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions();
 
 private:
 	float m_constant, m_linear, m_quadratic;
 	float m_specularStr, m_ambiantStr;
+	const bool hasAPosition = true;
 };
 
 #endif // POINT_LIGHT_HEADER

@@ -16,14 +16,19 @@ public:
 	int lightID;
 
 	void setActive(bool active);
+	bool& getActive() {
+		return this->activated;
+	}
+	
 	virtual void setupMesh() = 0;
 	virtual void setUniforms(Shader& shader) = 0;
+
 	virtual std::string getClassName() {
 		return "Light";
 	}
 
+	virtual const bool hasPosition() = 0;
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions() = 0;
-	// std::vector<Light*>
 
 protected:
 	//Default light position

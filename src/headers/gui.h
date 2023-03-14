@@ -8,6 +8,7 @@
 #include <imgui/imgui_impl_opengl3.h>
 
 #include "logger.h"
+#include "light.h"
 
 class Scene;
 
@@ -53,6 +54,9 @@ class UserParameters : public DefaultGui {
 	public:
 		UserParameters(bool);
 		void render(Scene*);
+		void drawLightHeader(Scene*);
+		void drawPositionsSlider(Light*);
+		void drawSelectedLightOptions(Light*);
 };
 
 class SceneParameters : public DefaultGui {
