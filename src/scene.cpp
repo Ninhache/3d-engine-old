@@ -123,7 +123,7 @@ void Scene::initGLAD() {
 void Scene::renderLoop() {
     
     //this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
-    //this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
+    this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.5));
 
     //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
@@ -183,17 +183,7 @@ void Scene::renderLoop() {
         outlineShader.setMatrix4("view", camera.getLookAtMatrix());
         outlineShader.setMatrix4("projection", projection);
 
-        //Lights
-        lightShader.use();
-        lightShader.setMatrix4("view", camera.getLookAtMatrix());
-        lightShader.setMatrix4("projection", projection);
 
-        for (Light* light : this->getLights()) {
-            light->draw(shader,lightShader);
-        };
-
-        this->m_gui.render(this);
-        
         glStencilFunc(GL_ALWAYS, 1, 0xFF);
         glStencilMask(0xFF);
         for (Model* model : this->getModels()) {
@@ -211,6 +201,17 @@ void Scene::renderLoop() {
         glStencilMask(0xFF);
         glStencilFunc(GL_ALWAYS, 1, 0xFF);
         glEnable(GL_DEPTH_TEST);
+
+        //Lights
+        lightShader.use();
+        lightShader.setMatrix4("view", camera.getLookAtMatrix());
+        lightShader.setMatrix4("projection", projection);
+
+        for (Light* light : this->getLights()) {
+            light->draw(shader,lightShader);
+        };
+
+        this->m_gui.render(this);
 
         glfwSwapBuffers(m_pWindow);
         glfwPollEvents();
