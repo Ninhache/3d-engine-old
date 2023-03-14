@@ -125,7 +125,6 @@ void Scene::renderLoop() {
     //this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
     this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.5));
-
     //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
     this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
     //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 8.0f, -12.0f), 0.7f, false));
@@ -167,7 +166,8 @@ void Scene::renderLoop() {
         
         glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
         projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
-        
+
+        //Prevent writing to the stencil buffer
         glStencilMask(0x00);
         yokohama.draw(camera.getLookAtMatrix(), projection);
         
@@ -202,13 +202,16 @@ void Scene::renderLoop() {
         glStencilFunc(GL_ALWAYS, 1, 0xFF);
         glEnable(GL_DEPTH_TEST);
 
+        glStencilMask(0x00);
         //Lights
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());
         lightShader.setMatrix4("projection", projection);
 
         for (Light* light : this->getLights()) {
-            light->draw(shader,lightShader);
+            if (light->getActive()) {
+                light->draw(shader,lightShader);
+            }
         };
 
         this->m_gui.render(this);
