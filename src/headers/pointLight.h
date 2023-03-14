@@ -22,6 +22,7 @@ public:
 		return true;
 	}
 
+	virtual void disableLight(Shader& shader);
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions();
 
 private:

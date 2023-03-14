@@ -44,5 +44,12 @@ void DirectionalLight::setUniforms(Shader& shader) {
 
     shader.setFloat(specularStr, this->m_specularStr);
     shader.setFloat(ambiantStr, this->m_ambiantStr);
-    shader.setFloat(active, this->activated);
+    shader.setBool(active, this->activated);
+}
+
+void DirectionalLight::disableLight(Shader& shader) {
+    shader.use();
+    std::string currentID = std::to_string(this->lightID);
+    std::string active = "dLight[" + currentID + "].activeLight";
+    shader.setBool(active, this->activated);
 }

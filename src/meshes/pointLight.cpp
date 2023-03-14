@@ -71,5 +71,12 @@ void PointLight::setUniforms(Shader& shader) {
     shader.setFloat(constant, this->m_constant);
     shader.setFloat(quadratic, this->m_quadratic);
     shader.setFloat(linear, this->m_linear);
-    shader.setFloat(active, this->activated);
+    shader.setBool(active, this->activated);
+}
+
+void PointLight::disableLight(Shader& shader) {
+    shader.use();
+    std::string currentID = std::to_string(this->lightID);
+    std::string active = "pLights[" + currentID + "].activeLight";
+    shader.setBool(active, this->activated);
 }

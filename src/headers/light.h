@@ -15,7 +15,6 @@ public:
 	glm::vec3& getLightColor();
 	int lightID;
 
-	void setActive(bool active);
 	bool& getActive() {
 		return this->activated;
 	}
@@ -27,6 +26,7 @@ public:
 		return "Light";
 	}
 
+	virtual void disableLight(Shader& shader) = 0;
 	virtual const bool hasPosition() = 0;
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions() = 0;
 

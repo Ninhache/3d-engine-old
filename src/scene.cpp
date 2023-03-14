@@ -207,9 +207,10 @@ void Scene::renderLoop() {
         lightShader.setMatrix4("projection", projection);
 
         for (Light* light : this->getLights()) {
-            if (light->getActive()) {
+            if (light->getActive())
                 light->draw(shader,lightShader);
-            }
+            else
+                light->disableLight(shader);
         };
 
         this->m_gui.render(this);
