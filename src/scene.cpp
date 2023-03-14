@@ -127,10 +127,10 @@ void Scene::renderLoop() {
     this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f),0.5,0.5));
     //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
     this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
-    //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 8.0f, -12.0f), 0.7f, false));
-    
+    //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
+
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
-    Shader outlineShader{ "shaders/default.vs", "shaders/outline.fs" };
+    Shader outlineShader{ "shaders/outline.vs", "shaders/outline.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
     CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
 
@@ -194,15 +194,13 @@ void Scene::renderLoop() {
         glStencilMask(0x00);
         glDisable(GL_DEPTH_TEST);
         for (Model* upScaledModel : this->getModels()) {
-            upScaledModel->setScale(upScaledModel->getScale() + 0.03);
-            upScaledModel->draw(outlineShader);
-            upScaledModel->setScale(upScaledModel->getScale() - 0.03);
+            if(upScaledModel->isOutlined())
+                upScaledModel->draw(outlineShader);
         }
         glStencilMask(0xFF);
         glStencilFunc(GL_ALWAYS, 1, 0xFF);
         glEnable(GL_DEPTH_TEST);
 
-        glStencilMask(0x00);
         //Lights
         lightShader.use();
         lightShader.setMatrix4("view", camera.getLookAtMatrix());

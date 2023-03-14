@@ -166,3 +166,11 @@ void Model::setScale(float scale) {
 float Model::getScale() {
 	return this->scale;
 }
+
+bool& Model::isOutlined() {
+	return this->outlined;
+}
+
+void Model::setOutlined(bool outline) {
+	this->outlined = outline;
+}

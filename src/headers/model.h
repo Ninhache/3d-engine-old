@@ -48,6 +48,8 @@ public:
 	Model& addChild(Model& child);
 	void setScale(float scale);
 	float getScale();
+	bool& isOutlined();
+	void setOutlined(bool outline);
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;
@@ -55,6 +57,7 @@ private:
 	std::vector<Texture> loadMaterial(aiMaterial* material, aiTextureType type);
 	glm::vec3 position;
 	float scale;
+	bool outlined = false;
 	//User must indicate wether or not a texture should be flipped
 	bool flipTextures;
 };
