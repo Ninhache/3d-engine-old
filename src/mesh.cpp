@@ -38,14 +38,14 @@ void Mesh::configureBuffers() {
 
 }
 void Mesh::draw(Shader& shader, float scale) {
-	int diffuseCpt = 0, normalCpt = 0, specularCpt=0, heightCpt = 0;
+	int diffuseCpt = 0, normalCpt = 0, specularCpt=0, heightCpt = 0, opacityCpt = 0;
 	int counter = 0;
 	std::string samplerName;
 
 	for (int i = 0; i < this->m_textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
-		switch (this->m_textures[i].getType()) {
+		switch (this->m_textures[i].getType()) { 
 			case aiTextureType_DIFFUSE:
 				samplerName = "diffuseMap";
 				counter = diffuseCpt++;
@@ -61,6 +61,10 @@ void Mesh::draw(Shader& shader, float scale) {
 			case aiTextureType_HEIGHT:
 				samplerName = "heightMap";
 				counter = heightCpt++;
+				break;
+			case aiTextureType_OPACITY:
+				samplerName = "opacityMap";
+				counter = opacityCpt++;
 				break;
 			default:
 				counter = -1;
@@ -89,7 +93,11 @@ void Mesh::draw(Shader& shader, float scale) {
 	//Matrix used to transform normal vectors to world coordinates
 	glm::mat3 normalMatrix = glm::transpose(glm::inverse(model));
 	
-	shader.setBool("hasDiffuse", diffuseCpt);
+	shader.setBool("maps.diffuse", diffuseCpt);
+	shader.setBool("maps.height", heightCpt);
+	shader.setBool("maps.opacity", opacityCpt);
+	shader.setBool("maps.normal", normalCpt);
+
 	shader.setMatrix3("normalMatrix", normalMatrix);
 	shader.setMatrix4("model", model);
 

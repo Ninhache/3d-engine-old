@@ -128,6 +128,7 @@ void Scene::renderLoop() {
     //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
     this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
     //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
+
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader outlineShader{ "shaders/outline.vs", "shaders/outline.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
