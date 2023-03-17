@@ -108,6 +108,8 @@ Mesh Model::createMesh(aiMesh* mesh, const aiScene* scene, aiMatrix4x4& localTra
 	textures.insert(textures.end(), diffuseMap.begin(), diffuseMap.end());
 	std::vector<Texture> heightMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_HEIGHT);
 	textures.insert(textures.end(), heightMap.begin(), heightMap.end());
+	std::vector<Texture> opacityMap = loadMaterial(scene->mMaterials[mesh->mMaterialIndex], aiTextureType_OPACITY);
+	textures.insert(textures.end(), opacityMap.begin(), opacityMap.end());
 
 	return Mesh{ vertices, indices, textures, localTransform, this->position };
 }

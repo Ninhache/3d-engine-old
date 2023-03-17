@@ -8,6 +8,11 @@ in vec3 fragPos;
 uniform sampler2D diffuseMap0;
 uniform sampler2D diffuseMap1;
 uniform sampler2D specularMap0;
+uniform sampler2D opacityMap0;
+
+struct Textures{
+    bool diffuse, specular, opacity, normal;
+};
 
 struct PointLight{
     vec3 lightColor, lightPos;
@@ -26,7 +31,7 @@ struct DirLight{
 #define MAX_LIGHTS 4
 uniform PointLight pLights[MAX_LIGHTS];
 uniform DirLight dLight[MAX_LIGHTS];
-uniform bool hasDiffuse;
+uniform Textures maps;
 
 uniform vec3 viewPos;
 vec3 pointLight(PointLight plight, vec3 normalN);
@@ -46,13 +51,17 @@ void main() {
         }
     }
     
-    FragColor = vec4(lightOutput,1.0);
+    if(maps.opacity)
+        FragColor = vec4(lightOutput,texture(opacityMap0,textCoord).r);
+    else
+        FragColor = vec4(lightOutput,1.0);
+
 }
 
 vec3 pointLight(PointLight pLight, vec3 normalN){
     
     vec3 diffuseTexture;
-    if(hasDiffuse){
+    if(maps.diffuse){
         diffuseTexture = vec3(texture(diffuseMap0,textCoord));
     }
     else{
@@ -88,7 +97,7 @@ vec3 pointLight(PointLight pLight, vec3 normalN){
 vec3 directionalLight(DirLight light, vec3 normalN){
 
     vec3 diffuseTexture;
-    if(hasDiffuse){
+    if(maps.diffuse){
         diffuseTexture = vec3(texture(diffuseMap0,textCoord));
     }
     else{
