@@ -128,7 +128,6 @@ void Scene::renderLoop() {
     //this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
     this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
     //this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
-
     Shader shader{ "shaders/default.vs", "shaders/default.fs" };
     Shader outlineShader{ "shaders/outline.vs", "shaders/outline.fs" };
     Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
@@ -152,6 +151,25 @@ void Scene::renderLoop() {
 
     this->m_gui.init(m_pWindow);
     
+    /*FRAMEBUFFER EXPERMIENT*/
+    unsigned int frambebuffer;
+    glGenFramebuffers(GL_FRAMEBUFFER, &frambebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, frambebuffer);
+    
+    unsigned int textureColorBuffer;
+    glGenTextures(1, &textureColorBuffer);
+    glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Scene::width, Scene::height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    //Unbind
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    //attach to framebuffer
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorBuffer,0);
+
+
+    /*END OF FRAMEBUFFER EXPERIMENT*/
     while (!glfwWindowShouldClose(m_pWindow)) {
 
         current = glfwGetTime();
