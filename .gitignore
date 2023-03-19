@@ -32,7 +32,7 @@
 
 # Ide settings
 .vscode/*
-build/*
+build/
 
 /*Custom*/
 .vs/
