@@ -3,9 +3,7 @@
 #include "headers/model.h"
 #include "headers/logger.h"
 #include "headers/pointLight.h"
-#include "headers/cubemap.h"
 #include "headers/directionalLight.h"
-#include "headers/framebuffer.h"
 
 #include <iostream>
 
@@ -123,21 +121,10 @@ void Scene::initGLAD() {
 
 void Scene::renderLoop() {
 
-	//this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
-	this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
-	this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5, 0.5));
-	this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
-	//this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
-	//this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
-	Model scene{ "models/postProcessing/quad.obj" };
+	//Adds all lights, models, framebuffers to the scene
+	this->setupScene();
 
-	Shader shader{ "shaders/default.vs", "shaders/default.fs" };
-	Shader postProcessing{ "shaders/postProcessing.vs", "shaders/postProcessing.fs" };
-	Shader outlineShader{ "shaders/outline.vs", "shaders/outline.fs" };
-	Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
-	CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
-	Framebuffer framebuffer{Scene::width, Scene::height};
-
+	Model sceneModel{ "models/postProcessing/quad.obj" };
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
 	glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glfwSetKeyCallback(this->m_pWindow, key_callback);
@@ -165,78 +152,122 @@ void Scene::renderLoop() {
 		deltaTime = current - lastFrame;
 		lastFrame = current;
 
-		framebuffer.use(Scene::width , Scene::height);
-		glEnable(GL_DEPTH_TEST);
-
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-		camera.processInput(this->m_pWindow, deltaTime);
-		camera.update();
-
-		glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
-		projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
-
-		//Prevent writing to the stencil buffer
-		glStencilMask(0x00);
-		yokohama.draw(camera.getLookAtMatrix(), projection);
-
-		//Must use the shader before calling glUniform()
-		shader.use();
-
-		//Model
-		shader.setVec3("viewPos", camera.getPos());
-		shader.setMatrix4("view", camera.getLookAtMatrix());
-		shader.setMatrix4("projection", projection);
-
-		outlineShader.use();
-		outlineShader.setMatrix4("view", camera.getLookAtMatrix());
-		outlineShader.setMatrix4("projection", projection);
-
-
-		glStencilFunc(GL_ALWAYS, 1, 0xFF);
-		glStencilMask(0xFF);
-		for (Model* model : this->getModels()) {
-			model->draw(shader);
-		}
-
-		glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-		glStencilMask(0x00);
-		glDisable(GL_DEPTH_TEST);
-		for (Model* upScaledModel : this->getModels()) {
-			if (upScaledModel->isOutlined())
-				upScaledModel->draw(outlineShader);
-		}
-		glStencilMask(0xFF);
-		glStencilFunc(GL_ALWAYS, 1, 0xFF);
-		glEnable(GL_DEPTH_TEST);
-
-		//Lights
-		lightShader.use();
-		lightShader.setMatrix4("view", camera.getLookAtMatrix());
-		lightShader.setMatrix4("projection", projection);
-
-		for (Light* light : this->getLights()) {
-			if (light->getActive())
-				light->draw(shader, lightShader);
-			else
-				light->disableLight(shader);
-		};
-
+		//dont put this-> it will make the line too long
+		Framebuffer* fb = m_framebuffers.find("framebuffer")->second;
+		fb ->use(Scene::width, Scene::height);
+		this->drawScene();
 		this->m_gui.render(this);
 
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		postProcessing.use();
-		postProcessing.setFloat("time", current);
+		
+		Shader* postProcessing = m_shaders.find("postProcessing")->second;
+		postProcessing->use();
+		postProcessing->setFloat("time", current);
+		
 		glDisable(GL_DEPTH_TEST);
 
-		framebuffer.bindTexture();
-		scene.draw(postProcessing);
+		fb->bindTexture();
+		sceneModel.draw(*postProcessing);
 
 		glfwSwapBuffers(m_pWindow);
 		glfwPollEvents();
 	}
+}
+
+void Scene::drawScene() {
+
+	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+	camera.processInput(this->m_pWindow, deltaTime);
+	camera.update();
+
+	glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
+	projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
+
+	//Prevent writing to the stencil buffer
+	glStencilMask(0x00);
+	m_cubemaps.find("yokohama")->second->draw(camera.getLookAtMatrix(), projection);
+
+	//Must use the shader before calling glUniform()
+	Shader* shader = m_shaders.find("default")->second;
+	shader->use();
+
+	//Model
+	shader->setVec3("viewPos", camera.getPos());
+	shader->setMatrix4("view", camera.getLookAtMatrix());
+	shader->setMatrix4("projection", projection);
+
+	Shader* outlineShader = m_shaders.find("outlineShader")->second;
+	outlineShader->use();
+	outlineShader->setMatrix4("view", camera.getLookAtMatrix());
+	outlineShader->setMatrix4("projection", projection);
+
+
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glStencilMask(0xFF);
+	for (Model* model : this->getModels()) {
+		model->draw(*shader);
+	}
+
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	glStencilMask(0x00);
+	glDisable(GL_DEPTH_TEST);
+	for (Model* upScaledModel : this->getModels()) {
+		if (upScaledModel->isOutlined())
+			upScaledModel->draw(*outlineShader);
+	}
+	glStencilMask(0xFF);
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glEnable(GL_DEPTH_TEST);
+
+
+	//Lights
+	Shader* lightShader = m_shaders.find("lightShader")->second;
+	lightShader->use();
+	lightShader->setMatrix4("view", camera.getLookAtMatrix());
+	lightShader->setMatrix4("projection", projection);
+
+	for (Light* light : this->getLights()) {
+		if (light->getActive())
+			light->draw(*shader, *lightShader);
+		else
+			light->disableLight(*shader);
+	};
+}
+
+void Scene::setupScene() {
+	//this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
+	this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
+	this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5, 0.5));
+	this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
+	//this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
+	//this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
+
+
+	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
+	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing.fs" });
+	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
+	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
+	
+	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
+	
+	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height });
+	this->addFramebuffer("blur", new Framebuffer{ Scene::width, Scene::height });
+}
+
+
+
+void Scene::addShader(std::string name, Shader* shader) {
+	this->m_shaders.insert({ name, shader });
+}
+void Scene::addCubemap(std::string name, CubeMap* cubemap) {
+	this->m_cubemaps.insert({ name, cubemap });
+}
+void Scene::addFramebuffer(std::string name, Framebuffer* framebuffer) {
+	this->m_framebuffers.insert({ name, framebuffer });
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos) {
