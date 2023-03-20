@@ -113,3 +113,7 @@ std::vector<Vertex> Mesh::getVertices() {
 std::vector<uint32_t> Mesh::getIndices() {
 	return this->m_indices;
 }
+
+std::vector<Texture>& Mesh::getTextures(){
+	return this->m_textures;
+}

@@ -46,8 +46,13 @@ public:
 	std::vector<Mesh>& getMeshes();
 	std::vector<Model>& getChildren();
 	Model& addChild(Model& child);
+	
 	void setScale(float scale);
 	float getScale();
+	
+	void setPosition(glm::vec3 position);
+	glm::vec3& getPosition();
+	
 	bool& isOutlined();
 	void setOutlined(bool outline);
 private:
@@ -62,4 +67,4 @@ private:
 	bool flipTextures;
 };
 
-#endif // !OBJECT_MODEL_H
+#endif // OBJECT_MODEL_H

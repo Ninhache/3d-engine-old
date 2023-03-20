@@ -176,3 +176,14 @@ bool& Model::isOutlined() {
 void Model::setOutlined(bool outline) {
 	this->outlined = outline;
 }
+
+void Model::setPosition(glm::vec3 position){
+	this->position = position;
+	for (Model& model : m_children) {
+		model.setPosition(this->position);
+	}
+}
+
+glm::vec3& Model::getPosition(){
+	return this->position;
+}

@@ -5,7 +5,7 @@
 
 #include "headers/doctest.h"
 #include "../src/headers/model.h"
-
+#include "../src/headers/cubemap.h"
 
 GLFWwindow* initTest(){
     glfwInit();
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
 
 TEST_CASE("testing the model loading") {
 
-    Model model{"../models/postProcessing/quad.obj"};
+    Model model{"../models/test/quad.obj"};
     //Root model should not have meshes
     CHECK(model.getMeshes().size() == 0);
 
@@ -57,6 +57,31 @@ TEST_CASE("testing the model loading") {
     Mesh quadMesh = child.getMeshes()[0];
     CHECK(quadMesh.getVertices().size() == 4);
     CHECK(quadMesh.getIndices().size() == 6);
+
+    std::vector<Texture>& textures = quadMesh.getTextures();
+    CHECK(textures.size() == 1);
+    CHECK(textures[0].getType() == aiTextureType_DIFFUSE);
+
+}
+
+TEST_CASE("testing the model updating") {
+    
+    Model model{"../models/test/quad.obj"};
+    Model& children = model.getChildren()[0];
+
+
+    model.setPosition(glm::vec3(1.0f));
+    CHECK(model.getPosition() == glm::vec3(1.0f));
+    //Position should propagate to all children
+    CHECK(children.getPosition() == glm::vec3(1.0f));
+    
+    model.setScale(1.5f);
+    CHECK(model.getScale() == 1.5f);
+    CHECK(children.getScale() == 1.5f);
+
+    CHECK(!model.isOutlined());
+    model.setOutlined(true);
+    CHECK(model.isOutlined());
 
 }
 
