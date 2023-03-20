@@ -5,6 +5,7 @@
 #include "headers/pointLight.h"
 #include "headers/cubemap.h"
 #include "headers/directionalLight.h"
+#include "headers/framebuffer.h"
 
 #include <iostream>
 
@@ -135,6 +136,7 @@ void Scene::renderLoop() {
 	Shader outlineShader{ "shaders/outline.vs", "shaders/outline.fs" };
 	Shader lightShader{ "shaders/default.vs", "shaders/light.fs" };
 	CubeMap yokohama{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} };
+	Framebuffer framebuffer{Scene::width, Scene::height};
 
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
 	glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -156,37 +158,6 @@ void Scene::renderLoop() {
 
 	this->m_gui.init(m_pWindow);
 
-	/*FRAMEBUFFER*/
-	unsigned int frambebuffer;
-	glGenFramebuffers(1, &frambebuffer);
-	glBindFramebuffer(GL_FRAMEBUFFER, frambebuffer);
-
-	unsigned int textureColorBuffer;
-	glGenTextures(1, &textureColorBuffer);
-	glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Scene::width, Scene::height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//Unbind
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	//attach to framebuffer
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorBuffer, 0);
-
-	/*Stencil and depth*/
-	unsigned int rbo;
-	glGenRenderbuffers(1, &rbo);
-	glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Scene::width, Scene::height);
-	//Unbind
-	glBindRenderbuffer(GL_RENDERBUFFER, 0);
-
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);
-	//unbind
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	/*END OF FRAMEBUFFER*/
-
 	while (!glfwWindowShouldClose(m_pWindow)) {
 
 
@@ -194,12 +165,7 @@ void Scene::renderLoop() {
 		deltaTime = current - lastFrame;
 		lastFrame = current;
 
-		glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Scene::width, Scene::height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-		glBindRenderbuffer(GL_RENDERBUFFER, rbo);
-		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Scene::width, Scene::height);
-
-		glBindFramebuffer(GL_FRAMEBUFFER, frambebuffer);
+		framebuffer.use(Scene::width , Scene::height);
 		glEnable(GL_DEPTH_TEST);
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -259,11 +225,13 @@ void Scene::renderLoop() {
 
 		this->m_gui.render(this);
 
+		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		postProcessing.use();
 		postProcessing.setFloat("time", current);
 		glDisable(GL_DEPTH_TEST);
-		glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
+
+		framebuffer.bindTexture();
 		scene.draw(postProcessing);
 
 		glfwSwapBuffers(m_pWindow);
