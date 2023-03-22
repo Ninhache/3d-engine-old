@@ -4,6 +4,7 @@
 #include "headers/logger.h"
 #include "headers/pointLight.h"
 #include "headers/directionalLight.h"
+#include "headers/postProcessing.h"
 
 #include <iostream>
 
@@ -124,6 +125,7 @@ void Scene::renderLoop() {
 	//Adds all lights, models, framebuffers to the scene
 	this->setupScene();
 
+	PostProcessing pProcessing{};
 	Model sceneModel{ "models/postProcessing/quad.obj" };
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
 	glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -165,6 +167,7 @@ void Scene::renderLoop() {
 		Shader* postProcessing = m_shaders.find("postProcessing")->second;
 		postProcessing->use();
 		postProcessing->setFloat("time", current);
+		pProcessing.updateUniforms(*postProcessing);
 		double xpos, ypos;
 		glfwGetCursorPos(this->m_pWindow, &xpos, &ypos);
 		postProcessing->setVec2("mouseFocus",glm::vec2(xpos, ypos));
