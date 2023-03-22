@@ -156,7 +156,6 @@ void Scene::renderLoop() {
 		Framebuffer* fb = m_framebuffers.find("framebuffer")->second;
 		fb ->use(Scene::width, Scene::height);
 		this->drawScene();
-		this->m_gui.render(this);
 
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -169,6 +168,8 @@ void Scene::renderLoop() {
 
 		fb->bindTexture();
 		sceneModel.draw(*postProcessing);
+
+		this->m_gui.render(this);
 
 		glfwSwapBuffers(m_pWindow);
 		glfwPollEvents();
@@ -209,7 +210,9 @@ void Scene::drawScene() {
 	glStencilFunc(GL_ALWAYS, 1, 0xFF);
 	glStencilMask(0xFF);
 	for (Model* model : this->getModels()) {
-		model->draw(*shader);
+		if (model->getActive()) {
+			model->draw(*shader);
+		}
 	}
 
 	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
