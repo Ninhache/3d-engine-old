@@ -3,6 +3,7 @@
 CubeMap::CubeMap(std::vector<std::string> paths) {
 	this->m_texture = Texture::loadCubemap(paths);
 	this->configureMesh();
+    this->shader = std::make_unique<Shader>("shaders/cubemap.vs","shaders/cubemap.fs");
 }
 
 CubeMap::CubeMap(std::string dir, std::vector<std::string> paths){
@@ -11,6 +12,7 @@ CubeMap::CubeMap(std::string dir, std::vector<std::string> paths){
 		path = dir + "/" + path;
 	}
 	this->m_texture = Texture::loadCubemap(paths);
+    this->shader = std::make_unique<Shader>("shaders/cubemap.vs","shaders/cubemap.fs");
 	this->configureMesh();
 }
 
@@ -81,9 +83,9 @@ void CubeMap::draw(glm::mat4 view, glm::mat4 projection) {
     
     glDepthMask(false);
 
-    this->shader.use();
-    this->shader.setMatrix4("view", glm::mat4(glm::mat3(view)));
-    this->shader.setMatrix4("projection", projection);
+    this->shader->use();
+    this->shader->setMatrix4("view", glm::mat4(glm::mat3(view)));
+    this->shader->setMatrix4("projection", projection);
 
     glBindVertexArray(this->m_VAO);
     glBindTexture(GL_TEXTURE_CUBE_MAP, this->m_texture.getID());

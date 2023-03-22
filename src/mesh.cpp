@@ -42,7 +42,7 @@ void Mesh::draw(Shader& shader, float scale) {
 	int counter = 0;
 	std::string samplerName;
 
-	for (int i = 0; i < this->m_textures.size(); i++)
+	for (size_t i = 0; i < this->m_textures.size(); i++)
 	{
 		glActiveTexture(GL_TEXTURE0 + i);
 		switch (this->m_textures[i].getType()) { 

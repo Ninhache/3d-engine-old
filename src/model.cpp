@@ -137,7 +137,7 @@ void Model::addMesh(Mesh mesh) {
 std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType type) {
 	std::vector<Texture> textures;
 
-	for (int i = 0; i < material->GetTextureCount(type); i++)
+	for (size_t i = 0; i < material->GetTextureCount(type); i++)
 	{
 		aiString path;
 		material->GetTexture(type, i, &path);
