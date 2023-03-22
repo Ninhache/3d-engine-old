@@ -117,3 +117,7 @@ std::vector<uint32_t> Mesh::getIndices() {
 std::vector<Texture>& Mesh::getTextures(){
 	return this->m_textures;
 }
+
+void Mesh::setPosition(glm::vec3 position) {
+	this->position = position;
+}
