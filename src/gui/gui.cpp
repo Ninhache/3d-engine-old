@@ -12,7 +12,7 @@ void DefaultGui::render(Scene* scene) {
     ImGui_ImplGlfw_NewFrame();
     ImGui_ImplOpenGL3_NewFrame();
     ImGui::NewFrame();
-    
+
     for(auto gui : this->uiList) {
         if (gui->isShowing()) gui->render(scene);
     }
