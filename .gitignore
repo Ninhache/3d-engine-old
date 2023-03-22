@@ -42,5 +42,6 @@ build/
 *.user
 log.txt
 x64/
+.VSCodeCounter/
 
-imgui.ini
+*.ini

@@ -25,6 +25,8 @@ add_executable(3d-engine-test
         ${PARENT_DIR}/src/meshes/light.cpp
         ${PARENT_DIR}/src/meshes/pointLight.cpp
         ${PARENT_DIR}/src/meshes/directionalLight.cpp
+        ${PARENT_DIR}/src/postprocessing.cpp
+        ${PARENT_DIR}/src/framebuffer.cpp
 )
 
 include_directories(${PARENT_DIR}/include/glm)

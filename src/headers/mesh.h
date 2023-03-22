@@ -27,6 +27,7 @@ public:
 	std::vector<Vertex> getVertices();
 	std::vector<uint32_t> getIndices();
 	std::vector<Texture>& getTextures();
+	void setPosition(glm::vec3 position);
 protected:
 	uint32_t m_VAO, m_VBO, m_EBO;
 	std::vector<Vertex> m_vertices;

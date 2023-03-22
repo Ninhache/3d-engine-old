@@ -8,6 +8,8 @@
 #include "model.h"
 #include "gui.h"
 #include "light.h"
+#include "framebuffer.h"
+#include "cubemap.h"
 
 class Scene {
     
@@ -64,6 +66,11 @@ public:
     */
     void removeLight(Light*);
 
+    void addShader(std::string name, Shader* shader);
+    void addCubemap(std::string name, CubeMap* cubemap);
+    void addFramebuffer(std::string name, Framebuffer* framebuffer);
+    void setupScene();
+
     std::vector<Light*> getLights();
     std::vector<Model*> getModels();
 
@@ -76,6 +83,9 @@ private:
     // bool renderOptions_draw_lights = true;
     std::vector<Light*> lightPool;
     std::vector<Model*> modelPool;
+    std::map<std::string, Shader*> m_shaders;
+    std::map<std::string, CubeMap*> m_cubemaps;
+    std::map<std::string, Framebuffer*> m_framebuffers;
 
     /**
      * @brief Init all the libraries and generate a windows
@@ -115,6 +125,8 @@ private:
         Scene::width = width;
         Scene::height = height;
     }
+
+    void drawScene(std::string shaderName);
     
 };
 
