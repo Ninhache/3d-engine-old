@@ -33,6 +33,7 @@ void UserParameters::render(Scene* scene) {
         
         if (ImGui::CollapsingHeader("Scène")) {
             drawLightHeader(scene);
+            drawModelHeader(scene);
         }
 
         ImGui::Separator();
@@ -61,7 +62,8 @@ void UserParameters::drawLightHeader(Scene* scene) {
         ImGui::Spacing();
         if (ImGui::BeginListBox("##Lights", ImVec2(-1, list_height))) {
             for (int i = 0; i < scene->getLights().size(); i++) {
-                if (ImGui::Selectable((scene->getLights()[i]->getClassName() + "##" + std::to_string(i)).c_str(), selected_index == i)) {
+                std::string iStr = std::to_string(i);
+                if (ImGui::Selectable((iStr + " | " + scene->getLights()[i]->getClassName() + "##" + iStr).c_str(), selected_index == i)) {
                     selected_index = i;
                 }
             }
@@ -69,37 +71,107 @@ void UserParameters::drawLightHeader(Scene* scene) {
         }
     
         if (selected_index >= 0 && selected_index < scene->getLights().size()) {
+            ImGui::Separator();
+            ImGui::Text("Properties :");
             drawSelectedLightOptions(scene->getLights()[selected_index]);
         }
 
         ImGui::TreePop();
+    } else {
+        ImGui::SameLine(); HelpMarker("Lights that have been added to the scene");
     }
 }
 
-void UserParameters::drawPositionsSlider(Light* light) {
-    if (light->hasPosition()) {
-        float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 20;
+void UserParameters::drawModelHeader(Scene* scene) {
+    if (ImGui::TreeNode("Models")) {
+        static int selected_index = -1;
+        static Model* selected_model = nullptr;
 
-        float x = light->getPos().x;
-        ImGui::SetNextItemWidth(dragWidth);
-        if (ImGui::DragFloat("x", &x)) {
-            light->getPos().x = x;
+        const int maxItemsToShow = 4;
+
+        const float item_height = ImGui::GetTextLineHeightWithSpacing();
+        const float item_spacing = ImGui::GetStyle().ItemSpacing.y;
+        const float list_height = item_height * maxItemsToShow + item_spacing * (maxItemsToShow - 1);
+
+        ImGui::SameLine(); HelpMarker("Models that have been added to the scene");
+        
+        if (ImGui::Button("Unselect")) {
+            scene->getModels()[selected_index]->setOutlined(false);
+            selected_index = -1;
         }
 
-        float y = light->getPos().y;
+        ImGui::Spacing();
+        if (ImGui::BeginListBox("##Models", ImVec2(-1, list_height))) {
+            for (int i = 0; i < scene->getModels().size(); i++) {
+                if (ImGui::Selectable(("Model " + std::to_string(i) + "##" + std::to_string(i)).c_str(), selected_index == i)) {
+                    // ImGui::GetID(str)
+                    if (selected_index >= 0) {
+                        scene->getModels()[selected_index]->setOutlined(false);
+                    }
+                    selected_index = i;
+                    scene->getModels()[selected_index]->setOutlined(true);
+                }
+            }
+            ImGui::EndListBox();
+        }
+    
+        if (selected_index >= 0 && selected_index < scene->getModels().size()) {
+            ImGui::Separator();
+            ImGui::Text("Properties :");
+            drawSelectedModelOptions(scene->getModels()[selected_index]);
+
+        }
+
+        ImGui::TreePop();
+    } else {
+        ImGui::SameLine(); HelpMarker("Models that have been added to the scene");
+    }
+}
+
+void UserParameters::drawLightPositionsSlider(Light* light) {
+    if (light->hasPosition()) {
+        float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 40;
+
+        float x = light->getPosition().x;
+        ImGui::SetNextItemWidth(dragWidth);
+        if (ImGui::DragFloat("x", &x)) {
+            light->getPosition().x = x;
+        }
+
+        float y = light->getPosition().y;
         ImGui::SameLine();
         ImGui::SetNextItemWidth(dragWidth);
         if (ImGui::DragFloat("y", &y)) {
-            light->getPos().y = y;
+            light->getPosition().y = y;
         }
 
-        float z = light->getPos().z;
+        float z = light->getPosition().z;
         ImGui::SameLine();
         ImGui::SetNextItemWidth(dragWidth);
         if (ImGui::DragFloat("z", &z)) {
-            light->getPos().z = z;
+            light->getPosition().z = z;
         }
     }
+}
+
+void UserParameters::drawModelPositionsSlider(Model* model) {
+    float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 40;
+
+    static float x = model->getPosition().x;
+    ImGui::SetNextItemWidth(dragWidth);
+    ImGui::DragFloat("x", &x, 0.05f);
+
+    static float y = model->getPosition().y;
+    ImGui::SameLine();
+    ImGui::SetNextItemWidth(dragWidth);
+    ImGui::DragFloat("y", &y, 0.05f);
+
+    static float z = model->getPosition().z;
+    ImGui::SameLine();
+    ImGui::SetNextItemWidth(dragWidth);
+    ImGui::DragFloat("z", &z, 0.05f);
+
+    model->setPosition(glm::vec3(x,y,z));
 }
 
 void UserParameters::drawSelectedLightOptions(Light* light) {
@@ -108,11 +180,24 @@ void UserParameters::drawSelectedLightOptions(Light* light) {
 
     std::vector<Triple<std::string, std::string, float &>> options = light->getOptions();
             
-    ImGui::ColorEdit3("color 3", value_ptr(light->getLightColor()));
-    drawPositionsSlider(light);
+    ImGui::ColorEdit3("color 3", value_ptr(light->getColor()));
+    drawLightPositionsSlider(light);
     
     for (Triple<std::string, std::string, float&>& option : options) {
         ImGui::SliderFloat(option.first().c_str(), &option.third(), 0.0f, 1.0f);
         ImGui::SameLine(); HelpMarker(option.second().c_str());
     }
+}
+
+void UserParameters::drawSelectedModelOptions(Model* model) {
+    ImGui::Checkbox("Render", &model->getActive());
+    
+    drawModelPositionsSlider(model);
+
+    static float scale = model->getScale();
+    if (ImGui::SliderFloat("Scale", &scale, 0.0f, 50.0f)) {
+        model->setScale(scale);
+    }
+    
+
 }

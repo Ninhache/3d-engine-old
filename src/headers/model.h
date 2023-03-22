@@ -48,13 +48,17 @@ public:
 	Model& addChild(Model& child);
 	
 	void setScale(float scale);
-	float getScale();
+	float& getScale();
 	
 	void setPosition(glm::vec3 position);
 	glm::vec3& getPosition();
 	
 	bool& isOutlined();
 	void setOutlined(bool outline);
+	bool& getActive() {
+		return this->activated;
+	}
+
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;
@@ -65,6 +69,7 @@ private:
 	bool outlined = false;
 	//User must indicate wether or not a texture should be flipped
 	bool flipTextures;
+	bool activated = false;
 };
 
 #endif // OBJECT_MODEL_H

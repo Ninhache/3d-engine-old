@@ -32,14 +32,14 @@ void DirectionalLight::setUniforms(Shader& shader) {
     std::string currentID = std::to_string(this->lightID);
     
     std::string lightDir = "dLight[" + currentID + "].lightDir";
-    std::string lightColor = "dLight[" + currentID + "].lightColor";
+    std::string color = "dLight[" + currentID + "].lightColor";
 
     std::string specularStr = "dLight[" + currentID + "].specularStr";
     std::string ambiantStr = "dLight[" + currentID + "].ambiantStr";
 
     std::string active = "dLight[" + currentID + "].activeLight";
     
-    shader.setVec3(lightColor, this->lightColor);
+    shader.setVec3(color, this->color);
     shader.setVec3(lightDir, this->lightDir);
 
     shader.setFloat(specularStr, this->m_specularStr);

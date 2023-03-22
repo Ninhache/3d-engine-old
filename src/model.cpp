@@ -13,6 +13,7 @@ Model::Model(glm::vec3 position, float scale, bool flipTextures) {
 	this->position = position;
 	this->scale = scale;
 	this->flipTextures = flipTextures;
+	this->activated = true;
 }
 
 Model::Model(const std::string& path, glm::vec3 position, float scale, bool flipTextures) : Model(position, scale, flipTextures)
@@ -137,7 +138,7 @@ void Model::addMesh(Mesh mesh) {
 std::vector<Texture> Model::loadMaterial(aiMaterial* material, aiTextureType type) {
 	std::vector<Texture> textures;
 
-	for (int i = 0; i < material->GetTextureCount(type); i++)
+	for (size_t i = 0; i < material->GetTextureCount(type); i++)
 	{
 		aiString path;
 		material->GetTexture(type, i, &path);
@@ -165,7 +166,7 @@ void Model::setScale(float scale) {
 	}
 }
 
-float Model::getScale() {
+float& Model::getScale() {
 	return this->scale;
 }
 

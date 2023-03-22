@@ -3,24 +3,29 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
+
 #include "texture.h"
 #include "mesh.h"
-
 class CubeMap
 {
 
 public:
     /* Cubemaps in openGL use a Left handed coordinate system */
-	CubeMap(std::string dir, std::vector<std::string> paths);
 	CubeMap(std::vector<std::string> paths);
+	CubeMap(std::string dir, std::vector<std::string> paths);
+	CubeMap(){
+		this->configureMesh();
+	}
 	void configureMesh();
 	void configureBuffers();
     void draw(glm::mat4 view, glm::mat4 projection);
-private:
+protected:
 	Texture m_texture;
-    Shader shader{ "shaders/cubemap.vs","shaders/cubemap.fs" };
-	unsigned int m_VAO, m_VBO;
+    std::unique_ptr<Shader> shader;
 	std::vector<float> m_vertices;
+private:
+	unsigned int m_VAO, m_VBO;
 };
 
-#endif // CUBEMAP_HEADER_FILE
+#endif // CUBEMAP_MOCK_HEADER_FILE
