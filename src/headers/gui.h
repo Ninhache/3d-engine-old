@@ -9,6 +9,7 @@
 
 #include "logger.h"
 #include "light.h"
+#include "model.h"
 
 class Scene;
 
@@ -55,8 +56,11 @@ class UserParameters : public DefaultGui {
 		UserParameters(bool);
 		void render(Scene*);
 		void drawLightHeader(Scene*);
-		void drawPositionsSlider(Light*);
+		void drawLightPositionsSlider(Light*);
+		void drawModelPositionsSlider(Model*);
 		void drawSelectedLightOptions(Light*);
+		void drawModelHeader(Scene* scene);
+		void drawSelectedModelOptions(Model* model);
 };
 
 class SceneParameters : public DefaultGui {
