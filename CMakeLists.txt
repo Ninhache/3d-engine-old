@@ -25,6 +25,7 @@ add_executable(3d-engine
         src/meshes/directionalLight.cpp
         src/gui/gui.cpp
         src/gui/userParametersGui.cpp
+	src/framebuffer.cpp
 )
 
 
