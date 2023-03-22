@@ -20,6 +20,7 @@ public:
     void setMatrix4(const std::string&, const glm::mat4&) const;
     void setMatrix3(const std::string&, const glm::mat3&) const;
     void setVec3(const std::string&, const glm::vec3&) const;
+    void setVec2(const std::string& name, const glm::vec2& value) const;
     int getId() const { return ID; }
 
 private:

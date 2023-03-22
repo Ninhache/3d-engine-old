@@ -126,7 +126,7 @@ private:
         Scene::height = height;
     }
 
-    void drawScene();
+    void drawScene(std::string shaderName);
     
 };
 

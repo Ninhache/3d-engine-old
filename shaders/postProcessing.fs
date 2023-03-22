@@ -23,7 +23,7 @@ void main()
     //coord.x = smoothstep(0.001,0.5,coord.x);
     
     //wavy effect
-    //coord.x += sin(textCoord.y * 4*2*3.14159 + time) / 100;
+    coord.x += sin(textCoord.y * 4*2*3.14159 + time) / 100;
     
     FragColor = texture(screenTexture,coord);
 }

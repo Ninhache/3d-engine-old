@@ -154,8 +154,9 @@ void Scene::renderLoop() {
 
 		//dont put this-> it will make the line too long
 		Framebuffer* fb = m_framebuffers.find("framebuffer")->second;
-		fb ->use(Scene::width, Scene::height);
-		this->drawScene();
+		fb->use(Scene::width, Scene::height);
+		this->drawScene("default");
+
 		this->m_gui.render(this);
 
 		//Default framebuffer
@@ -164,6 +165,9 @@ void Scene::renderLoop() {
 		Shader* postProcessing = m_shaders.find("postProcessing")->second;
 		postProcessing->use();
 		postProcessing->setFloat("time", current);
+		double xpos, ypos;
+		glfwGetCursorPos(this->m_pWindow, &xpos, &ypos);
+		postProcessing->setVec2("mouseFocus",glm::vec2(xpos, ypos));
 		
 		glDisable(GL_DEPTH_TEST);
 
@@ -175,7 +179,7 @@ void Scene::renderLoop() {
 	}
 }
 
-void Scene::drawScene() {
+void Scene::drawScene(std::string shaderName) {
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -192,7 +196,7 @@ void Scene::drawScene() {
 	m_cubemaps.find("yokohama")->second->draw(camera.getLookAtMatrix(), projection);
 
 	//Must use the shader before calling glUniform()
-	Shader* shader = m_shaders.find("default")->second;
+	Shader* shader = m_shaders.find(shaderName)->second;
 	shader->use();
 
 	//Model
@@ -242,13 +246,13 @@ void Scene::setupScene() {
 	//this->addLight(new PointLight(glm::vec3(17.0f, 17.0f, -20.0f), glm::vec3(1.0f, 1.0f, 1.0f), 2.0f, 0.5f, 0.4f,1.0f,0.014, 0.0007));
 	this->addLight(new PointLight(glm::vec3(0.0f, 0.2f, 10.0f), glm::vec3(0.949f, 0.341f, 0.675f)));
 	this->addLight(new DirectionalLight(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.5f, 0.5f, 0.5f), 0.5, 0.5));
-	this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
-	//this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
+	//this->addModel(new Model("models/backpack/backpack.obj", glm::vec3(0.0f, -2.0f, 0.0f)));
+	this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
 	//this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
 
 
 	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
-	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing.fs" });
+	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
 	
