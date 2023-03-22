@@ -37,9 +37,6 @@ void PointLight::setupMesh(){
 std::vector<Triple<std::string, std::string, float&>> PointLight::getOptions() {
 
     static std::vector<Triple<std::string, std::string, float&>> options{
-        Triple<std::string, std::string, float&>("constant", "constant helper", this->m_constant),
-        Triple<std::string, std::string, float&>("linear", "linear helper", this->m_linear),
-        Triple<std::string, std::string, float&>("quadratic", "quadratic helper", this->m_quadratic),
         Triple<std::string, std::string, float&>("specular strength", "specular strength helper", this->m_specularStr),
         Triple<std::string, std::string, float&>("ambiant strength", "ambiant strength helper", this->m_ambiantStr),
     };
@@ -52,8 +49,8 @@ void PointLight::setUniforms(Shader& shader) {
 
     std::string currentID = std::to_string(this->lightID);
 
-    std::string lightColor = "pLights[" + currentID + "].lightColor";
-    std::string lightPos = "pLights[" + currentID + "].lightPos";
+    std::string color = "pLights[" + currentID + "].lightColor";
+    std::string position = "pLights[" + currentID + "].lightPos";
 
     std::string specularStr = "pLights[" + currentID + "].specularStr";
     std::string ambiantStr = "pLights[" + currentID + "].ambiantStr";
@@ -63,8 +60,8 @@ void PointLight::setUniforms(Shader& shader) {
 
     std::string active = "pLights[" + currentID + "].activeLight";
 
-    shader.setVec3(lightColor, this->lightColor);
-    shader.setVec3(lightPos, this->lightPos);
+    shader.setVec3(color, this->color);
+    shader.setVec3(position, this->position);
     
     shader.setFloat(specularStr, this->m_specularStr);
     shader.setFloat(ambiantStr, this->m_ambiantStr);
