@@ -155,29 +155,25 @@ void Scene::renderLoop() {
 		lastFrame = current;
 
 		//dont put this-> it will make the line too long
+		//draw normal scene
 		Framebuffer* fb = m_framebuffers.find("framebuffer")->second;
 		fb->use(Scene::width, Scene::height);
+		glDrawBuffer(GL_COLOR_ATTACHMENT0);
 		this->drawScene("default");
 
 		//draw the blured scene
-		Framebuffer* blur = m_framebuffers.find("blur")->second;
-		blur->use(Scene::width, Scene::height);
-		this->drawScene("blur");
+		Shader* blur = m_shaders.find("blur")->second;
+		fb->bindTexture(*blur);
+		glDrawBuffer(GL_COLOR_ATTACHMENT1);
+		sceneModel.draw(*blur);
+
+		
+		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
+		pProcessing.updateUniforms(*pProcessingShader);
 
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		
-		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
-		pProcessingShader->use();
-		pProcessingShader->setFloat("time", current);
-		pProcessing.updateUniforms(*pProcessingShader);
-		double xpos, ypos;
-		glfwGetCursorPos(this->m_pWindow, &xpos, &ypos);
-		pProcessingShader->setVec2("mouseFocus",glm::vec2(xpos, ypos));
-		
 		glDisable(GL_DEPTH_TEST);
-
-		blur->bindTexture(*pProcessingShader);
 		fb->bindTexture(*pProcessingShader);
 		sceneModel.draw(*pProcessingShader);
 
@@ -200,7 +196,7 @@ void Scene::drawScene(std::string shaderName) {
 	camera.update();
 
 	glm::mat4 projection;					   //FOV	         //Aspect ratio                              //near //far plane frustum
-	projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 300.0f);
+	projection = glm::perspective(glm::radians(camera.getFov()), (float)Scene::width / (float)Scene::height, 0.1f, 100.0f);
 
 	//Prevent writing to the stencil buffer
 	glStencilMask(0x00);
@@ -273,7 +269,7 @@ void Scene::setupScene() {
 
 
 	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
-	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing.fs" });
+	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
 	this->addShader("blur", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/boxBlur.frag" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
@@ -281,8 +277,7 @@ void Scene::setupScene() {
 	
 	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
 	
-	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, "screenTexture", true});
-	this->addFramebuffer("blur", new Framebuffer{ Scene::width, Scene::height, "bluredTexture" });
+	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, 2, true});
 }
 
 
