@@ -125,6 +125,7 @@ void Scene::renderLoop() {
 	//Adds all lights, models, framebuffers to the scene
 	this->setupScene();
 	this->pProcessing = {};
+	this->hdr = true;
 
 	Model sceneModel{ "models/postProcessing/quad.obj" };
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
@@ -167,6 +168,12 @@ void Scene::renderLoop() {
 		glDrawBuffer(GL_COLOR_ATTACHMENT1);
 		sceneModel.draw(*blur);
 
+		// Draw hdr scene
+		Shader* hdr = m_shaders.find("hdr")->second;
+		fb->bindTexture(*hdr);
+		glDrawBuffer(GL_COLOR_ATTACHMENT2);
+		sceneModel.draw(*hdr);
+
 		
 		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
 		pProcessing.updateUniforms(*pProcessingShader);
@@ -176,8 +183,6 @@ void Scene::renderLoop() {
 		glDisable(GL_DEPTH_TEST);
 		fb->bindTexture(*pProcessingShader);
 		sceneModel.draw(*pProcessingShader);
-
-
 
 		this->m_gui.render(this);
 
@@ -249,14 +254,6 @@ void Scene::drawScene(std::string shaderName) {
 		else
 			light->disableLight(*shader);
 	};
-
-	// Hdr
-	/*
-	Shader* hdrShader = m_shaders.find("hdrShader")->second;
-	hdrShader->use();
-	hdrShader->setFloat("exposure", 1.2f);
-	m_framebuffers.find("framebuffer")->second->bindTexture();
-	*/
 }
 
 void Scene::setupScene() {
@@ -271,13 +268,13 @@ void Scene::setupScene() {
 	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
 	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
 	this->addShader("blur", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/boxBlur.frag" });
+	this->addShader("hdr", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/hdrShader.fs" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
-	this->addShader("hdrShader", new Shader{ "shaders/default.vs", "shaders/hdrShader.fs" });
 	
 	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
 	
-	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, 2, true});
+	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, 3, true});
 }
 
 
@@ -334,4 +331,8 @@ PostProcessing& Scene::getProcessing() {
 
 std::map<std::string, Shader*> Scene::getShaders() {
 	return this->m_shaders;
+}
+
+bool& Scene::getHdr() {
+	return this->hdr;
 }

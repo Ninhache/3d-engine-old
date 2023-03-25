@@ -69,7 +69,10 @@ void UserParameters::drawEffectsHeader(Scene* scene) {
         }
 
         ImGui::Separator();
-
+        if (ImGui::Checkbox("HDR", &scene->getProcessing().getBool("hdr"))) {
+            Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+            scene->getProcessing().updateUniforms(*postProcessing);
+        }
 
         ImGui::TreePop();
     } else {
