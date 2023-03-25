@@ -246,6 +246,14 @@ void Scene::drawScene(std::string shaderName) {
 		else
 			light->disableLight(*shader);
 	};
+
+	// Hdr
+	/*
+	Shader* hdrShader = m_shaders.find("hdrShader")->second;
+	hdrShader->use();
+	hdrShader->setFloat("exposure", 1.2f);
+	m_framebuffers.find("framebuffer")->second->bindTexture();
+	*/
 }
 
 void Scene::setupScene() {
@@ -261,6 +269,7 @@ void Scene::setupScene() {
 	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
+	this->addShader("hdrShader", new Shader{ "shaders/default.vs", "shaders/hdrShader.fs" });
 	
 	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
 	
