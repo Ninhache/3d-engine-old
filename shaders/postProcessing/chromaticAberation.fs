@@ -7,8 +7,7 @@ in vec2 textCoord;
 uniform sampler2D texture0;
 
 //postProcessed scene's texture;
-uniform sampler2D texture1; // blur
-uniform sampler2D texture2; // hdr
+uniform sampler2D texture1;
 
 struct ChromaticAberation_t {
     float redOff, greenOff, blueOff;
@@ -39,15 +38,15 @@ void main() {
         FragColor.g = texture(texture0, textCoord - (direction * cAberation.greenOff)).g;
         FragColor.ba = texture(texture0, textCoord - (direction * cAberation.blueOff)).ba;
     }
-    if (effects.blur) {
+    else if (effects.blur) {
         FragColor = texture(texture1, textCoord);
     }
 
-    if (effects.bloom) {
+    else if (effects.bloom) {
         FragColor.rgb = FragColor.rgb * 1.1; // TODO: CHANGE TO A REAL METHOD LOL
     }
 
-    if (effects.hdr) {
-        FragColor = texture(texture2, textCoord);
+    else if (effects.hdr) {
+        FragColor = texture(texture1, textCoord);
     }
 }
