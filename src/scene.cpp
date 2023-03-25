@@ -159,23 +159,29 @@ void Scene::renderLoop() {
 		fb->use(Scene::width, Scene::height);
 		this->drawScene("default");
 
-		this->m_gui.render(this);
+		//draw the blured scene
+		Framebuffer* blur = m_framebuffers.find("blur")->second;
+		blur->use(Scene::width, Scene::height);
+		this->drawScene("blur");
 
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		
-		Shader* postProcessing = m_shaders.find("postProcessing")->second;
-		postProcessing->use();
-		postProcessing->setFloat("time", current);
-		pProcessing.updateUniforms(*postProcessing);
+		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
+		pProcessingShader->use();
+		pProcessingShader->setFloat("time", current);
+		pProcessing.updateUniforms(*pProcessingShader);
 		double xpos, ypos;
 		glfwGetCursorPos(this->m_pWindow, &xpos, &ypos);
-		postProcessing->setVec2("mouseFocus",glm::vec2(xpos, ypos));
+		pProcessingShader->setVec2("mouseFocus",glm::vec2(xpos, ypos));
 		
 		glDisable(GL_DEPTH_TEST);
 
-		fb->bindTexture();
-		sceneModel.draw(*postProcessing);
+		blur->bindTexture(*pProcessingShader);
+		fb->bindTexture(*pProcessingShader);
+		sceneModel.draw(*pProcessingShader);
+
+
 
 		this->m_gui.render(this);
 
@@ -259,14 +265,15 @@ void Scene::setupScene() {
 
 
 	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
-	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
+	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing.fs" });
+	this->addShader("blur", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/boxBlur.frag" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
 	
 	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
 	
-	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height });
-	this->addFramebuffer("blur", new Framebuffer{ Scene::width, Scene::height });
+	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, "screenTexture", true});
+	this->addFramebuffer("blur", new Framebuffer{ Scene::width, Scene::height, "bluredTexture" });
 }
 
 
