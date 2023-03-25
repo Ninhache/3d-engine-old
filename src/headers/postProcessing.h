@@ -23,6 +23,7 @@ public:
     bool& getBool(std::string name);
 
     void updateUniforms(Shader& shader) {
+        shader.use();
         std::string uniform;
         for (const auto pair : this->effects) {
             uniform = "effects." + pair.first;

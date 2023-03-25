@@ -10,6 +10,7 @@
 #include "light.h"
 #include "framebuffer.h"
 #include "cubemap.h"
+#include "postProcessing.h"
 
 class Scene {
     
@@ -73,6 +74,9 @@ public:
 
     std::vector<Light*> getLights();
     std::vector<Model*> getModels();
+    PostProcessing& getProcessing();
+    std::map<std::string, Shader*> getShaders();
+    bool& getBool(std::string name);
 
     static uint16_t width;
     static uint16_t height;
@@ -86,6 +90,7 @@ private:
     std::map<std::string, Shader*> m_shaders;
     std::map<std::string, CubeMap*> m_cubemaps;
     std::map<std::string, Framebuffer*> m_framebuffers;
+    PostProcessing pProcessing;
 
     /**
      * @brief Init all the libraries and generate a windows

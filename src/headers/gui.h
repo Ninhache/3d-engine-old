@@ -62,7 +62,7 @@ class UserParameters : public DefaultGui {
 
 		void drawLightHeader(Scene* scene);
 		void drawModelHeader(Scene* scene);
-		void drawAdditionalEffects(Scene* scene);
+		void drawEffectsHeader(Scene* scene);
 		
 		void drawSelectedModelOptions(Model* model);
 };

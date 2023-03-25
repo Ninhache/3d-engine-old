@@ -124,8 +124,8 @@ void Scene::renderLoop() {
 
 	//Adds all lights, models, framebuffers to the scene
 	this->setupScene();
+	this->pProcessing = {};
 
-	PostProcessing pProcessing{};
 	Model sceneModel{ "models/postProcessing/quad.obj" };
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
 	glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -159,8 +159,6 @@ void Scene::renderLoop() {
 		fb->use(Scene::width, Scene::height);
 		this->drawScene("default");
 
-		this->m_gui.render(this);
-
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		
@@ -168,6 +166,7 @@ void Scene::renderLoop() {
 		postProcessing->use();
 		postProcessing->setFloat("time", current);
 		pProcessing.updateUniforms(*postProcessing);
+
 		double xpos, ypos;
 		glfwGetCursorPos(this->m_pWindow, &xpos, &ypos);
 		postProcessing->setVec2("mouseFocus",glm::vec2(xpos, ypos));
@@ -311,5 +310,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		}
 	}
+}
 
+bool& Scene::getBool(std::string name) {
+	return this->pProcessing.getBool(name);
+}
+
+PostProcessing& Scene::getProcessing() {
+	return this->pProcessing;
+}
+
+std::map<std::string, Shader*> Scene::getShaders() {
+	return this->m_shaders;
 }
