@@ -124,8 +124,8 @@ void Scene::renderLoop() {
 
 	//Adds all lights, models, framebuffers to the scene
 	this->setupScene();
+	this->pProcessing = {};
 
-	PostProcessing pProcessing{};
 	Model sceneModel{ "models/postProcessing/quad.obj" };
 	glfwSetCursorPosCallback(this->m_pWindow, mouse_callback);
 	glfwSetInputMode(this->m_pWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -318,5 +318,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 		}
 	}
+}
 
+bool& Scene::getBool(std::string name) {
+	return this->pProcessing.getBool(name);
+}
+
+PostProcessing& Scene::getProcessing() {
+	return this->pProcessing;
+}
+
+std::map<std::string, Shader*> Scene::getShaders() {
+	return this->m_shaders;
 }
