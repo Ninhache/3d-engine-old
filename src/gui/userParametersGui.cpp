@@ -34,15 +34,24 @@ void UserParameters::render(Scene* scene) {
         if (ImGui::CollapsingHeader("Scène")) {
             drawLightHeader(scene);
             drawModelHeader(scene);
+            drawEffectsHeader(scene);
         }
 
         ImGui::Separator();
 
-        ImGui::Text("Bouton open pour changer le modèle");
-        ImGui::Text("Button on/off skybox");
-        ImGui::Text("Bouton open pour changer la skybox / couleur du fond");
-
         ImGui::End();
+    }
+}
+
+void UserParameters::drawEffectsHeader(Scene* scene) {
+    if (ImGui::TreeNode("Effects")) {
+        ImGui::SameLine(); HelpMarker("Differents effects you can find in the project as bloom ...");
+
+
+
+        ImGui::TreePop();
+    } else {
+        ImGui::SameLine(); HelpMarker("Differents effects you can find in the project as bloom ...");
     }
 }
 
@@ -95,10 +104,41 @@ void UserParameters::drawModelHeader(Scene* scene) {
 
         ImGui::SameLine(); HelpMarker("Models that have been added to the scene");
         
-        if (ImGui::Button("Unselect")) {
+        if (ImGui::Button("Unselect") && selected_index >= 0) {
             scene->getModels()[selected_index]->setOutlined(false);
             selected_index = -1;
         }
+        ImGui::SameLine();
+        if (ImGui::Button("+")) {
+            ImGui::OpenPopup("Add model");
+        }
+            
+        ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+        ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::BeginPopupModal("Add model", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
+            ImGui::Text("Add a model using the path\n\n");
+            ImGui::Separator();
+
+            static const size_t size = 128;
+            static char buffer[size];
+            ImGui::Text("Path : ");
+            ImGui::SameLine();
+            ImGui::InputText("##Model Path", buffer, size);
+
+            if (ImGui::Button("OK", ImVec2(120, 0))) {
+                scene->addModel(new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f)));
+                memset(buffer, 0, size);
+                ImGui::CloseCurrentPopup();
+            }
+            ImGui::SetItemDefaultFocus();
+            ImGui::SameLine();
+            if (ImGui::Button("Cancel", ImVec2(120, 0))) {
+                ImGui::CloseCurrentPopup();
+            }
+            ImGui::EndPopup();
+        }
+
 
         ImGui::Spacing();
         if (ImGui::BeginListBox("##Models", ImVec2(-1, list_height))) {

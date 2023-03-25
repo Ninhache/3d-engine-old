@@ -55,11 +55,15 @@ class UserParameters : public DefaultGui {
 	public:
 		UserParameters(bool);
 		void render(Scene*);
-		void drawLightHeader(Scene*);
+		
 		void drawLightPositionsSlider(Light*);
 		void drawModelPositionsSlider(Model*);
 		void drawSelectedLightOptions(Light*);
+
+		void drawLightHeader(Scene* scene);
 		void drawModelHeader(Scene* scene);
+		void drawAdditionalEffects(Scene* scene);
+		
 		void drawSelectedModelOptions(Model* model);
 };
 
