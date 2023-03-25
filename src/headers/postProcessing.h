@@ -34,7 +34,7 @@ public:
         shader.setFloat("cAberation.blueOff", this->cAberation.blueOff);
     }
 private:
-    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation",true}, {"blur", false} };
+    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation", false}, {"blur", false} };
     ChromaticAberation_t cAberation;
     Bloom_t bloom; 
 };
