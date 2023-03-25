@@ -21,20 +21,9 @@ public:
     ChromaticAberation_t& getChromatic();
     Bloom_t& getBloom();
     bool& getBool(std::string name);
-
-    void updateUniforms(Shader& shader) {
-        shader.use();
-        std::string uniform;
-        for (const auto pair : this->effects) {
-            uniform = "effects." + pair.first;
-            shader.setBool(uniform, pair.second);
-        }
-        shader.setFloat("cAberation.redOff", this->cAberation.redOff);
-        shader.setFloat("cAberation.greenOff", this->cAberation.greenOff);
-        shader.setFloat("cAberation.blueOff", this->cAberation.blueOff);
-    }
+    void updateUniforms(Shader& shader);
 private:
-    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation", false}, {"blur", false} };
+    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation", false}, {"blur", true} };
     ChromaticAberation_t cAberation;
     Bloom_t bloom; 
 };
