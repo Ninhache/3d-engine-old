@@ -1,4 +1,5 @@
 #include "headers/framebuffer.h"
+#include "headers/logger.h"
 
 Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuffer)
 {
@@ -9,7 +10,7 @@ Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuf
 	glGenFramebuffers(1, &this->m_ID);
 	glBindFramebuffer(GL_FRAMEBUFFER, this->m_ID);
 
-	for (int i = 0; i < nbAttachments; i++) {
+	for (unsigned int i = 0; i < nbAttachments; i++) {
 		unsigned int textureID;
 		glGenTextures(1, &textureID);
 		this->colorAttachements.push_back(textureID);
@@ -21,9 +22,6 @@ Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuf
 
 		//Unbind
 		glBindTexture(GL_TEXTURE_2D, 0);
-		//attach to framebuffer
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0+i, GL_TEXTURE_2D, textureID, 0);
-
 	}
 
 
@@ -48,6 +46,10 @@ Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuf
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, this->m_rbo);
 	}
 
+	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
+		logger.log("Error in framebuffer");
+		exit(-1);
+	}
 	//unbind
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
@@ -73,19 +75,19 @@ void Framebuffer::use(int width, int height) {
 	glBindFramebuffer(GL_FRAMEBUFFER, this->m_ID);
 }
 
-void Framebuffer::bindTexture(Shader& shader) {
+void Framebuffer::setInputTextures(Shader& shader, int size) {
 	
 	shader.use();
 
 	unsigned int i;
 	std::string name;
-
-	for (i = 0; i < this->colorAttachements.size(); i++)
+	for (i = 0; i < size; i++)
 	{
 		name = "texture" + std::to_string(i);
 		glActiveTexture(GL_TEXTURE0+i);
 		glBindTexture(GL_TEXTURE_2D, this->colorAttachements[i]);
 		shader.setInt(name,i);
+
 	}
 	
 	if (this->m_depthBuffer) {
@@ -96,4 +98,9 @@ void Framebuffer::bindTexture(Shader& shader) {
 	
 	//Reset to default
 	glActiveTexture(GL_TEXTURE0);
+}
+
+void Framebuffer::setOuputTexture(int position){
+	//attach to framebuffer
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, this->colorAttachements[position], 0);
 }
