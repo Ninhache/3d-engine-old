@@ -162,17 +162,21 @@ void Scene::renderLoop() {
 		fb->setOuputTexture(0);
 		this->drawScene("default");
 
-		//draw the blured scene
-		Shader* blur = m_shaders.find("blur")->second;
-		fb->setInputTextures(*blur, 1);
-		fb->setOuputTexture(1);
-		sceneModel.draw(*blur);
+		if (pProcessing.getBool("blur")) {
+			//draw the blured scene
+			Shader* blur = m_shaders.find("blur")->second;
+			fb->setInputTextures(*blur, 1);
+			fb->setOuputTexture(1);
+			sceneModel.draw(*blur);
+		}
 
-		// Draw hdr scene
-		Shader* hdr = m_shaders.find("hdr")->second;
-		fb->setInputTextures(*hdr, 1);
-		fb->setOuputTexture(2);
-		sceneModel.draw(*hdr);
+		else if (pProcessing.getBool("hdr")) {
+			// Draw hdr scene
+			Shader* hdr = m_shaders.find("hdr")->second;
+			fb->setInputTextures(*hdr, 1);
+			fb->setOuputTexture(1);
+			sceneModel.draw(*hdr);
+		}
 		
 		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
 		pProcessing.updateUniforms(*pProcessingShader);
@@ -273,7 +277,7 @@ void Scene::setupScene() {
 	
 	this->addCubemap("yokohama", new CubeMap{ "models/skybox/yokohama",std::vector<std::string>{"posx.jpg","negx.jpg","posy.jpg","negy.jpg","posz.jpg","negz.jpg"} }),
 	
-	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, 3, false});
+	this->addFramebuffer("framebuffer", new Framebuffer{ Scene::width, Scene::height, 2, false});
 }
 
 
