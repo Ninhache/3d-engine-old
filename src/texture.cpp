@@ -5,23 +5,30 @@ std::map<std::string, Texture> Texture::m_map;
 
 Texture::Texture() {}
 
-Texture::Texture(std::string filename, aiTextureType texture_type, bool flipTexture) {
+Texture::Texture(std::string filename, aiTextureType texture_type, bool flipTexture)
+{
     int width, height, channels;
-    
-    stbi_set_flip_vertically_on_load(flipTexture);
-    unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
 
-    if (data == nullptr) {
+    stbi_set_flip_vertically_on_load(flipTexture);
+    unsigned char *data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
+
+    if (data == nullptr)
+    {
         logger.log("Failed to load texture: " + filename);
     }
 
     GLenum channels_type = 0;
-    if (channels == 1) {
-      channels_type = GL_RED;
-    } else if (channels == 3) {
-      channels_type = GL_RGB;
-    } else if (channels == 4) {
-      channels_type = GL_RGBA;
+    if (channels == 1)
+    {
+        channels_type = GL_RED;
+    }
+    else if (channels == 3)
+    {
+        channels_type = GL_RGB;
+    }
+    else if (channels == 4)
+    {
+        channels_type = GL_RGBA;
     }
 
     glGenTextures(1, &this->m_ID);
@@ -41,8 +48,9 @@ Texture::Texture(std::string filename, aiTextureType texture_type, bool flipText
     stbi_image_free(data);
 }
 
-Texture Texture::loadCubemap(std::vector<std::string> paths) {
-    
+Texture Texture::loadCubemap(std::vector<std::string> paths)
+{
+
     Texture t;
     stbi_set_flip_vertically_on_load(false);
     glGenTextures(1, &t.m_ID);
@@ -51,9 +59,10 @@ Texture Texture::loadCubemap(std::vector<std::string> paths) {
     int width, height, nrChannels;
     for (int i = 0; i < paths.size(); i++)
     {
-        unsigned char* data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
-        
-        if (data == nullptr) {
+        unsigned char *data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
+
+        if (data == nullptr)
+        {
             stbi_image_free(data);
             logger.log("Failed to load texture: " + paths[i]);
             break;
@@ -72,22 +81,27 @@ Texture Texture::loadCubemap(std::vector<std::string> paths) {
     return t;
 }
 
-void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type, bool flipTextures) {
-    if (!m_map.count(filename)) {
-      Texture texture { filename, texture_type, flipTextures };
-      Texture::m_map.insert(std::make_pair(filename, texture));
+void Texture::loadTextureInMemory(std::string filename, aiTextureType texture_type, bool flipTextures)
+{
+    if (!m_map.count(filename))
+    {
+        Texture texture{filename, texture_type, flipTextures};
+        Texture::m_map.insert(std::make_pair(filename, texture));
     }
 }
 
-Texture Texture::getTextureFromFile(std::string filename, aiTextureType texture_type, bool flipTextures) {
+Texture Texture::getTextureFromFile(std::string filename, aiTextureType texture_type, bool flipTextures)
+{
     loadTextureInMemory(filename, texture_type, flipTextures);
     return Texture::m_map.at(filename);
 }
 
-aiTextureType Texture::getType() {
+aiTextureType Texture::getType()
+{
     return this->m_texture_type;
 }
 
-GLuint Texture::getID() {
-    return this->m_ID;  
+GLuint Texture::getID()
+{
+    return this->m_ID;
 }
