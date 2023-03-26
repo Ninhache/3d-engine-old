@@ -13,21 +13,24 @@ public:
 	*/
 	Framebuffer(int width, int height, int nbAttachments, bool depthBuffer = false);
 	/**
+	* Add {size} texures as uniforms to the shader in parameter
+	* 
 	* @param shader - The shader who will get the textures generated via the framebuffer
 	* @param size - Number of textures to be added to the shader
-	* Add {size} texures as uniforms to the shader in parameter
 	*/
 	void setInputTextures(Shader& shader, int size);
 	/**
-	* @param position - The position of the texture where the framebuffer will draw
 	* Used to set what texture will be drawn to
+	* 
+	* @param position - The position of the texture where the framebuffer will draw
 	*/
 	void setOuputTexture(int position);
 	/**
-	* @param width - The new width of the framebuffer
-	* @param height - The new height of the framebuffer
 	* Binds the frameBuffer and checks if the textures need to be redimensioned
 	* (by comparing the current width and height with the ones in parameter)
+	* 
+	* @param width - The new width of the framebuffer
+	* @param height - The new height of the framebuffer
 	*/
 	void use(int width, int height);
 private:

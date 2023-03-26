@@ -9,27 +9,28 @@ class Camera {
 
 public:
 	/**
-	*Updates the view matrix
+	* Updates the view matrix
 	*/
 	void update();
 	
 	/**
-	@param window
-	@param deltaTime - Time it took to render the last frame, helps keeping camera speed constant
+	* @param window
+	* @param deltaTime - Time it took to render the last frame, helps keeping camera speed constant
 	*/
 	void processInput(GLFWwindow* window, float deltaTime);
 	
 	/**
 	* Changes Field of view into values between maxFov and minFov according to yoffset
-	@param yoffset - Amount scrolled vertically
+	* @param yoffset - Amount scrolled vertically
 	*/
 	void scrollUpdate(double yoffset);
 	
 	/**
 	* Updates yaw and pitch based on mouse coordinates which will influence camera rotation
 	* The pitch is kept under 90 degrees to prevent scene from being reversed
-	@param xoff - Difference between last x and current x of cursor
-	@param yoff - Difference between last y and current y of cursor
+	* 
+	* @param xoff - Difference between last x and current x of cursor
+	* @param yoff - Difference between last y and current y of cursor
 	*/
 	void mouseUpdate(float xoff, float yoff);
 
@@ -39,23 +40,23 @@ public:
 	void updateVectors();
 
 	/**
-	* Returns the Fov of the camera
+	* @return the Fov of the camera
 	*/
 	float getFov();
 	/**
-	* Returns camera position
+	* @return camera position
 	*/
 	glm::vec3 getPos();
 	/**
-	* Returns the LookAt (or view) matrix
+	* @return the LookAt (or view) matrix
 	*/
 	glm::mat4 getLookAtMatrix();
 	/**
-	* Returns the speed at which the camera rotates (mouse)
+	* @return the speed at which the camera rotates (mouse)
 	*/
 	float& getMouseSensitivity();
 	/**
-	* Returns the speed at which the camera moves (keyboard)
+	* @return the speed at which the camera moves (keyboard)
 	*/
 	float& getCameraSpeed();
 

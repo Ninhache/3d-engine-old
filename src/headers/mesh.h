@@ -12,6 +12,9 @@
 #include <assimp/scene.h>          
 #include <assimp/postprocess.h>   
 
+/**
+* Vertex struct containg the position, normal and coordinates of a vertex
+*/
 struct Vertex {
 	glm::vec3 position;
 	glm::vec3 normal;
@@ -21,12 +24,43 @@ struct Vertex {
 class Mesh
 {
 public:
+	/**
+	* Empty constructor used when loading models
+	*/
 	Mesh();
+	/***
+	* @param vertices - Vertices of the mesh
+	* @param indices - Indices of the mesh
+	* @param textures - Textures of the mesh, as of now either of the following type {"diffuseMap","normalMap","specularMap","heightMap","opacityMap"}
+	* @param localTransform - This is the localTransform according to its parents, 
+	* it needs to be multiplied with the model matrix of the mesh to get it's world transform
+	* @param position - Position of the mesh
+	*/
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position);
+	/**
+	* Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model
+	* 
+	* @param shader - Shader who will draw the model
+	* @param scale - Scale of the model
+	*/
 	void draw(Shader& shader, float scale);
+	/**
+	* @return a vector containing the vertices of the mesh
+	*/
 	std::vector<Vertex> getVertices();
+	/**
+	* @return a vector containing the indices of the mesh
+	*/
 	std::vector<uint32_t> getIndices();
+	/**
+	* @return a vector containing the textures of the mesh
+	*/
 	std::vector<Texture>& getTextures();
+	/**
+	* Sets the new position of the mesh
+	* 
+	* @param the new position of the mesh
+	*/
 	void setPosition(glm::vec3 position);
 protected:
 	uint32_t m_VAO, m_VBO, m_EBO;

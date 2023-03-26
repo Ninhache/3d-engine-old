@@ -20,9 +20,10 @@ public:
 	*/
 	virtual void setupMesh();
 	/**
-	* @param shader - The shader used to draw the objects influenced by the light
 	* Sets the different properties of the light to the shader
     * The properties are : color; specularStr; ambiantStr; active explained in light.h
+	* 
+	* @param shader - The shader used to draw the objects influenced by the light
 	*/
 	virtual void setUniforms(Shader& shader);
 	static int dirID;
@@ -42,8 +43,9 @@ public:
 	}
 
 	/**
-	* @param shader - The shader used to draw the objects influenced by the light
 	* Resets the light uniforms in the shader so that it does not affect objects anymore
+	* 
+	* @param shader - The shader used to draw the objects influenced by the light
 	*/
 	virtual void disableLight(Shader& shader);
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions();

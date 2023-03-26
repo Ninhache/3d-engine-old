@@ -12,11 +12,23 @@
 class Model
 {
 public:
+	/* 
+	* @param position - Position of the model
+	* @param scale - Scale of the model
+	* @param flipTextures - True if the textures need to be flipped when loaded with stb
+	*/
 	Model(glm::vec3 position, float scale, bool flipTextures);
+	/*
+	* @param path - Path of the model
+	* @param position - position of the model, default 0.0
+	* @param scale - Scale of the model, default 1.0
+	* @param flipTextures - True if the textures need to be flipped when loaded with stb
+	*/
 	Model(const std::string& path, glm::vec3 position = glm::vec3(0.0f), float scale = 1.0f, bool flipTextures = true);
 	
 	/**
 	*Load a model from path using assimp
+	* @path - Path of the model
 	*/
 	void loadModel(const std::string& path);
 	

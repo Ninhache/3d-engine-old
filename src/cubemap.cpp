@@ -81,6 +81,7 @@ void CubeMap::configureBuffers() {
 
 void CubeMap::draw(glm::mat4 view, glm::mat4 projection) {
     
+    //do not write the the depth buffer
     glDepthMask(false);
 
     this->shader->use();

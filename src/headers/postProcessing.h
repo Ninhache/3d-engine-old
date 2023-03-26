@@ -28,7 +28,7 @@ public:
     bool& getBool(std::string name);
     void updateUniforms(Shader& shader);
 private:
-    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation", false}, {"blur", false}, { "hdr", true } };
+    std::map<std::string, bool> effects = { {"bloom", false},{"chromaticAberation", false}, {"blur", false}, { "hdr", false } };
     ChromaticAberation_t cAberation;
     Bloom_t bloom; 
     Hdr_t hdr;
