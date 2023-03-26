@@ -38,23 +38,42 @@ public:
 	*/
 	void updateVectors();
 
+	/**
+	* Returns the Fov of the camera
+	*/
 	float getFov();
+	/**
+	* Returns camera position
+	*/
 	glm::vec3 getPos();
+	/**
+	* Returns the LookAt (or view) matrix
+	*/
 	glm::mat4 getLookAtMatrix();
+	/**
+	* Returns the speed at which the camera rotates (mouse)
+	*/
 	float& getMouseSensitivity();
+	/**
+	* Returns the speed at which the camera moves (keyboard)
+	*/
 	float& getCameraSpeed();
 
 protected:	
 	float yaw = -90.0f, pitch = 0.0f, fov = 45.0f;
 	float mouseSensitivity = 0.1f, cameraSpeed = 6.0f, scrollMult=0.2;
 private:
+	//Represents the current camera position
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+	//Represents the front vector of the camera (z)
 	glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	//Represents the up vector of the camera (y)
 	glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	//Represents the side vector of the camera (x)
 	glm::vec3 cameraSide = glm::vec3(1.0f, 0.0f, 0.0f);
+	//view matrix
 	glm::mat4 view = glm::mat4(1.0f);
 
-	float sWidth = 800, sHeight = 600;
 	const float maxFov = 45.6, minFov = 44.4;
 };
 
