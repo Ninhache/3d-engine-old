@@ -10,58 +10,87 @@ class Light : public Mesh
 {
 public:
 	/**
+	* @brief Construct a new Light object
+	*
 	* @param position - The position of the light
 	* @param color - Color of the light, default is white
 	* @param activated - Tells if the light should be drawn or not (and affect other objects) 
 	*/
 	Light(glm::vec3 position, glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f), bool activated = true);
+	
 	/**
 	* @param shader - The shader used to draw the objects influenced by the light
 	* @param lightShader - The shader used to draw the actual light
 	*/
 	void draw(Shader& shader, Shader& lightShader);
+
 	/**
-	* @return the reference to the position of the light
-	*/
+	 * @brief Get the reference to the position of the light
+	 * 
+	 * @return glm::vec3& 
+	 */
 	glm::vec3& getPosition();
+
 	/**
-	* @return the reference to the color of the light
-	*/
+	 * @brief Get the reference to the color of the light
+	 * 
+	 * @return glm::vec3& 
+	 */
 	glm::vec3& getColor();
+
 	/**
-	* @return the reference to the boolean indicating if the light is active or not
-	*/
+	 * @brief Get the reference to the boolean indicating if the light is active or not
+	 * 
+	 * @return true If the light should be drawn
+	 * @return false If the light should not be drawn
+	 */
 	bool& getActive();
+
 	/**
-	* Pure virtual method destined to be overriden by children classes
+	* @brief Pure virtual method destined to be overriden by children classes
 	* Sets up the mesh of the light by filling it's vertices and/or indices vector(s)
 	*/
 	virtual void setupMesh() = 0;
+	
 	/**
-	* Pure virtual method destined to be overriden by children classes
+	* @brief Pure virtual method destined to be overriden by children classes
+	*
 	* @param shader - The shader used to draw the objects influenced by the light
 	* Sets the uniforms of the shader according to light's properties
 	*/
 	virtual void setUniforms(Shader& shader) = 0;
 
 	/**
-	* @return the name of the light, used for Imgui
-	*/
+	 * @brief Get the name of the class
+	 * 
+	 * @return std::string 
+	 */
 	virtual std::string getClassName() {
 		return "Light";
 	}
 
 	/**
-	* Pure virtual method destined to be overriden by children classes
+	* @brief Pure virtual method destined to be overriden by children classes
+	*
 	* @param shader - The shader used to draw the objects influenced by the light
 	* Resets the light uniforms in the shader so that it does not affect objects anymore
 	*/
 	virtual void disableLight(Shader& shader) = 0;
+	
 	/**
-	* Pure virtual method destined to be overriden by children classes
+	* @brief Pure virtual method destined to be overriden by children classes
 	* tells if the light has a position or not
+	* 
+	* @return true If the light has a position
+	* @return false If the light does not have a position (ex: Directional Light)
 	*/
 	virtual const bool hasPosition() = 0;
+
+	/**
+	 * @brief Get the Options of the Light
+	 * 
+	 * @return std::vector<Triple<std::string, std::string, float&>> 
+	 */
 	virtual std::vector<Triple<std::string, std::string, float&>> getOptions() = 0;
 	//ID if the light
 	int lightID;

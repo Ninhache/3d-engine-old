@@ -4,7 +4,8 @@
 
 int DirectionalLight::dirID = 0;
 
-DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 color, float specular, float ambiant) : Light(color) {
+DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 color, float specular, float ambiant) : Light(color)
+{
     this->m_specularStr = specular;
     this->m_ambiantStr = ambiant;
     this->lightDir = direction;
@@ -12,25 +13,28 @@ DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 color, float s
     this->setupMesh();
 }
 
-void DirectionalLight::setupMesh() {
-    //Directional light does not have a mesh
+void DirectionalLight::setupMesh()
+{
+    // Directional light does not have a mesh
 }
 
-std::vector<Triple<std::string, std::string, float&>> DirectionalLight::getOptions() {
-    
-    static std::vector<Triple<std::string, std::string, float&>> options{
-        Triple<std::string, std::string, float&>("specular strength", "specular strength helper", this->m_specularStr),
-        Triple<std::string, std::string, float&>("ambiant strength", "ambiant strength helper", this->m_ambiantStr),
+std::vector<Triple<std::string, std::string, float &>> DirectionalLight::getOptions()
+{
+
+    static std::vector<Triple<std::string, std::string, float &>> options{
+        Triple<std::string, std::string, float &>("specular strength", "specular strength helper", this->m_specularStr),
+        Triple<std::string, std::string, float &>("ambiant strength", "ambiant strength helper", this->m_ambiantStr),
     };
 
     return options;
 }
 
-void DirectionalLight::setUniforms(Shader& shader) {
+void DirectionalLight::setUniforms(Shader &shader)
+{
     shader.use();
 
     std::string currentID = std::to_string(this->lightID);
-    
+
     std::string lightDir = "dLight[" + currentID + "].lightDir";
     std::string color = "dLight[" + currentID + "].lightColor";
 
@@ -38,7 +42,7 @@ void DirectionalLight::setUniforms(Shader& shader) {
     std::string ambiantStr = "dLight[" + currentID + "].ambiantStr";
 
     std::string active = "dLight[" + currentID + "].activeLight";
-    
+
     shader.setVec3(color, this->color);
     shader.setVec3(lightDir, this->lightDir);
 
@@ -47,7 +51,8 @@ void DirectionalLight::setUniforms(Shader& shader) {
     shader.setBool(active, this->activated);
 }
 
-void DirectionalLight::disableLight(Shader& shader) {
+void DirectionalLight::disableLight(Shader &shader)
+{
     shader.use();
     std::string currentID = std::to_string(this->lightID);
     std::string active = "dLight[" + currentID + "].activeLight";
