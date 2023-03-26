@@ -1,0 +1,63 @@
+\hypertarget{gui_8h_source}{}\doxysection{gui.\+h}
+\label{gui_8h_source}\index{src/headers/gui.h@{src/headers/gui.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GUI\_HEADER\_FILE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GUI\_HEADER\_FILE}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <imgui/imgui.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <imgui/imgui\_impl\_glfw.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <imgui/imgui\_impl\_opengl3.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene}{Scene}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_default_gui}{DefaultGui}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_default_gui}{DefaultGui}}(\textcolor{keywordtype}{bool}\ show\ =\ \textcolor{keyword}{false},\ std::vector<DefaultGui*>\ list\ =\ \{\});}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ init(GLFWwindow*\ window);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_default_gui_ae2b2fbbad98f2a336af74796b2c0b81a}{closeLibrary}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_default_gui_a1159f5c88b19936809031d9e36661fe9}{render}}(\mbox{\hyperlink{class_scene}{Scene}}*);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isShowing()\ \{\ \textcolor{keywordflow}{return}\ this-\/>show;\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<DefaultGui*>\ uiList;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ show;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_user_parameters}{UserParameters}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_default_gui}{DefaultGui}}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_user_parameters}{UserParameters}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}{render}}(\mbox{\hyperlink{class_scene}{Scene}}*);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawLightPositionsSlider(\mbox{\hyperlink{class_light}{Light}}*);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawModelPositionsSlider(\mbox{\hyperlink{class_model}{Model}}*);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawSelectedLightOptions(\mbox{\hyperlink{class_light}{Light}}*);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawLightHeader(\mbox{\hyperlink{class_scene}{Scene}}*\ scene);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawModelHeader(\mbox{\hyperlink{class_scene}{Scene}}*\ scene);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawEffectsHeader(\mbox{\hyperlink{class_scene}{Scene}}*\ scene);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ drawSelectedModelOptions(\mbox{\hyperlink{class_model}{Model}}*\ model);}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene_parameters}{SceneParameters}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_default_gui}{DefaultGui}}\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_scene_parameters}{SceneParameters}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_parameters_a8afb42c2a6d8d7e0ee6ae35b2324d353}{render}}(\mbox{\hyperlink{class_scene}{Scene}}*);}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GUI\_HEADER\_FILE}}
+
+\end{DoxyCode}

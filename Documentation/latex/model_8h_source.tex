@@ -1,0 +1,68 @@
+\hypertarget{model_8h_source}{}\doxysection{model.\+h}
+\label{model_8h_source}\index{src/headers/model.h@{src/headers/model.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OBJECT\_MODEL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OBJECT\_MODEL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <assimp/Importer.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <assimp/scene.h>}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <assimp/postprocess.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}mesh.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}vector"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}iostream"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_model}{Model}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_model}{Model}}(glm::vec3\ position,\ \textcolor{keywordtype}{float}\ scale,\ \textcolor{keywordtype}{bool}\ flipTextures);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_model}{Model}}(\textcolor{keyword}{const}\ std::string\&\ path,\ glm::vec3\ position\ =\ glm::vec3(0.0f),\ \textcolor{keywordtype}{float}\ scale\ =\ 1.0f,\ \textcolor{keywordtype}{bool}\ flipTextures\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}{loadModel}}(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a74ab06cc2269ce4ac0fd88f1d2b8374e}{parseNodes}}(aiNode*\ node,\ \textcolor{keyword}{const}\ aiScene*\ scene,\ \mbox{\hyperlink{class_model}{Model}}\&\ parent,\ aiMatrix4x4\&\ transform);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_mesh}{Mesh}}\ \mbox{\hyperlink{class_model_a15c18d53e0dba11a12474cdcdafb18db}{createMesh}}(aiMesh*\ mesh,\ \textcolor{keyword}{const}\ aiScene*\ scene,\ aiMatrix4x4\&\ localTransform);}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a5cd069fb85bb68b54c476bd799c4d8d7}{draw}}(\mbox{\hyperlink{class_shader}{Shader}}\&\ shader);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_af328c764e2b980c79675b3e31ebb5d62}{addMesh}}(\mbox{\hyperlink{class_mesh}{Mesh}}\ mesh);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::vector<Mesh>\&\ \mbox{\hyperlink{class_model_acaf0e70d4658838e151e911add969656}{getMeshes}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \ \ \ \ std::vector<Model>\&\ \mbox{\hyperlink{class_model_a1fe9ac6809545b00da9b7cfa71da3513}{getChildren}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_model}{Model}}\&\ \mbox{\hyperlink{class_model_a33a9f45caeb317c0a1617b29b7b5624e}{addChild}}(\mbox{\hyperlink{class_model}{Model}}\&\ child);}
+\DoxyCodeLine{00096\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a5db363e18f897b463b1778b898230cae}{setScale}}(\textcolor{keywordtype}{float}\ scale);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{float}\&\ \mbox{\hyperlink{class_model_a9c3671788f40210019e3d808aa5e2bf1}{getScale}}();}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_afff77219cab057b44bbb2f12b582f88d}{setPosition}}(glm::vec3\ position);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ glm::vec3\&\ \mbox{\hyperlink{class_model_ac5a94209ddf917b463de77b1153733f9}{getPosition}}();}
+\DoxyCodeLine{00130\ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{bool}\&\ \mbox{\hyperlink{class_model_acd656394edfa6d59c80c53c6ae6a321e}{isOutlined}}();}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_model_a809d7ea19090a4eb2fb8421bdc1469b4}{setOutlined}}(\textcolor{keywordtype}{bool}\ outline);}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{bool}\&\ \mbox{\hyperlink{class_model_a05b63338e7cd3a5a31f36d060de92698}{getActive}}();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00155\ \ \ \ \ std::string\ m\_directory;}
+\DoxyCodeLine{00156\ \ \ \ \ std::vector<Mesh>\ m\_meshes;}
+\DoxyCodeLine{00157\ \ \ \ \ std::vector<Model>\ m\_children;}
+\DoxyCodeLine{00158\ \ \ \ \ std::vector<Texture>\ loadMaterial(aiMaterial*\ material,\ aiTextureType\ type);}
+\DoxyCodeLine{00159\ \ \ \ \ glm::vec3\ position;}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{float}\ scale;}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{bool}\ outlined\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{comment}{//User\ must\ indicate\ wether\ or\ not\ a\ texture\ should\ be\ flipped}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ flipTextures;}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{bool}\ activated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ OBJECT\_MODEL\_H}}
+
+\end{DoxyCode}

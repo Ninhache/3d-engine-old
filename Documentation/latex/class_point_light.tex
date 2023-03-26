@@ -1,0 +1,295 @@
+\hypertarget{class_point_light}{}\doxysection{Point\+Light Class Reference}
+\label{class_point_light}\index{PointLight@{PointLight}}
+Inheritance diagram for Point\+Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_point_light}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_point_light_a7b3544c171e043d1cbc8fa8d1b423bec}{Point\+Light}} (glm\+::vec3 position, glm\+::vec3 color=glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f), float scale=1.\+0f, float specular=0.\+5, float ambiant=0.\+1, float constant=1.\+0f, float linear=0.\+09f, float quadratic=0.\+032)
+\begin{DoxyCompactList}\small\item\em Construct a new Point \mbox{\hyperlink{class_light}{Light}} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_point_light_ab3ba41157df318e10087743a7561569d}{setup\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the vertices and indices for the light object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_point_light_ae42cf287036fc2dac25f04c0240f3280}{set\+Uniforms}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Sets the uniforms of the shader given in parameter with the values needed for light calulations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_point_light_a47253af909541d13198e59f6f43e2f90}{set\+Scale}} (float scale)
+\begin{DoxyCompactList}\small\item\em Sets the Scale of the light. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_point_light_a839253b1bb22b506f7b5dcd8bf1c1ea2}{get\+Class\+Name}} () override
+\begin{DoxyCompactList}\small\item\em Get the name of the class. \end{DoxyCompactList}\item 
+const bool \mbox{\hyperlink{class_point_light_a78945d6a9a80d01266a63bb0c8348feb}{has\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Tells if the light has a position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_point_light_a630d2ea60df4ea933a44a09e13dc0221}{disable\+Light}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Resets the light uniforms in the shader so that it does not affect objects anymore. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::string, std\+::string, float \& $>$ $>$ \mbox{\hyperlink{class_point_light_a0f0f3ebe9c48ea8a3727d16f188baf56}{get\+Options}} ()
+\begin{DoxyCompactList}\small\item\em Get the Options for the light. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_light}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_light_a7e666f6129accc1c1365c76f0890ab19}{Light}} (glm\+::vec3 position, glm\+::vec3 color=glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f), bool activated=true)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_light}{Light}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_light_a47692ecf5400ec02496d008820e4a3c3}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, \mbox{\hyperlink{class_shader}{Shader}} \&light\+Shader)
+\item 
+glm\+::vec3 \& \mbox{\hyperlink{class_light_ac71d2b851db05d50fb6791420c8f9039}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the position of the light. \end{DoxyCompactList}\item 
+glm\+::vec3 \& \mbox{\hyperlink{class_light_a9fd3825dbab37160a4c2fe12d34ab301}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the color of the light. \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{class_light_a79d188009b9960693c476680ed015f04}{get\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the boolean indicating if the light is active or not. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}{setup\+Mesh}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes Sets up the mesh of the light by filling it\textquotesingle{}s vertices and/or indices vector(s) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a0535b7430500d8822b543a19558b4077}{set\+Uniforms}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_light_abe4882d9876f72b891f7fccf53c8ac87}{get\+Class\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the name of the class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a4db6821975ab0e7991f41dfbf738b6b9}{disable\+Light}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes. \end{DoxyCompactList}\item 
+virtual const bool \mbox{\hyperlink{class_light_abd26f9caa02b59160ebea7050f073ba8}{has\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes tells if the light has a position or not. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::string, std\+::string, float \& $>$ $>$ \mbox{\hyperlink{class_light_aa47a76e237480fe627609539cee567c3}{get\+Options}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Options of the \mbox{\hyperlink{class_light}{Light}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
+\item 
+\mbox{\Hypertarget{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}\label{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}} 
+{\bfseries Mesh} (std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ vertices, std\+::vector$<$ uint32\+\_\+t $>$ indices, std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ textures, ai\+Matrix4x4 local\+Transform, glm\+::vec3 position)
+\item 
+void \mbox{\hyperlink{class_mesh_ab740084f6f669a48e44eee48251ffa7b}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, float scale)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{get\+Vertices}} ()
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{get\+Indices}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \& \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{get\+Textures}} ()
+\item 
+void \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{set\+Position}} (glm\+::vec3 position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_point_light_a922a9c0c3eab612d54e258e0c74d11ce}\label{class_point_light_a922a9c0c3eab612d54e258e0c74d11ce}} 
+static int {\bfseries point\+ID} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{class_light}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_a3b658dff0d016831b91f434627db1114}\label{class_light_a3b658dff0d016831b91f434627db1114}} 
+int {\bfseries light\+ID}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}\label{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}} 
+void {\bfseries configure\+Buffers} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_light}{Light}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_a89bffe071ec6431a21c5b54021fe08d6}\label{class_light_a89bffe071ec6431a21c5b54021fe08d6}} 
+glm\+::vec3 {\bfseries position} = glm\+::vec3(1.\+8f, 0.\+2f, 0.\+3f)
+\item 
+\mbox{\Hypertarget{class_light_a91d73d70b4bd4beb402c0f16dab19a25}\label{class_light_a91d73d70b4bd4beb402c0f16dab19a25}} 
+glm\+::vec3 {\bfseries color}
+\item 
+\mbox{\Hypertarget{class_light_a21acf55e4d8bd198dea1817e5ed45541}\label{class_light_a21acf55e4d8bd198dea1817e5ed45541}} 
+float {\bfseries scale}
+\item 
+\mbox{\Hypertarget{class_light_a4bdc117e7eea406ad444430884baed4c}\label{class_light_a4bdc117e7eea406ad444430884baed4c}} 
+bool {\bfseries activated} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a1033372912f651c12204228dc53a84c0}\label{class_mesh_a1033372912f651c12204228dc53a84c0}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VAO}
+\item 
+\mbox{\Hypertarget{class_mesh_a00f16d66431bc545e793d905b8e4c004}\label{class_mesh_a00f16d66431bc545e793d905b8e4c004}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VBO}
+\item 
+\mbox{\Hypertarget{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}\label{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+EBO}
+\item 
+\mbox{\Hypertarget{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}\label{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ {\bfseries m\+\_\+vertices}
+\item 
+\mbox{\Hypertarget{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}\label{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries m\+\_\+indices}
+\item 
+\mbox{\Hypertarget{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}\label{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}} 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ {\bfseries m\+\_\+textures}
+\item 
+\mbox{\Hypertarget{class_mesh_af952c23d8a9e04918ebe1740964126d3}\label{class_mesh_af952c23d8a9e04918ebe1740964126d3}} 
+ai\+Matrix4x4 {\bfseries local\+Transform}
+\item 
+\mbox{\Hypertarget{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}\label{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}} 
+glm\+::vec3 {\bfseries position}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_point_light_a7b3544c171e043d1cbc8fa8d1b423bec}\label{class_point_light_a7b3544c171e043d1cbc8fa8d1b423bec}} 
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\index{PointLight@{PointLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{PointLight()}{PointLight()}}
+{\footnotesize\ttfamily Point\+Light\+::\+Point\+Light (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position,  }\item[{glm\+::vec3}]{color = {\ttfamily glm\+:\+:vec3(1.0f,~1.0f,~1.0f)},  }\item[{float}]{scale = {\ttfamily 1.0f},  }\item[{float}]{specular = {\ttfamily 0.5},  }\item[{float}]{ambiant = {\ttfamily 0.1},  }\item[{float}]{constant = {\ttfamily 1.0f},  }\item[{float}]{linear = {\ttfamily 0.09f},  }\item[{float}]{quadratic = {\ttfamily 0.032} }\end{DoxyParamCaption})}
+
+
+
+Construct a new Point \mbox{\hyperlink{class_light}{Light}} object. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_light}{Light}} header for detailed description of the ambiant and specular
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the light in the scene \\
+\hline
+{\em color} & The color of the light \\
+\hline
+{\em scale} & The scale factor of the light \\
+\hline
+{\em specular} & The specular strength of the light \\
+\hline
+{\em ambiant} & The ambiant strength of the light \\
+\hline
+{\em constant} & The constant used in light calculations, should stay 1.\+0 \\
+\hline
+{\em linear} & Reduces the intensity of the light linearly over distance \\
+\hline
+{\em quadratic} & Reduces the intensity of the light quadratically over distance \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_point_light_a630d2ea60df4ea933a44a09e13dc0221}\label{class_point_light_a630d2ea60df4ea933a44a09e13dc0221}} 
+\index{PointLight@{PointLight}!disableLight@{disableLight}}
+\index{disableLight@{disableLight}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{disableLight()}{disableLight()}}
+{\footnotesize\ttfamily void Point\+Light\+::disable\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Resets the light uniforms in the shader so that it does not affect objects anymore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ The shader used to draw the objects influenced by the light \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_light_a4db6821975ab0e7991f41dfbf738b6b9}{Light}}.
+
+\mbox{\Hypertarget{class_point_light_a839253b1bb22b506f7b5dcd8bf1c1ea2}\label{class_point_light_a839253b1bb22b506f7b5dcd8bf1c1ea2}} 
+\index{PointLight@{PointLight}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getClassName()}{getClassName()}}
+{\footnotesize\ttfamily std\+::string Point\+Light\+::get\+Class\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the class. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_light_abe4882d9876f72b891f7fccf53c8ac87}{Light}}.
+
+\mbox{\Hypertarget{class_point_light_a0f0f3ebe9c48ea8a3727d16f188baf56}\label{class_point_light_a0f0f3ebe9c48ea8a3727d16f188baf56}} 
+\index{PointLight@{PointLight}!getOptions@{getOptions}}
+\index{getOptions@{getOptions}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{getOptions()}{getOptions()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::string, std\+::string, float \& $>$ $>$ Point\+Light\+::get\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Options for the light. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Triple$<$std\+::string, std\+::string, float\&$>$$>$ 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_light_aa47a76e237480fe627609539cee567c3}{Light}}.
+
+\mbox{\Hypertarget{class_point_light_a78945d6a9a80d01266a63bb0c8348feb}\label{class_point_light_a78945d6a9a80d01266a63bb0c8348feb}} 
+\index{PointLight@{PointLight}!hasPosition@{hasPosition}}
+\index{hasPosition@{hasPosition}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{hasPosition()}{hasPosition()}}
+{\footnotesize\ttfamily const bool Point\+Light\+::has\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Tells if the light has a position. 
+
+\begin{DoxyReturn}{Returns}
+true If the light has a position 
+
+false If the light does not have a position (ex\+: Directional \mbox{\hyperlink{class_light}{Light}}) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_light_abd26f9caa02b59160ebea7050f073ba8}{Light}}.
+
+\mbox{\Hypertarget{class_point_light_a47253af909541d13198e59f6f43e2f90}\label{class_point_light_a47253af909541d13198e59f6f43e2f90}} 
+\index{PointLight@{PointLight}!setScale@{setScale}}
+\index{setScale@{setScale}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily void Point\+Light\+::set\+Scale (\begin{DoxyParamCaption}\item[{float}]{scale }\end{DoxyParamCaption})}
+
+
+
+Sets the Scale of the light. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_point_light_ae42cf287036fc2dac25f04c0240f3280}\label{class_point_light_ae42cf287036fc2dac25f04c0240f3280}} 
+\index{PointLight@{PointLight}!setUniforms@{setUniforms}}
+\index{setUniforms@{setUniforms}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setUniforms()}{setUniforms()}}
+{\footnotesize\ttfamily void Point\+Light\+::set\+Uniforms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the uniforms of the shader given in parameter with the values needed for light calulations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader used for light calculations \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_light_a0535b7430500d8822b543a19558b4077}{Light}}.
+
+\mbox{\Hypertarget{class_point_light_ab3ba41157df318e10087743a7561569d}\label{class_point_light_ab3ba41157df318e10087743a7561569d}} 
+\index{PointLight@{PointLight}!setupMesh@{setupMesh}}
+\index{setupMesh@{setupMesh}!PointLight@{PointLight}}
+\doxysubsubsection{\texorpdfstring{setupMesh()}{setupMesh()}}
+{\footnotesize\ttfamily void Point\+Light\+::setup\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets up the vertices and indices for the light object. 
+
+Creates a sphere \mbox{\hyperlink{class_model}{Model}} retrieve is vertices and indices 
+
+Implements \mbox{\hyperlink{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}{Light}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/point\+Light.\+h\item 
+src/meshes/point\+Light.\+cpp\end{DoxyCompactItemize}

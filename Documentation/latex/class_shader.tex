@@ -1,0 +1,100 @@
+\hypertarget{class_shader}{}\doxysection{Shader Class Reference}
+\label{class_shader}\index{Shader@{Shader}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shader_a3e135bbf914b087a939114d79c10d283}{Shader}} (const char $\ast$vertex\+Path, const char $\ast$fragment\+Path)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_shader}{Shader}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a870fa9f13d69e558815d6fd351a469dc}{use}} ()
+\begin{DoxyCompactList}\small\item\em Tells opengl to use this \mbox{\hyperlink{class_shader}{Shader}} as the program This needs to be called when setting up uniforms or trying to render with this shader. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a00e659395065de8f528e628d58622b9f}{set\+Bool}} (const std\+::string \&name, const bool value) const
+\begin{DoxyCompactList}\small\item\em The functions below are used to set uniforms to the shader. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_shader_ad4e6d63d6e4c881c913b4f65f96f305b}\label{class_shader_ad4e6d63d6e4c881c913b4f65f96f305b}} 
+void {\bfseries set\+Int} (const std\+::string \&name, const int value) const
+\item 
+\mbox{\Hypertarget{class_shader_afe3ce186066ae97c982854005bc28394}\label{class_shader_afe3ce186066ae97c982854005bc28394}} 
+void {\bfseries set\+Float} (const std\+::string \&name, const float value) const
+\item 
+\mbox{\Hypertarget{class_shader_aa03a034e7b966ab6b74d8a4847bb4373}\label{class_shader_aa03a034e7b966ab6b74d8a4847bb4373}} 
+void {\bfseries set\+Matrix4} (const std\+::string \&name, const glm\+::mat4 \&value) const
+\item 
+\mbox{\Hypertarget{class_shader_a53dcb978d6256ddcb175a76bd51a31b3}\label{class_shader_a53dcb978d6256ddcb175a76bd51a31b3}} 
+void {\bfseries set\+Matrix3} (const std\+::string \&name, const glm\+::mat3 \&value) const
+\item 
+\mbox{\Hypertarget{class_shader_a7ac9f54e36cfb40538663c571891ebce}\label{class_shader_a7ac9f54e36cfb40538663c571891ebce}} 
+void {\bfseries set\+Vec3} (const std\+::string \&, const glm\+::vec3 \&value) const
+\item 
+\mbox{\Hypertarget{class_shader_afd4d41322a1cdd1d5155bf124d19debf}\label{class_shader_afd4d41322a1cdd1d5155bf124d19debf}} 
+void {\bfseries set\+Vec2} (const std\+::string \&name, const glm\+::vec2 \&value) const
+\item 
+int \mbox{\hyperlink{class_shader_a3d385024931adccd0f455f7f764465c2}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get the Id of the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_shader_a3e135bbf914b087a939114d79c10d283}\label{class_shader_a3e135bbf914b087a939114d79c10d283}} 
+\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}}
+{\footnotesize\ttfamily Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{const char $\ast$}]{vertex\+Path,  }\item[{const char $\ast$}]{fragment\+Path }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_shader}{Shader}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Path} & The path to the vertex shader \\
+\hline
+{\em fragment\+Path} & The path to the fragment shader \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shader_a3d385024931adccd0f455f7f764465c2}\label{class_shader_a3d385024931adccd0f455f7f764465c2}} 
+\index{Shader@{Shader}!getId@{getId}}
+\index{getId@{getId}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Shader\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Id of the shader program. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_shader_a00e659395065de8f528e628d58622b9f}\label{class_shader_a00e659395065de8f528e628d58622b9f}} 
+\index{Shader@{Shader}!setBool@{setBool}}
+\index{setBool@{setBool}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setBool()}{setBool()}}
+{\footnotesize\ttfamily void Shader\+::set\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const bool}]{value }\end{DoxyParamCaption}) const}
+
+
+
+The functions below are used to set uniforms to the shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the uniform \\
+\hline
+{\em value} & The value of the uniform \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_shader_a870fa9f13d69e558815d6fd351a469dc}\label{class_shader_a870fa9f13d69e558815d6fd351a469dc}} 
+\index{Shader@{Shader}!use@{use}}
+\index{use@{use}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{use()}{use()}}
+{\footnotesize\ttfamily void Shader\+::use (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tells opengl to use this \mbox{\hyperlink{class_shader}{Shader}} as the program This needs to be called when setting up uniforms or trying to render with this shader. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/shader.\+h\item 
+src/shader.\+cpp\end{DoxyCompactItemize}

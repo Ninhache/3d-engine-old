@@ -1,0 +1,314 @@
+\hypertarget{class_model}{}\doxysection{Model Class Reference}
+\label{class_model}\index{Model@{Model}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_a08a110588dc04a92ee08c6b60f3d43d2}{Model}} (glm\+::vec3 position, float scale, bool flip\+Textures)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_model}{Model}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_model_a8df68a82a6b70a6dd7b3ad89a52cd3e5}{Model}} (const std\+::string \&path, glm\+::vec3 position=glm\+::vec3(0.\+0f), float scale=1.\+0f, bool flip\+Textures=true)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_model}{Model}} object and calls the \mbox{\hyperlink{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}{load\+Model()}} function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}{load\+Model}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Loads a model from path using assimp and call the parse\+Node() function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a74ab06cc2269ce4ac0fd88f1d2b8374e}{parse\+Nodes}} (ai\+Node $\ast$node, const ai\+Scene $\ast$scene, \mbox{\hyperlink{class_model}{Model}} \&parent, ai\+Matrix4x4 \&transform)
+\begin{DoxyCompactList}\small\item\em parses the nodes created by assimp \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_mesh}{Mesh}} \mbox{\hyperlink{class_model_a15c18d53e0dba11a12474cdcdafb18db}{create\+Mesh}} (ai\+Mesh $\ast$mesh, const ai\+Scene $\ast$scene, ai\+Matrix4x4 \&local\+Transform)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_mesh}{Mesh}} object which is a part of the \mbox{\hyperlink{class_model}{Model}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_model_a5cd069fb85bb68b54c476bd799c4d8d7}\label{class_model_a5cd069fb85bb68b54c476bd799c4d8d7}} 
+void {\bfseries draw} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Call each mesh in m\+\_\+children and each model in m\+\_\+meshes and call their draw function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_af328c764e2b980c79675b3e31ebb5d62}{add\+Mesh}} (\mbox{\hyperlink{class_mesh}{Mesh}} mesh)
+\begin{DoxyCompactList}\small\item\em Adds a mesh to the model object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \& \mbox{\hyperlink{class_model_acaf0e70d4658838e151e911add969656}{get\+Meshes}} ()
+\begin{DoxyCompactList}\small\item\em Get the Meshes object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_model}{Model}} $>$ \& \mbox{\hyperlink{class_model_a1fe9ac6809545b00da9b7cfa71da3513}{get\+Children}} ()
+\begin{DoxyCompactList}\small\item\em Get the Children object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_model}{Model}} \& \mbox{\hyperlink{class_model_a33a9f45caeb317c0a1617b29b7b5624e}{add\+Child}} (\mbox{\hyperlink{class_model}{Model}} \&child)
+\begin{DoxyCompactList}\small\item\em Adds specified model as a child of the model calling it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a5db363e18f897b463b1778b898230cae}{set\+Scale}} (float scale)
+\begin{DoxyCompactList}\small\item\em Set the Scale object. \end{DoxyCompactList}\item 
+float \& \mbox{\hyperlink{class_model_a9c3671788f40210019e3d808aa5e2bf1}{get\+Scale}} ()
+\begin{DoxyCompactList}\small\item\em Get the Scale object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_afff77219cab057b44bbb2f12b582f88d}{set\+Position}} (glm\+::vec3 position)
+\begin{DoxyCompactList}\small\item\em Set the Position object. \end{DoxyCompactList}\item 
+glm\+::vec3 \& \mbox{\hyperlink{class_model_ac5a94209ddf917b463de77b1153733f9}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Get the Position object. \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{class_model_acd656394edfa6d59c80c53c6ae6a321e}{is\+Outlined}} ()
+\begin{DoxyCompactList}\small\item\em Tells if the model is outlined. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_model_a809d7ea19090a4eb2fb8421bdc1469b4}{set\+Outlined}} (bool outline)
+\begin{DoxyCompactList}\small\item\em Set the Outlined object. \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{class_model_a05b63338e7cd3a5a31f36d060de92698}{get\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Tells if the model is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_model_a08a110588dc04a92ee08c6b60f3d43d2}\label{class_model_a08a110588dc04a92ee08c6b60f3d43d2}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position,  }\item[{float}]{scale,  }\item[{bool}]{flip\+Textures }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_model}{Model}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & Position of the model \\
+\hline
+{\em scale} & Scale of the model \\
+\hline
+{\em flip\+Textures} & True if the textures need to be flipped when loaded with stb \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_a8df68a82a6b70a6dd7b3ad89a52cd3e5}\label{class_model_a8df68a82a6b70a6dd7b3ad89a52cd3e5}} 
+\index{Model@{Model}!Model@{Model}}
+\index{Model@{Model}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Model\+::\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{glm\+::vec3}]{position = {\ttfamily glm\+:\+:vec3(0.0f)},  }\item[{float}]{scale = {\ttfamily 1.0f},  }\item[{bool}]{flip\+Textures = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_model}{Model}} object and calls the \mbox{\hyperlink{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}{load\+Model()}} function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path of the model \\
+\hline
+{\em position} & position of the model, default 0.\+0 \\
+\hline
+{\em scale} & Scale of the model, default 1.\+0 \\
+\hline
+{\em flip\+Textures} & True if the textures need to be flipped when loaded with stb \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_model_a33a9f45caeb317c0a1617b29b7b5624e}\label{class_model_a33a9f45caeb317c0a1617b29b7b5624e}} 
+\index{Model@{Model}!addChild@{addChild}}
+\index{addChild@{addChild}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{addChild()}{addChild()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_model}{Model}} \& Model\+::add\+Child (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} \&}]{child }\end{DoxyParamCaption})}
+
+
+
+Adds specified model as a child of the model calling it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em child} & The model to be added as child \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_model}{Model}}\& The added model 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_af328c764e2b980c79675b3e31ebb5d62}\label{class_model_af328c764e2b980c79675b3e31ebb5d62}} 
+\index{Model@{Model}!addMesh@{addMesh}}
+\index{addMesh@{addMesh}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{addMesh()}{addMesh()}}
+{\footnotesize\ttfamily void Model\+::add\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_mesh}{Mesh}}}]{mesh }\end{DoxyParamCaption})}
+
+
+
+Adds a mesh to the model object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & The mesh to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_a15c18d53e0dba11a12474cdcdafb18db}\label{class_model_a15c18d53e0dba11a12474cdcdafb18db}} 
+\index{Model@{Model}!createMesh@{createMesh}}
+\index{createMesh@{createMesh}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{createMesh()}{createMesh()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_mesh}{Mesh}} Model\+::create\+Mesh (\begin{DoxyParamCaption}\item[{ai\+Mesh $\ast$}]{mesh,  }\item[{const ai\+Scene $\ast$}]{scene,  }\item[{ai\+Matrix4x4 \&}]{local\+Transform }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_mesh}{Mesh}} object which is a part of the \mbox{\hyperlink{class_model}{Model}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & assimp mesh object, used to retrieve informations such as vertices,indices,normals and texture coordinates \\
+\hline
+{\em scene} & used to get materials \\
+\hline
+{\em local\+Transform} & transformation matrix which is used to get the mesh position relative to parent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the created mesh 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_a05b63338e7cd3a5a31f36d060de92698}\label{class_model_a05b63338e7cd3a5a31f36d060de92698}} 
+\index{Model@{Model}!getActive@{getActive}}
+\index{getActive@{getActive}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getActive()}{getActive()}}
+{\footnotesize\ttfamily bool \& Model\+::get\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tells if the model is active. 
+
+\begin{DoxyReturn}{Returns}
+true If the model is the model should be drawn 
+
+false If the model is the model should not be drawn 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_a1fe9ac6809545b00da9b7cfa71da3513}\label{class_model_a1fe9ac6809545b00da9b7cfa71da3513}} 
+\index{Model@{Model}!getChildren@{getChildren}}
+\index{getChildren@{getChildren}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getChildren()}{getChildren()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_model}{Model}} $>$ \& Model\+::get\+Children (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Children object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Model$>$\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_acaf0e70d4658838e151e911add969656}\label{class_model_acaf0e70d4658838e151e911add969656}} 
+\index{Model@{Model}!getMeshes@{getMeshes}}
+\index{getMeshes@{getMeshes}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getMeshes()}{getMeshes()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \& Model\+::get\+Meshes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Meshes object. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Mesh$>$\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_ac5a94209ddf917b463de77b1153733f9}\label{class_model_ac5a94209ddf917b463de77b1153733f9}} 
+\index{Model@{Model}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 \& Model\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Position object. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_a9c3671788f40210019e3d808aa5e2bf1}\label{class_model_a9c3671788f40210019e3d808aa5e2bf1}} 
+\index{Model@{Model}!getScale@{getScale}}
+\index{getScale@{getScale}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily float \& Model\+::get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Scale object. 
+
+\begin{DoxyReturn}{Returns}
+float\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_acd656394edfa6d59c80c53c6ae6a321e}\label{class_model_acd656394edfa6d59c80c53c6ae6a321e}} 
+\index{Model@{Model}!isOutlined@{isOutlined}}
+\index{isOutlined@{isOutlined}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{isOutlined()}{isOutlined()}}
+{\footnotesize\ttfamily bool \& Model\+::is\+Outlined (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tells if the model is outlined. 
+
+\begin{DoxyReturn}{Returns}
+true If the model should be outlined 
+
+false If the model should not be outlined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}\label{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}} 
+\index{Model@{Model}!loadModel@{loadModel}}
+\index{loadModel@{loadModel}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{loadModel()}{loadModel()}}
+{\footnotesize\ttfamily void Model\+::load\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Loads a model from path using assimp and call the parse\+Node() function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Path} & of the model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_a74ab06cc2269ce4ac0fd88f1d2b8374e}\label{class_model_a74ab06cc2269ce4ac0fd88f1d2b8374e}} 
+\index{Model@{Model}!parseNodes@{parseNodes}}
+\index{parseNodes@{parseNodes}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{parseNodes()}{parseNodes()}}
+{\footnotesize\ttfamily void Model\+::parse\+Nodes (\begin{DoxyParamCaption}\item[{ai\+Node $\ast$}]{node,  }\item[{const ai\+Scene $\ast$}]{scene,  }\item[{\mbox{\hyperlink{class_model}{Model}} \&}]{parent,  }\item[{ai\+Matrix4x4 \&}]{transform }\end{DoxyParamCaption})}
+
+
+
+parses the nodes created by assimp 
+
+This is a recursive function, it parses all the nodes in the ai\+Scene wich containes zero or more Meshes. For each node, it creates and then add it as a child of the specified parent \mbox{\hyperlink{class_model}{Model}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & \\
+\hline
+{\em scene} & The ai\+Scene object containing the nodes data \\
+\hline
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_a809d7ea19090a4eb2fb8421bdc1469b4}\label{class_model_a809d7ea19090a4eb2fb8421bdc1469b4}} 
+\index{Model@{Model}!setOutlined@{setOutlined}}
+\index{setOutlined@{setOutlined}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setOutlined()}{setOutlined()}}
+{\footnotesize\ttfamily void Model\+::set\+Outlined (\begin{DoxyParamCaption}\item[{bool}]{outline }\end{DoxyParamCaption})}
+
+
+
+Set the Outlined object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outline} & The value to be set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_afff77219cab057b44bbb2f12b582f88d}\label{class_model_afff77219cab057b44bbb2f12b582f88d}} 
+\index{Model@{Model}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Model\+::set\+Position (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position }\end{DoxyParamCaption})}
+
+
+
+Set the Position object. 
+
+In addition of changing the model\textquotesingle{}s position, it parses all child models and call their \mbox{\hyperlink{class_model_afff77219cab057b44bbb2f12b582f88d}{set\+Position()}} function with the same value
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_model_a5db363e18f897b463b1778b898230cae}\label{class_model_a5db363e18f897b463b1778b898230cae}} 
+\index{Model@{Model}!setScale@{setScale}}
+\index{setScale@{setScale}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily void Model\+::set\+Scale (\begin{DoxyParamCaption}\item[{float}]{scale }\end{DoxyParamCaption})}
+
+
+
+Set the Scale object. 
+
+In addition of changing the model\textquotesingle{}s scale, it parses all child models and call their \mbox{\hyperlink{class_model_a5db363e18f897b463b1778b898230cae}{set\+Scale()}} function with the same value
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/model.\+h\item 
+src/model.\+cpp\end{DoxyCompactItemize}

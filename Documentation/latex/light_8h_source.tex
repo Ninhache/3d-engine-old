@@ -1,0 +1,56 @@
+\hypertarget{light_8h_source}{}\doxysection{light.\+h}
+\label{light_8h_source}\index{src/headers/light.h@{src/headers/light.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LIGHT\_CLASS\_HEADER}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LIGHT\_CLASS\_HEADER}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}mesh.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}triple.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_light}{Light}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_mesh}{Mesh}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_light}{Light}}(glm::vec3\ position,\ glm::vec3\ color\ =\ glm::vec3(1.0f,\ 1.0f,\ 1.0f),\ \textcolor{keywordtype}{bool}\ activated\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_a47692ecf5400ec02496d008820e4a3c3}{draw}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader,\ \mbox{\hyperlink{class_shader}{Shader}}\ \&lightShader);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ glm::vec3\ \&\mbox{\hyperlink{class_light_ac71d2b851db05d50fb6791420c8f9039}{getPosition}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00039\ \ \ \ \ glm::vec3\ \&\mbox{\hyperlink{class_light_a9fd3825dbab37160a4c2fe12d34ab301}{getColor}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \&\mbox{\hyperlink{class_light_a79d188009b9960693c476680ed015f04}{getActive}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}{setupMesh}}()\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_a0535b7430500d8822b543a19558b4077}{setUniforms}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader)\ =\ 0;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_light_abe4882d9876f72b891f7fccf53c8ac87}{getClassName}}()}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Light"{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_a4db6821975ab0e7991f41dfbf738b6b9}{disableLight}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader)\ =\ 0;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_light_abd26f9caa02b59160ebea7050f073ba8}{hasPosition}}()\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Triple<std::string,\ std::string,\ float\ \&>>\ \mbox{\hyperlink{class_light_aa47a76e237480fe627609539cee567c3}{getOptions}}()\ =\ 0;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ ID\ if\ the\ light}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ lightID;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//\ Default\ light\ position}}
+\DoxyCodeLine{00101\ \ \ \ \ glm::vec3\ position\ =\ glm::vec3(1.8f,\ 0.2f,\ 0.3f);}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Default\ light\ color}}
+\DoxyCodeLine{00103\ \ \ \ \ glm::vec3\ color;}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ Scale\ of\ the\ light}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{float}\ scale;}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ True\ the\ light\ is\ activated\ (drawn)}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{bool}\ activated\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LIGHT\_CLASS\_HEADER}}
+
+\end{DoxyCode}

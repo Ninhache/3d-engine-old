@@ -1,0 +1,132 @@
+\hypertarget{class_mesh}{}\doxysection{Mesh Class Reference}
+\label{class_mesh}\index{Mesh@{Mesh}}
+Inheritance diagram for Mesh\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_mesh}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
+\item 
+\mbox{\Hypertarget{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}\label{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}} 
+{\bfseries Mesh} (std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ vertices, std\+::vector$<$ uint32\+\_\+t $>$ indices, std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ textures, ai\+Matrix4x4 local\+Transform, glm\+::vec3 position)
+\item 
+void \mbox{\hyperlink{class_mesh_ab740084f6f669a48e44eee48251ffa7b}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, float scale)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{get\+Vertices}} ()
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{get\+Indices}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \& \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{get\+Textures}} ()
+\item 
+void \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{set\+Position}} (glm\+::vec3 position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}\label{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}} 
+void {\bfseries configure\+Buffers} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a1033372912f651c12204228dc53a84c0}\label{class_mesh_a1033372912f651c12204228dc53a84c0}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VAO}
+\item 
+\mbox{\Hypertarget{class_mesh_a00f16d66431bc545e793d905b8e4c004}\label{class_mesh_a00f16d66431bc545e793d905b8e4c004}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VBO}
+\item 
+\mbox{\Hypertarget{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}\label{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+EBO}
+\item 
+\mbox{\Hypertarget{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}\label{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ {\bfseries m\+\_\+vertices}
+\item 
+\mbox{\Hypertarget{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}\label{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries m\+\_\+indices}
+\item 
+\mbox{\Hypertarget{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}\label{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}} 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ {\bfseries m\+\_\+textures}
+\item 
+\mbox{\Hypertarget{class_mesh_af952c23d8a9e04918ebe1740964126d3}\label{class_mesh_af952c23d8a9e04918ebe1740964126d3}} 
+ai\+Matrix4x4 {\bfseries local\+Transform}
+\item 
+\mbox{\Hypertarget{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}\label{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}} 
+glm\+::vec3 {\bfseries position}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_mesh_a2af137f1571af89172b9c102302c416b}\label{class_mesh_a2af137f1571af89172b9c102302c416b}} 
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Mesh()}{Mesh()}}
+{\footnotesize\ttfamily Mesh\+::\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Empty constructor used when loading models 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mesh_ab740084f6f669a48e44eee48251ffa7b}\label{class_mesh_ab740084f6f669a48e44eee48251ffa7b}} 
+\index{Mesh@{Mesh}!draw@{draw}}
+\index{draw@{draw}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Mesh\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader,  }\item[{float}]{scale }\end{DoxyParamCaption})}
+
+Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ \mbox{\hyperlink{class_shader}{Shader}} who will draw the model \\
+\hline
+{\em scale} & -\/ Scale of the model \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}\label{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}} 
+\index{Mesh@{Mesh}!getIndices@{getIndices}}
+\index{getIndices@{getIndices}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getIndices()}{getIndices()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint32\+\_\+t $>$ Mesh\+::get\+Indices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector containing the indices of the mesh 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}\label{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}} 
+\index{Mesh@{Mesh}!getTextures@{getTextures}}
+\index{getTextures@{getTextures}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getTextures()}{getTextures()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \& Mesh\+::get\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector containing the textures of the mesh 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_a11f07f6065246fe112a18d49aef5d065}\label{class_mesh_a11f07f6065246fe112a18d49aef5d065}} 
+\index{Mesh@{Mesh}!getVertices@{getVertices}}
+\index{getVertices@{getVertices}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{getVertices()}{getVertices()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ Mesh\+::get\+Vertices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+a vector containing the vertices of the mesh 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}\label{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}} 
+\index{Mesh@{Mesh}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Mesh\+::set\+Position (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position }\end{DoxyParamCaption})}
+
+Sets the new position of the mesh
+
+
+\begin{DoxyParams}{Parameters}
+{\em the} & new position of the mesh \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/mesh.\+h\item 
+src/mesh.\+cpp\end{DoxyCompactItemize}

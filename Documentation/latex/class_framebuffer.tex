@@ -1,0 +1,85 @@
+\hypertarget{class_framebuffer}{}\doxysection{Framebuffer Class Reference}
+\label{class_framebuffer}\index{Framebuffer@{Framebuffer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_framebuffer_a3203fea3b3f4632aadb21015842d094f}{Framebuffer}} (int width, int height, int nb\+Attachments, bool depth\+Buffer=false)
+\item 
+void \mbox{\hyperlink{class_framebuffer_a79584234a8506532d91960c31e051676}{set\+Input\+Textures}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, int size)
+\item 
+void \mbox{\hyperlink{class_framebuffer_af8f82359dbb3b044b1e5a764cd6ce77a}{set\+Ouput\+Texture}} (int position)
+\item 
+void \mbox{\hyperlink{class_framebuffer_a4dfde4feb923a4fc20a54740d38d9036}{use}} (int width, int height)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_framebuffer_a3203fea3b3f4632aadb21015842d094f}\label{class_framebuffer_a3203fea3b3f4632aadb21015842d094f}} 
+\index{Framebuffer@{Framebuffer}!Framebuffer@{Framebuffer}}
+\index{Framebuffer@{Framebuffer}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{Framebuffer()}{Framebuffer()}}
+{\footnotesize\ttfamily Framebuffer\+::\+Framebuffer (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{int}]{nb\+Attachments,  }\item[{bool}]{depth\+Buffer = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & -\/ Width of the textures in the framebuffer (usually screen width) \\
+\hline
+{\em height} & -\/ Height of the texture in the framebuffer (usually screen height) \\
+\hline
+{\em nb\+Attachments} & -\/ Number of textures needed in the framebuffer \\
+\hline
+{\em depth\+Buffer} & -\/ True if the depth\+Buffer need to be read to \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_framebuffer_a79584234a8506532d91960c31e051676}\label{class_framebuffer_a79584234a8506532d91960c31e051676}} 
+\index{Framebuffer@{Framebuffer}!setInputTextures@{setInputTextures}}
+\index{setInputTextures@{setInputTextures}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{setInputTextures()}{setInputTextures()}}
+{\footnotesize\ttfamily void Framebuffer\+::set\+Input\+Textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+Add \{size\} texures as uniforms to the shader in parameter
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ The shader who will get the textures generated via the framebuffer \\
+\hline
+{\em size} & -\/ Number of textures to be added to the shader \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_framebuffer_af8f82359dbb3b044b1e5a764cd6ce77a}\label{class_framebuffer_af8f82359dbb3b044b1e5a764cd6ce77a}} 
+\index{Framebuffer@{Framebuffer}!setOuputTexture@{setOuputTexture}}
+\index{setOuputTexture@{setOuputTexture}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{setOuputTexture()}{setOuputTexture()}}
+{\footnotesize\ttfamily void Framebuffer\+::set\+Ouput\+Texture (\begin{DoxyParamCaption}\item[{int}]{position }\end{DoxyParamCaption})}
+
+Used to set what texture will be drawn to
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & -\/ The position of the texture where the framebuffer will draw \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_framebuffer_a4dfde4feb923a4fc20a54740d38d9036}\label{class_framebuffer_a4dfde4feb923a4fc20a54740d38d9036}} 
+\index{Framebuffer@{Framebuffer}!use@{use}}
+\index{use@{use}!Framebuffer@{Framebuffer}}
+\doxysubsubsection{\texorpdfstring{use()}{use()}}
+{\footnotesize\ttfamily void Framebuffer\+::use (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+Binds the frame\+Buffer and checks if the textures need to be redimensioned (by comparing the current width and height with the ones in parameter)
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & -\/ The new width of the framebuffer \\
+\hline
+{\em height} & -\/ The new height of the framebuffer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/framebuffer.\+h\item 
+src/framebuffer.\+cpp\end{DoxyCompactItemize}

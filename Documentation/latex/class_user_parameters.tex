@@ -1,0 +1,95 @@
+\hypertarget{class_user_parameters}{}\doxysection{User\+Parameters Class Reference}
+\label{class_user_parameters}\index{UserParameters@{UserParameters}}
+Inheritance diagram for User\+Parameters\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_user_parameters}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_user_parameters_a44926c6bea6d0b608a3a00fee258d199}\label{class_user_parameters_a44926c6bea6d0b608a3a00fee258d199}} 
+{\bfseries User\+Parameters} (bool)
+\item 
+void \mbox{\hyperlink{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}{render}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$)
+\begin{DoxyCompactList}\small\item\em render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_user_parameters_adc753b9bf5edd219598c337b61db3c13}\label{class_user_parameters_adc753b9bf5edd219598c337b61db3c13}} 
+void {\bfseries draw\+Light\+Positions\+Slider} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
+\item 
+\mbox{\Hypertarget{class_user_parameters_ad1a509b915c696f5f6d024d85db1b3b2}\label{class_user_parameters_ad1a509b915c696f5f6d024d85db1b3b2}} 
+void {\bfseries draw\+Model\+Positions\+Slider} (\mbox{\hyperlink{class_model}{Model}} $\ast$)
+\item 
+\mbox{\Hypertarget{class_user_parameters_a5bcce737b2713d362f01d40041900be3}\label{class_user_parameters_a5bcce737b2713d362f01d40041900be3}} 
+void {\bfseries draw\+Selected\+Light\+Options} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
+\item 
+\mbox{\Hypertarget{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}\label{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}} 
+void {\bfseries draw\+Light\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\item 
+\mbox{\Hypertarget{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}\label{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}} 
+void {\bfseries draw\+Model\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\item 
+\mbox{\Hypertarget{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}\label{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}} 
+void {\bfseries draw\+Effects\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\item 
+\mbox{\Hypertarget{class_user_parameters_a227152b07a8dca6bedb34ec97dc03f37}\label{class_user_parameters_a227152b07a8dca6bedb34ec97dc03f37}} 
+void {\bfseries draw\+Selected\+Model\+Options} (\mbox{\hyperlink{class_model}{Model}} $\ast$model)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_default_gui}{Default\+Gui}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_default_gui_ae774bbf459567e0339aa2cc2eaaea697}\label{class_default_gui_ae774bbf459567e0339aa2cc2eaaea697}} 
+{\bfseries Default\+Gui} (bool show=false, std\+::vector$<$ \mbox{\hyperlink{class_default_gui}{Default\+Gui}} $\ast$ $>$ list=\{\})
+\item 
+\mbox{\Hypertarget{class_default_gui_a59c3047e87431ac3dd52e2f14922a8ab}\label{class_default_gui_a59c3047e87431ac3dd52e2f14922a8ab}} 
+void {\bfseries init} (GLFWwindow $\ast$window)
+\item 
+\mbox{\Hypertarget{class_default_gui_ae2b2fbbad98f2a336af74796b2c0b81a}\label{class_default_gui_ae2b2fbbad98f2a336af74796b2c0b81a}} 
+void {\bfseries close\+Library} ()
+\begin{DoxyCompactList}\small\item\em close the library properly according to the documentation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_default_gui_a1159f5c88b19936809031d9e36661fe9}{render}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$)
+\begin{DoxyCompactList}\small\item\em render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_default_gui_a1c0c667898b4d25397f1578108343c93}\label{class_default_gui_a1c0c667898b4d25397f1578108343c93}} 
+bool {\bfseries is\+Showing} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_default_gui}{Default\+Gui}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_default_gui_afb187c95eb6ce46dee6b60124335d6d0}\label{class_default_gui_afb187c95eb6ce46dee6b60124335d6d0}} 
+bool {\bfseries show}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}\label{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}} 
+\index{UserParameters@{UserParameters}!render@{render}}
+\index{render@{render}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void User\+Parameters\+::render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters 
+
+// The Begin method, taking the windows name as argument, and a boolean \+: // the boolean is to handle the windows close event. Im\+Gui\+::\+Begin(\char`\"{}\+Window\textquotesingle{}s name\char`\"{}, \&bool);
+
+// The structure is defined there, if you want to print a text there, use the according nodes.. Im\+Gui\+::\+Text(\char`\"{}\+Hello world!\char`\"{});
+
+// The end method, you\textquotesingle{}ve to put at the end of each GUI Im\+Gui\+::\+End();
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_default_gui_a1159f5c88b19936809031d9e36661fe9}{Default\+Gui}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/gui.\+h\item 
+src/gui/user\+Parameters\+Gui.\+cpp\end{DoxyCompactItemize}

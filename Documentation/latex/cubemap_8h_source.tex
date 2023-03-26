@@ -1,0 +1,41 @@
+\hypertarget{cubemap_8h_source}{}\doxysection{cubemap.\+h}
+\label{cubemap_8h_source}\index{src/headers/cubemap.h@{src/headers/cubemap.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CUBEMAP\_HEADER\_FILE}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CUBEMAP\_HEADER\_FILE}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}texture.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}mesh.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cube_map}{CubeMap}}}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{/*\ Cubemaps\ in\ openGL\ use\ a\ Left\ handed\ coordinate\ system\ */}}
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}{CubeMap}}(std::vector<std::string>\ paths);}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}{CubeMap}}(std::string\ dir,\ std::vector<std::string>\ paths);}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}{CubeMap}}()\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}{configureMesh}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}{configureMesh}}();}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}{configureBuffers}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}{draw}}(glm::mat4\ view,\ glm::mat4\ projection);}
+\DoxyCodeLine{00054\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//Texture\ of\ the\ cubemap\ containing\ all\ textures}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}\ m\_texture;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//The\ shader\ used\ to\ draw\ the\ cubemap}}
+\DoxyCodeLine{00058\ \ \ \ \ std::unique\_ptr<Shader>\ shader;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//Cube\ vertices}}
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<float>\ m\_vertices;}
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_VAO,\ m\_VBO;}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CUBEMAP\_MOCK\_HEADER\_FILE}}
+
+\end{DoxyCode}

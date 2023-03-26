@@ -1,0 +1,154 @@
+\hypertarget{class_scene}{}\doxysection{Scene Class Reference}
+\label{class_scene}\index{Scene@{Scene}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_a9539a9f125e2017f202d06d2724e50e0}\label{class_scene_a9539a9f125e2017f202d06d2724e50e0}} 
+{\bfseries Scene} (uint16\+\_\+t width, uint16\+\_\+t height)
+\item 
+\mbox{\Hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}\label{class_scene_a3b8cec2e32546713915f8c6303c951f1}} 
+{\bfseries $\sim$\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Destructor cleans the libraries. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a0598e507671c3c585acaab22bc2ef494}{init\+Window\+Key\+Callback}} ()
+\begin{DoxyCompactList}\small\item\em Setup a callback for when the user press a key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_a09c8e99c40ba372ba039c98bfc1b2ff2}{render\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Launch the render loop, doesnt initialize anything, just launching the loop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_afc5a75bbd219e50511b25ce5f42fd6ed}\label{class_scene_afc5a75bbd219e50511b25ce5f42fd6ed}} 
+\mbox{\hyperlink{class_camera}{Camera}} {\bfseries get\+Camera} ()
+\item 
+void \mbox{\hyperlink{class_scene_ab273d151e9902a8482f371fa319d71b9}{add\+Model}} (\mbox{\hyperlink{class_model}{Model}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Add a model to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_ae8a496dfbde030429727e160be0d16d8}{remove\+Model}} (\mbox{\hyperlink{class_model}{Model}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Remove a model to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_ab5ef504fcd07e56291184c3741681fed}{add\+Light}} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Remove a light to the scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_aa1f02a048aa438a42d2c9a83c1d9eeb6}{remove\+Light}} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Remove a light to the scene. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a0248cc32815d414d8d4ff554a6b68b7f}\label{class_scene_a0248cc32815d414d8d4ff554a6b68b7f}} 
+void {\bfseries add\+Shader} (std\+::string name, \mbox{\hyperlink{class_shader}{Shader}} $\ast$shader)
+\item 
+\mbox{\Hypertarget{class_scene_a190a44857f02a701d453bafd1d3fa683}\label{class_scene_a190a44857f02a701d453bafd1d3fa683}} 
+void {\bfseries add\+Cubemap} (std\+::string name, \mbox{\hyperlink{class_cube_map}{Cube\+Map}} $\ast$cubemap)
+\item 
+\mbox{\Hypertarget{class_scene_a853fce5b9c22471e14734935b6882f66}\label{class_scene_a853fce5b9c22471e14734935b6882f66}} 
+void {\bfseries add\+Framebuffer} (std\+::string name, \mbox{\hyperlink{class_framebuffer}{Framebuffer}} $\ast$framebuffer)
+\item 
+\mbox{\Hypertarget{class_scene_a76499d2f6adedcc31a3b7ef0a71747f8}\label{class_scene_a76499d2f6adedcc31a3b7ef0a71747f8}} 
+void {\bfseries setup\+Scene} ()
+\item 
+\mbox{\Hypertarget{class_scene_a9c95aebe26900b0be2723b90500b2dcc}\label{class_scene_a9c95aebe26900b0be2723b90500b2dcc}} 
+std\+::vector$<$ \mbox{\hyperlink{class_light}{Light}} $\ast$ $>$ {\bfseries get\+Lights} ()
+\item 
+\mbox{\Hypertarget{class_scene_aedcc2741490d9fc4db4638711d3e19cd}\label{class_scene_aedcc2741490d9fc4db4638711d3e19cd}} 
+std\+::vector$<$ \mbox{\hyperlink{class_model}{Model}} $\ast$ $>$ {\bfseries get\+Models} ()
+\item 
+\mbox{\Hypertarget{class_scene_a96b0271344d559bc8a27d56b881da768}\label{class_scene_a96b0271344d559bc8a27d56b881da768}} 
+\mbox{\hyperlink{class_post_processing}{Post\+Processing}} \& {\bfseries get\+Processing} ()
+\item 
+\mbox{\Hypertarget{class_scene_a1a06c6d14519edc64cf4b40386d2cb49}\label{class_scene_a1a06c6d14519edc64cf4b40386d2cb49}} 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_shader}{Shader}} $\ast$ $>$ {\bfseries get\+Shaders} ()
+\item 
+\mbox{\Hypertarget{class_scene_add0b77c0b08e4f5c891af9ce1e39c070}\label{class_scene_add0b77c0b08e4f5c891af9ce1e39c070}} 
+bool \& {\bfseries get\+Bool} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_scene_abe0993dcdea0cea270951a5ff8b9a732}\label{class_scene_abe0993dcdea0cea270951a5ff8b9a732}} 
+bool \& {\bfseries get\+Hdr} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_a8efae8b949b2bec6aaae153cbc1b6aae}\label{class_scene_a8efae8b949b2bec6aaae153cbc1b6aae}} 
+static uint16\+\_\+t {\bfseries width} = 800
+\item 
+\mbox{\Hypertarget{class_scene_a576b79712aea5f625a46eac1ce881c5b}\label{class_scene_a576b79712aea5f625a46eac1ce881c5b}} 
+static uint16\+\_\+t {\bfseries height} = 600
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_ab5ef504fcd07e56291184c3741681fed}\label{class_scene_ab5ef504fcd07e56291184c3741681fed}} 
+\index{Scene@{Scene}!addLight@{addLight}}
+\index{addLight@{addLight}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{addLight()}{addLight()}}
+{\footnotesize\ttfamily void Scene\+::add\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_light}{Light}} $\ast$}]{light }\end{DoxyParamCaption})}
+
+
+
+Remove a light to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ab273d151e9902a8482f371fa319d71b9}\label{class_scene_ab273d151e9902a8482f371fa319d71b9}} 
+\index{Scene@{Scene}!addModel@{addModel}}
+\index{addModel@{addModel}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{addModel()}{addModel()}}
+{\footnotesize\ttfamily void Scene\+::add\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} $\ast$}]{model }\end{DoxyParamCaption})}
+
+
+
+Add a model to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a0598e507671c3c585acaab22bc2ef494}\label{class_scene_a0598e507671c3c585acaab22bc2ef494}} 
+\index{Scene@{Scene}!initWindowKeyCallback@{initWindowKeyCallback}}
+\index{initWindowKeyCallback@{initWindowKeyCallback}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{initWindowKeyCallback()}{initWindowKeyCallback()}}
+{\footnotesize\ttfamily void Scene\+::init\+Window\+Key\+Callback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup a callback for when the user press a key. 
+
+\mbox{\Hypertarget{class_scene_aa1f02a048aa438a42d2c9a83c1d9eeb6}\label{class_scene_aa1f02a048aa438a42d2c9a83c1d9eeb6}} 
+\index{Scene@{Scene}!removeLight@{removeLight}}
+\index{removeLight@{removeLight}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{removeLight()}{removeLight()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_light}{Light}} $\ast$}]{light }\end{DoxyParamCaption})}
+
+
+
+Remove a light to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ae8a496dfbde030429727e160be0d16d8}\label{class_scene_ae8a496dfbde030429727e160be0d16d8}} 
+\index{Scene@{Scene}!removeModel@{removeModel}}
+\index{removeModel@{removeModel}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{removeModel()}{removeModel()}}
+{\footnotesize\ttfamily void Scene\+::remove\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} $\ast$}]{model }\end{DoxyParamCaption})}
+
+
+
+Remove a model to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_a09c8e99c40ba372ba039c98bfc1b2ff2}\label{class_scene_a09c8e99c40ba372ba039c98bfc1b2ff2}} 
+\index{Scene@{Scene}!renderLoop@{renderLoop}}
+\index{renderLoop@{renderLoop}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{renderLoop()}{renderLoop()}}
+{\footnotesize\ttfamily void Scene\+::render\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Launch the render loop, doesnt initialize anything, just launching the loop. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/scene.\+h\item 
+src/scene.\+cpp\end{DoxyCompactItemize}

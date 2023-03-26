@@ -1,0 +1,30 @@
+\hypertarget{framebuffer_8h_source}{}\doxysection{framebuffer.\+h}
+\label{framebuffer_8h_source}\index{src/headers/framebuffer.h@{src/headers/framebuffer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}shader.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_framebuffer}{Framebuffer}}}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_framebuffer}{Framebuffer}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ nbAttachments,\ \textcolor{keywordtype}{bool}\ depthBuffer\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_framebuffer_a79584234a8506532d91960c31e051676}{setInputTextures}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader,\ \textcolor{keywordtype}{int}\ size);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_framebuffer_af8f82359dbb3b044b1e5a764cd6ce77a}{setOuputTexture}}(\textcolor{keywordtype}{int}\ position);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_framebuffer_a4dfde4feb923a4fc20a54740d38d9036}{use}}(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ IDs\ if\ the\ textures}}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<unsigned\ int>\ colorAttachements;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_ID,\ m\_rbo,\ m\_depthBufferID;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Current\ widht\ and\ height\ of\ the\ textures}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_width,\ m\_height;}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ This\ bool\ is\ true\ if\ the\ depth\ buffer\ needs\ to\ be\ read}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_depthBuffer;}
+\DoxyCodeLine{00048\ \};}
+
+\end{DoxyCode}

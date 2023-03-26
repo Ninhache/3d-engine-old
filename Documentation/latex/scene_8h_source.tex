@@ -1,0 +1,92 @@
+\hypertarget{scene_8h_source}{}\doxysection{scene.\+h}
+\label{scene_8h_source}\index{src/headers/scene.h@{src/headers/scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCENE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCENE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}camera.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}gui.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}framebuffer.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}cubemap.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}postProcessing.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_scene}{Scene}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_scene}{Scene}}(uint16\_t\ width,\ uint16\_t\ height);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\string~Scene}}();}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_a0598e507671c3c585acaab22bc2ef494}{initWindowKeyCallback}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_a09c8e99c40ba372ba039c98bfc1b2ff2}{renderLoop}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Non\ sense\ function}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ bool\&\ getDrawLights();}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_camera}{Camera}}\ getCamera();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_ab273d151e9902a8482f371fa319d71b9}{addModel}}(\mbox{\hyperlink{class_model}{Model}}*);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_ae8a496dfbde030429727e160be0d16d8}{removeModel}}(\mbox{\hyperlink{class_model}{Model}}*);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_ab5ef504fcd07e56291184c3741681fed}{addLight}}(\mbox{\hyperlink{class_light}{Light}}*);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_scene_aa1f02a048aa438a42d2c9a83c1d9eeb6}{removeLight}}(\mbox{\hyperlink{class_light}{Light}}*);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ addShader(std::string\ name,\ \mbox{\hyperlink{class_shader}{Shader}}*\ shader);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ addCubemap(std::string\ name,\ \mbox{\hyperlink{class_cube_map}{CubeMap}}*\ cubemap);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ addFramebuffer(std::string\ name,\ \mbox{\hyperlink{class_framebuffer}{Framebuffer}}*\ framebuffer);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ setupScene();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<Light*>\ getLights();}
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<Model*>\ getModels();}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_post_processing}{PostProcessing}}\&\ getProcessing();}
+\DoxyCodeLine{00078\ \ \ \ \ std::map<std::string,\ Shader*>\ getShaders();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\&\ getBool(std::string\ name);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\&\ getHdr();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ uint16\_t\ width;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{static}\ uint16\_t\ height;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ GLFWwindow*\ m\_pWindow;}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_default_gui}{DefaultGui}}\ m\_gui;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ bool\ renderOptions\_draw\_lights\ =\ true;}}
+\DoxyCodeLine{00089\ \ \ \ \ std::vector<Light*>\ lightPool;}
+\DoxyCodeLine{00090\ \ \ \ \ std::vector<Model*>\ modelPool;}
+\DoxyCodeLine{00091\ \ \ \ \ std::map<std::string,\ Shader*>\ m\_shaders;}
+\DoxyCodeLine{00092\ \ \ \ \ std::map<std::string,\ CubeMap*>\ m\_cubemaps;}
+\DoxyCodeLine{00093\ \ \ \ \ std::map<std::string,\ Framebuffer*>\ m\_framebuffers;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{bool}\ hdr;}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_post_processing}{PostProcessing}}\ pProcessing;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \ \ \ \ GLFWwindow*\ initWindow();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ initGLFW();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ GLFWwindow*\ createWindow();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ initGLAD();}
+\DoxyCodeLine{00122\ \ \ \ \ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ framebufferSizeCallback(GLFWwindow*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ glViewport(0,\ 0,\ width,\ height);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ Scene::width\ =\ width;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ Scene::height\ =\ height;}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ drawScene(std::string\ shaderName);}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{class_camera}{Camera}}\ camera;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
