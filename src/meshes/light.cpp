@@ -30,3 +30,7 @@ glm::vec3& Light::getPosition() {
 glm::vec3& Light::getColor() {
     return this->color;
 }
+
+bool& Light::getActive() {
+    return this->activated;
+}
