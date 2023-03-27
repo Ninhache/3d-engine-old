@@ -37,7 +37,7 @@ void Mesh::configureBuffers() {
 	glBindVertexArray(0);
 
 }
-void Mesh::draw(Shader& shader, float scale) {
+void Mesh::draw(Shader& shader) {
 	int diffuseCpt = 0, normalCpt = 0, specularCpt=0, heightCpt = 0, opacityCpt = 0;
 	int counter = 0;
 	std::string samplerName;
@@ -87,7 +87,7 @@ void Mesh::draw(Shader& shader, float scale) {
 	//this does not work on all models though
 	model = glm::scale(model, glm::vec3(std::min(1.0f / model[0].x, 1.0f)));
 
-	model = glm::scale(model, glm::vec3(scale));
+	model = glm::scale(model, glm::vec3(this->scale));
 	model = glm::translate(model, this->position);
 
 	//Matrix used to transform normal vectors to world coordinates
@@ -120,4 +120,8 @@ std::vector<Texture>& Mesh::getTextures(){
 
 void Mesh::setPosition(glm::vec3 position) {
 	this->position = position;
+}
+
+void Mesh::setScale(float scale){
+	this->scale = scale;
 }

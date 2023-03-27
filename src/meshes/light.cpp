@@ -14,7 +14,7 @@ void Light::draw(Shader& shader, Shader& lightShader) {
     lightShader.use();
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, this->position);
-    model = glm::scale(model, glm::vec3(scale));
+    model = glm::scale(model, glm::vec3(this->scale));
 
     lightShader.setMatrix4("model", model);
     lightShader.setVec3("lightColor", this->color);
