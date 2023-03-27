@@ -16,7 +16,7 @@ public:
 	 * @param color - Color of the light, default is white
 	 * @param activated - Tells if the light should be drawn or not (and affect other objects)
 	 */
-	Light(glm::vec3 position, glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f), bool activated = true);
+	Light(glm::vec3 position = glm::vec3(1.8f, 0.2f, 0.3f), glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f), bool activated = true);
 
 	/**
 	 * @param shader - The shader used to draw the objects influenced by the light
@@ -97,8 +97,8 @@ public:
 	int lightID;
 
 protected:
-	// Default light position
-	glm::vec3 position = glm::vec3(1.8f, 0.2f, 0.3f);
+	// Default position
+	glm::vec3 position;
 	// Default light color
 	glm::vec3 color;
 	// Scale of the light

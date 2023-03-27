@@ -71,7 +71,7 @@ protected:
 	std::vector<Texture> m_textures;
 	aiMatrix4x4 localTransform;
 	glm::vec3 position;
-	float scale;
+	float scale = 1.0f;
 	void configureBuffers();
 };
 
