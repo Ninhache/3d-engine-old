@@ -16,6 +16,52 @@ static \mbox{\hyperlink{class_texture}{Texture}} \mbox{\hyperlink{class_texture_
 \begin{DoxyCompactList}\small\item\em Loads and return the texture corresponding to the given file name. \end{DoxyCompactList}\item 
 static \mbox{\hyperlink{class_texture}{Texture}} \mbox{\hyperlink{class_texture_a0bbac1100e25e54e46a7b37a7978c107}{load\+Cubemap}} (std\+::vector$<$ std\+::string $>$ paths)
 \begin{DoxyCompactList}\small\item\em Loads all the textures specified in paths for a Cubemap object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_texture_afdd83269faf3b69aecd94fdcf5e3d427}{Texture}} (std\+::string path, ai\+Texture\+Type texture\+\_\+type, bool flip\+Textures)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_texture}{Texture}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_afa19c3aa43565e341a953c6c961b49e1}\label{class_texture_afa19c3aa43565e341a953c6c961b49e1}} 
+GLuint {\bfseries m\+\_\+\+ID}
+\item 
+\mbox{\Hypertarget{class_texture_a8096e38371d08a44625844482a5a09d9}\label{class_texture_a8096e38371d08a44625844482a5a09d9}} 
+ai\+Texture\+Type {\bfseries m\+\_\+texture\+\_\+type}
+\item 
+\mbox{\Hypertarget{class_texture_af47eaf1b6b1f51a8240623f44f74b7fa}\label{class_texture_af47eaf1b6b1f51a8240623f44f74b7fa}} 
+std\+::string {\bfseries m\+\_\+filename}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_texture_ad6b2dbacf95e9f6ffd90e092180e371b}\label{class_texture_ad6b2dbacf95e9f6ffd90e092180e371b}} 
+static std\+::map$<$ std\+::string, \mbox{\hyperlink{class_texture}{Texture}} $>$ {\bfseries m\+\_\+map}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_afdd83269faf3b69aecd94fdcf5e3d427}\label{class_texture_afdd83269faf3b69aecd94fdcf5e3d427}} 
+\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}}
+{\footnotesize\ttfamily Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{path,  }\item[{ai\+Texture\+Type}]{texture\+\_\+type,  }\item[{bool}]{flip\+Textures }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Construct a new \mbox{\hyperlink{class_texture}{Texture}} object. 
+
+\begin{DoxyNote}{Note}
+Textures parameters are set to GL\+\_\+\+REPEAT for S and T and GL\+\_\+\+LINEAR\+\_\+\+MIPMAP\+\_\+\+LINEAR for the Mipmap min filter
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em texture\+\_\+type} & \\
+\hline
+{\em flip\+Textures} & \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -42,7 +88,7 @@ GLuint
 
 Loads and return the texture corresponding to the given file name. 
 
-Calls the \mbox{\hyperlink{class_texture_a5abcf6682f19351f2e4878b2c7e8c820}{load\+Texture\+In\+Memory()}} function to add the texture to the map if it does not already exist.
+Calls the \mbox{\hyperlink{class_texture_a5abcf6682f19351f2e4878b2c7e8c820}{load\+Texture\+In\+Memory}} function to add the texture to the map if it does not already exist.
 
 
 \begin{DoxyParams}{Parameters}

@@ -4,17 +4,20 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_cube_map_a1d201ecb998411d573d6a328b22f8044}{Cube\+Map}} (std\+::vector$<$ std\+::string $>$ paths)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}}, paths should look something like \{\char`\"{}path/to/folder/posx.$\ast$\char`\"{}\} for all values \+: \char`\"{}posx.\+jpg\char`\"{},\char`\"{}negx.\+jpg\char`\"{},\char`\"{}posy.\+jpg\char`\"{},\char`\"{}negy.\+jpg\char`\"{},\char`\"{}posz.\+jpg\char`\"{},\char`\"{}negz.\+jpg\char`\"{} representing the faces of the cubemap. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_cube_map_a0899598ba784103564d61f4f3a9fd111}{Cube\+Map}} (std\+::string dir, std\+::vector$<$ std\+::string $>$ paths)
-\item 
-\mbox{\hyperlink{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}{Cube\+Map}} ()
-\item 
-void \mbox{\hyperlink{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}{configure\+Mesh}} ()
-\item 
-void \mbox{\hyperlink{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}{configure\+Buffers}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}} and concatenate all paths values with dir. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}\label{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}} 
+{\bfseries Cube\+Map} ()
+\begin{DoxyCompactList}\small\item\em Used for tests. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}\label{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}} 
+void {\bfseries configure\+Mesh} ()
+\begin{DoxyCompactList}\small\item\em sets m\+\_\+vertices to make up a cube \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}\label{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}} 
+void {\bfseries configure\+Buffers} ()
+\begin{DoxyCompactList}\small\item\em sets up VAO and VBO for the cube \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}{draw}} (glm\+::mat4 view, glm\+::mat4 projection)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draw the cubemap (or skybox) to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,29 +30,42 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_shader}{Shader}} $>$ {\bfseries
 \mbox{\Hypertarget{class_cube_map_a1ac7e1c4d2ff3593b65996d825264a8f}\label{class_cube_map_a1ac7e1c4d2ff3593b65996d825264a8f}} 
 std\+::vector$<$ float $>$ {\bfseries m\+\_\+vertices}
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cube_map_ab542712a1348f740bf17831d3bca6edd}\label{class_cube_map_ab542712a1348f740bf17831d3bca6edd}} 
+unsigned int {\bfseries m\+\_\+\+VAO}
+\item 
+\mbox{\Hypertarget{class_cube_map_a06237403bb53b430c030fa2b89220452}\label{class_cube_map_a06237403bb53b430c030fa2b89220452}} 
+unsigned int {\bfseries m\+\_\+\+VBO}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_cube_map_a1d201ecb998411d573d6a328b22f8044}\label{class_cube_map_a1d201ecb998411d573d6a328b22f8044}} 
 \index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
 \index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
-\doxysubsubsection{\texorpdfstring{CubeMap()}{CubeMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{CubeMap()}{CubeMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Cube\+Map\+::\+Cube\+Map (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{paths }\end{DoxyParamCaption})}
 
-Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}}, paths should look something like \{\char`\"{}path/to/folder/posx.$\ast$\char`\"{}\} for all values \+: \char`\"{}posx.\+jpg\char`\"{},\char`\"{}negx.\+jpg\char`\"{},\char`\"{}posy.\+jpg\char`\"{},\char`\"{}negy.\+jpg\char`\"{},\char`\"{}posz.\+jpg\char`\"{},\char`\"{}negz.\+jpg\char`\"{} representing the faces of the cubemap
+
+
+Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}}, paths should look something like \{\char`\"{}path/to/folder/posx.$\ast$\char`\"{}\} for all values \+: \char`\"{}posx.\+jpg\char`\"{},\char`\"{}negx.\+jpg\char`\"{},\char`\"{}posy.\+jpg\char`\"{},\char`\"{}negy.\+jpg\char`\"{},\char`\"{}posz.\+jpg\char`\"{},\char`\"{}negz.\+jpg\char`\"{} representing the faces of the cubemap. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em paths} & -\/ ALl path for the cubemap textures \\
+{\em paths} & -\/ All path for the cubemap textures \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_cube_map_a0899598ba784103564d61f4f3a9fd111}\label{class_cube_map_a0899598ba784103564d61f4f3a9fd111}} 
 \index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
 \index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
-\doxysubsubsection{\texorpdfstring{CubeMap()}{CubeMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{CubeMap()}{CubeMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Cube\+Map\+::\+Cube\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{dir,  }\item[{std\+::vector$<$ std\+::string $>$}]{paths }\end{DoxyParamCaption})}
 
-Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}} and concatenate all paths values with dir
+
+
+Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}} and concatenate all paths values with dir. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -58,40 +74,24 @@ Creates a new \mbox{\hyperlink{class_cube_map}{Cube\+Map}} and concatenate all p
 {\em paths} & -\/ All file names for the textures, paths should look something like \{\char`\"{}posx.$\ast$\char`\"{}, \char`\"{}posy.$\ast$\char`\"{}\} with dir being \char`\"{}path/to/folder/\char`\"{} for all values \+: \char`\"{}posx.\+jpg\char`\"{},\char`\"{}negx.\+jpg\char`\"{},\char`\"{}posy.\+jpg\char`\"{},\char`\"{}negy.\+jpg\char`\"{},\char`\"{}posz.\+jpg\char`\"{},\char`\"{}negz.\+jpg\char`\"{} representing the faces of the cubemap \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}\label{class_cube_map_ac33e45b385642ae69ab71e7d6842599f}} 
-\index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
-\index{CubeMap@{CubeMap}!CubeMap@{CubeMap}}
-\doxysubsubsection{\texorpdfstring{CubeMap()}{CubeMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily Cube\+Map\+::\+Cube\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Used for tests 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}\label{class_cube_map_ab14f232b39fc17fec4d824e2c870cd92}} 
-\index{CubeMap@{CubeMap}!configureBuffers@{configureBuffers}}
-\index{configureBuffers@{configureBuffers}!CubeMap@{CubeMap}}
-\doxysubsubsection{\texorpdfstring{configureBuffers()}{configureBuffers()}}
-{\footnotesize\ttfamily void Cube\+Map\+::configure\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-sets up VAO and VBO for the cube \mbox{\Hypertarget{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}\label{class_cube_map_a0debfa14e01058b5e1148d8cb2b97ecc}} 
-\index{CubeMap@{CubeMap}!configureMesh@{configureMesh}}
-\index{configureMesh@{configureMesh}!CubeMap@{CubeMap}}
-\doxysubsubsection{\texorpdfstring{configureMesh()}{configureMesh()}}
-{\footnotesize\ttfamily void Cube\+Map\+::configure\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-sets m\+\_\+vertices to make up a cube \mbox{\Hypertarget{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}\label{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}} 
+\mbox{\Hypertarget{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}\label{class_cube_map_a2f4302ed4b48e140779f9f9cb293800e}} 
 \index{CubeMap@{CubeMap}!draw@{draw}}
 \index{draw@{draw}!CubeMap@{CubeMap}}
 \doxysubsubsection{\texorpdfstring{draw()}{draw()}}
 {\footnotesize\ttfamily void Cube\+Map\+::draw (\begin{DoxyParamCaption}\item[{glm\+::mat4}]{view,  }\item[{glm\+::mat4}]{projection }\end{DoxyParamCaption})}
 
-Draw the cubemap (or skybox) to the screen
+
+
+Draw the cubemap (or skybox) to the screen. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em view} & -\/ The view matrix \\
 \hline
-{\em projecftion} & -\/ The projection matrix \\
+{\em projection} & -\/ The projection matrix \\
 \hline
 \end{DoxyParams}
 

@@ -1,6 +1,6 @@
 var class_light =
 [
-    [ "Light", "class_light.html#a7e666f6129accc1c1365c76f0890ab19", null ],
+    [ "Light", "class_light.html#a68726c968bfc87e18447b29f305c0e4a", null ],
     [ "disableLight", "class_light.html#a4db6821975ab0e7991f41dfbf738b6b9", null ],
     [ "draw", "class_light.html#a47692ecf5400ec02496d008820e4a3c3", null ],
     [ "getActive", "class_light.html#a79d188009b9960693c476680ed015f04", null ],

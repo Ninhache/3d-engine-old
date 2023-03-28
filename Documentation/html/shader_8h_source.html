@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -127,7 +126,7 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ID;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> checkCompileErrors(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, std::string type);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_shader.html#a995a004aa89493d6737be8f2b190faa7">checkCompileErrors</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> shader, std::string type);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif </span><span class="comment">// SHADER_H</span></div>
@@ -135,6 +134,7 @@ $(document).ready(function(){initNavTree('shader_8h_source.html',''); initResiza
 <div class="ttc" id="aclass_shader_html_a00e659395065de8f528e628d58622b9f"><div class="ttname"><a href="class_shader.html#a00e659395065de8f528e628d58622b9f">Shader::setBool</a></div><div class="ttdeci">void setBool(const std::string &amp;name, const bool value) const</div><div class="ttdoc">The functions below are used to set uniforms to the shader.</div><div class="ttdef"><b>Definition:</b> shader.cpp:61</div></div>
 <div class="ttc" id="aclass_shader_html_a3d385024931adccd0f455f7f764465c2"><div class="ttname"><a href="class_shader.html#a3d385024931adccd0f455f7f764465c2">Shader::getId</a></div><div class="ttdeci">int getId() const</div><div class="ttdoc">Get the Id of the shader program.</div><div class="ttdef"><b>Definition:</b> shader.h:51</div></div>
 <div class="ttc" id="aclass_shader_html_a870fa9f13d69e558815d6fd351a469dc"><div class="ttname"><a href="class_shader.html#a870fa9f13d69e558815d6fd351a469dc">Shader::use</a></div><div class="ttdeci">void use()</div><div class="ttdoc">Tells opengl to use this Shader as the program This needs to be called when setting up uniforms or tr...</div><div class="ttdef"><b>Definition:</b> shader.cpp:57</div></div>
+<div class="ttc" id="aclass_shader_html_a995a004aa89493d6737be8f2b190faa7"><div class="ttname"><a href="class_shader.html#a995a004aa89493d6737be8f2b190faa7">Shader::checkCompileErrors</a></div><div class="ttdeci">void checkCompileErrors(unsigned int shader, std::string type)</div><div class="ttdoc">Check for errors when compiling and linking shaders.</div><div class="ttdef"><b>Definition:</b> shader.cpp:90</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

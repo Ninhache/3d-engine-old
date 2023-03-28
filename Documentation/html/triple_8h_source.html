@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -96,22 +95,33 @@ $(document).ready(function(){initNavTree('triple_8h_source.html',''); initResiza
   <div class="headertitle"><div class="title">triple.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, <span class="keyword">typename</span> T3&gt;</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="class_triple.html">    3</a></span><span class="keyword">class </span><a class="code hl_class" href="class_triple.html">Triple</a> {</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <a class="code hl_class" href="class_triple.html">Triple</a>(T1 value1, T2 value2, T3 value3) : m_first(value1), m_second(value2), m_third(value3) {}</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    T1&amp; first() { <span class="keywordflow">return</span> this-&gt;m_first; }</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    T2&amp; second() { <span class="keywordflow">return</span> this-&gt;m_second; }</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    T3&amp; third() { <span class="keywordflow">return</span> this-&gt;m_third; }</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    T1 m_first;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    T2 m_second;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    T3 m_third;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
-<div class="ttc" id="aclass_triple_html"><div class="ttname"><a href="class_triple.html">Triple</a></div><div class="ttdef"><b>Definition:</b> triple.h:3</div></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TRIPLE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TRIPLE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, <span class="keyword">typename</span> T3&gt;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_triple.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="class_triple.html">Triple</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_triple.html#aa5276eab5d4ea2bc61aee568dea7cc97">   15</a></span>    <a class="code hl_function" href="class_triple.html#aa5276eab5d4ea2bc61aee568dea7cc97">Triple</a>(T1 value1, T2 value2, T3 value3) : m_first(value1), m_second(value2), m_third(value3) {}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_triple.html#a6cacf481441c162cc9d7d6aefb54a9b0">   20</a></span>    T1&amp; <a class="code hl_function" href="class_triple.html#a6cacf481441c162cc9d7d6aefb54a9b0">first</a>() { <span class="keywordflow">return</span> this-&gt;m_first; }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_triple.html#a7640d761d64a62981c7b91c9304848b8">   25</a></span>    T2&amp; <a class="code hl_function" href="class_triple.html#a7640d761d64a62981c7b91c9304848b8">second</a>() { <span class="keywordflow">return</span> this-&gt;m_second; }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_triple.html#a7cad0f68bba1d200989df100821c16ac">   30</a></span>    T3&amp; <a class="code hl_function" href="class_triple.html#a7cad0f68bba1d200989df100821c16ac">third</a>() { <span class="keywordflow">return</span> this-&gt;m_third; }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    T1 m_first;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    T2 m_second;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    T3 m_third;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_triple_html"><div class="ttname"><a href="class_triple.html">Triple</a></div><div class="ttdef"><b>Definition:</b> triple.h:5</div></div>
+<div class="ttc" id="aclass_triple_html_a6cacf481441c162cc9d7d6aefb54a9b0"><div class="ttname"><a href="class_triple.html#a6cacf481441c162cc9d7d6aefb54a9b0">Triple::first</a></div><div class="ttdeci">T1 &amp; first()</div><div class="ttdoc">Return the first value of the triple.</div><div class="ttdef"><b>Definition:</b> triple.h:20</div></div>
+<div class="ttc" id="aclass_triple_html_a7640d761d64a62981c7b91c9304848b8"><div class="ttname"><a href="class_triple.html#a7640d761d64a62981c7b91c9304848b8">Triple::second</a></div><div class="ttdeci">T2 &amp; second()</div><div class="ttdoc">Return the second value of the triple.</div><div class="ttdef"><b>Definition:</b> triple.h:25</div></div>
+<div class="ttc" id="aclass_triple_html_a7cad0f68bba1d200989df100821c16ac"><div class="ttname"><a href="class_triple.html#a7cad0f68bba1d200989df100821c16ac">Triple::third</a></div><div class="ttdeci">T3 &amp; third()</div><div class="ttdoc">Return the third value of the triple.</div><div class="ttdef"><b>Definition:</b> triple.h:30</div></div>
+<div class="ttc" id="aclass_triple_html_aa5276eab5d4ea2bc61aee568dea7cc97"><div class="ttname"><a href="class_triple.html#aa5276eab5d4ea2bc61aee568dea7cc97">Triple::Triple</a></div><div class="ttdeci">Triple(T1 value1, T2 value2, T3 value3)</div><div class="ttdoc">Create a new Triple, a class to handle three differents unknowned types.</div><div class="ttdef"><b>Definition:</b> triple.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

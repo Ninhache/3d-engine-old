@@ -13,28 +13,17 @@ Inheritance diagram for User\+Parameters\+:\begin{figure}[H]
 {\bfseries User\+Parameters} (bool)
 \item 
 void \mbox{\hyperlink{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}{render}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$)
-\begin{DoxyCompactList}\small\item\em render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_user_parameters_adc753b9bf5edd219598c337b61db3c13}\label{class_user_parameters_adc753b9bf5edd219598c337b61db3c13}} 
-void {\bfseries draw\+Light\+Positions\+Slider} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
-\item 
-\mbox{\Hypertarget{class_user_parameters_ad1a509b915c696f5f6d024d85db1b3b2}\label{class_user_parameters_ad1a509b915c696f5f6d024d85db1b3b2}} 
-void {\bfseries draw\+Model\+Positions\+Slider} (\mbox{\hyperlink{class_model}{Model}} $\ast$)
-\item 
-\mbox{\Hypertarget{class_user_parameters_a5bcce737b2713d362f01d40041900be3}\label{class_user_parameters_a5bcce737b2713d362f01d40041900be3}} 
-void {\bfseries draw\+Selected\+Light\+Options} (\mbox{\hyperlink{class_light}{Light}} $\ast$)
-\item 
-\mbox{\Hypertarget{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}\label{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}} 
-void {\bfseries draw\+Light\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
-\item 
-\mbox{\Hypertarget{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}\label{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}} 
-void {\bfseries draw\+Model\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
-\item 
-\mbox{\Hypertarget{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}\label{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}} 
-void {\bfseries draw\+Effects\+Header} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
-\item 
-\mbox{\Hypertarget{class_user_parameters_a227152b07a8dca6bedb34ec97dc03f37}\label{class_user_parameters_a227152b07a8dca6bedb34ec97dc03f37}} 
-void {\bfseries draw\+Selected\+Model\+Options} (\mbox{\hyperlink{class_model}{Model}} $\ast$model)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draws the GUI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_parameters_af97eba722a5d530d9afd1aa432574173}{draw\+Light\+Positions\+Slider}} (\mbox{\hyperlink{class_light}{Light}} $\ast$light)
+\begin{DoxyCompactList}\small\item\em Draws the sliders managing the position of the light. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_parameters_aa7d76f357d0f9c82bf7a8efdbdce299e}{draw\+Model\+Positions\+Slider}} (\mbox{\hyperlink{class_model}{Model}} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Draws the slider managing the position of the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}{draw\+Light\+Header}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\begin{DoxyCompactList}\small\item\em Draws the Lights interaction widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}{draw\+Model\+Header}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\begin{DoxyCompactList}\small\item\em Draws the Models interaction widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}{draw\+Effects\+Header}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$scene)
+\begin{DoxyCompactList}\small\item\em Draws the Effects interaction widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_default_gui}{Default\+Gui}}}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,10 +37,9 @@ void {\bfseries init} (GLFWwindow $\ast$window)
 void {\bfseries close\+Library} ()
 \begin{DoxyCompactList}\small\item\em close the library properly according to the documentation. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{class_default_gui_a1159f5c88b19936809031d9e36661fe9}{render}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$)
-\begin{DoxyCompactList}\small\item\em render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_default_gui_a1c0c667898b4d25397f1578108343c93}\label{class_default_gui_a1c0c667898b4d25397f1578108343c93}} 
-bool {\bfseries is\+Showing} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Draws the GUI. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_default_gui_a1c0c667898b4d25397f1578108343c93}{is\+Showing}} ()
+\begin{DoxyCompactList}\small\item\em Boolean value indicating if the current gui should be drawn. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 \doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_default_gui}{Default\+Gui}}}
 \begin{DoxyCompactItemize}
@@ -62,6 +50,84 @@ bool {\bfseries show}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}\label{class_user_parameters_a50d8b28470ea1bd88badc8ab16fcc7f0}} 
+\index{UserParameters@{UserParameters}!drawEffectsHeader@{drawEffectsHeader}}
+\index{drawEffectsHeader@{drawEffectsHeader}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{drawEffectsHeader()}{drawEffectsHeader()}}
+{\footnotesize\ttfamily void User\+Parameters\+::draw\+Effects\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+
+
+Draws the Effects interaction widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The scene to retrieve informations from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}\label{class_user_parameters_a3b7d316463428d8a55bc497bd279fc1a}} 
+\index{UserParameters@{UserParameters}!drawLightHeader@{drawLightHeader}}
+\index{drawLightHeader@{drawLightHeader}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{drawLightHeader()}{drawLightHeader()}}
+{\footnotesize\ttfamily void User\+Parameters\+::draw\+Light\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+
+
+Draws the Lights interaction widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The scene to retrieve informations from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_parameters_af97eba722a5d530d9afd1aa432574173}\label{class_user_parameters_af97eba722a5d530d9afd1aa432574173}} 
+\index{UserParameters@{UserParameters}!drawLightPositionsSlider@{drawLightPositionsSlider}}
+\index{drawLightPositionsSlider@{drawLightPositionsSlider}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{drawLightPositionsSlider()}{drawLightPositionsSlider()}}
+{\footnotesize\ttfamily void User\+Parameters\+::draw\+Light\+Positions\+Slider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_light}{Light}} $\ast$}]{light }\end{DoxyParamCaption})}
+
+
+
+Draws the sliders managing the position of the light. 
+
+\begin{DoxyRemark}{Remarks}
+if the light has no position, the cursors will not be drawn
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em light} & The light to be moved \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}\label{class_user_parameters_aa4679df8209a3d0eba6ed66736738fff}} 
+\index{UserParameters@{UserParameters}!drawModelHeader@{drawModelHeader}}
+\index{drawModelHeader@{drawModelHeader}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{drawModelHeader()}{drawModelHeader()}}
+{\footnotesize\ttfamily void User\+Parameters\+::draw\+Model\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})}
+
+
+
+Draws the Models interaction widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The scene to retrieve informations from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_user_parameters_aa7d76f357d0f9c82bf7a8efdbdce299e}\label{class_user_parameters_aa7d76f357d0f9c82bf7a8efdbdce299e}} 
+\index{UserParameters@{UserParameters}!drawModelPositionsSlider@{drawModelPositionsSlider}}
+\index{drawModelPositionsSlider@{drawModelPositionsSlider}!UserParameters@{UserParameters}}
+\doxysubsubsection{\texorpdfstring{drawModelPositionsSlider()}{drawModelPositionsSlider()}}
+{\footnotesize\ttfamily void User\+Parameters\+::draw\+Model\+Positions\+Slider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model}{Model}} $\ast$}]{model }\end{DoxyParamCaption})}
+
+
+
+Draws the slider managing the position of the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & The model to be moved \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}\label{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}} 
 \index{UserParameters@{UserParameters}!render@{render}}
 \index{render@{render}!UserParameters@{UserParameters}}
@@ -70,17 +136,25 @@ bool {\bfseries show}
 
 
 
-render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters 
+Draws the GUI. 
 
-// The Begin method, taking the windows name as argument, and a boolean \+: // the boolean is to handle the windows close event. Im\+Gui\+::\+Begin(\char`\"{}\+Window\textquotesingle{}s name\char`\"{}, \&bool);
+the whole structure of a GUI is defined in the render function and is always similar \+:
 
-// The structure is defined there, if you want to print a text there, use the according nodes.. Im\+Gui\+::\+Text(\char`\"{}\+Hello world!\char`\"{});
+A Begin method \+: (takes the windows name as argument and a boolean to handle close event) ~\newline
+Im\+Gui\+::\+Begin(\char`\"{}\+Window\textquotesingle{}s name\char`\"{}, \&bool);
 
-// The end method, you\textquotesingle{}ve to put at the end of each GUI Im\+Gui\+::\+End();
+A Body (optional)\+: Can be many things (see the Dear Im\+Gui docs for more \char`\"{}things\char`\"{}) ~\newline
+Im\+Gui\+::\+Text(\char`\"{}\+Hello world!\char`\"{});
 
+An end method \+: ~\newline
+Im\+Gui\+::\+End();
+
+\begin{DoxyNote}{Note}
+you need as many Begin methods as end methods.
+\end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
-{\em scene} & \\
+{\em scene} & The scene to retrieve informations from \\
 \hline
 \end{DoxyParams}
 

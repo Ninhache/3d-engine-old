@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -96,6 +95,7 @@ $(document).ready(function(){initNavTree('class_default_gui.html',''); initResiz
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_default_gui-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">DefaultGui Class Reference</div></div>
 </div><!--header-->
@@ -106,8 +106,7 @@ Inheritance diagram for DefaultGui:</div>
  <div class="center">
   <img src="class_default_gui.png" usemap="#DefaultGui_map" alt=""/>
   <map id="DefaultGui_map" name="DefaultGui_map">
-<area href="class_scene_parameters.html" alt="SceneParameters" shape="rect" coords="0,56,112,80"/>
-<area href="class_user_parameters.html" alt="UserParameters" shape="rect" coords="122,56,234,80"/>
+<area href="class_user_parameters.html" alt="UserParameters" shape="rect" coords="0,56,102,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -124,10 +123,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>closeLibrary</b> ()</
 <tr class="memdesc:ae2b2fbbad98f2a336af74796b2c0b81a"><td class="mdescLeft">&#160;</td><td class="mdescRight">close the library properly according to the documentation. <br /></td></tr>
 <tr class="separator:ae2b2fbbad98f2a336af74796b2c0b81a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1159f5c88b19936809031d9e36661fe9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_default_gui.html#a1159f5c88b19936809031d9e36661fe9">render</a> (<a class="el" href="class_scene.html">Scene</a> *)</td></tr>
-<tr class="memdesc:a1159f5c88b19936809031d9e36661fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">render the actual gui, the whole structure of a GUI is defined in the render function and is always similar : The gui can needs access to a scene, that's why she's passed as parameters  <br /></td></tr>
+<tr class="memdesc:a1159f5c88b19936809031d9e36661fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the GUI.  <br /></td></tr>
 <tr class="separator:a1159f5c88b19936809031d9e36661fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c0c667898b4d25397f1578108343c93"><td class="memItemLeft" align="right" valign="top"><a id="a1c0c667898b4d25397f1578108343c93" name="a1c0c667898b4d25397f1578108343c93"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isShowing</b> ()</td></tr>
+<tr class="memitem:a1c0c667898b4d25397f1578108343c93"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_default_gui.html#a1c0c667898b4d25397f1578108343c93">isShowing</a> ()</td></tr>
+<tr class="memdesc:a1c0c667898b4d25397f1578108343c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean value indicating if the current gui should be drawn.  <br /></td></tr>
 <tr class="separator:a1c0c667898b4d25397f1578108343c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -135,8 +134,44 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:afb187c95eb6ce46dee6b60124335d6d0"><td class="memItemLeft" align="right" valign="top"><a id="afb187c95eb6ce46dee6b60124335d6d0" name="afb187c95eb6ce46dee6b60124335d6d0"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>show</b></td></tr>
 <tr class="separator:afb187c95eb6ce46dee6b60124335d6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a91f4bc5eb8c992dfeb2fe126101462d2"><td class="memItemLeft" align="right" valign="top"><a id="a91f4bc5eb8c992dfeb2fe126101462d2" name="a91f4bc5eb8c992dfeb2fe126101462d2"></a>
+std::vector&lt; <a class="el" href="class_default_gui.html">DefaultGui</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>uiList</b></td></tr>
+<tr class="separator:a91f4bc5eb8c992dfeb2fe126101462d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1c0c667898b4d25397f1578108343c93" name="a1c0c667898b4d25397f1578108343c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c0c667898b4d25397f1578108343c93">&#9670;&#160;</a></span>isShowing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DefaultGui::isShowing </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Boolean value indicating if the current gui should be drawn. </p>
+<dl class="section return"><dt>Returns</dt><dd>true If the gui should be drawn </dd>
+<dd>
+false If the gui should not be drawn </dd></dl>
+
+</div>
+</div>
 <a id="a1159f5c88b19936809031d9e36661fe9" name="a1159f5c88b19936809031d9e36661fe9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1159f5c88b19936809031d9e36661fe9">&#9670;&#160;</a></span>render()</h2>
 
@@ -161,18 +196,23 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>show</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>render the actual gui, the whole structure of a GUI is defined in the render function and is always similar : The gui can needs access to a scene, that's why she's passed as parameters </p>
-<p>// The Begin method, taking the windows name as argument, and a boolean : // the boolean is to handle the windows close event. ImGui::Begin("Window's name", &amp;bool);</p>
-<p>// The structure is defined there, if you want to print a text there, use the according nodes.. ImGui::Text("Hello world!");</p>
-<p>// The end method, you've to put at the end of each GUI ImGui::End();</p>
+<p>Draws the GUI. </p>
+<p>the whole structure of a GUI is defined in the render function and is always similar :</p>
+<p>A Begin method : (takes the windows name as argument and a boolean to handle close event) <br  />
+ImGui::Begin("Window's name", &amp;bool);</p>
+<p>A Body (optional): Can be many things (see the Dear ImGui docs for more "things") <br  />
+ImGui::Text("Hello world!");</p>
+<p>An end method : <br  />
+ImGui::End();</p>
+<dl class="section note"><dt>Note</dt><dd>you need as many Begin methods as end methods.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scene</td><td></td></tr>
+    <tr><td class="paramname">scene</td><td>The scene to retrieve informations from </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_user_parameters.html#abc3dcf6704376b869c7228cf70c133d6">UserParameters</a>, and <a class="el" href="class_scene_parameters.html#a8afb42c2a6d8d7e0ee6ae35b2324d353">SceneParameters</a>.</p>
+<p>Reimplemented in <a class="el" href="class_user_parameters.html#abc3dcf6704376b869c7228cf70c133d6">UserParameters</a>.</p>
 
 </div>
 </div>

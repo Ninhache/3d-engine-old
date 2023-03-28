@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -96,6 +95,7 @@ $(document).ready(function(){initNavTree('class_point_light.html',''); initResiz
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_point_light-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PointLight Class Reference</div></div>
 </div><!--header-->
@@ -106,7 +106,7 @@ Inheritance diagram for PointLight:</div>
  <div class="center">
   <img src="class_point_light.png" usemap="#PointLight_map" alt=""/>
   <map id="PointLight_map" name="PointLight_map">
-<area href="class_light.html" alt="Light" shape="rect" coords="0,56,67,80"/>
+<area href="class_light.html" title="The light class, all different types of lights will extend this one." alt="Light" shape="rect" coords="0,56,67,80"/>
 <area href="class_mesh.html" alt="Mesh" shape="rect" coords="0,0,67,24"/>
   </map>
 </div></div>
@@ -114,7 +114,7 @@ Inheritance diagram for PointLight:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b3544c171e043d1cbc8fa8d1b423bec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_light.html#a7b3544c171e043d1cbc8fa8d1b423bec">PointLight</a> (glm::vec3 position, glm::vec3 color=glm::vec3(1.0f, 1.0f, 1.0f), float scale=1.0f, float specular=0.5, float ambiant=0.1, float constant=1.0f, float linear=0.09f, float quadratic=0.032)</td></tr>
-<tr class="memdesc:a7b3544c171e043d1cbc8fa8d1b423bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Point <a class="el" href="class_light.html">Light</a> object.  <br /></td></tr>
+<tr class="memdesc:a7b3544c171e043d1cbc8fa8d1b423bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_point_light.html">PointLight</a> object.  <br /></td></tr>
 <tr class="separator:a7b3544c171e043d1cbc8fa8d1b423bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3ba41157df318e10087743a7561569d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_point_light.html#ab3ba41157df318e10087743a7561569d">setupMesh</a> ()</td></tr>
 <tr class="memdesc:ab3ba41157df318e10087743a7561569d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up the vertices and indices for the light object.  <br /></td></tr>
@@ -138,9 +138,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0f0f3ebe9c48ea8a3727d16f188baf56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Options for the light.  <br /></td></tr>
 <tr class="separator:a0f0f3ebe9c48ea8a3727d16f188baf56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_light"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_light')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_light.html">Light</a></td></tr>
-<tr class="memitem:a7e666f6129accc1c1365c76f0890ab19 inherit pub_methods_class_light"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light.html#a7e666f6129accc1c1365c76f0890ab19">Light</a> (glm::vec3 position, glm::vec3 color=glm::vec3(1.0f, 1.0f, 1.0f), bool activated=true)</td></tr>
-<tr class="memdesc:a7e666f6129accc1c1365c76f0890ab19 inherit pub_methods_class_light"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_light.html">Light</a> object.  <br /></td></tr>
-<tr class="separator:a7e666f6129accc1c1365c76f0890ab19 inherit pub_methods_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68726c968bfc87e18447b29f305c0e4a inherit pub_methods_class_light"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light.html#a68726c968bfc87e18447b29f305c0e4a">Light</a> (glm::vec3 position=glm::vec3(1.8f, 0.2f, 0.3f), glm::vec3 color=glm::vec3(1.0f, 1.0f, 1.0f), bool activated=true)</td></tr>
+<tr class="memdesc:a68726c968bfc87e18447b29f305c0e4a inherit pub_methods_class_light"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_light.html" title="The light class, all different types of lights will extend this one.">Light</a> object.  <br /></td></tr>
+<tr class="separator:a68726c968bfc87e18447b29f305c0e4a inherit pub_methods_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47692ecf5400ec02496d008820e4a3c3 inherit pub_methods_class_light"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light.html#a47692ecf5400ec02496d008820e4a3c3">draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader, <a class="el" href="class_shader.html">Shader</a> &amp;lightShader)</td></tr>
 <tr class="separator:a47692ecf5400ec02496d008820e4a3c3 inherit pub_methods_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac71d2b851db05d50fb6791420c8f9039 inherit pub_methods_class_light"><td class="memItemLeft" align="right" valign="top">glm::vec3 &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light.html#ac71d2b851db05d50fb6791420c8f9039">getPosition</a> ()</td></tr>
@@ -168,16 +168,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:abd26f9caa02b59160ebea7050f073ba8 inherit pub_methods_class_light"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual method destined to be overriden by children classes tells if the light has a position or not.  <br /></td></tr>
 <tr class="separator:abd26f9caa02b59160ebea7050f073ba8 inherit pub_methods_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa47a76e237480fe627609539cee567c3 inherit pub_methods_class_light"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; <a class="el" href="class_triple.html">Triple</a>&lt; std::string, std::string, float &amp; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light.html#aa47a76e237480fe627609539cee567c3">getOptions</a> ()=0</td></tr>
-<tr class="memdesc:aa47a76e237480fe627609539cee567c3 inherit pub_methods_class_light"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Options of the <a class="el" href="class_light.html">Light</a>.  <br /></td></tr>
+<tr class="memdesc:aa47a76e237480fe627609539cee567c3 inherit pub_methods_class_light"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Options of the <a class="el" href="class_light.html" title="The light class, all different types of lights will extend this one.">Light</a>.  <br /></td></tr>
 <tr class="separator:aa47a76e237480fe627609539cee567c3 inherit pub_methods_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_mesh"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_mesh')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_mesh.html">Mesh</a></td></tr>
-<tr class="memitem:a2af137f1571af89172b9c102302c416b inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a2af137f1571af89172b9c102302c416b">Mesh</a> ()</td></tr>
+<tr class="memitem:a2af137f1571af89172b9c102302c416b inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a2af137f1571af89172b9c102302c416b" name="a2af137f1571af89172b9c102302c416b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Mesh</b> ()</td></tr>
+<tr class="memdesc:a2af137f1571af89172b9c102302c416b inherit pub_methods_class_mesh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor used when loading models. <br /></td></tr>
 <tr class="separator:a2af137f1571af89172b9c102302c416b inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42dedaba9cae3ded4f7b12ecd62b5db9 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a42dedaba9cae3ded4f7b12ecd62b5db9" name="a42dedaba9cae3ded4f7b12ecd62b5db9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Mesh</b> (std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, std::vector&lt; uint32_t &gt; indices, std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt; textures, aiMatrix4x4 localTransform, glm::vec3 position)</td></tr>
 <tr class="separator:a42dedaba9cae3ded4f7b12ecd62b5db9 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab740084f6f669a48e44eee48251ffa7b inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ab740084f6f669a48e44eee48251ffa7b">draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader, float scale)</td></tr>
-<tr class="separator:ab740084f6f669a48e44eee48251ffa7b inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431399cb5c25cc84cdf8c8e59a957585 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a431399cb5c25cc84cdf8c8e59a957585">draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a431399cb5c25cc84cdf8c8e59a957585 inherit pub_methods_class_mesh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model.  <br /></td></tr>
+<tr class="separator:a431399cb5c25cc84cdf8c8e59a957585 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11f07f6065246fe112a18d49aef5d065 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a11f07f6065246fe112a18d49aef5d065">getVertices</a> ()</td></tr>
 <tr class="separator:a11f07f6065246fe112a18d49aef5d065 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac255aaade1634b8e7dbcbf4d453110b8 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ac255aaade1634b8e7dbcbf4d453110b8">getIndices</a> ()</td></tr>
@@ -185,13 +188,38 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af68ee3e3ea77bdcf1aa740f266411ce6 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#af68ee3e3ea77bdcf1aa740f266411ce6">getTextures</a> ()</td></tr>
 <tr class="separator:af68ee3e3ea77bdcf1aa740f266411ce6 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae584a8cd7ea2e38a2494ba4e1dc63277 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ae584a8cd7ea2e38a2494ba4e1dc63277">setPosition</a> (glm::vec3 position)</td></tr>
+<tr class="memdesc:ae584a8cd7ea2e38a2494ba4e1dc63277 inherit pub_methods_class_mesh"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the new position of the mesh.  <br /></td></tr>
 <tr class="separator:ae584a8cd7ea2e38a2494ba4e1dc63277 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e40ef0da2cf46eb0005b90d86c420b7 inherit pub_methods_class_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a9e40ef0da2cf46eb0005b90d86c420b7" name="a9e40ef0da2cf46eb0005b90d86c420b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setScale</b> (float scale)</td></tr>
+<tr class="separator:a9e40ef0da2cf46eb0005b90d86c420b7 inherit pub_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a922a9c0c3eab612d54e258e0c74d11ce"><td class="memItemLeft" align="right" valign="top"><a id="a922a9c0c3eab612d54e258e0c74d11ce" name="a922a9c0c3eab612d54e258e0c74d11ce"></a>
 static int&#160;</td><td class="memItemRight" valign="bottom"><b>pointID</b> = 0</td></tr>
 <tr class="separator:a922a9c0c3eab612d54e258e0c74d11ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a404f6e39448eaa92dbdbec6183062147"><td class="memItemLeft" align="right" valign="top"><a id="a404f6e39448eaa92dbdbec6183062147" name="a404f6e39448eaa92dbdbec6183062147"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_constant</b></td></tr>
+<tr class="separator:a404f6e39448eaa92dbdbec6183062147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaf19c31763c3614e3edcd1eef322e96"><td class="memItemLeft" align="right" valign="top"><a id="aaaf19c31763c3614e3edcd1eef322e96" name="aaaf19c31763c3614e3edcd1eef322e96"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_linear</b></td></tr>
+<tr class="separator:aaaf19c31763c3614e3edcd1eef322e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cc1b2791d8e3ca503060f6f1f38f774"><td class="memItemLeft" align="right" valign="top"><a id="a4cc1b2791d8e3ca503060f6f1f38f774" name="a4cc1b2791d8e3ca503060f6f1f38f774"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_quadratic</b></td></tr>
+<tr class="separator:a4cc1b2791d8e3ca503060f6f1f38f774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bf83cbbf8620edfaa0f1862124869b"><td class="memItemLeft" align="right" valign="top"><a id="ab9bf83cbbf8620edfaa0f1862124869b" name="ab9bf83cbbf8620edfaa0f1862124869b"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_specularStr</b></td></tr>
+<tr class="separator:ab9bf83cbbf8620edfaa0f1862124869b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed9998e71fcfacf54df9ff742bfc912"><td class="memItemLeft" align="right" valign="top"><a id="a6ed9998e71fcfacf54df9ff742bfc912" name="a6ed9998e71fcfacf54df9ff742bfc912"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>m_ambiantStr</b></td></tr>
+<tr class="separator:a6ed9998e71fcfacf54df9ff742bfc912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d503eb38a0530919aea30bd1700f889"><td class="memItemLeft" align="right" valign="top"><a id="a1d503eb38a0530919aea30bd1700f889" name="a1d503eb38a0530919aea30bd1700f889"></a>
+const bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasAPosition</b> = true</td></tr>
+<tr class="separator:a1d503eb38a0530919aea30bd1700f889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -205,7 +233,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>configureBuffers</b> 
 <tr class="separator:a5a04df73d113b1f5fc5e184291be62f8 inherit pro_methods_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_light"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_light')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_light.html">Light</a></td></tr>
 <tr class="memitem:a89bffe071ec6431a21c5b54021fe08d6 inherit pro_attribs_class_light"><td class="memItemLeft" align="right" valign="top"><a id="a89bffe071ec6431a21c5b54021fe08d6" name="a89bffe071ec6431a21c5b54021fe08d6"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b> = glm::vec3(1.8f, 0.2f, 0.3f)</td></tr>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
 <tr class="separator:a89bffe071ec6431a21c5b54021fe08d6 inherit pro_attribs_class_light"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91d73d70b4bd4beb402c0f16dab19a25 inherit pro_attribs_class_light"><td class="memItemLeft" align="right" valign="top"><a id="a91d73d70b4bd4beb402c0f16dab19a25" name="a91d73d70b4bd4beb402c0f16dab19a25"></a>
 glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>color</b></td></tr>
@@ -241,6 +269,9 @@ aiMatrix4x4&#160;</td><td class="memItemRight" valign="bottom"><b>localTransform
 <tr class="memitem:af3c130a7e2a9d259b3bb1e258c08f90e inherit pro_attribs_class_mesh"><td class="memItemLeft" align="right" valign="top"><a id="af3c130a7e2a9d259b3bb1e258c08f90e" name="af3c130a7e2a9d259b3bb1e258c08f90e"></a>
 glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
 <tr class="separator:af3c130a7e2a9d259b3bb1e258c08f90e inherit pro_attribs_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf10c6ddf8437dedef24ee8ec2364956 inherit pro_attribs_class_mesh"><td class="memItemLeft" align="right" valign="top"><a id="acf10c6ddf8437dedef24ee8ec2364956" name="acf10c6ddf8437dedef24ee8ec2364956"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b> = 1.0f</td></tr>
+<tr class="separator:acf10c6ddf8437dedef24ee8ec2364956 inherit pro_attribs_class_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b3544c171e043d1cbc8fa8d1b423bec" name="a7b3544c171e043d1cbc8fa8d1b423bec"></a>
@@ -305,8 +336,8 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new Point <a class="el" href="class_light.html">Light</a> object. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_light.html">Light</a> header for detailed description of the ambiant and specular</dd></dl>
+<p>Construct a new <a class="el" href="class_point_light.html">PointLight</a> object. </p>
+<p>see <a class="el" href="class_light.html" title="The light class, all different types of lights will extend this one.">Light</a> detailed description for informations about the ambiant and specular lightning</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">position</td><td>The position of the light in the scene </td></tr>
@@ -446,7 +477,7 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td
 <p>Tells if the light has a position. </p>
 <dl class="section return"><dt>Returns</dt><dd>true If the light has a position </dd>
 <dd>
-false If the light does not have a position (ex: Directional <a class="el" href="class_light.html">Light</a>) </dd></dl>
+false If the light does not have a position (ex: Directional <a class="el" href="class_light.html" title="The light class, all different types of lights will extend this one.">Light</a>) </dd></dl>
 
 <p>Implements <a class="el" href="class_light.html#abd26f9caa02b59160ebea7050f073ba8">Light</a>.</p>
 

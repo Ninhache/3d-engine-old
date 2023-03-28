@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -99,14 +98,27 @@ $(document).ready(function(){initNavTree('struct_hdr__t.html',''); initResizable
   <div class="headertitle"><div class="title">Hdr_t Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>struct for the HDR post processing effect, controls the exposure, the gamma and the use of reinhard tone mapping  
+ <a href="struct_hdr__t.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="post_processing_8h_source.html">postProcessing.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a506730a014da31976b66d38e207d8d4e"><td class="memItemLeft" align="right" valign="top"><a id="a506730a014da31976b66d38e207d8d4e" name="a506730a014da31976b66d38e207d8d4e"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>exposure</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>exposure</b> = 2.0</td></tr>
 <tr class="separator:a506730a014da31976b66d38e207d8d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a822be86920671ea309cbd9d24acd20ee"><td class="memItemLeft" align="right" valign="top"><a id="a822be86920671ea309cbd9d24acd20ee" name="a822be86920671ea309cbd9d24acd20ee"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>gamma</b> = 2.0</td></tr>
+<tr class="separator:a822be86920671ea309cbd9d24acd20ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adecef175e067ba59fd384562c4dc421f"><td class="memItemLeft" align="right" valign="top"><a id="adecef175e067ba59fd384562c4dc421f" name="adecef175e067ba59fd384562c4dc421f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>reinhard</b> = false</td></tr>
+<tr class="separator:adecef175e067ba59fd384562c4dc421f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>struct for the HDR post processing effect, controls the exposure, the gamma and the use of reinhard tone mapping </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>src/headers/<a class="el" href="post_processing_8h_source.html">postProcessing.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -2,20 +2,27 @@
 \label{triple_8h_source}\index{src/headers/triple.h@{src/headers/triple.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
-\DoxyCodeLine{00002\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T1,\ \textcolor{keyword}{typename}\ T2,\ \textcolor{keyword}{typename}\ T3>}
-\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_triple}{Triple}}\ \{}
-\DoxyCodeLine{00004\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00005\ \ \ \ \ \mbox{\hyperlink{class_triple}{Triple}}(T1\ value1,\ T2\ value2,\ T3\ value3)\ :\ m\_first(value1),\ m\_second(value2),\ m\_third(value3)\ \{\}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \ \ \ \ T1\&\ first()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_first;\ \}}
-\DoxyCodeLine{00008\ \ \ \ \ T2\&\ second()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_second;\ \}}
-\DoxyCodeLine{00009\ \ \ \ \ T3\&\ third()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_third;\ \}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00012\ \ \ \ \ T1\ m\_first;}
-\DoxyCodeLine{00013\ \ \ \ \ T2\ m\_second;}
-\DoxyCodeLine{00014\ \ \ \ \ T3\ m\_third;}
-\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TRIPLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TRIPLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T1,\ \textcolor{keyword}{typename}\ T2,\ \textcolor{keyword}{typename}\ T3>}
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_triple}{Triple}}\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_triple_aa5276eab5d4ea2bc61aee568dea7cc97}{Triple}}(T1\ value1,\ T2\ value2,\ T3\ value3)\ :\ m\_first(value1),\ m\_second(value2),\ m\_third(value3)\ \{\}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00020\ \ \ \ \ T1\&\ \mbox{\hyperlink{class_triple_a6cacf481441c162cc9d7d6aefb54a9b0}{first}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_first;\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ T2\&\ \mbox{\hyperlink{class_triple_a7640d761d64a62981c7b91c9304848b8}{second}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_second;\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ T3\&\ \mbox{\hyperlink{class_triple_a7cad0f68bba1d200989df100821c16ac}{third}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_third;\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ T1\ m\_first;}
+\DoxyCodeLine{00034\ \ \ \ \ T2\ m\_second;}
+\DoxyCodeLine{00035\ \ \ \ \ T3\ m\_third;}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

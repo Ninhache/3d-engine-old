@@ -1,5 +1,14 @@
 \hypertarget{class_light}{}\doxysection{Light Class Reference}
 \label{class_light}\index{Light@{Light}}
+
+
+The light class, all different types of lights will extend this one.  
+
+
+
+
+{\ttfamily \#include $<$light.\+h$>$}
+
 Inheritance diagram for Light\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,7 +18,7 @@ Inheritance diagram for Light\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_light_a7e666f6129accc1c1365c76f0890ab19}{Light}} (glm\+::vec3 position, glm\+::vec3 color=glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f), bool activated=true)
+\mbox{\hyperlink{class_light_a68726c968bfc87e18447b29f305c0e4a}{Light}} (glm\+::vec3 position=glm\+::vec3(1.\+8f, 0.\+2f, 0.\+3f), glm\+::vec3 color=glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f), bool activated=true)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_light}{Light}} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_light_a47692ecf5400ec02496d008820e4a3c3}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, \mbox{\hyperlink{class_shader}{Shader}} \&light\+Shader)
 \item 
@@ -34,13 +43,14 @@ virtual std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::strin
 \doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
-\item 
+\mbox{\Hypertarget{class_mesh_a2af137f1571af89172b9c102302c416b}\label{class_mesh_a2af137f1571af89172b9c102302c416b}} 
+{\bfseries Mesh} ()
+\begin{DoxyCompactList}\small\item\em Empty constructor used when loading models. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}\label{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}} 
 {\bfseries Mesh} (std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ vertices, std\+::vector$<$ uint32\+\_\+t $>$ indices, std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ textures, ai\+Matrix4x4 local\+Transform, glm\+::vec3 position)
 \item 
-void \mbox{\hyperlink{class_mesh_ab740084f6f669a48e44eee48251ffa7b}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, float scale)
-\item 
+void \mbox{\hyperlink{class_mesh_a431399cb5c25cc84cdf8c8e59a957585}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{get\+Vertices}} ()
 \item 
 std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{get\+Indices}} ()
@@ -48,6 +58,9 @@ std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e
 std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \& \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{get\+Textures}} ()
 \item 
 void \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{set\+Position}} (glm\+::vec3 position)
+\begin{DoxyCompactList}\small\item\em Sets the new position of the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_mesh_a9e40ef0da2cf46eb0005b90d86c420b7}\label{class_mesh_a9e40ef0da2cf46eb0005b90d86c420b7}} 
+void {\bfseries set\+Scale} (float scale)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -59,7 +72,7 @@ int {\bfseries light\+ID}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_light_a89bffe071ec6431a21c5b54021fe08d6}\label{class_light_a89bffe071ec6431a21c5b54021fe08d6}} 
-glm\+::vec3 {\bfseries position} = glm\+::vec3(1.\+8f, 0.\+2f, 0.\+3f)
+glm\+::vec3 {\bfseries position}
 \item 
 \mbox{\Hypertarget{class_light_a91d73d70b4bd4beb402c0f16dab19a25}\label{class_light_a91d73d70b4bd4beb402c0f16dab19a25}} 
 glm\+::vec3 {\bfseries color}
@@ -96,6 +109,9 @@ ai\+Matrix4x4 {\bfseries local\+Transform}
 \item 
 \mbox{\Hypertarget{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}\label{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}} 
 glm\+::vec3 {\bfseries position}
+\item 
+\mbox{\Hypertarget{class_mesh_acf10c6ddf8437dedef24ee8ec2364956}\label{class_mesh_acf10c6ddf8437dedef24ee8ec2364956}} 
+float {\bfseries scale} = 1.\+0f
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 \doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
@@ -106,12 +122,23 @@ void {\bfseries configure\+Buffers} ()
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+The light class, all different types of lights will extend this one. 
+
+\begin{DoxyParagraph}{Specular}
+Specular lightning adds bright spots to a reflective or glossy surface, it helps in identifying its shape and its position relative to the light
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Ambiant}
+Ambiant lightning is a constant and fixed light source that affect all objects in the scene, it is sometimes used to simulate natural light or pre-\/existing ones 
+\end{DoxyParagraph}
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_light_a7e666f6129accc1c1365c76f0890ab19}\label{class_light_a7e666f6129accc1c1365c76f0890ab19}} 
+\mbox{\Hypertarget{class_light_a68726c968bfc87e18447b29f305c0e4a}\label{class_light_a68726c968bfc87e18447b29f305c0e4a}} 
 \index{Light@{Light}!Light@{Light}}
 \index{Light@{Light}!Light@{Light}}
 \doxysubsubsection{\texorpdfstring{Light()}{Light()}}
-{\footnotesize\ttfamily Light\+::\+Light (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position,  }\item[{glm\+::vec3}]{color = {\ttfamily glm\+:\+:vec3(1.0f,~1.0f,~1.0f)},  }\item[{bool}]{activated = {\ttfamily true} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Light\+::\+Light (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position = {\ttfamily glm\+:\+:vec3(1.8f,~0.2f,~0.3f)},  }\item[{glm\+::vec3}]{color = {\ttfamily glm\+:\+:vec3(1.0f,~1.0f,~1.0f)},  }\item[{bool}]{activated = {\ttfamily true} }\end{DoxyParamCaption})}
 
 
 

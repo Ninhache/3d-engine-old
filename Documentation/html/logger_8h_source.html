@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -104,53 +103,64 @@ $(document).ready(function(){initNavTree('logger_8h_source.html',''); initResiza
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_logger.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_logger.html">Logger</a> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <a class="code hl_class" href="class_logger.html">Logger</a>() {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            m_logfile.open(<span class="stringliteral">&quot;log.txt&quot;</span>, std::ios::out | std::ios::trunc);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            <span class="keywordflow">if</span> (!m_logfile.is_open()) {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;Error opening log file&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            }</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keyword">auto</span> now = std::chrono::system_clock::now();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">auto</span> now_c = std::chrono::system_clock::to_time_t(now);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            std::tm *tm = std::localtime(&amp;now_c);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordtype">char</span> buffer[9];</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            std::strftime(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;%H:%M:%S&quot;</span>, tm);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            m_logfile &lt;&lt; <span class="stringliteral">&quot;[CORE] App started at : &quot;</span> &lt;&lt; buffer &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_class" href="class_logger.html">~Logger</a>() {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            m_logfile.close();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">void</span> log(<span class="keyword">const</span> std::string&amp; message) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            <span class="keyword">auto</span> now = std::chrono::system_clock::now();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">auto</span> now_c = std::chrono::system_clock::to_time_t(now);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            std::tm *tm = std::localtime(&amp;now_c);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordtype">char</span> buffer[9];</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            std::strftime(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;%H:%M:%S&quot;</span>, tm);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keywordflow">if</span> (m_fileLog) m_logfile &lt;&lt; buffer &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (m_consoleLog) std::cout &lt;&lt; buffer &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">void</span> setConsoleLog(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; value) { m_consoleLog = value; }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">void</span> setFileLog(<span class="keyword">const</span> <span class="keywordtype">bool</span>&amp; value) { m_fileLog = value; }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">bool</span> m_consoleLog = <span class="keyword">true</span>, m_fileLog = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::ofstream m_logfile;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">static</span> <a class="code hl_class" href="class_logger.html">Logger</a> logger;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_logger_html"><div class="ttname"><a href="class_logger.html">Logger</a></div><div class="ttdef"><b>Definition:</b> logger.h:9</div></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_logger.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_logger.html">Logger</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_logger.html#abc41bfb031d896170c7675fa96a6b30c">   18</a></span>    <a class="code hl_function" href="class_logger.html#abc41bfb031d896170c7675fa96a6b30c">Logger</a>() {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        m_logfile.open(<span class="stringliteral">&quot;log.txt&quot;</span>, std::ios::out | std::ios::trunc);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span> (!m_logfile.is_open()) {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error opening log file&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">auto</span> now = std::chrono::system_clock::now();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">auto</span> now_c = std::chrono::system_clock::to_time_t(now);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        std::tm *tm = std::localtime(&amp;now_c);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordtype">char</span> buffer[9];</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        std::strftime(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;%H:%M:%S&quot;</span>, tm);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        m_logfile &lt;&lt; <span class="stringliteral">&quot;[CORE] App started at : &quot;</span> &lt;&lt; buffer &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_logger.html#acb668a9e186a25fbaad2e4af6d1ed00a">   36</a></span>    <a class="code hl_function" href="class_logger.html#acb668a9e186a25fbaad2e4af6d1ed00a">~Logger</a>() {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        m_logfile.close();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_logger.html#a0697a189b6921c9c22ef7f0702ae14f7">   45</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logger.html#a0697a189b6921c9c22ef7f0702ae14f7">log</a>(std::string message) {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">auto</span> now = std::chrono::system_clock::now();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">auto</span> now_c = std::chrono::system_clock::to_time_t(now);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        std::tm *tm = std::localtime(&amp;now_c);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">char</span> buffer[9];</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::strftime(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;%H:%M:%S&quot;</span>, tm);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (m_fileLog) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            m_logfile &lt;&lt; buffer &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span> (m_consoleLog) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            std::cout &lt;&lt; buffer &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_logger.html#aea4ab1963c6a18c71d862d4bde14d20d">   70</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logger.html#aea4ab1963c6a18c71d862d4bde14d20d">setConsoleLog</a>(<span class="keywordtype">bool</span> value) { this-&gt;m_consoleLog = value; }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_logger.html#a218e69db021db52f414d25bf38421ddc">   80</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_logger.html#a218e69db021db52f414d25bf38421ddc">setFileLog</a>(<span class="keywordtype">bool</span> value) { this-&gt;m_fileLog = value; }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">bool</span> m_consoleLog = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">bool</span> m_fileLog = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::ofstream m_logfile;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">static</span> <a class="code hl_class" href="class_logger.html">Logger</a> logger;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_logger_html"><div class="ttname"><a href="class_logger.html">Logger</a></div><div class="ttdef"><b>Definition:</b> logger.h:10</div></div>
+<div class="ttc" id="aclass_logger_html_a0697a189b6921c9c22ef7f0702ae14f7"><div class="ttname"><a href="class_logger.html#a0697a189b6921c9c22ef7f0702ae14f7">Logger::log</a></div><div class="ttdeci">void log(std::string message)</div><div class="ttdoc">Log the message into the logfile.</div><div class="ttdef"><b>Definition:</b> logger.h:45</div></div>
+<div class="ttc" id="aclass_logger_html_a218e69db021db52f414d25bf38421ddc"><div class="ttname"><a href="class_logger.html#a218e69db021db52f414d25bf38421ddc">Logger::setFileLog</a></div><div class="ttdeci">void setFileLog(bool value)</div><div class="ttdoc">Change the &quot;setFileLog&quot; value.</div><div class="ttdef"><b>Definition:</b> logger.h:80</div></div>
+<div class="ttc" id="aclass_logger_html_abc41bfb031d896170c7675fa96a6b30c"><div class="ttname"><a href="class_logger.html#abc41bfb031d896170c7675fa96a6b30c">Logger::Logger</a></div><div class="ttdeci">Logger()</div><div class="ttdoc">Creates a new Logger, The logger is an util class to handle logging events, all the logs events are w...</div><div class="ttdef"><b>Definition:</b> logger.h:18</div></div>
+<div class="ttc" id="aclass_logger_html_acb668a9e186a25fbaad2e4af6d1ed00a"><div class="ttname"><a href="class_logger.html#acb668a9e186a25fbaad2e4af6d1ed00a">Logger::~Logger</a></div><div class="ttdeci">~Logger()</div><div class="ttdoc">Destroy the logger by closing the log file.</div><div class="ttdef"><b>Definition:</b> logger.h:36</div></div>
+<div class="ttc" id="aclass_logger_html_aea4ab1963c6a18c71d862d4bde14d20d"><div class="ttname"><a href="class_logger.html#aea4ab1963c6a18c71d862d4bde14d20d">Logger::setConsoleLog</a></div><div class="ttdeci">void setConsoleLog(bool value)</div><div class="ttdoc">Change the &quot;m_consoleLog&quot; value.</div><div class="ttdef"><b>Definition:</b> logger.h:70</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

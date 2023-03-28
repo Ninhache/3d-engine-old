@@ -28,7 +28,7 @@ public:
 	* @brief Empty constructor used when loading models
 	*/
 	Mesh();
-
+	
 	/***
 	* @param vertices - Vertices of the mesh
 	* @param indices - Indices of the mesh
@@ -46,30 +46,36 @@ public:
 	* @param scale - Scale of the model
 	*/
 	void draw(Shader& shader);
-
+	
 	/**
 	* @return a vector containing the vertices of the mesh
 	*/
 	std::vector<Vertex> getVertices();
-
+	
 	/**
 	* @return a vector containing the indices of the mesh
 	*/
 	std::vector<uint32_t> getIndices();
-
+	
 	/**
 	* @return a vector containing the textures of the mesh
 	*/
 	std::vector<Texture>& getTextures();
-
+	
 	/**
 	* @brief Sets the new position of the mesh
 	* 
-	* @param the new position of the mesh
+	* @param position - the new position of the mesh
 	*/
 	void setPosition(glm::vec3 position);
 
+	/**
+	* @brief Sets the scale of the mesh
+	* 
+	* @param scale - the new scale of the mesh
+	*/
 	void setScale(float scale);
+
 protected:
 	uint32_t m_VAO, m_VBO, m_EBO;
 	std::vector<Vertex> m_vertices;
