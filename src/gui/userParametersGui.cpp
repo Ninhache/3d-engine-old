@@ -207,7 +207,7 @@ void UserParameters::drawModelHeader(Scene* scene) {
             ImGui::InputText("##Model Path", buffer, size);
 
             if (ImGui::Button("OK", ImVec2(120, 0))) {
-                Model* model;
+                Model* model = nullptr;
                 try {
                     // Path could be wrong
                     model = new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f));
@@ -215,7 +215,7 @@ void UserParameters::drawModelHeader(Scene* scene) {
                     scene->addModel(model);
                     memset(buffer, 0, size);
                 } catch (std::invalid_argument& e) {
-                    free(model);
+                    delete model;
                 } 
                 ImGui::CloseCurrentPopup();
             }
