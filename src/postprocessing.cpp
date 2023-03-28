@@ -17,9 +17,11 @@ bool& PostProcessing::getBool(std::string name) {
 }
 
 void PostProcessing::updateUniforms(Shader& shader) {
+    
     shader.use();
     std::string uniform;
-    for (const auto pair : this->effects) {
+
+    for (const auto& pair : this->effects) {
         uniform = "effects." + pair.first;
         shader.setBool(uniform, pair.second);
     }

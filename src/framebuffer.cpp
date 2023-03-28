@@ -10,7 +10,7 @@ Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuf
 	glGenFramebuffers(1, &this->m_ID);
 	glBindFramebuffer(GL_FRAMEBUFFER, this->m_ID);
 
-	for (unsigned int i = 0; i < nbAttachments; i++) {
+	for (int i = 0; i < nbAttachments; i++) {
 		unsigned int textureID;
 		glGenTextures(1, &textureID);
 		this->colorAttachements.push_back(textureID);
@@ -79,7 +79,7 @@ void Framebuffer::setInputTextures(Shader& shader, int size) {
 	
 	shader.use();
 
-	unsigned int i;
+	int i;
 	std::string name;
 	for (i = 0; i < size; i++)
 	{
