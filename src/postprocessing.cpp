@@ -12,6 +12,10 @@ bool& PostProcessing::getBool(std::string name) {
     return this->effects.find(name)->second;
 }
 
+Hdr_t& PostProcessing::getHdr() {
+    return this->hdr;
+}
+
 void PostProcessing::updateUniforms(Shader& shader) {
     shader.use();
     std::string uniform;
@@ -22,4 +26,8 @@ void PostProcessing::updateUniforms(Shader& shader) {
     shader.setFloat("cAberation.redOff", this->cAberation.redOff);
     shader.setFloat("cAberation.greenOff", this->cAberation.greenOff);
     shader.setFloat("cAberation.blueOff", this->cAberation.blueOff);
+
+    shader.setBool("hdr_t.reinhard", this->hdr.reinhard);
+    shader.setFloat("hdr_t.gamma", this->hdr.gamma);
+    shader.setFloat("hdr_t.exposure", this->hdr.exposure);
 }

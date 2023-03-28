@@ -3,6 +3,8 @@
 #include "../headers/logger.h"
 #include "../headers/triple.h"
 
+
+
 #include <limits.h>
 #include <iostream>
 
@@ -39,9 +41,8 @@ void UserParameters::render(Scene* scene) {
         }
 
         ImGui::Separator();
-
-        ImGui::End();
     }
+    ImGui::End();
 }
 
 void UserParameters::drawEffectsHeader(Scene* scene) {
@@ -49,29 +50,52 @@ void UserParameters::drawEffectsHeader(Scene* scene) {
         ImGui::SameLine(); HelpMarker("Differents effects you can add to change the render");
 
         ImGui::Text("Effects :");
+
         ImGui::Checkbox("Bloom", &scene->getBool("bloom"));
+
         ImGui::Separator();
+
         ImGui::Checkbox("Blur", &scene->getBool("blur"));
+
         ImGui::Separator();
+
         ImGui::Checkbox("Chromatic Aberation", &scene->getBool("chromaticAberation"));
-        
-        if (ImGui::DragFloat("Red offset", &scene->getProcessing().getChromatic().redOff, 0.01f)) {
-            Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
-            scene->getProcessing().updateUniforms(*postProcessing);
-        }
-        if (ImGui::DragFloat("Green offset", &scene->getProcessing().getChromatic().greenOff, 0.01f)) {
-            Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
-            scene->getProcessing().updateUniforms(*postProcessing);
-        }
-        if (ImGui::DragFloat("Blue offset", &scene->getProcessing().getChromatic().blueOff, 0.01f)) {
-            Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
-            scene->getProcessing().updateUniforms(*postProcessing);
+        if (scene->getBool("chromaticAberation")) {
+            if (ImGui::DragFloat("Red offset", &scene->getProcessing().getChromatic().redOff, 0.01f, -0.1f, 0.1f, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
+                Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                scene->getProcessing().updateUniforms(*postProcessing);
+            }
+            if (ImGui::DragFloat("Green offset", &scene->getProcessing().getChromatic().greenOff, 0.01f, -0.1f, 0.1f, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
+                Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                scene->getProcessing().updateUniforms(*postProcessing);
+            }
+            if (ImGui::DragFloat("Blue offset", &scene->getProcessing().getChromatic().blueOff, 0.01f, -0.1f, 0.1f, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
+                Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                scene->getProcessing().updateUniforms(*postProcessing);
+            }
         }
 
         ImGui::Separator();
         if (ImGui::Checkbox("HDR", &scene->getProcessing().getBool("hdr"))) {
             Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
-            scene->getProcessing().updateUniforms(*postProcessing);
+            scene->getProcessing().updateUniforms(*postProcessing);       
+        }
+
+        if (scene->getProcessing().getBool("hdr")) {
+            if (ImGui::Checkbox("Reinhard", &scene->getProcessing().getHdr().reinhard)) {
+                Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                scene->getProcessing().updateUniforms(*postProcessing);       
+            }
+            if (!scene->getProcessing().getHdr().reinhard) {
+                if (ImGui::DragFloat("Exposure", &scene->getProcessing().getHdr().exposure, 0.1f, 0.0f, FLT_MAX)) {
+                    Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                    scene->getProcessing().updateUniforms(*postProcessing); 
+                }
+            }
+            if (ImGui::DragFloat("Gamma", &scene->getProcessing().getHdr().gamma, 0.1f)) {
+                Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
+                scene->getProcessing().updateUniforms(*postProcessing); 
+            }
         }
 
         ImGui::TreePop();
@@ -107,7 +131,27 @@ void UserParameters::drawLightHeader(Scene* scene) {
         if (selected_index >= 0 && selected_index < scene->getLights().size()) {
             ImGui::Separator();
             ImGui::Text("Properties :");
-            drawSelectedLightOptions(scene->getLights()[selected_index]);
+            
+            Light* light = scene->getLights()[selected_index];
+            ImGui::Checkbox("Active", &light->getActive());
+            ImGui::SameLine();
+            if (ImGui::Button("Remove")) {
+                Shader* shader = scene->getShaders().find("default")->second;
+                light->getActive() = false;
+                light->disableLight(*shader);
+                scene->removeLight(light);
+            } else {
+                std::vector<Triple<std::string, std::string, float &>> options = light->getOptions();
+                    
+                ImGui::ColorEdit3("color 3", value_ptr(light->getColor()));
+                drawLightPositionsSlider(light);
+                
+                for (Triple<std::string, std::string, float&>& option : options) {
+                    ImGui::SliderFloat(option.first().c_str(), &option.third(), 0.0f, 1.0f);
+                    ImGui::SameLine(); HelpMarker(option.second().c_str());
+                }
+            }
+            
         }
 
         ImGui::TreePop();
@@ -129,13 +173,48 @@ void UserParameters::drawModelHeader(Scene* scene) {
 
         ImGui::SameLine(); HelpMarker("Models that have been added to the scene");
         
-        if (ImGui::Button("Unselect") && selected_index >= 0) {
-            scene->getModels()[selected_index]->setOutlined(false);
-            selected_index = -1;
+        if (selected_index >= 0) {
+            if (ImGui::Button("Unselect")) {
+                scene->getModels()[selected_index]->setOutlined(false);
+                selected_index = -1;
+            }
+        } else {
+            ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
+            ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.5f);
+
+            ImGui::Button("Unselect");
+
+            ImGui::PopItemFlag();
+            ImGui::PopStyleVar();
         }
+
+
         ImGui::SameLine();
         if (ImGui::Button("+")) {
             ImGui::OpenPopup("Add model");
+        }
+
+        if (ImGui::BeginPopupModal("Add model", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
+            ImGui::Text("Add a model using the path\n\n");
+            ImGui::Separator();
+
+            static const size_t size = 128;
+            static char buffer[size];
+            ImGui::Text("Path : ");
+            ImGui::SameLine();
+            ImGui::InputText("##Model Path", buffer, size);
+
+            if (ImGui::Button("OK", ImVec2(120, 0))) {
+                scene->addModel(new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f)));
+                memset(buffer, 0, size);
+                ImGui::CloseCurrentPopup();
+            }
+            ImGui::SetItemDefaultFocus();
+            ImGui::SameLine();
+            if (ImGui::Button("Cancel", ImVec2(120, 0))) {
+                ImGui::CloseCurrentPopup();
+            }
+            ImGui::EndPopup();
         }
             
         ImVec2 center = ImGui::GetMainViewport()->GetCenter();
@@ -183,7 +262,19 @@ void UserParameters::drawModelHeader(Scene* scene) {
         if (selected_index >= 0 && selected_index < scene->getModels().size()) {
             ImGui::Separator();
             ImGui::Text("Properties :");
-            drawSelectedModelOptions(scene->getModels()[selected_index]);
+
+            Model* model = scene->getModels()[selected_index];
+            ImGui::Checkbox("Render", &model->getActive());
+            ImGui::SameLine(); 
+            if (ImGui::Button("Remove")) {
+                scene->removeModel(model);
+            } else {
+                drawModelPositionsSlider(model);
+                static float scale = model->getScale();
+                if (ImGui::SliderFloat("Scale", &scale, 0.0f, 50.0f)) {
+                    model->setScale(scale);
+                }
+            }
 
         }
 
@@ -219,50 +310,30 @@ void UserParameters::drawLightPositionsSlider(Light* light) {
     }
 }
 
-void UserParameters::drawModelPositionsSlider(Model* model) {
+bool drawSlider(const char* label, float& position, bool sameLine) {
     float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 40;
+    if (sameLine) {
+        ImGui::SameLine();
+    }
+    ImGui::SetNextItemWidth(dragWidth);
+    return ImGui::DragFloat(label, &position, 0.05f);
+}
 
+void UserParameters::drawModelPositionsSlider(Model* model) {
+    
     static float x = model->getPosition().x;
-    ImGui::SetNextItemWidth(dragWidth);
-    ImGui::DragFloat("x", &x, 0.05f);
-
     static float y = model->getPosition().y;
-    ImGui::SameLine();
-    ImGui::SetNextItemWidth(dragWidth);
-    ImGui::DragFloat("y", &y, 0.05f);
-
     static float z = model->getPosition().z;
-    ImGui::SameLine();
-    ImGui::SetNextItemWidth(dragWidth);
-    ImGui::DragFloat("z", &z, 0.05f);
 
-    model->setPosition(glm::vec3(x,y,z));
+    bool resultx = drawSlider("x", x, false);
+    bool resulty = drawSlider("y", y, true);
+    bool resultz = drawSlider("z", z, true);
+    
+    if ( resultx || resulty || resultz ) {
+        model->setPosition(glm::vec3(x,y,z));
+    }
 }
 
 void UserParameters::drawSelectedLightOptions(Light* light) {
-
-    ImGui::Checkbox("Active", &light->getActive());
-
-    std::vector<Triple<std::string, std::string, float &>> options = light->getOptions();
-            
-    ImGui::ColorEdit3("color 3", value_ptr(light->getColor()));
-    drawLightPositionsSlider(light);
-    
-    for (Triple<std::string, std::string, float&>& option : options) {
-        ImGui::SliderFloat(option.first().c_str(), &option.third(), 0.0f, 1.0f);
-        ImGui::SameLine(); HelpMarker(option.second().c_str());
-    }
-}
-
-void UserParameters::drawSelectedModelOptions(Model* model) {
-    ImGui::Checkbox("Render", &model->getActive());
-    
-    drawModelPositionsSlider(model);
-
-    static float scale = model->getScale();
-    if (ImGui::SliderFloat("Scale", &scale, 0.0f, 50.0f)) {
-        model->setScale(scale);
-    }
-    
-
+  
 }

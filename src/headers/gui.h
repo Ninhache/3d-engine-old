@@ -6,6 +6,7 @@
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
+#include <imgui/imgui_internal.h>
 
 #include "logger.h"
 #include "light.h"
@@ -63,8 +64,6 @@ class UserParameters : public DefaultGui {
 		void drawLightHeader(Scene* scene);
 		void drawModelHeader(Scene* scene);
 		void drawEffectsHeader(Scene* scene);
-		
-		void drawSelectedModelOptions(Model* model);
 };
 
 class SceneParameters : public DefaultGui {
