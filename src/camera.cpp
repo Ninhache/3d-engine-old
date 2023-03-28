@@ -39,6 +39,12 @@ void Camera::processInput(GLFWwindow* window, float deltaTime) {
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
 		cameraPos += cameraVelocity * glm::normalize(cross(cameraFront, cameraUp));
 	}
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		cameraPos.y += cameraVelocity;
+	}
+	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+		cameraPos.y -= cameraVelocity;
+	}
 	if (glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
 	}
