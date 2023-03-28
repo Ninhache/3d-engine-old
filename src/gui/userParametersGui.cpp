@@ -215,7 +215,7 @@ void UserParameters::drawModelHeader(Scene* scene) {
                     scene->addModel(model);
                     memset(buffer, 0, size);
                 } catch (std::invalid_argument& e) {
-
+                    free(model);
                 } 
                 ImGui::CloseCurrentPopup();
             }
