@@ -35,8 +35,6 @@ public:
      */
     void renderLoop();
 
-    // Non sense function
-    // bool& getDrawLights();
     Camera getCamera();
 
     /**

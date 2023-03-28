@@ -59,12 +59,6 @@ Camera Scene::getCamera() {
 	return camera;
 }
 
-/*
-bool& Scene::getDrawLights() {
-	return this->renderOptions_draw_lights;
-}
-*/
-
 void Scene::addModel(Model* model) {
 	this->modelPool.push_back(model);
 }

@@ -28,6 +28,7 @@ public:
 	* @brief Empty constructor used when loading models
 	*/
 	Mesh();
+	
 	/***
 	* @param vertices - Vertices of the mesh
 	* @param indices - Indices of the mesh
@@ -37,6 +38,7 @@ public:
 	* @param position - Position of the mesh
 	*/
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position);
+	
 	/**
 	* @brief Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model
 	* 
@@ -44,18 +46,22 @@ public:
 	* @param scale - Scale of the model
 	*/
 	void draw(Shader& shader);
+	
 	/**
 	* @return a vector containing the vertices of the mesh
 	*/
 	std::vector<Vertex> getVertices();
+	
 	/**
 	* @return a vector containing the indices of the mesh
 	*/
 	std::vector<uint32_t> getIndices();
+	
 	/**
 	* @return a vector containing the textures of the mesh
 	*/
 	std::vector<Texture>& getTextures();
+	
 	/**
 	* @brief Sets the new position of the mesh
 	* 
