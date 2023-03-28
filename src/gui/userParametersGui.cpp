@@ -234,8 +234,7 @@ void UserParameters::drawModelHeader(Scene* scene) {
         ImGui::Spacing();
         if (ImGui::BeginListBox("##Models", ImVec2(-1, list_height))) {
             for (int i = 0; i < scene->getModels().size(); i++) {
-                if (ImGui::Selectable(("Model " + std::to_string(i) + "##" + std::to_string(i)).c_str(), selected_index == i)) {
-                    // ImGui::GetID(str)
+                if (ImGui::Selectable((std::to_string(i) + " | Model " + "##" + std::to_string(i)).c_str(), selected_index == i)) {
                     if (selected_index >= 0) {
                         scene->getModels()[selected_index]->setOutlined(false);
                     }
