@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -96,6 +95,9 @@ $(document).ready(function(){initNavTree('class_scene.html',''); initResizable()
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_scene-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Scene Class Reference</div></div>
 </div><!--header-->
@@ -142,6 +144,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>addFramebuffer</b> (s
 <tr class="separator:a853fce5b9c22471e14734935b6882f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76499d2f6adedcc31a3b7ef0a71747f8"><td class="memItemLeft" align="right" valign="top"><a id="a76499d2f6adedcc31a3b7ef0a71747f8" name="a76499d2f6adedcc31a3b7ef0a71747f8"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setupScene</b> ()</td></tr>
+<tr class="memdesc:a76499d2f6adedcc31a3b7ef0a71747f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add things to the scene to have something to render. <br /></td></tr>
 <tr class="separator:a76499d2f6adedcc31a3b7ef0a71747f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c95aebe26900b0be2723b90500b2dcc"><td class="memItemLeft" align="right" valign="top"><a id="a9c95aebe26900b0be2723b90500b2dcc" name="a9c95aebe26900b0be2723b90500b2dcc"></a>
 std::vector&lt; <a class="el" href="class_light.html">Light</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getLights</b> ()</td></tr>
@@ -170,6 +173,62 @@ static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> 
 <tr class="memitem:a576b79712aea5f625a46eac1ce881c5b"><td class="memItemLeft" align="right" valign="top"><a id="a576b79712aea5f625a46eac1ce881c5b" name="a576b79712aea5f625a46eac1ce881c5b"></a>
 static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> = 600</td></tr>
 <tr class="separator:a576b79712aea5f625a46eac1ce881c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab14809bcc7001f58a08a2cd773ccefe1"><td class="memItemLeft" align="right" valign="top">GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab14809bcc7001f58a08a2cd773ccefe1">initWindow</a> ()</td></tr>
+<tr class="memdesc:ab14809bcc7001f58a08a2cd773ccefe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init all the libraries and generate a windows.  <br /></td></tr>
+<tr class="separator:ab14809bcc7001f58a08a2cd773ccefe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67d4bff0d0c700a5b3a288f8a54eadb"><td class="memItemLeft" align="right" valign="top"><a id="aa67d4bff0d0c700a5b3a288f8a54eadb" name="aa67d4bff0d0c700a5b3a288f8a54eadb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initGLFW</b> ()</td></tr>
+<tr class="memdesc:aa67d4bff0d0c700a5b3a288f8a54eadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">init the GLFW Library : GLFW provides a simple API for creating windows, contexts and surfaces, receiving input and events <br /></td></tr>
+<tr class="separator:aa67d4bff0d0c700a5b3a288f8a54eadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c78b64358eaee00624969eb575c823"><td class="memItemLeft" align="right" valign="top">GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#af1c78b64358eaee00624969eb575c823">createWindow</a> ()</td></tr>
+<tr class="memdesc:af1c78b64358eaee00624969eb575c823"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a window from glfw  <br /></td></tr>
+<tr class="separator:af1c78b64358eaee00624969eb575c823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb5d1a397d9fefd59a229793ee4c2cac"><td class="memItemLeft" align="right" valign="top"><a id="adb5d1a397d9fefd59a229793ee4c2cac" name="adb5d1a397d9fefd59a229793ee4c2cac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>initGLAD</b> ()</td></tr>
+<tr class="memdesc:adb5d1a397d9fefd59a229793ee4c2cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init the GLAD Library : GLAD manages function pointers for OpenGL so we want to initialize GLAD before we call any OpenGL function. <br /></td></tr>
+<tr class="separator:adb5d1a397d9fefd59a229793ee4c2cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7ac51654ddb5ee1f99e7e10ea5c0d9"><td class="memItemLeft" align="right" valign="top"><a id="a4d7ac51654ddb5ee1f99e7e10ea5c0d9" name="a4d7ac51654ddb5ee1f99e7e10ea5c0d9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>drawScene</b> (std::string shaderName)</td></tr>
+<tr class="separator:a4d7ac51654ddb5ee1f99e7e10ea5c0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ab68b9d93def5bd9dcf4ca964baa7e3df"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ab68b9d93def5bd9dcf4ca964baa7e3df">framebufferSizeCallback</a> (GLFWwindow *window, int width, int height)</td></tr>
+<tr class="memdesc:ab68b9d93def5bd9dcf4ca964baa7e3df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup a callback for when the user resize the window.  <br /></td></tr>
+<tr class="separator:ab68b9d93def5bd9dcf4ca964baa7e3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4ac9fbd63a062e0c61268036fda1ef30"><td class="memItemLeft" align="right" valign="top"><a id="a4ac9fbd63a062e0c61268036fda1ef30" name="a4ac9fbd63a062e0c61268036fda1ef30"></a>
+GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pWindow</b></td></tr>
+<tr class="separator:a4ac9fbd63a062e0c61268036fda1ef30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f91d3bfc80f8d000b1d00de93409690"><td class="memItemLeft" align="right" valign="top"><a id="a2f91d3bfc80f8d000b1d00de93409690" name="a2f91d3bfc80f8d000b1d00de93409690"></a>
+<a class="el" href="class_default_gui.html">DefaultGui</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_gui</b></td></tr>
+<tr class="separator:a2f91d3bfc80f8d000b1d00de93409690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9c9e13de7fb7f06b2be06144d8b89d1"><td class="memItemLeft" align="right" valign="top"><a id="ae9c9e13de7fb7f06b2be06144d8b89d1" name="ae9c9e13de7fb7f06b2be06144d8b89d1"></a>
+std::vector&lt; <a class="el" href="class_light.html">Light</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lightPool</b></td></tr>
+<tr class="separator:ae9c9e13de7fb7f06b2be06144d8b89d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a562c453ee0ffeffbf758bc6130e62067"><td class="memItemLeft" align="right" valign="top"><a id="a562c453ee0ffeffbf758bc6130e62067" name="a562c453ee0ffeffbf758bc6130e62067"></a>
+std::vector&lt; <a class="el" href="class_model.html">Model</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>modelPool</b></td></tr>
+<tr class="separator:a562c453ee0ffeffbf758bc6130e62067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41de5740248443ac0c293201e73c853"><td class="memItemLeft" align="right" valign="top"><a id="af41de5740248443ac0c293201e73c853" name="af41de5740248443ac0c293201e73c853"></a>
+std::map&lt; std::string, <a class="el" href="class_shader.html">Shader</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_shaders</b></td></tr>
+<tr class="separator:af41de5740248443ac0c293201e73c853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68970023df0c27029612b0dfabad19b5"><td class="memItemLeft" align="right" valign="top"><a id="a68970023df0c27029612b0dfabad19b5" name="a68970023df0c27029612b0dfabad19b5"></a>
+std::map&lt; std::string, <a class="el" href="class_cube_map.html">CubeMap</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_cubemaps</b></td></tr>
+<tr class="separator:a68970023df0c27029612b0dfabad19b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1421a725f01b3443e3f335511a035df2"><td class="memItemLeft" align="right" valign="top"><a id="a1421a725f01b3443e3f335511a035df2" name="a1421a725f01b3443e3f335511a035df2"></a>
+std::map&lt; std::string, <a class="el" href="class_framebuffer.html">Framebuffer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_framebuffers</b></td></tr>
+<tr class="separator:a1421a725f01b3443e3f335511a035df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af431ea94b9ac3682efa674b611a127ce"><td class="memItemLeft" align="right" valign="top"><a id="af431ea94b9ac3682efa674b611a127ce" name="af431ea94b9ac3682efa674b611a127ce"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hdr</b></td></tr>
+<tr class="separator:af431ea94b9ac3682efa674b611a127ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217fbf60b638564447fc9bb716f42d60"><td class="memItemLeft" align="right" valign="top"><a id="a217fbf60b638564447fc9bb716f42d60" name="a217fbf60b638564447fc9bb716f42d60"></a>
+<a class="el" href="class_post_processing.html">PostProcessing</a>&#160;</td><td class="memItemRight" valign="bottom"><b>pProcessing</b></td></tr>
+<tr class="separator:a217fbf60b638564447fc9bb716f42d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab5ef504fcd07e56291184c3741681fed" name="ab5ef504fcd07e56291184c3741681fed"></a>
@@ -221,6 +280,114 @@ static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>height</b>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="af1c78b64358eaee00624969eb575c823" name="af1c78b64358eaee00624969eb575c823"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c78b64358eaee00624969eb575c823">&#9670;&#160;</a></span>createWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLFWwindow * Scene::createWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>create a window from glfw </p>
+<dl class="section return"><dt>Returns</dt><dd>GLFWwindow* program can exit if window finish as null </dd></dl>
+
+</div>
+</div>
+<a id="ab68b9d93def5bd9dcf4ca964baa7e3df" name="ab68b9d93def5bd9dcf4ca964baa7e3df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab68b9d93def5bd9dcf4ca964baa7e3df">&#9670;&#160;</a></span>framebufferSizeCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Scene::framebufferSizeCallback </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Setup a callback for when the user resize the window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td></td></tr>
+    <tr><td class="paramname">width</td><td></td></tr>
+    <tr><td class="paramname">height</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab14809bcc7001f58a08a2cd773ccefe1" name="ab14809bcc7001f58a08a2cd773ccefe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab14809bcc7001f58a08a2cd773ccefe1">&#9670;&#160;</a></span>initWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLFWwindow * Scene::initWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Init all the libraries and generate a windows. </p>
+<dl class="section return"><dt>Returns</dt><dd>GLFWwindow* </dd></dl>
 
 </div>
 </div>

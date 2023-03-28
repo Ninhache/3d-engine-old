@@ -11,33 +11,43 @@
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}shader.h"{}}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}\{}
-\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{float}\ redOff\ =\ 0.009,\ greenOff\ =\ 0.006,\ blueOff\ =\ -\/0.002;}
-\DoxyCodeLine{00012\ \};}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}\{}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \};}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}\{}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ exposure;}
-\DoxyCodeLine{00020\ \};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_post_processing}{PostProcessing}}\{}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}\&\ getChromatic();}
-\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}\&\ getBloom();}
-\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}\&\ getHdr();}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\&\ getBool(std::string\ name);}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ updateUniforms(\mbox{\hyperlink{class_shader}{Shader}}\&\ shader);}
-\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ \ \ std::map<std::string,\ bool>\ effects\ =\ \{\ \{\textcolor{stringliteral}{"{}bloom"{}},\ \textcolor{keyword}{false}\},\{\textcolor{stringliteral}{"{}chromaticAberation"{}},\ \textcolor{keyword}{false}\},\ \{\textcolor{stringliteral}{"{}blur"{}},\ \textcolor{keyword}{false}\},\ \{\ \textcolor{stringliteral}{"{}hdr"{}},\ \textcolor{keyword}{false}\ \}\ \};}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}\ cAberation;}
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}\ bloom;\ }
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}\ hdr;}
-\DoxyCodeLine{00035\ \};}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POST\_PROCESSING\_HEADER}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{float}\ redOff\ =\ 0.009,\ greenOff\ =\ 0.006,\ blueOff\ =\ -\/0.002;}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ intensity\ =\ 1.0;}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{float}\ exposure\ =\ 2.0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{float}\ gamma\ =\ 2.0;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ reinhard\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_post_processing}{PostProcessing}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}\ \&\mbox{\hyperlink{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}{getChromatic}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}\ \&\mbox{\hyperlink{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}{getBloom}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}\ \&\mbox{\hyperlink{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}{getHdr}}();}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \&\mbox{\hyperlink{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}{getBool}}(std::string\ name);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}{updateUniforms}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \ \ std::map<std::string,\ bool>\ effects\ =\ \{\{\textcolor{stringliteral}{"{}bloom"{}},\ \textcolor{keyword}{false}\},\ \{\textcolor{stringliteral}{"{}chromaticAberation"{}},\ \textcolor{keyword}{false}\},\ \{\textcolor{stringliteral}{"{}blur"{}},\ \textcolor{keyword}{false}\},\ \{\textcolor{stringliteral}{"{}hdr"{}},\ \textcolor{keyword}{false}\}\};}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{struct_chromatic_aberation__t}{ChromaticAberation\_t}}\ cAberation;}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{struct_bloom__t}{Bloom\_t}}\ bloom;}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{struct_hdr__t}{Hdr\_t}}\ hdr;}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POST\_PROCESSING\_HEADER}}
 
 \end{DoxyCode}

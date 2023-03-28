@@ -35,7 +35,7 @@ void {\bfseries add\+Framebuffer} (std\+::string name, \mbox{\hyperlink{class_fr
 \item 
 \mbox{\Hypertarget{class_scene_a76499d2f6adedcc31a3b7ef0a71747f8}\label{class_scene_a76499d2f6adedcc31a3b7ef0a71747f8}} 
 void {\bfseries setup\+Scene} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Add things to the scene to have something to render. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_scene_a9c95aebe26900b0be2723b90500b2dcc}\label{class_scene_a9c95aebe26900b0be2723b90500b2dcc}} 
 std\+::vector$<$ \mbox{\hyperlink{class_light}{Light}} $\ast$ $>$ {\bfseries get\+Lights} ()
 \item 
@@ -62,6 +62,57 @@ static uint16\+\_\+t {\bfseries width} = 800
 \item 
 \mbox{\Hypertarget{class_scene_a576b79712aea5f625a46eac1ce881c5b}\label{class_scene_a576b79712aea5f625a46eac1ce881c5b}} 
 static uint16\+\_\+t {\bfseries height} = 600
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+GLFWwindow $\ast$ \mbox{\hyperlink{class_scene_ab14809bcc7001f58a08a2cd773ccefe1}{init\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Init all the libraries and generate a windows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_aa67d4bff0d0c700a5b3a288f8a54eadb}\label{class_scene_aa67d4bff0d0c700a5b3a288f8a54eadb}} 
+void {\bfseries init\+GLFW} ()
+\begin{DoxyCompactList}\small\item\em init the GLFW Library \+: GLFW provides a simple API for creating windows, contexts and surfaces, receiving input and events \end{DoxyCompactList}\item 
+GLFWwindow $\ast$ \mbox{\hyperlink{class_scene_af1c78b64358eaee00624969eb575c823}{create\+Window}} ()
+\begin{DoxyCompactList}\small\item\em create a window from glfw \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_adb5d1a397d9fefd59a229793ee4c2cac}\label{class_scene_adb5d1a397d9fefd59a229793ee4c2cac}} 
+void {\bfseries init\+GLAD} ()
+\begin{DoxyCompactList}\small\item\em Init the GLAD Library \+: GLAD manages function pointers for Open\+GL so we want to initialize GLAD before we call any Open\+GL function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_a4d7ac51654ddb5ee1f99e7e10ea5c0d9}\label{class_scene_a4d7ac51654ddb5ee1f99e7e10ea5c0d9}} 
+void {\bfseries draw\+Scene} (std\+::string shader\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_scene_ab68b9d93def5bd9dcf4ca964baa7e3df}{framebuffer\+Size\+Callback}} (GLFWwindow $\ast$window, int width, int height)
+\begin{DoxyCompactList}\small\item\em Setup a callback for when the user resize the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_a4ac9fbd63a062e0c61268036fda1ef30}\label{class_scene_a4ac9fbd63a062e0c61268036fda1ef30}} 
+GLFWwindow $\ast$ {\bfseries m\+\_\+p\+Window}
+\item 
+\mbox{\Hypertarget{class_scene_a2f91d3bfc80f8d000b1d00de93409690}\label{class_scene_a2f91d3bfc80f8d000b1d00de93409690}} 
+\mbox{\hyperlink{class_default_gui}{Default\+Gui}} {\bfseries m\+\_\+gui}
+\item 
+\mbox{\Hypertarget{class_scene_ae9c9e13de7fb7f06b2be06144d8b89d1}\label{class_scene_ae9c9e13de7fb7f06b2be06144d8b89d1}} 
+std\+::vector$<$ \mbox{\hyperlink{class_light}{Light}} $\ast$ $>$ {\bfseries light\+Pool}
+\item 
+\mbox{\Hypertarget{class_scene_a562c453ee0ffeffbf758bc6130e62067}\label{class_scene_a562c453ee0ffeffbf758bc6130e62067}} 
+std\+::vector$<$ \mbox{\hyperlink{class_model}{Model}} $\ast$ $>$ {\bfseries model\+Pool}
+\item 
+\mbox{\Hypertarget{class_scene_af41de5740248443ac0c293201e73c853}\label{class_scene_af41de5740248443ac0c293201e73c853}} 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_shader}{Shader}} $\ast$ $>$ {\bfseries m\+\_\+shaders}
+\item 
+\mbox{\Hypertarget{class_scene_a68970023df0c27029612b0dfabad19b5}\label{class_scene_a68970023df0c27029612b0dfabad19b5}} 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_cube_map}{Cube\+Map}} $\ast$ $>$ {\bfseries m\+\_\+cubemaps}
+\item 
+\mbox{\Hypertarget{class_scene_a1421a725f01b3443e3f335511a035df2}\label{class_scene_a1421a725f01b3443e3f335511a035df2}} 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_framebuffer}{Framebuffer}} $\ast$ $>$ {\bfseries m\+\_\+framebuffers}
+\item 
+\mbox{\Hypertarget{class_scene_af431ea94b9ac3682efa674b611a127ce}\label{class_scene_af431ea94b9ac3682efa674b611a127ce}} 
+bool {\bfseries hdr}
+\item 
+\mbox{\Hypertarget{class_scene_a217fbf60b638564447fc9bb716f42d60}\label{class_scene_a217fbf60b638564447fc9bb716f42d60}} 
+\mbox{\hyperlink{class_post_processing}{Post\+Processing}} {\bfseries p\+Processing}
 \end{DoxyCompactItemize}
 
 
@@ -96,6 +147,51 @@ Add a model to the scene.
 {\em model} & \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_scene_af1c78b64358eaee00624969eb575c823}\label{class_scene_af1c78b64358eaee00624969eb575c823}} 
+\index{Scene@{Scene}!createWindow@{createWindow}}
+\index{createWindow@{createWindow}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{createWindow()}{createWindow()}}
+{\footnotesize\ttfamily GLFWwindow $\ast$ Scene\+::create\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+create a window from glfw 
+
+\begin{DoxyReturn}{Returns}
+GLFWwindow$\ast$ program can exit if window finish as null 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_scene_ab68b9d93def5bd9dcf4ca964baa7e3df}\label{class_scene_ab68b9d93def5bd9dcf4ca964baa7e3df}} 
+\index{Scene@{Scene}!framebufferSizeCallback@{framebufferSizeCallback}}
+\index{framebufferSizeCallback@{framebufferSizeCallback}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{framebufferSizeCallback()}{framebufferSizeCallback()}}
+{\footnotesize\ttfamily static void Scene\+::framebuffer\+Size\+Callback (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Setup a callback for when the user resize the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+{\em width} & \\
+\hline
+{\em height} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_scene_ab14809bcc7001f58a08a2cd773ccefe1}\label{class_scene_ab14809bcc7001f58a08a2cd773ccefe1}} 
+\index{Scene@{Scene}!initWindow@{initWindow}}
+\index{initWindow@{initWindow}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{initWindow()}{initWindow()}}
+{\footnotesize\ttfamily GLFWwindow $\ast$ Scene\+::init\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Init all the libraries and generate a windows. 
+
+\begin{DoxyReturn}{Returns}
+GLFWwindow$\ast$ 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_scene_a0598e507671c3c585acaab22bc2ef494}\label{class_scene_a0598e507671c3c585acaab22bc2ef494}} 
 \index{Scene@{Scene}!initWindowKeyCallback@{initWindowKeyCallback}}
 \index{initWindowKeyCallback@{initWindowKeyCallback}!Scene@{Scene}}

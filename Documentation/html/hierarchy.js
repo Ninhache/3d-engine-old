@@ -5,7 +5,6 @@ var hierarchy =
     [ "ChromaticAberation_t", "struct_chromatic_aberation__t.html", null ],
     [ "CubeMap", "class_cube_map.html", null ],
     [ "DefaultGui", "class_default_gui.html", [
-      [ "SceneParameters", "class_scene_parameters.html", null ],
       [ "UserParameters", "class_user_parameters.html", null ]
     ] ],
     [ "Framebuffer", "class_framebuffer.html", null ],

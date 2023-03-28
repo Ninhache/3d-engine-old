@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -104,7 +103,7 @@ $(document).ready(function(){initNavTree('class_light.html',''); initResizable()
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>configureBuffers</b>() (defined in <a class="el" href="class_mesh.html">Mesh</a>)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_light.html#a4db6821975ab0e7991f41dfbf738b6b9">disableLight</a>(Shader &amp;shader)=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_light.html#a47692ecf5400ec02496d008820e4a3c3">draw</a>(Shader &amp;shader, Shader &amp;lightShader)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_mesh.html#ab740084f6f669a48e44eee48251ffa7b">Mesh::draw</a>(Shader &amp;shader, float scale)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_mesh.html#a431399cb5c25cc84cdf8c8e59a957585">Mesh::draw</a>(Shader &amp;shader)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_light.html#a79d188009b9960693c476680ed015f04">getActive</a>()</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_light.html#abe4882d9876f72b891f7fccf53c8ac87">getClassName</a>()</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_light.html#a9fd3825dbab37160a4c2fe12d34ab301">getColor</a>()</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
@@ -114,7 +113,7 @@ $(document).ready(function(){initNavTree('class_light.html',''); initResizable()
   <tr class="even"><td class="entry"><a class="el" href="class_mesh.html#af68ee3e3ea77bdcf1aa740f266411ce6">getTextures</a>()</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_mesh.html#a11f07f6065246fe112a18d49aef5d065">getVertices</a>()</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_light.html#abd26f9caa02b59160ebea7050f073ba8">hasPosition</a>()=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_light.html#a7e666f6129accc1c1365c76f0890ab19">Light</a>(glm::vec3 position, glm::vec3 color=glm::vec3(1.0f, 1.0f, 1.0f), bool activated=true)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_light.html#a68726c968bfc87e18447b29f305c0e4a">Light</a>(glm::vec3 position=glm::vec3(1.8f, 0.2f, 0.3f), glm::vec3 color=glm::vec3(1.0f, 1.0f, 1.0f), bool activated=true)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>lightID</b> (defined in <a class="el" href="class_light.html">Light</a>)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>localTransform</b> (defined in <a class="el" href="class_mesh.html">Mesh</a>)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_EBO</b> (defined in <a class="el" href="class_mesh.html">Mesh</a>)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -128,8 +127,9 @@ $(document).ready(function(){initNavTree('class_light.html',''); initResizable()
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>position</b> (defined in <a class="el" href="class_light.html">Light</a>)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>scale</b> (defined in <a class="el" href="class_light.html">Light</a>)</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_mesh.html#ae584a8cd7ea2e38a2494ba4e1dc63277">setPosition</a>(glm::vec3 position)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_light.html#a0535b7430500d8822b543a19558b4077">setUniforms</a>(Shader &amp;shader)=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_light.html#a0dabcde874d092b7bf2edf4bf4ac2c26">setupMesh</a>()=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>setScale</b>(float scale) (defined in <a class="el" href="class_mesh.html">Mesh</a>)</td><td class="entry"><a class="el" href="class_mesh.html">Mesh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_light.html#a0535b7430500d8822b543a19558b4077">setUniforms</a>(Shader &amp;shader)=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_light.html#a0dabcde874d092b7bf2edf4bf4ac2c26">setupMesh</a>()=0</td><td class="entry"><a class="el" href="class_light.html">Light</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

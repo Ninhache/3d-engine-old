@@ -3,21 +3,108 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}\label{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}} 
-\mbox{\hyperlink{struct_chromatic_aberation__t}{Chromatic\+Aberation\+\_\+t}} \& {\bfseries get\+Chromatic} ()
+\mbox{\hyperlink{struct_chromatic_aberation__t}{Chromatic\+Aberation\+\_\+t}} \& \mbox{\hyperlink{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}{get\+Chromatic}} ()
+\begin{DoxyCompactList}\small\item\em Get a reference to the Chromatic struct. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_bloom__t}{Bloom\+\_\+t}} \& \mbox{\hyperlink{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}{get\+Bloom}} ()
+\begin{DoxyCompactList}\small\item\em Get a reference to the Bloom struct. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_hdr__t}{Hdr\+\_\+t}} \& \mbox{\hyperlink{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}{get\+Hdr}} ()
+\begin{DoxyCompactList}\small\item\em Get a reference to the Hdr struct. \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}{get\+Bool}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Get the boolean value of the effect. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}{update\+Uniforms}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Updates the given shader\textquotesingle{}s uniforms according to post processing struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}\label{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}} 
-\mbox{\hyperlink{struct_bloom__t}{Bloom\+\_\+t}} \& {\bfseries get\+Bloom} ()
+\mbox{\Hypertarget{class_post_processing_adade7e4527eeee53cfbe580b64257503}\label{class_post_processing_adade7e4527eeee53cfbe580b64257503}} 
+std\+::map$<$ std\+::string, bool $>$ {\bfseries effects} = \{\{\char`\"{}bloom\char`\"{}, false\}, \{\char`\"{}chromatic\+Aberation\char`\"{}, false\}, \{\char`\"{}blur\char`\"{}, false\}, \{\char`\"{}hdr\char`\"{}, false\}\}
 \item 
-\mbox{\Hypertarget{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}\label{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}} 
-\mbox{\hyperlink{struct_hdr__t}{Hdr\+\_\+t}} \& {\bfseries get\+Hdr} ()
+\mbox{\Hypertarget{class_post_processing_a6c87533aca6352f3a15c0f243b67133d}\label{class_post_processing_a6c87533aca6352f3a15c0f243b67133d}} 
+\mbox{\hyperlink{struct_chromatic_aberation__t}{Chromatic\+Aberation\+\_\+t}} {\bfseries c\+Aberation}
 \item 
-\mbox{\Hypertarget{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}\label{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}} 
-bool \& {\bfseries get\+Bool} (std\+::string name)
+\mbox{\Hypertarget{class_post_processing_a007f020738594b7e088816b199db996b}\label{class_post_processing_a007f020738594b7e088816b199db996b}} 
+\mbox{\hyperlink{struct_bloom__t}{Bloom\+\_\+t}} {\bfseries bloom}
 \item 
-\mbox{\Hypertarget{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}\label{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}} 
-void {\bfseries update\+Uniforms} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)
+\mbox{\Hypertarget{class_post_processing_a10219e7c502cd00da6f16ee60d5be919}\label{class_post_processing_a10219e7c502cd00da6f16ee60d5be919}} 
+\mbox{\hyperlink{struct_hdr__t}{Hdr\+\_\+t}} {\bfseries hdr}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}\label{class_post_processing_ac9a2da18414fc95ef8f1054afbdcb314}} 
+\index{PostProcessing@{PostProcessing}!getBloom@{getBloom}}
+\index{getBloom@{getBloom}!PostProcessing@{PostProcessing}}
+\doxysubsubsection{\texorpdfstring{getBloom()}{getBloom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bloom__t}{Bloom\+\_\+t}} \& Post\+Processing\+::get\+Bloom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a reference to the Bloom struct. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_bloom__t}{Bloom\+\_\+t}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}\label{class_post_processing_aaf724f2c94f90690ffab68fcf01c5485}} 
+\index{PostProcessing@{PostProcessing}!getBool@{getBool}}
+\index{getBool@{getBool}!PostProcessing@{PostProcessing}}
+\doxysubsubsection{\texorpdfstring{getBool()}{getBool()}}
+{\footnotesize\ttfamily bool \& Post\+Processing\+::get\+Bool (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Get the boolean value of the effect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The desired effect\textquotesingle{}s name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the effect should be used 
+
+false If the effect should not be used 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}\label{class_post_processing_aba3905fa164f6117213fcbcaace3ea63}} 
+\index{PostProcessing@{PostProcessing}!getChromatic@{getChromatic}}
+\index{getChromatic@{getChromatic}!PostProcessing@{PostProcessing}}
+\doxysubsubsection{\texorpdfstring{getChromatic()}{getChromatic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_chromatic_aberation__t}{Chromatic\+Aberation\+\_\+t}} \& Post\+Processing\+::get\+Chromatic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a reference to the Chromatic struct. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_chromatic_aberation__t}{Chromatic\+Aberation\+\_\+t}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}\label{class_post_processing_a0277d873bbdd8ba6b3a7a8ab606f74c1}} 
+\index{PostProcessing@{PostProcessing}!getHdr@{getHdr}}
+\index{getHdr@{getHdr}!PostProcessing@{PostProcessing}}
+\doxysubsubsection{\texorpdfstring{getHdr()}{getHdr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_hdr__t}{Hdr\+\_\+t}} \& Post\+Processing\+::get\+Hdr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a reference to the Hdr struct. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_hdr__t}{Hdr\+\_\+t}}\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}\label{class_post_processing_a09c60ef99327ca6f643142dff59ce81f}} 
+\index{PostProcessing@{PostProcessing}!updateUniforms@{updateUniforms}}
+\index{updateUniforms@{updateUniforms}!PostProcessing@{PostProcessing}}
+\doxysubsubsection{\texorpdfstring{updateUniforms()}{updateUniforms()}}
+{\footnotesize\ttfamily void Post\+Processing\+::update\+Uniforms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader }\end{DoxyParamCaption})}
+
+
+
+Updates the given shader\textquotesingle{}s uniforms according to post processing struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader to be updated \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

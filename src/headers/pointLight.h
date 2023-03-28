@@ -9,9 +9,9 @@ class PointLight : public Light
 {
 public:
 	/**
-	 * @brief Construct a new Point Light object
+	 * @brief Construct a new PointLight object
 	 *
-	 * @see Light header for detailed description of the ambiant and specular
+	 * @ref see Light detailed description for informations about the ambiant and specular lightning
 	 *
 	 * @param position The position of the light in the scene
 	 * @param color The color of the light

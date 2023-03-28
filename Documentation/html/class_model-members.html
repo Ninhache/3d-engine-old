@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -99,23 +98,32 @@ $(document).ready(function(){initNavTree('class_model.html',''); initResizable()
 
 <p>This is the complete list of members for <a class="el" href="class_model.html">Model</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a33a9f45caeb317c0a1617b29b7b5624e">addChild</a>(Model &amp;child)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#af328c764e2b980c79675b3e31ebb5d62">addMesh</a>(Mesh mesh)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a15c18d53e0dba11a12474cdcdafb18db">createMesh</a>(aiMesh *mesh, const aiScene *scene, aiMatrix4x4 &amp;localTransform)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a5cd069fb85bb68b54c476bd799c4d8d7">draw</a>(Shader &amp;shader)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>activated</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a33a9f45caeb317c0a1617b29b7b5624e">addChild</a>(Model &amp;child)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_model.html#af328c764e2b980c79675b3e31ebb5d62">addMesh</a>(Mesh mesh)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a15c18d53e0dba11a12474cdcdafb18db">createMesh</a>(aiMesh *mesh, const aiScene *scene, aiMatrix4x4 &amp;localTransform)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a5cd069fb85bb68b54c476bd799c4d8d7">draw</a>(Shader &amp;shader)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>flipTextures</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_model.html#a05b63338e7cd3a5a31f36d060de92698">getActive</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a1fe9ac6809545b00da9b7cfa71da3513">getChildren</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_model.html#acaf0e70d4658838e151e911add969656">getMeshes</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_model.html#ac5a94209ddf917b463de77b1153733f9">getPosition</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_model.html#a9c3671788f40210019e3d808aa5e2bf1">getScale</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_model.html#acd656394edfa6d59c80c53c6ae6a321e">isOutlined</a>()</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a3d0a1ca0dc53b54cf5f6d956b156b7ec">loadModel</a>(const std::string &amp;path)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_model.html#aef3736ebcec7bfa9b361e1d9c5ce00b8">loadMaterial</a>(aiMaterial *material, aiTextureType type)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a3d0a1ca0dc53b54cf5f6d956b156b7ec">loadModel</a>(const std::string &amp;path)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_children</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>m_directory</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>m_meshes</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a08a110588dc04a92ee08c6b60f3d43d2">Model</a>(glm::vec3 position, float scale, bool flipTextures)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_model.html#a8df68a82a6b70a6dd7b3ad89a52cd3e5">Model</a>(const std::string &amp;path, glm::vec3 position=glm::vec3(0.0f), float scale=1.0f, bool flipTextures=true)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a74ab06cc2269ce4ac0fd88f1d2b8374e">parseNodes</a>(aiNode *node, const aiScene *scene, Model &amp;parent, aiMatrix4x4 &amp;transform)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a809d7ea19090a4eb2fb8421bdc1469b4">setOutlined</a>(bool outline)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#afff77219cab057b44bbb2f12b582f88d">setPosition</a>(glm::vec3 position)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a5db363e18f897b463b1778b898230cae">setScale</a>(float scale)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>outlined</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_model.html#a74ab06cc2269ce4ac0fd88f1d2b8374e">parseNodes</a>(aiNode *node, const aiScene *scene, Model &amp;parent, aiMatrix4x4 &amp;transform)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>position</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>scale</b> (defined in <a class="el" href="class_model.html">Model</a>)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a809d7ea19090a4eb2fb8421bdc1469b4">setOutlined</a>(bool outline)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_model.html#afff77219cab057b44bbb2f12b582f88d">setPosition</a>(glm::vec3 position)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_model.html#a5db363e18f897b463b1778b898230cae">setScale</a>(float scale)</td><td class="entry"><a class="el" href="class_model.html">Model</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

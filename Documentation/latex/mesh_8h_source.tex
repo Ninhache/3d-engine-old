@@ -26,30 +26,39 @@
 \DoxyCodeLine{00025\ \{}
 \DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}}();}
-\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ \ /***}}
-\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ *\ @param\ vertices\ -\/\ Vertices\ of\ the\ mesh}}
-\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ *\ @param\ indices\ -\/\ Indices\ of\ the\ mesh}}
-\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ *\ @param\ textures\ -\/\ Textures\ of\ the\ mesh,\ as\ of\ now\ either\ of\ the\ following\ type\ \{"{}diffuseMap"{},"{}normalMap"{},"{}specularMap"{},"{}heightMap"{},"{}opacityMap"{}\}}}
-\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ *\ @param\ localTransform\ -\/\ This\ is\ the\ localTransform\ according\ to\ its\ parents,\ }}
-\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ *\ it\ needs\ to\ be\ multiplied\ with\ the\ model\ matrix\ of\ the\ mesh\ to\ get\ it's\ world\ transform}}
-\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ \ *\ @param\ position\ -\/\ Position\ of\ the\ mesh}}
-\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ */}}
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}}(std::vector<Vertex>\ vertices,\ std::vector<uint32\_t>\ indices\ ,std::vector<Texture>\ textures,\ aiMatrix4x4\ localTransform,\ glm::vec3\ position);}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ab740084f6f669a48e44eee48251ffa7b}{draw}}(\mbox{\hyperlink{class_shader}{Shader}}\&\ shader,\ \textcolor{keywordtype}{float}\ scale);}
-\DoxyCodeLine{00050\ \ \ \ \ std::vector<Vertex>\ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{getVertices}}();}
-\DoxyCodeLine{00054\ \ \ \ \ std::vector<uint32\_t>\ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{getIndices}}();}
-\DoxyCodeLine{00058\ \ \ \ \ std::vector<Texture>\&\ \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{getTextures}}();}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{setPosition}}(glm::vec3\ position);}
-\DoxyCodeLine{00065\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00066\ \ \ \ \ uint32\_t\ m\_VAO,\ m\_VBO,\ m\_EBO;}
-\DoxyCodeLine{00067\ \ \ \ \ std::vector<Vertex>\ m\_vertices;}
-\DoxyCodeLine{00068\ \ \ \ \ std::vector<uint32\_t>\ m\_indices;}
-\DoxyCodeLine{00069\ \ \ \ \ std::vector<Texture>\ m\_textures;}
-\DoxyCodeLine{00070\ \ \ \ \ aiMatrix4x4\ localTransform;}
-\DoxyCodeLine{00071\ \ \ \ \ glm::vec3\ position;}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ configureBuffers();}
-\DoxyCodeLine{00073\ \};}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ /***}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ *\ @param\ vertices\ -\/\ Vertices\ of\ the\ mesh}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ *\ @param\ indices\ -\/\ Indices\ of\ the\ mesh}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ *\ @param\ textures\ -\/\ Textures\ of\ the\ mesh,\ as\ of\ now\ either\ of\ the\ following\ type\ \{"{}diffuseMap"{},"{}normalMap"{},"{}specularMap"{},"{}heightMap"{},"{}opacityMap"{}\}}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ *\ @param\ localTransform\ -\/\ This\ is\ the\ localTransform\ according\ to\ its\ parents,\ }}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \ \ *\ it\ needs\ to\ be\ multiplied\ with\ the\ model\ matrix\ of\ the\ mesh\ to\ get\ it's\ world\ transform}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ \ \ *\ @param\ position\ -\/\ Position\ of\ the\ mesh}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}}(std::vector<Vertex>\ vertices,\ std::vector<uint32\_t>\ indices\ ,std::vector<Texture>\ textures,\ aiMatrix4x4\ localTransform,\ glm::vec3\ position);}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_a431399cb5c25cc84cdf8c8e59a957585}{draw}}(\mbox{\hyperlink{class_shader}{Shader}}\&\ shader);}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<Vertex>\ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{getVertices}}();}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ std::vector<uint32\_t>\ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{getIndices}}();}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<Texture>\&\ \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{getTextures}}();}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{setPosition}}(glm::vec3\ position);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ setScale(\textcolor{keywordtype}{float}\ scale);}
+\DoxyCodeLine{00073\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00074\ \ \ \ \ uint32\_t\ m\_VAO,\ m\_VBO,\ m\_EBO;}
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<Vertex>\ m\_vertices;}
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<uint32\_t>\ m\_indices;}
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<Texture>\ m\_textures;}
+\DoxyCodeLine{00078\ \ \ \ \ aiMatrix4x4\ localTransform;}
+\DoxyCodeLine{00079\ \ \ \ \ glm::vec3\ position;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{float}\ scale\ =\ 1.0f;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ configureBuffers();}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

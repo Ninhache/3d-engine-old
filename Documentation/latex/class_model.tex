@@ -38,6 +38,38 @@ void \mbox{\hyperlink{class_model_a809d7ea19090a4eb2fb8421bdc1469b4}{set\+Outlin
 \begin{DoxyCompactList}\small\item\em Set the Outlined object. \end{DoxyCompactList}\item 
 bool \& \mbox{\hyperlink{class_model_a05b63338e7cd3a5a31f36d060de92698}{get\+Active}} ()
 \begin{DoxyCompactList}\small\item\em Tells if the model is active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \mbox{\hyperlink{class_model_aef3736ebcec7bfa9b361e1d9c5ce00b8}{load\+Material}} (ai\+Material $\ast$material, ai\+Texture\+Type type)
+\begin{DoxyCompactList}\small\item\em Returns all the textures corresponding to the type given in parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_model_a3d661386d5f514f3310198aa0fdb5357}\label{class_model_a3d661386d5f514f3310198aa0fdb5357}} 
+std\+::string {\bfseries m\+\_\+directory}
+\item 
+\mbox{\Hypertarget{class_model_a86585cd89a2fd2b8016e16c1e148d716}\label{class_model_a86585cd89a2fd2b8016e16c1e148d716}} 
+std\+::vector$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ {\bfseries m\+\_\+meshes}
+\item 
+\mbox{\Hypertarget{class_model_a6663a6e854d0f796c82f6bfbb289af96}\label{class_model_a6663a6e854d0f796c82f6bfbb289af96}} 
+std\+::vector$<$ \mbox{\hyperlink{class_model}{Model}} $>$ {\bfseries m\+\_\+children}
+\item 
+\mbox{\Hypertarget{class_model_ad9456fe336f84be882a09ca83998cbd2}\label{class_model_ad9456fe336f84be882a09ca83998cbd2}} 
+glm\+::vec3 {\bfseries position}
+\item 
+\mbox{\Hypertarget{class_model_ac6f096fe242cb6c38b970232381abd88}\label{class_model_ac6f096fe242cb6c38b970232381abd88}} 
+float {\bfseries scale}
+\item 
+\mbox{\Hypertarget{class_model_a045b0cceef4a8321b3c647d8e4fb5655}\label{class_model_a045b0cceef4a8321b3c647d8e4fb5655}} 
+bool {\bfseries outlined} = false
+\item 
+\mbox{\Hypertarget{class_model_a04f2833ab17f8135d133fb55419864c1}\label{class_model_a04f2833ab17f8135d133fb55419864c1}} 
+bool {\bfseries flip\+Textures}
+\item 
+\mbox{\Hypertarget{class_model_ae064e4ac85d708581a72c7a82fc5095b}\label{class_model_ae064e4ac85d708581a72c7a82fc5095b}} 
+bool {\bfseries activated} = false
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -220,6 +252,29 @@ Tells if the model is outlined.
 true If the model should be outlined 
 
 false If the model should not be outlined 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_model_aef3736ebcec7bfa9b361e1d9c5ce00b8}\label{class_model_aef3736ebcec7bfa9b361e1d9c5ce00b8}} 
+\index{Model@{Model}!loadMaterial@{loadMaterial}}
+\index{loadMaterial@{loadMaterial}!Model@{Model}}
+\doxysubsubsection{\texorpdfstring{loadMaterial()}{loadMaterial()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ Model\+::load\+Material (\begin{DoxyParamCaption}\item[{ai\+Material $\ast$}]{material,  }\item[{ai\+Texture\+Type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns all the textures corresponding to the type given in parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em material} & The materials associated with the mesh \\
+\hline
+{\em type} & The type of the texture (Ambiant, specular, ..)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+All possible texture types are declared in the material header of the assimp library, we do not support all of them for the moment, see \mbox{\hyperlink{class_texture}{Texture}}
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Texture$>$ 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}\label{class_model_a3d0a1ca0dc53b54cf5f6d956b156b7ec}} 
 \index{Model@{Model}!loadModel@{loadModel}}

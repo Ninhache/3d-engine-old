@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -95,6 +94,8 @@ $(document).ready(function(){initNavTree('class_model.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_model-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Model Class Reference</div></div>
 </div><!--header-->
@@ -154,6 +155,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> (<a class="e
 <tr class="memitem:a05b63338e7cd3a5a31f36d060de92698"><td class="memItemLeft" align="right" valign="top">bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#a05b63338e7cd3a5a31f36d060de92698">getActive</a> ()</td></tr>
 <tr class="memdesc:a05b63338e7cd3a5a31f36d060de92698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells if the model is active.  <br /></td></tr>
 <tr class="separator:a05b63338e7cd3a5a31f36d060de92698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aef3736ebcec7bfa9b361e1d9c5ce00b8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model.html#aef3736ebcec7bfa9b361e1d9c5ce00b8">loadMaterial</a> (aiMaterial *material, aiTextureType type)</td></tr>
+<tr class="memdesc:aef3736ebcec7bfa9b361e1d9c5ce00b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all the textures corresponding to the type given in parameter.  <br /></td></tr>
+<tr class="separator:aef3736ebcec7bfa9b361e1d9c5ce00b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3d661386d5f514f3310198aa0fdb5357"><td class="memItemLeft" align="right" valign="top"><a id="a3d661386d5f514f3310198aa0fdb5357" name="a3d661386d5f514f3310198aa0fdb5357"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>m_directory</b></td></tr>
+<tr class="separator:a3d661386d5f514f3310198aa0fdb5357"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86585cd89a2fd2b8016e16c1e148d716"><td class="memItemLeft" align="right" valign="top"><a id="a86585cd89a2fd2b8016e16c1e148d716" name="a86585cd89a2fd2b8016e16c1e148d716"></a>
+std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_meshes</b></td></tr>
+<tr class="separator:a86585cd89a2fd2b8016e16c1e148d716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6663a6e854d0f796c82f6bfbb289af96"><td class="memItemLeft" align="right" valign="top"><a id="a6663a6e854d0f796c82f6bfbb289af96" name="a6663a6e854d0f796c82f6bfbb289af96"></a>
+std::vector&lt; <a class="el" href="class_model.html">Model</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_children</b></td></tr>
+<tr class="separator:a6663a6e854d0f796c82f6bfbb289af96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9456fe336f84be882a09ca83998cbd2"><td class="memItemLeft" align="right" valign="top"><a id="ad9456fe336f84be882a09ca83998cbd2" name="ad9456fe336f84be882a09ca83998cbd2"></a>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
+<tr class="separator:ad9456fe336f84be882a09ca83998cbd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6f096fe242cb6c38b970232381abd88"><td class="memItemLeft" align="right" valign="top"><a id="ac6f096fe242cb6c38b970232381abd88" name="ac6f096fe242cb6c38b970232381abd88"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b></td></tr>
+<tr class="separator:ac6f096fe242cb6c38b970232381abd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a045b0cceef4a8321b3c647d8e4fb5655"><td class="memItemLeft" align="right" valign="top"><a id="a045b0cceef4a8321b3c647d8e4fb5655" name="a045b0cceef4a8321b3c647d8e4fb5655"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>outlined</b> = false</td></tr>
+<tr class="separator:a045b0cceef4a8321b3c647d8e4fb5655"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04f2833ab17f8135d133fb55419864c1"><td class="memItemLeft" align="right" valign="top"><a id="a04f2833ab17f8135d133fb55419864c1" name="a04f2833ab17f8135d133fb55419864c1"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>flipTextures</b></td></tr>
+<tr class="separator:a04f2833ab17f8135d133fb55419864c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae064e4ac85d708581a72c7a82fc5095b"><td class="memItemLeft" align="right" valign="top"><a id="ae064e4ac85d708581a72c7a82fc5095b" name="ae064e4ac85d708581a72c7a82fc5095b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>activated</b> = false</td></tr>
+<tr class="separator:ae064e4ac85d708581a72c7a82fc5095b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a08a110588dc04a92ee08c6b60f3d43d2" name="a08a110588dc04a92ee08c6b60f3d43d2"></a>
@@ -471,6 +505,53 @@ false If the model is the model should not be drawn </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true If the model should be outlined </dd>
 <dd>
 false If the model should not be outlined </dd></dl>
+
+</div>
+</div>
+<a id="aef3736ebcec7bfa9b361e1d9c5ce00b8" name="aef3736ebcec7bfa9b361e1d9c5ce00b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef3736ebcec7bfa9b361e1d9c5ce00b8">&#9670;&#160;</a></span>loadMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt; Model::loadMaterial </td>
+          <td>(</td>
+          <td class="paramtype">aiMaterial *&#160;</td>
+          <td class="paramname"><em>material</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">aiTextureType&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns all the textures corresponding to the type given in parameter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">material</td><td>The materials associated with the mesh </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the texture (Ambiant, specular, ..)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>All possible texture types are declared in the material header of the assimp library, we do not support all of them for the moment, see <a class="el" href="class_texture.html">Texture</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;Texture&gt; </dd></dl>
 
 </div>
 </div>

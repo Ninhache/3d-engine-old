@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "abcdfghilmprstuv~",
   1: "bcdfhlmpstuv",
-  2: "acdfghilmprsu~"
+  2: "acdfghilmprstu~"
 };
 
 var indexSectionNames =

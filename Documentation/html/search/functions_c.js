@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['update_0',['update',['../class_camera.html#a42cda7239981a5618660d04bd5893556',1,'Camera']]],
-  ['updatevectors_1',['updateVectors',['../class_camera.html#a8ab6d3d48783559ee14e3ab294a5f771',1,'Camera']]],
-  ['use_2',['use',['../class_framebuffer.html#a4dfde4feb923a4fc20a54740d38d9036',1,'Framebuffer::use()'],['../class_shader.html#a870fa9f13d69e558815d6fd351a469dc',1,'Shader::use()']]]
+  ['texture_0',['Texture',['../class_texture.html#afdd83269faf3b69aecd94fdcf5e3d427',1,'Texture']]],
+  ['third_1',['third',['../class_triple.html#a7cad0f68bba1d200989df100821c16ac',1,'Triple']]],
+  ['triple_2',['Triple',['../class_triple.html#aa5276eab5d4ea2bc61aee568dea7cc97',1,'Triple']]]
 ];

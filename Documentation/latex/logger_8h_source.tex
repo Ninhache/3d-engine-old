@@ -10,51 +10,57 @@
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <chrono>}}
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_logger}{Logger}}\ \{}
-\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}()\ \{}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ m\_logfile.open(\textcolor{stringliteral}{"{}log.txt"{}},\ std::ios::out\ |\ std::ios::trunc);}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_logfile.is\_open())\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ log\ file"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\_c\ =\ std::chrono::system\_clock::to\_time\_t(now);}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ std::tm\ *tm\ =\ std::localtime(\&now\_c);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[9];}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ std::strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%H:\%M:\%S"{}},\ tm);}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ m\_logfile\ <<\ \textcolor{stringliteral}{"{}[CORE]\ App\ started\ at\ :\ "{}}\ <<\ buffer\ <<\ std::endl;}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{\string~Logger}}()\ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ m\_logfile.close();}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ log(\textcolor{keyword}{const}\ std::string\&\ message)\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\_c\ =\ std::chrono::system\_clock::to\_time\_t(now);}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ std::tm\ *tm\ =\ std::localtime(\&now\_c);}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[9];}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ std::strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%H:\%M:\%S"{}},\ tm);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_fileLog)\ m\_logfile\ <<\ buffer\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}}\ <<\ message\ <<\ std::endl;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_consoleLog)\ std::cout\ <<\ buffer\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}}\ <<\ message\ <<\ std::endl;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setConsoleLog(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ value)\ \{\ m\_consoleLog\ =\ value;\ \}}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ setFileLog(\textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ value)\ \{\ m\_fileLog\ =\ value;\ \}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_consoleLog\ =\ \textcolor{keyword}{true},\ m\_fileLog\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ std::ofstream\ m\_logfile;}
-\DoxyCodeLine{00050\ \};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_logger}{Logger}}\ logger;}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_logger}{Logger}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_logger_abc41bfb031d896170c7675fa96a6b30c}{Logger}}()\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ m\_logfile.open(\textcolor{stringliteral}{"{}log.txt"{}},\ std::ios::out\ |\ std::ios::trunc);}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_logfile.is\_open())\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error\ opening\ log\ file"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\_c\ =\ std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::tm\ *tm\ =\ std::localtime(\&now\_c);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[9];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%H:\%M:\%S"{}},\ tm);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ m\_logfile\ <<\ \textcolor{stringliteral}{"{}[CORE]\ App\ started\ at\ :\ "{}}\ <<\ buffer\ <<\ std::endl;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}{\string~Logger}}()\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ m\_logfile.close();}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_logger_a0697a189b6921c9c22ef7f0702ae14f7}{log}}(std::string\ message)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\_c\ =\ std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::tm\ *tm\ =\ std::localtime(\&now\_c);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[9];}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ std::strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%H:\%M:\%S"{}},\ tm);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_fileLog)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ m\_logfile\ <<\ buffer\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}}\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_consoleLog)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ buffer\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}}\ <<\ message\ <<\ std::endl;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_logger_aea4ab1963c6a18c71d862d4bde14d20d}{setConsoleLog}}(\textcolor{keywordtype}{bool}\ value)\ \{\ this-\/>m\_consoleLog\ =\ value;\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_logger_a218e69db021db52f414d25bf38421ddc}{setFileLog}}(\textcolor{keywordtype}{bool}\ value)\ \{\ this-\/>m\_fileLog\ =\ value;\ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_consoleLog\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_fileLog\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::ofstream\ m\_logfile;}
+\DoxyCodeLine{00086\ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_logger}{Logger}}\ logger;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

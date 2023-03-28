@@ -29,6 +29,17 @@ void {\bfseries set\+Vec2} (const std\+::string \&name, const glm\+::vec2 \&valu
 \item 
 int \mbox{\hyperlink{class_shader_a3d385024931adccd0f455f7f764465c2}{get\+Id}} () const
 \begin{DoxyCompactList}\small\item\em Get the Id of the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_shader_a995a004aa89493d6737be8f2b190faa7}{check\+Compile\+Errors}} (unsigned int shader, std\+::string type)
+\begin{DoxyCompactList}\small\item\em Check for errors when compiling and linking shaders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shader_a142a08b6fbdfc982d82ca10ee0b0f38d}\label{class_shader_a142a08b6fbdfc982d82ca10ee0b0f38d}} 
+unsigned int {\bfseries ID}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -52,6 +63,23 @@ Construct a new \mbox{\hyperlink{class_shader}{Shader}} object.
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_shader_a995a004aa89493d6737be8f2b190faa7}\label{class_shader_a995a004aa89493d6737be8f2b190faa7}} 
+\index{Shader@{Shader}!checkCompileErrors@{checkCompileErrors}}
+\index{checkCompileErrors@{checkCompileErrors}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{checkCompileErrors()}{checkCompileErrors()}}
+{\footnotesize\ttfamily void Shader\+::check\+Compile\+Errors (\begin{DoxyParamCaption}\item[{unsigned int}]{shader,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Check for errors when compiling and linking shaders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The id of the shader \\
+\hline
+{\em type} & The type of the error to be checked between \char`\"{}\+FRAGMENT\char`\"{}, \char`\"{}\+VERTEX\char`\"{} and \char`\"{}\+PROGRAM\char`\"{} though the first two will call the same function \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_shader_a3d385024931adccd0f455f7f764465c2}\label{class_shader_a3d385024931adccd0f455f7f764465c2}} 
 \index{Shader@{Shader}!getId@{getId}}
 \index{getId@{getId}!Shader@{Shader}}

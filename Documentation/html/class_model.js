@@ -12,6 +12,7 @@ var class_model =
     [ "getPosition", "class_model.html#ac5a94209ddf917b463de77b1153733f9", null ],
     [ "getScale", "class_model.html#a9c3671788f40210019e3d808aa5e2bf1", null ],
     [ "isOutlined", "class_model.html#acd656394edfa6d59c80c53c6ae6a321e", null ],
+    [ "loadMaterial", "class_model.html#aef3736ebcec7bfa9b361e1d9c5ce00b8", null ],
     [ "loadModel", "class_model.html#a3d0a1ca0dc53b54cf5f6d956b156b7ec", null ],
     [ "parseNodes", "class_model.html#a74ab06cc2269ce4ac0fd88f1d2b8374e", null ],
     [ "setOutlined", "class_model.html#a809d7ea19090a4eb2fb8421bdc1469b4", null ],

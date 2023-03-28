@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -99,13 +98,19 @@ $(document).ready(function(){initNavTree('class_camera.html',''); initResizable(
 
 <p>This is the complete list of members for <a class="el" href="class_camera.html">Camera</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>cameraSpeed</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>cameraFront</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>cameraPos</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>cameraSide</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>cameraSpeed</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>cameraUp</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>fov</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#a7c8f8439f4755fc2c33753beb6feb608">getCameraSpeed</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_camera.html#a71e957327f96cd913cd1ecd7d42c35e3">getFov</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#a106cea54efcfe579a08fcd1f204f1eb9">getLookAtMatrix</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_camera.html#a76c2db0a53121682f56f85f156b75a62">getMouseSensitivity</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#ab40fb75b3d34a86d92fff61bb1675097">getPos</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>maxFov</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>minFov</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>mouseSensitivity</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#a3bc1021b60ed647dfb6e0347157783f3">mouseUpdate</a>(float xoff, float yoff)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>pitch</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -114,7 +119,8 @@ $(document).ready(function(){initNavTree('class_camera.html',''); initResizable(
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#a785cabb71e6a5c01c05395ee34d65085">scrollUpdate</a>(double yoffset)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">update</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_camera.html#a8ab6d3d48783559ee14e3ab294a5f771">updateVectors</a>()</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>yaw</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>view</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>yaw</b> (defined in <a class="el" href="class_camera.html">Camera</a>)</td><td class="entry"><a class="el" href="class_camera.html">Camera</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -22,7 +22,7 @@ public:
 	/**
 	 * @brief Loads and return the texture corresponding to the given file name.
 	 *
-	 * Calls the loadTextureInMemory() function to add the texture
+	 * Calls the @ref loadTextureInMemory function to add the texture
 	 * to the map if it does not already exist.
 	 *
 	 *
@@ -59,11 +59,21 @@ public:
 	Texture();
 
 private:
+	/**
+	 * @brief Construct a new Texture object
+	 * 
+	 * @note Textures parameters are set to GL_REPEAT for S and T
+	 * and GL_LINEAR_MIPMAP_LINEAR for the Mipmap min filter
+	 * 
+	 * @param texture_type 
+	 * @param flipTextures 
+	 */
+	Texture(std::string path, aiTextureType texture_type, bool flipTextures);
+
 	GLuint m_ID;
 	aiTextureType m_texture_type;
 	std::string m_filename;
 	static std::map<std::string, Texture> m_map;
-	Texture(std::string, aiTextureType texture_type, bool flipTextures);
 };
 
 #endif

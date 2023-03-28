@@ -26,7 +26,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
   <td id="projectalign">
    <div id="projectname">3D opengl
    </div>
@@ -107,7 +106,7 @@ Inheritance diagram for Mesh:</div>
  <div class="center">
   <img src="class_mesh.png" usemap="#Mesh_map" alt=""/>
   <map id="Mesh_map" name="Mesh_map">
-<area href="class_light.html" alt="Light" shape="rect" coords="55,56,155,80"/>
+<area href="class_light.html" title="The light class, all different types of lights will extend this one." alt="Light" shape="rect" coords="55,56,155,80"/>
 <area href="class_directional_light.html" alt="DirectionalLight" shape="rect" coords="0,112,100,136"/>
 <area href="class_point_light.html" alt="PointLight" shape="rect" coords="110,112,210,136"/>
   </map>
@@ -115,13 +114,16 @@ Inheritance diagram for Mesh:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2af137f1571af89172b9c102302c416b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a2af137f1571af89172b9c102302c416b">Mesh</a> ()</td></tr>
+<tr class="memitem:a2af137f1571af89172b9c102302c416b"><td class="memItemLeft" align="right" valign="top"><a id="a2af137f1571af89172b9c102302c416b" name="a2af137f1571af89172b9c102302c416b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Mesh</b> ()</td></tr>
+<tr class="memdesc:a2af137f1571af89172b9c102302c416b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor used when loading models. <br /></td></tr>
 <tr class="separator:a2af137f1571af89172b9c102302c416b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42dedaba9cae3ded4f7b12ecd62b5db9"><td class="memItemLeft" align="right" valign="top"><a id="a42dedaba9cae3ded4f7b12ecd62b5db9" name="a42dedaba9cae3ded4f7b12ecd62b5db9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Mesh</b> (std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt; vertices, std::vector&lt; uint32_t &gt; indices, std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt; textures, aiMatrix4x4 localTransform, glm::vec3 position)</td></tr>
 <tr class="separator:a42dedaba9cae3ded4f7b12ecd62b5db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab740084f6f669a48e44eee48251ffa7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ab740084f6f669a48e44eee48251ffa7b">draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader, float scale)</td></tr>
-<tr class="separator:ab740084f6f669a48e44eee48251ffa7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431399cb5c25cc84cdf8c8e59a957585"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a431399cb5c25cc84cdf8c8e59a957585">draw</a> (<a class="el" href="class_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="memdesc:a431399cb5c25cc84cdf8c8e59a957585"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model.  <br /></td></tr>
+<tr class="separator:a431399cb5c25cc84cdf8c8e59a957585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11f07f6065246fe112a18d49aef5d065"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_vertex.html">Vertex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#a11f07f6065246fe112a18d49aef5d065">getVertices</a> ()</td></tr>
 <tr class="separator:a11f07f6065246fe112a18d49aef5d065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac255aaade1634b8e7dbcbf4d453110b8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ac255aaade1634b8e7dbcbf4d453110b8">getIndices</a> ()</td></tr>
@@ -129,7 +131,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af68ee3e3ea77bdcf1aa740f266411ce6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_texture.html">Texture</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#af68ee3e3ea77bdcf1aa740f266411ce6">getTextures</a> ()</td></tr>
 <tr class="separator:af68ee3e3ea77bdcf1aa740f266411ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae584a8cd7ea2e38a2494ba4e1dc63277"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mesh.html#ae584a8cd7ea2e38a2494ba4e1dc63277">setPosition</a> (glm::vec3 position)</td></tr>
+<tr class="memdesc:ae584a8cd7ea2e38a2494ba4e1dc63277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the new position of the mesh.  <br /></td></tr>
 <tr class="separator:ae584a8cd7ea2e38a2494ba4e1dc63277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e40ef0da2cf46eb0005b90d86c420b7"><td class="memItemLeft" align="right" valign="top"><a id="a9e40ef0da2cf46eb0005b90d86c420b7" name="a9e40ef0da2cf46eb0005b90d86c420b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setScale</b> (float scale)</td></tr>
+<tr class="separator:a9e40ef0da2cf46eb0005b90d86c420b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -163,29 +169,13 @@ aiMatrix4x4&#160;</td><td class="memItemRight" valign="bottom"><b>localTransform
 <tr class="memitem:af3c130a7e2a9d259b3bb1e258c08f90e"><td class="memItemLeft" align="right" valign="top"><a id="af3c130a7e2a9d259b3bb1e258c08f90e" name="af3c130a7e2a9d259b3bb1e258c08f90e"></a>
 glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
 <tr class="separator:af3c130a7e2a9d259b3bb1e258c08f90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf10c6ddf8437dedef24ee8ec2364956"><td class="memItemLeft" align="right" valign="top"><a id="acf10c6ddf8437dedef24ee8ec2364956" name="acf10c6ddf8437dedef24ee8ec2364956"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b> = 1.0f</td></tr>
+<tr class="separator:acf10c6ddf8437dedef24ee8ec2364956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2af137f1571af89172b9c102302c416b" name="a2af137f1571af89172b9c102302c416b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2af137f1571af89172b9c102302c416b">&#9670;&#160;</a></span>Mesh()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Mesh::Mesh </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Empty constructor used when loading models </p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab740084f6f669a48e44eee48251ffa7b" name="ab740084f6f669a48e44eee48251ffa7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab740084f6f669a48e44eee48251ffa7b">&#9670;&#160;</a></span>draw()</h2>
+<a id="a431399cb5c25cc84cdf8c8e59a957585" name="a431399cb5c25cc84cdf8c8e59a957585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a431399cb5c25cc84cdf8c8e59a957585">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,22 +184,13 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td
           <td class="memname">void Mesh::draw </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> &amp;&#160;</td>
-          <td class="paramname"><em>shader</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>scale</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model</p>
+
+<p>Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">shader</td><td>- <a class="el" href="class_shader.html">Shader</a> who will draw the model </td></tr>
@@ -289,7 +270,8 @@ glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the new position of the mesh</p>
+
+<p>Sets the new position of the mesh. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">the</td><td>new position of the mesh </td></tr>

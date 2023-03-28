@@ -6,6 +6,19 @@
 
 #include <string>
 
+/**
+ * @brief The light class, all different types of lights will extend this one 
+ * 
+ *@par Specular
+ * Specular lightning adds bright spots to a reflective or glossy surface, it helps in identifying its shape
+ * and its position relative to the light
+ *
+ *@par Ambiant
+ * Ambiant lightning is a constant and fixed light source
+ * that affect all objects in the scene, it is sometimes used to simulate natural light
+ * or pre-existing ones
+ * 
+ */
 class Light : public Mesh
 {
 public:
