@@ -25,7 +25,7 @@ class Mesh
 {
 public:
 	/**
-	* Empty constructor used when loading models
+	* @brief Empty constructor used when loading models
 	*/
 	Mesh();
 	/***
@@ -38,7 +38,7 @@ public:
 	*/
 	Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices ,std::vector<Texture> textures, aiMatrix4x4 localTransform, glm::vec3 position);
 	/**
-	* Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model
+	* @brief Sets the uniforms of the shader (textures, model matrix and normal matrix) and draw the model
 	* 
 	* @param shader - Shader who will draw the model
 	* @param scale - Scale of the model
@@ -57,7 +57,7 @@ public:
 	*/
 	std::vector<Texture>& getTextures();
 	/**
-	* Sets the new position of the mesh
+	* @brief Sets the new position of the mesh
 	* 
 	* @param the new position of the mesh
 	*/
