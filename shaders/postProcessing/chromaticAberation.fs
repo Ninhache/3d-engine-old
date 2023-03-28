@@ -19,6 +19,8 @@ struct Bloom_t {
 
 struct Hdr_t {
     float exposure;
+    bool reinhard;
+    float gamma;
 };
 
 struct Effects_t{
@@ -26,11 +28,44 @@ struct Effects_t{
 };
 
 uniform ChromaticAberation_t cAberation;
+uniform Hdr_t hdr_t;
 uniform Effects_t effects;
+
+
+void bloom() {
+    vec4 blurColor = FragColor;
+    const int kernel_size = 2;
+    for (int i = -kernel_size; i <= kernel_size; i++) {
+        for (int j = -kernel_size; j <= kernel_size; j++) {
+            vec2 offset = vec2(float(i), float(j)) / vec2(textureSize(texture0, 0));
+            blurColor += texture2D(texture0, textCoord + offset);
+        }
+    }
+
+    vec4 originalColor = texture2D(texture0, textCoord);
+    vec4 bloomColor = originalColor + (blurColor / (kernel_size * kernel_size + 1));
+
+    // Output the result
+    FragColor = FragColor + (blurColor / 25.0);
+}
 
 void main() {
 
-    FragColor = texture(texture0, textCoord);
+    vec3 hdrColor = texture(texture0, textCoord).rgb;
+    if (effects.hdr) {
+        vec3 result;
+        if (hdr_t.reinhard) {
+            result = hdrColor / (hdrColor + vec3(1.0));
+        } else {
+            result = vec3(1.0) - exp(-hdrColor * hdr_t.exposure);
+        }
+        
+        result = pow(result, vec3(1.0 / hdr_t.gamma));
+        FragColor = vec4(result, 1.0);
+    } else {
+        FragColor = texture(texture0, textCoord);
+    }
+
     if (effects.chromaticAberation) {
         vec2 direction = textCoord - vec2(0.0);
 
@@ -38,15 +73,12 @@ void main() {
         FragColor.g = texture(texture0, textCoord - (direction * cAberation.greenOff)).g;
         FragColor.ba = texture(texture0, textCoord - (direction * cAberation.blueOff)).ba;
     }
-    else if (effects.blur) {
+    
+    if (effects.blur) {
         FragColor = texture(texture1, textCoord);
     }
 
-    else if (effects.bloom) {
-        FragColor.rgb = FragColor.rgb * 1.1; // TODO: CHANGE TO A REAL METHOD LOL
-    }
-
-    else if (effects.hdr) {
-        FragColor = texture(texture1, textCoord);
+    if (effects.bloom) {
+        bloom();
     }
 }
