@@ -29,7 +29,7 @@ void Model::loadModel(const std::string &path)
 	if (!scene)
 	{
 		logger.log(importer.GetErrorString());
-		return;
+		throw std::invalid_argument("Invalid path !");
 	}
 
 	this->m_directory = path.substr(0, path.find_last_of('/'));
