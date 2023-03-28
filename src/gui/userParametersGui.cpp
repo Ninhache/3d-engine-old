@@ -53,7 +53,7 @@ void UserParameters::drawEffectsHeader(Scene* scene) {
 
         ImGui::Checkbox("Bloom", &scene->getBool("bloom"));
         if (scene->getBool("bloom")) {
-            ImGui::DragFloat("Intensity##bloom", &scene->getProcessing().getBloom().intensity, 0.05f, -0.1f, 10, "%.3f", ImGuiSliderFlags_AlwaysClamp);
+            ImGui::DragFloat("Intensity##bloom", &scene->getProcessing().getBloom().intensity, 0.025f, 0, 1, "%.3f", ImGuiSliderFlags_AlwaysClamp);
         }        
 
         ImGui::Separator();
@@ -90,12 +90,12 @@ void UserParameters::drawEffectsHeader(Scene* scene) {
                 scene->getProcessing().updateUniforms(*postProcessing);       
             }
             if (!scene->getProcessing().getHdr().reinhard) {
-                if (ImGui::DragFloat("Exposure", &scene->getProcessing().getHdr().exposure, 0.1f, 0.0f, FLT_MAX)) {
+                if (ImGui::DragFloat("Exposure", &scene->getProcessing().getHdr().exposure, 0.1f, 0.0f, FLT_MAX, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
                     Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
                     scene->getProcessing().updateUniforms(*postProcessing); 
                 }
             }
-            if (ImGui::DragFloat("Gamma", &scene->getProcessing().getHdr().gamma, 0.1f)) {
+            if (ImGui::DragFloat("Gamma", &scene->getProcessing().getHdr().gamma, 0.05f, 0, 2, "%.3f", ImGuiSliderFlags_AlwaysClamp)) {
                 Shader* postProcessing = scene->getShaders().find("postProcessing")->second;
                 scene->getProcessing().updateUniforms(*postProcessing); 
             }

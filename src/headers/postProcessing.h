@@ -25,7 +25,7 @@ struct ChromaticAberation_t
  */
 struct Bloom_t
 {
-    float intensity = 1.0;
+    float intensity = 0.3;
 };
 
 /**
@@ -36,8 +36,8 @@ struct Bloom_t
  */
 struct Hdr_t
 {
-    float exposure = 2.0;
-    float gamma = 2.0;
+    float exposure = 1.0;
+    float gamma = 1.3;
     bool reinhard = false;
 };
 
