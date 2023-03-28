@@ -52,6 +52,9 @@ void UserParameters::drawEffectsHeader(Scene* scene) {
         ImGui::Text("Effects :");
 
         ImGui::Checkbox("Bloom", &scene->getBool("bloom"));
+        if (scene->getBool("bloom")) {
+            ImGui::DragFloat("Intensity##bloom", &scene->getProcessing().getBloom().intensity, 0.05f, -0.1f, 10, "%.3f", ImGuiSliderFlags_AlwaysClamp);
+        }        
 
         ImGui::Separator();
 
@@ -115,8 +118,7 @@ void UserParameters::drawLightHeader(Scene* scene) {
         const float item_spacing = ImGui::GetStyle().ItemSpacing.y;
         const float list_height = item_height * maxItemsToShow + item_spacing * (maxItemsToShow - 1);
 
-        ImGui::SameLine(); HelpMarker("Lights that have been added to the scene");
-        
+        ImGui::SameLine(); HelpMarker("Lights that have been added to the scene");        
         ImGui::Spacing();
         if (ImGui::BeginListBox("##Lights", ImVec2(-1, list_height))) {
             for (int i = 0; i < scene->getLights().size(); i++) {
@@ -205,8 +207,16 @@ void UserParameters::drawModelHeader(Scene* scene) {
             ImGui::InputText("##Model Path", buffer, size);
 
             if (ImGui::Button("OK", ImVec2(120, 0))) {
-                scene->addModel(new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f)));
-                memset(buffer, 0, size);
+                Model* model;
+                try {
+                    // Path could be wrong
+                    model = new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f));
+                    
+                    scene->addModel(model);
+                    memset(buffer, 0, size);
+                } catch (std::invalid_argument& e) {
+
+                } 
                 ImGui::CloseCurrentPopup();
             }
             ImGui::SetItemDefaultFocus();
@@ -219,29 +229,6 @@ void UserParameters::drawModelHeader(Scene* scene) {
             
         ImVec2 center = ImGui::GetMainViewport()->GetCenter();
         ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
-
-        if (ImGui::BeginPopupModal("Add model", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
-            ImGui::Text("Add a model using the path\n\n");
-            ImGui::Separator();
-
-            static const size_t size = 128;
-            static char buffer[size];
-            ImGui::Text("Path : ");
-            ImGui::SameLine();
-            ImGui::InputText("##Model Path", buffer, size);
-
-            if (ImGui::Button("OK", ImVec2(120, 0))) {
-                scene->addModel(new Model(buffer, glm::vec3(0.0f, 0.0f, 0.0f)));
-                memset(buffer, 0, size);
-                ImGui::CloseCurrentPopup();
-            }
-            ImGui::SetItemDefaultFocus();
-            ImGui::SameLine();
-            if (ImGui::Button("Cancel", ImVec2(120, 0))) {
-                ImGui::CloseCurrentPopup();
-            }
-            ImGui::EndPopup();
-        }
 
 
         ImGui::Spacing();
@@ -310,6 +297,7 @@ void UserParameters::drawLightPositionsSlider(Light* light) {
     }
 }
 
+// Util function to draw in function UserParameters::drawModelPositionsSlider
 bool drawSlider(const char* label, float& position, bool sameLine) {
     float dragWidth = ImGui::GetWindowContentRegionWidth() / 3.0f - 40;
     if (sameLine) {
@@ -329,11 +317,8 @@ void UserParameters::drawModelPositionsSlider(Model* model) {
     bool resulty = drawSlider("y", y, true);
     bool resultz = drawSlider("z", z, true);
     
+    // If a slider has been used, update the position
     if ( resultx || resulty || resultz ) {
         model->setPosition(glm::vec3(x,y,z));
     }
-}
-
-void UserParameters::drawSelectedLightOptions(Light* light) {
-  
 }

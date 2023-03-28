@@ -8,12 +8,12 @@ Bloom_t& PostProcessing::getBloom(){
     return this->bloom;
 }
 
-bool& PostProcessing::getBool(std::string name) {
-    return this->effects.find(name)->second;
-}
-
 Hdr_t& PostProcessing::getHdr() {
     return this->hdr;
+}
+
+bool& PostProcessing::getBool(std::string name) {
+    return this->effects.find(name)->second;
 }
 
 void PostProcessing::updateUniforms(Shader& shader) {
@@ -30,4 +30,6 @@ void PostProcessing::updateUniforms(Shader& shader) {
     shader.setBool("hdr_t.reinhard", this->hdr.reinhard);
     shader.setFloat("hdr_t.gamma", this->hdr.gamma);
     shader.setFloat("hdr_t.exposure", this->hdr.exposure);
+
+    shader.setFloat("bloom_t.intensity", this->bloom.intensity);
 }

@@ -29,6 +29,7 @@ struct Effects_t{
 
 uniform ChromaticAberation_t cAberation;
 uniform Hdr_t hdr_t;
+uniform Bloom_t bloom_t;
 uniform Effects_t effects;
 
 
@@ -46,7 +47,7 @@ void bloom() {
     vec4 bloomColor = originalColor + (blurColor / (kernel_size * kernel_size + 1));
 
     // Output the result
-    FragColor = FragColor + (blurColor / 25.0);
+    FragColor = FragColor + ((blurColor / 25.0) * bloom_t.intensity);
 }
 
 void main() {

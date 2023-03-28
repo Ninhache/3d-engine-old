@@ -12,7 +12,7 @@ struct ChromaticAberation_t{
 };
 
 struct Bloom_t{
-    
+    float intensity = 1.0;
 };
 
 struct Hdr_t{
@@ -21,14 +21,15 @@ struct Hdr_t{
     bool reinhard = false;
 };
 
-class PostProcessing{
-
+class PostProcessing
+{
 public:
     ChromaticAberation_t& getChromatic();
     Bloom_t& getBloom();
     Hdr_t& getHdr();
     bool& getBool(std::string name);
     void updateUniforms(Shader& shader);
+
 private:
     std::map<std::string, bool> effects = { {"bloom", false}, {"chromaticAberation", false}, {"blur", false}, {"hdr", false} };
     ChromaticAberation_t cAberation;
