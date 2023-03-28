@@ -1,0 +1,153 @@
+\hypertarget{class_camera}{}\doxysection{Camera Class Reference}
+\label{class_camera}\index{Camera@{Camera}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_camera_a42cda7239981a5618660d04bd5893556}{update}} ()
+\item 
+void \mbox{\hyperlink{class_camera_a0b3e45d6edfc191080feb48e0887c05e}{process\+Input}} (GLFWwindow $\ast$window, float delta\+Time)
+\item 
+void \mbox{\hyperlink{class_camera_a785cabb71e6a5c01c05395ee34d65085}{scroll\+Update}} (double yoffset)
+\item 
+void \mbox{\hyperlink{class_camera_a3bc1021b60ed647dfb6e0347157783f3}{mouse\+Update}} (float xoff, float yoff)
+\item 
+void \mbox{\hyperlink{class_camera_a8ab6d3d48783559ee14e3ab294a5f771}{update\+Vectors}} ()
+\item 
+float \mbox{\hyperlink{class_camera_a71e957327f96cd913cd1ecd7d42c35e3}{get\+Fov}} ()
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_camera_ab40fb75b3d34a86d92fff61bb1675097}{get\+Pos}} ()
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_camera_a106cea54efcfe579a08fcd1f204f1eb9}{get\+Look\+At\+Matrix}} ()
+\item 
+float \& \mbox{\hyperlink{class_camera_a76c2db0a53121682f56f85f156b75a62}{get\+Mouse\+Sensitivity}} ()
+\item 
+float \& \mbox{\hyperlink{class_camera_a7c8f8439f4755fc2c33753beb6feb608}{get\+Camera\+Speed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_camera_ad76701b22630f2df28a0ae15f0497a3a}\label{class_camera_ad76701b22630f2df28a0ae15f0497a3a}} 
+float {\bfseries yaw} = -\/90.\+0f
+\item 
+\mbox{\Hypertarget{class_camera_ab56fcb39f580e8d2159cf2c9c6d9a65a}\label{class_camera_ab56fcb39f580e8d2159cf2c9c6d9a65a}} 
+float {\bfseries pitch} = 0.\+0f
+\item 
+\mbox{\Hypertarget{class_camera_aff7393c9cfbccd7e369091f00008da93}\label{class_camera_aff7393c9cfbccd7e369091f00008da93}} 
+float {\bfseries fov} = 45.\+0f
+\item 
+\mbox{\Hypertarget{class_camera_a374b33e654bf21d19230a82672bd3aac}\label{class_camera_a374b33e654bf21d19230a82672bd3aac}} 
+float {\bfseries mouse\+Sensitivity} = 0.\+1f
+\item 
+\mbox{\Hypertarget{class_camera_aa7abeeff79c8c3e2d51912b087081c50}\label{class_camera_aa7abeeff79c8c3e2d51912b087081c50}} 
+float {\bfseries camera\+Speed} = 6.\+0f
+\item 
+\mbox{\Hypertarget{class_camera_a2e82479435946c695545af425b95a960}\label{class_camera_a2e82479435946c695545af425b95a960}} 
+float {\bfseries scroll\+Mult} =0.\+2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_camera_a7c8f8439f4755fc2c33753beb6feb608}\label{class_camera_a7c8f8439f4755fc2c33753beb6feb608}} 
+\index{Camera@{Camera}!getCameraSpeed@{getCameraSpeed}}
+\index{getCameraSpeed@{getCameraSpeed}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getCameraSpeed()}{getCameraSpeed()}}
+{\footnotesize\ttfamily float \& Camera\+::get\+Camera\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the speed at which the camera moves (keyboard) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a71e957327f96cd913cd1ecd7d42c35e3}\label{class_camera_a71e957327f96cd913cd1ecd7d42c35e3}} 
+\index{Camera@{Camera}!getFov@{getFov}}
+\index{getFov@{getFov}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getFov()}{getFov()}}
+{\footnotesize\ttfamily float Camera\+::get\+Fov (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Fov of the camera 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a106cea54efcfe579a08fcd1f204f1eb9}\label{class_camera_a106cea54efcfe579a08fcd1f204f1eb9}} 
+\index{Camera@{Camera}!getLookAtMatrix@{getLookAtMatrix}}
+\index{getLookAtMatrix@{getLookAtMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getLookAtMatrix()}{getLookAtMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 Camera\+::get\+Look\+At\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the Look\+At (or view) matrix 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a76c2db0a53121682f56f85f156b75a62}\label{class_camera_a76c2db0a53121682f56f85f156b75a62}} 
+\index{Camera@{Camera}!getMouseSensitivity@{getMouseSensitivity}}
+\index{getMouseSensitivity@{getMouseSensitivity}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getMouseSensitivity()}{getMouseSensitivity()}}
+{\footnotesize\ttfamily float \& Camera\+::get\+Mouse\+Sensitivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the speed at which the camera rotates (mouse) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_ab40fb75b3d34a86d92fff61bb1675097}\label{class_camera_ab40fb75b3d34a86d92fff61bb1675097}} 
+\index{Camera@{Camera}!getPos@{getPos}}
+\index{getPos@{getPos}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily glm\+::vec3 Camera\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+camera position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_camera_a3bc1021b60ed647dfb6e0347157783f3}\label{class_camera_a3bc1021b60ed647dfb6e0347157783f3}} 
+\index{Camera@{Camera}!mouseUpdate@{mouseUpdate}}
+\index{mouseUpdate@{mouseUpdate}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{mouseUpdate()}{mouseUpdate()}}
+{\footnotesize\ttfamily void Camera\+::mouse\+Update (\begin{DoxyParamCaption}\item[{float}]{xoff,  }\item[{float}]{yoff }\end{DoxyParamCaption})}
+
+Updates yaw and pitch based on mouse coordinates which will influence camera rotation The pitch is kept under 90 degrees to prevent scene from being reversed
+
+
+\begin{DoxyParams}{Parameters}
+{\em xoff} & -\/ Difference between last x and current x of cursor \\
+\hline
+{\em yoff} & -\/ Difference between last y and current y of cursor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_a0b3e45d6edfc191080feb48e0887c05e}\label{class_camera_a0b3e45d6edfc191080feb48e0887c05e}} 
+\index{Camera@{Camera}!processInput@{processInput}}
+\index{processInput@{processInput}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily void Camera\+::process\+Input (\begin{DoxyParamCaption}\item[{GLFWwindow $\ast$}]{window,  }\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & \\
+\hline
+{\em delta\+Time} & -\/ Time it took to render the last frame, helps keeping camera speed constant \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_a785cabb71e6a5c01c05395ee34d65085}\label{class_camera_a785cabb71e6a5c01c05395ee34d65085}} 
+\index{Camera@{Camera}!scrollUpdate@{scrollUpdate}}
+\index{scrollUpdate@{scrollUpdate}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{scrollUpdate()}{scrollUpdate()}}
+{\footnotesize\ttfamily void Camera\+::scroll\+Update (\begin{DoxyParamCaption}\item[{double}]{yoffset }\end{DoxyParamCaption})}
+
+Changes Field of view into values between max\+Fov and min\+Fov according to yoffset 
+\begin{DoxyParams}{Parameters}
+{\em yoffset} & -\/ Amount scrolled vertically \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_camera_a42cda7239981a5618660d04bd5893556}\label{class_camera_a42cda7239981a5618660d04bd5893556}} 
+\index{Camera@{Camera}!update@{update}}
+\index{update@{update}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Camera\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Updates the view matrix
+
+Don\textquotesingle{}t put {\bfseries{this-\/\texorpdfstring{$>$}{>}}} on members of this class it will only create confusion since there are too many \mbox{\Hypertarget{class_camera_a8ab6d3d48783559ee14e3ab294a5f771}\label{class_camera_a8ab6d3d48783559ee14e3ab294a5f771}} 
+\index{Camera@{Camera}!updateVectors@{updateVectors}}
+\index{updateVectors@{updateVectors}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{updateVectors()}{updateVectors()}}
+{\footnotesize\ttfamily void Camera\+::update\+Vectors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Updates camera x,y,z directional vectors 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/camera.\+h\item 
+src/camera.\+cpp\end{DoxyCompactItemize}

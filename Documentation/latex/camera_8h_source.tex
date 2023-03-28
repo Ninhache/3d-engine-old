@@ -1,0 +1,51 @@
+\hypertarget{camera_8h_source}{}\doxysection{camera.\+h}
+\label{camera_8h_source}\index{src/headers/camera.h@{src/headers/camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_CLASS\_HEADER}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CAMERA\_CLASS\_HEADER}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}shader.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera}{Camera}}\ \{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_a42cda7239981a5618660d04bd5893556}{update}}();}
+\DoxyCodeLine{00015\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_a0b3e45d6edfc191080feb48e0887c05e}{processInput}}(GLFWwindow*\ window,\ \textcolor{keywordtype}{float}\ deltaTime);}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_a785cabb71e6a5c01c05395ee34d65085}{scrollUpdate}}(\textcolor{keywordtype}{double}\ yoffset);}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_a3bc1021b60ed647dfb6e0347157783f3}{mouseUpdate}}(\textcolor{keywordtype}{float}\ xoff,\ \textcolor{keywordtype}{float}\ yoff);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_camera_a8ab6d3d48783559ee14e3ab294a5f771}{updateVectors}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_camera_a71e957327f96cd913cd1ecd7d42c35e3}{getFov}}();}
+\DoxyCodeLine{00049\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_camera_ab40fb75b3d34a86d92fff61bb1675097}{getPos}}();}
+\DoxyCodeLine{00053\ \ \ \ \ glm::mat4\ \mbox{\hyperlink{class_camera_a106cea54efcfe579a08fcd1f204f1eb9}{getLookAtMatrix}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\&\ \mbox{\hyperlink{class_camera_a76c2db0a53121682f56f85f156b75a62}{getMouseSensitivity}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\&\ \mbox{\hyperlink{class_camera_a7c8f8439f4755fc2c33753beb6feb608}{getCameraSpeed}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{protected}:\ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ yaw\ =\ -\/90.0f,\ pitch\ =\ 0.0f,\ fov\ =\ 45.0f;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ mouseSensitivity\ =\ 0.1f,\ cameraSpeed\ =\ 6.0f,\ scrollMult=0.2;}
+\DoxyCodeLine{00066\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//Represents\ the\ current\ camera\ position}}
+\DoxyCodeLine{00068\ \ \ \ \ glm::vec3\ cameraPos\ =\ glm::vec3(0.0f,\ 0.0f,\ 3.0f);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//Represents\ the\ front\ vector\ of\ the\ camera\ (z)}}
+\DoxyCodeLine{00070\ \ \ \ \ glm::vec3\ cameraFront\ =\ glm::vec3(0.0f,\ 0.0f,\ -\/1.0f);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//Represents\ the\ up\ vector\ of\ the\ camera\ (y)}}
+\DoxyCodeLine{00072\ \ \ \ \ glm::vec3\ cameraUp\ =\ glm::vec3(0.0f,\ 1.0f,\ 0.0f);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//Represents\ the\ side\ vector\ of\ the\ camera\ (x)}}
+\DoxyCodeLine{00074\ \ \ \ \ glm::vec3\ cameraSide\ =\ glm::vec3(1.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//view\ matrix}}
+\DoxyCodeLine{00076\ \ \ \ \ glm::mat4\ view\ =\ glm::mat4(1.0f);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ maxFov\ =\ 45.6,\ minFov\ =\ 44.4;}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

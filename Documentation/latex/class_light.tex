@@ -1,0 +1,296 @@
+\hypertarget{class_light}{}\doxysection{Light Class Reference}
+\label{class_light}\index{Light@{Light}}
+Inheritance diagram for Light\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_light}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_light_a7e666f6129accc1c1365c76f0890ab19}{Light}} (glm\+::vec3 position, glm\+::vec3 color=glm\+::vec3(1.\+0f, 1.\+0f, 1.\+0f), bool activated=true)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_light}{Light}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_light_a47692ecf5400ec02496d008820e4a3c3}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, \mbox{\hyperlink{class_shader}{Shader}} \&light\+Shader)
+\item 
+glm\+::vec3 \& \mbox{\hyperlink{class_light_ac71d2b851db05d50fb6791420c8f9039}{get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the position of the light. \end{DoxyCompactList}\item 
+glm\+::vec3 \& \mbox{\hyperlink{class_light_a9fd3825dbab37160a4c2fe12d34ab301}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the color of the light. \end{DoxyCompactList}\item 
+bool \& \mbox{\hyperlink{class_light_a79d188009b9960693c476680ed015f04}{get\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Get the reference to the boolean indicating if the light is active or not. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}{setup\+Mesh}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes Sets up the mesh of the light by filling it\textquotesingle{}s vertices and/or indices vector(s) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a0535b7430500d8822b543a19558b4077}{set\+Uniforms}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_light_abe4882d9876f72b891f7fccf53c8ac87}{get\+Class\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the name of the class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_light_a4db6821975ab0e7991f41dfbf738b6b9}{disable\+Light}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader)=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes. \end{DoxyCompactList}\item 
+virtual const bool \mbox{\hyperlink{class_light_abd26f9caa02b59160ebea7050f073ba8}{has\+Position}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual method destined to be overriden by children classes tells if the light has a position or not. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::string, std\+::string, float \& $>$ $>$ \mbox{\hyperlink{class_light_aa47a76e237480fe627609539cee567c3}{get\+Options}} ()=0
+\begin{DoxyCompactList}\small\item\em Get the Options of the \mbox{\hyperlink{class_light}{Light}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mesh_a2af137f1571af89172b9c102302c416b}{Mesh}} ()
+\item 
+\mbox{\Hypertarget{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}\label{class_mesh_a42dedaba9cae3ded4f7b12ecd62b5db9}} 
+{\bfseries Mesh} (std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ vertices, std\+::vector$<$ uint32\+\_\+t $>$ indices, std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ textures, ai\+Matrix4x4 local\+Transform, glm\+::vec3 position)
+\item 
+void \mbox{\hyperlink{class_mesh_ab740084f6f669a48e44eee48251ffa7b}{draw}} (\mbox{\hyperlink{class_shader}{Shader}} \&shader, float scale)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ \mbox{\hyperlink{class_mesh_a11f07f6065246fe112a18d49aef5d065}{get\+Vertices}} ()
+\item 
+std\+::vector$<$ uint32\+\_\+t $>$ \mbox{\hyperlink{class_mesh_ac255aaade1634b8e7dbcbf4d453110b8}{get\+Indices}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ \& \mbox{\hyperlink{class_mesh_af68ee3e3ea77bdcf1aa740f266411ce6}{get\+Textures}} ()
+\item 
+void \mbox{\hyperlink{class_mesh_ae584a8cd7ea2e38a2494ba4e1dc63277}{set\+Position}} (glm\+::vec3 position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_a3b658dff0d016831b91f434627db1114}\label{class_light_a3b658dff0d016831b91f434627db1114}} 
+int {\bfseries light\+ID}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_a89bffe071ec6431a21c5b54021fe08d6}\label{class_light_a89bffe071ec6431a21c5b54021fe08d6}} 
+glm\+::vec3 {\bfseries position} = glm\+::vec3(1.\+8f, 0.\+2f, 0.\+3f)
+\item 
+\mbox{\Hypertarget{class_light_a91d73d70b4bd4beb402c0f16dab19a25}\label{class_light_a91d73d70b4bd4beb402c0f16dab19a25}} 
+glm\+::vec3 {\bfseries color}
+\item 
+\mbox{\Hypertarget{class_light_a21acf55e4d8bd198dea1817e5ed45541}\label{class_light_a21acf55e4d8bd198dea1817e5ed45541}} 
+float {\bfseries scale}
+\item 
+\mbox{\Hypertarget{class_light_a4bdc117e7eea406ad444430884baed4c}\label{class_light_a4bdc117e7eea406ad444430884baed4c}} 
+bool {\bfseries activated} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a1033372912f651c12204228dc53a84c0}\label{class_mesh_a1033372912f651c12204228dc53a84c0}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VAO}
+\item 
+\mbox{\Hypertarget{class_mesh_a00f16d66431bc545e793d905b8e4c004}\label{class_mesh_a00f16d66431bc545e793d905b8e4c004}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+VBO}
+\item 
+\mbox{\Hypertarget{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}\label{class_mesh_af16c90b0981c33abfe58fe5612edb5b1}} 
+uint32\+\_\+t {\bfseries m\+\_\+\+EBO}
+\item 
+\mbox{\Hypertarget{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}\label{class_mesh_a4848dbbd3dd2bc46217040b2b0b35cf9}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ {\bfseries m\+\_\+vertices}
+\item 
+\mbox{\Hypertarget{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}\label{class_mesh_a14be5c431ea7b7b547fa62f4425a54d5}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries m\+\_\+indices}
+\item 
+\mbox{\Hypertarget{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}\label{class_mesh_a2e4dc0155e6c7647f824fd82dfcf5240}} 
+std\+::vector$<$ \mbox{\hyperlink{class_texture}{Texture}} $>$ {\bfseries m\+\_\+textures}
+\item 
+\mbox{\Hypertarget{class_mesh_af952c23d8a9e04918ebe1740964126d3}\label{class_mesh_af952c23d8a9e04918ebe1740964126d3}} 
+ai\+Matrix4x4 {\bfseries local\+Transform}
+\item 
+\mbox{\Hypertarget{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}\label{class_mesh_af3c130a7e2a9d259b3bb1e258c08f90e}} 
+glm\+::vec3 {\bfseries position}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_mesh}{Mesh}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}\label{class_mesh_a5a04df73d113b1f5fc5e184291be62f8}} 
+void {\bfseries configure\+Buffers} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_light_a7e666f6129accc1c1365c76f0890ab19}\label{class_light_a7e666f6129accc1c1365c76f0890ab19}} 
+\index{Light@{Light}!Light@{Light}}
+\index{Light@{Light}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{Light()}{Light()}}
+{\footnotesize\ttfamily Light\+::\+Light (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{position,  }\item[{glm\+::vec3}]{color = {\ttfamily glm\+:\+:vec3(1.0f,~1.0f,~1.0f)},  }\item[{bool}]{activated = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_light}{Light}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & -\/ The position of the light \\
+\hline
+{\em color} & -\/ Color of the light, default is white \\
+\hline
+{\em activated} & -\/ Tells if the light should be drawn or not (and affect other objects) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_light_a4db6821975ab0e7991f41dfbf738b6b9}\label{class_light_a4db6821975ab0e7991f41dfbf738b6b9}} 
+\index{Light@{Light}!disableLight@{disableLight}}
+\index{disableLight@{disableLight}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{disableLight()}{disableLight()}}
+{\footnotesize\ttfamily virtual void Light\+::disable\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method destined to be overriden by children classes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ The shader used to draw the objects influenced by the light Resets the light uniforms in the shader so that it does not affect objects anymore \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_directional_light_a421730626f21a8d521df84165f38da5e}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_a630d2ea60df4ea933a44a09e13dc0221}{Point\+Light}}.
+
+\mbox{\Hypertarget{class_light_a47692ecf5400ec02496d008820e4a3c3}\label{class_light_a47692ecf5400ec02496d008820e4a3c3}} 
+\index{Light@{Light}!draw@{draw}}
+\index{draw@{draw}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Light\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader,  }\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{light\+Shader }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ The shader used to draw the objects influenced by the light \\
+\hline
+{\em light\+Shader} & -\/ The shader used to draw the actual light \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_light_a79d188009b9960693c476680ed015f04}\label{class_light_a79d188009b9960693c476680ed015f04}} 
+\index{Light@{Light}!getActive@{getActive}}
+\index{getActive@{getActive}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getActive()}{getActive()}}
+{\footnotesize\ttfamily bool \& Light\+::get\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the reference to the boolean indicating if the light is active or not. 
+
+\begin{DoxyReturn}{Returns}
+true If the light should be drawn 
+
+false If the light should not be drawn 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_light_abe4882d9876f72b891f7fccf53c8ac87}\label{class_light_abe4882d9876f72b891f7fccf53c8ac87}} 
+\index{Light@{Light}!getClassName@{getClassName}}
+\index{getClassName@{getClassName}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getClassName()}{getClassName()}}
+{\footnotesize\ttfamily virtual std\+::string Light\+::get\+Class\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the name of the class. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_directional_light_a9047b0bbe2b58f9bb834a8cc06b23fb8}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_a839253b1bb22b506f7b5dcd8bf1c1ea2}{Point\+Light}}.
+
+\mbox{\Hypertarget{class_light_a9fd3825dbab37160a4c2fe12d34ab301}\label{class_light_a9fd3825dbab37160a4c2fe12d34ab301}} 
+\index{Light@{Light}!getColor@{getColor}}
+\index{getColor@{getColor}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily glm\+::vec3 \& Light\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the reference to the color of the light. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_light_aa47a76e237480fe627609539cee567c3}\label{class_light_aa47a76e237480fe627609539cee567c3}} 
+\index{Light@{Light}!getOptions@{getOptions}}
+\index{getOptions@{getOptions}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getOptions()}{getOptions()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{class_triple}{Triple}}$<$ std\+::string, std\+::string, float \& $>$ $>$ Light\+::get\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get the Options of the \mbox{\hyperlink{class_light}{Light}}. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Triple$<$std\+::string, std\+::string, float\&$>$$>$ 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_directional_light_a6cc488a08b2b32792b472cfaa9878018}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_a0f0f3ebe9c48ea8a3727d16f188baf56}{Point\+Light}}.
+
+\mbox{\Hypertarget{class_light_ac71d2b851db05d50fb6791420c8f9039}\label{class_light_ac71d2b851db05d50fb6791420c8f9039}} 
+\index{Light@{Light}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily glm\+::vec3 \& Light\+::get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the reference to the position of the light. 
+
+\begin{DoxyReturn}{Returns}
+glm\+::vec3\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_light_abd26f9caa02b59160ebea7050f073ba8}\label{class_light_abd26f9caa02b59160ebea7050f073ba8}} 
+\index{Light@{Light}!hasPosition@{hasPosition}}
+\index{hasPosition@{hasPosition}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{hasPosition()}{hasPosition()}}
+{\footnotesize\ttfamily virtual const bool Light\+::has\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method destined to be overriden by children classes tells if the light has a position or not. 
+
+\begin{DoxyReturn}{Returns}
+true If the light has a position 
+
+false If the light does not have a position (ex\+: Directional \mbox{\hyperlink{class_light}{Light}}) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_directional_light_a6cceddcc50d877a3056ece14efc55fd2}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_a78945d6a9a80d01266a63bb0c8348feb}{Point\+Light}}.
+
+\mbox{\Hypertarget{class_light_a0535b7430500d8822b543a19558b4077}\label{class_light_a0535b7430500d8822b543a19558b4077}} 
+\index{Light@{Light}!setUniforms@{setUniforms}}
+\index{setUniforms@{setUniforms}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{setUniforms()}{setUniforms()}}
+{\footnotesize\ttfamily virtual void Light\+::set\+Uniforms (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shader}{Shader}} \&}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method destined to be overriden by children classes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & -\/ The shader used to draw the objects influenced by the light Sets the uniforms of the shader according to light\textquotesingle{}s properties \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_directional_light_adbfaf16db8cc433fc4c5eef15836a1c2}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_ae42cf287036fc2dac25f04c0240f3280}{Point\+Light}}.
+
+\mbox{\Hypertarget{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}\label{class_light_a0dabcde874d092b7bf2edf4bf4ac2c26}} 
+\index{Light@{Light}!setupMesh@{setupMesh}}
+\index{setupMesh@{setupMesh}!Light@{Light}}
+\doxysubsubsection{\texorpdfstring{setupMesh()}{setupMesh()}}
+{\footnotesize\ttfamily virtual void Light\+::setup\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual method destined to be overriden by children classes Sets up the mesh of the light by filling it\textquotesingle{}s vertices and/or indices vector(s) 
+
+
+
+Implemented in \mbox{\hyperlink{class_directional_light_ae159cfcf50891f7d7ca985d380dc11f4}{Directional\+Light}}, and \mbox{\hyperlink{class_point_light_ab3ba41157df318e10087743a7561569d}{Point\+Light}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/light.\+h\item 
+src/meshes/light.\+cpp\end{DoxyCompactItemize}

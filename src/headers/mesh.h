@@ -43,7 +43,7 @@ public:
 	* @param shader - Shader who will draw the model
 	* @param scale - Scale of the model
 	*/
-	void draw(Shader& shader, float scale);
+	void draw(Shader& shader);
 	/**
 	* @return a vector containing the vertices of the mesh
 	*/
@@ -62,6 +62,8 @@ public:
 	* @param the new position of the mesh
 	*/
 	void setPosition(glm::vec3 position);
+
+	void setScale(float scale);
 protected:
 	uint32_t m_VAO, m_VBO, m_EBO;
 	std::vector<Vertex> m_vertices;
@@ -69,6 +71,7 @@ protected:
 	std::vector<Texture> m_textures;
 	aiMatrix4x4 localTransform;
 	glm::vec3 position;
+	float scale = 1.0f;
 	void configureBuffers();
 };
 

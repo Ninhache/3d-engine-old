@@ -128,7 +128,7 @@ void Model::draw(Shader &shader)
 
 	for (Mesh &mesh : this->m_meshes)
 	{
-		mesh.draw(shader, this->scale);
+		mesh.draw(shader);
 	}
 }
 
@@ -177,6 +177,11 @@ void Model::setScale(float scale)
 	{
 		model.setScale(this->scale);
 	}
+
+	for (Mesh &mesh : this->m_meshes)
+	{
+		mesh.setScale(this->scale);
+	}
 }
 
 float &Model::getScale()
@@ -200,6 +205,11 @@ void Model::setPosition(glm::vec3 position)
 	for (Model &model : m_children)
 	{
 		model.setPosition(this->position);
+	}
+
+	for (Mesh &mesh : this->m_meshes)
+	{
+		mesh.setPosition(this->position);
 	}
 }
 

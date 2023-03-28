@@ -1,0 +1,41 @@
+\hypertarget{shader_8h_source}{}\doxysection{shader.\+h}
+\label{shader_8h_source}\index{src/headers/shader.h@{src/headers/shader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SHADER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SHADER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}glad/glad.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}glm/gtc/type\_ptr.hpp"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_shader}{Shader}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_shader}{Shader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *vertexPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fragmentPath);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_shader_a870fa9f13d69e558815d6fd351a469dc}{use}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_shader_a00e659395065de8f528e628d58622b9f}{setBool}}(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setInt(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ setFloat(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ setMatrix4(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ glm::mat4\ \&value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ setMatrix3(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ glm::mat3\ \&value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ setVec3(\textcolor{keyword}{const}\ std::string\ \&,\ \textcolor{keyword}{const}\ glm::vec3\ \&value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ setVec2(\textcolor{keyword}{const}\ std::string\ \&name,\ \textcolor{keyword}{const}\ glm::vec2\ \&value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_shader_a3d385024931adccd0f455f7f764465c2}{getId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ID;\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ ID;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ checkCompileErrors(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ shader,\ std::string\ type);}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SHADER\_H}}
+
+\end{DoxyCode}

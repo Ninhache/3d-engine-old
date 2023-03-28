@@ -1,0 +1,46 @@
+\hypertarget{point_light_8h_source}{}\doxysection{point\+Light.\+h}
+\label{point_light_8h_source}\index{src/headers/pointLight.h@{src/headers/pointLight.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ POINT\_LIGHT\_HEADER}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ POINT\_LIGHT\_HEADER}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}triple.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_point_light}{PointLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_light}{Light}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_point_light}{PointLight}}(glm::vec3\ position,\ glm::vec3\ color\ =\ glm::vec3(1.0f,\ 1.0f,\ 1.0f),\ \textcolor{keywordtype}{float}\ scale\ =\ 1.0f,\ \textcolor{keywordtype}{float}\ specular\ =\ 0.5,\ \textcolor{keywordtype}{float}\ ambiant\ =\ 0.1,\ \textcolor{keywordtype}{float}\ constant\ =\ 1.0f,\ \textcolor{keywordtype}{float}\ linear\ =\ 0.09f,\ \textcolor{keywordtype}{float}\ quadratic\ =\ 0.032);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_point_light_ab3ba41157df318e10087743a7561569d}{setupMesh}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_point_light_ae42cf287036fc2dac25f04c0240f3280}{setUniforms}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_point_light_a47253af909541d13198e59f6f43e2f90}{setScale}}(\textcolor{keywordtype}{float}\ scale);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ pointID;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ \ \ std::string\ \mbox{\hyperlink{class_point_light_a839253b1bb22b506f7b5dcd8bf1c1ea2}{getClassName}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Point\ light"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_point_light_a78945d6a9a80d01266a63bb0c8348feb}{hasPosition}}()}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_point_light_a630d2ea60df4ea933a44a09e13dc0221}{disableLight}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<Triple<std::string,\ std::string,\ float\ \&>>\ \mbox{\hyperlink{class_point_light_a0f0f3ebe9c48ea8a3727d16f188baf56}{getOptions}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_constant,\ m\_linear,\ m\_quadratic;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_specularStr,\ m\_ambiantStr;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ hasAPosition\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ POINT\_LIGHT\_HEADER}}
+
+\end{DoxyCode}

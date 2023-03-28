@@ -1,0 +1,45 @@
+\hypertarget{directional_light_8h_source}{}\doxysection{directional\+Light.\+h}
+\label{directional_light_8h_source}\index{src/headers/directionalLight.h@{src/headers/directionalLight.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DIRECTIONAL\_LIGHT\_HEADER}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DIRECTIONAL\_LIGHT\_HEADER}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}triple.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_directional_light}{DirectionalLight}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_light}{Light}}}
+\DoxyCodeLine{00009\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_directional_light}{DirectionalLight}}(glm::vec3\ direction,\ glm::vec3\ color\ =\ glm::vec3(1.0f,\ 1.0f,\ 1.0f),\ \textcolor{keywordtype}{float}\ specular\ =\ 0.5f,\ \textcolor{keywordtype}{float}\ ambiant\ =\ 0.1f);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directional_light_ae159cfcf50891f7d7ca985d380dc11f4}{setupMesh}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directional_light_adbfaf16db8cc433fc4c5eef15836a1c2}{setUniforms}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::string\ \mbox{\hyperlink{class_directional_light_a9047b0bbe2b58f9bb834a8cc06b23fb8}{getClassName}}()\textcolor{keyword}{\ override}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Directional\ light"{}};}
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_directional_light_a6cceddcc50d877a3056ece14efc55fd2}{hasPosition}}()}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_directional_light_a421730626f21a8d521df84165f38da5e}{disableLight}}(\mbox{\hyperlink{class_shader}{Shader}}\ \&shader);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Triple<std::string,\ std::string,\ float\ \&>>\ \mbox{\hyperlink{class_directional_light_a6cc488a08b2b32792b472cfaa9878018}{getOptions}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ dirID;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ directional\ Light\ does\ not\ have\ position}}
+\DoxyCodeLine{00078\ \ \ \ \ glm::vec3\ lightDir;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_specularStr,\ m\_ambiantStr;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ hasAPosition\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DIRECTIONAL\_LIGHT\_HEADER}}
+
+\end{DoxyCode}

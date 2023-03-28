@@ -1,0 +1,21 @@
+\hypertarget{triple_8h_source}{}\doxysection{triple.\+h}
+\label{triple_8h_source}\index{src/headers/triple.h@{src/headers/triple.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T1,\ \textcolor{keyword}{typename}\ T2,\ \textcolor{keyword}{typename}\ T3>}
+\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_triple}{Triple}}\ \{}
+\DoxyCodeLine{00004\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00005\ \ \ \ \ \mbox{\hyperlink{class_triple}{Triple}}(T1\ value1,\ T2\ value2,\ T3\ value3)\ :\ m\_first(value1),\ m\_second(value2),\ m\_third(value3)\ \{\}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ T1\&\ first()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_first;\ \}}
+\DoxyCodeLine{00008\ \ \ \ \ T2\&\ second()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_second;\ \}}
+\DoxyCodeLine{00009\ \ \ \ \ T3\&\ third()\ \{\ \textcolor{keywordflow}{return}\ this-\/>m\_third;\ \}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00012\ \ \ \ \ T1\ m\_first;}
+\DoxyCodeLine{00013\ \ \ \ \ T2\ m\_second;}
+\DoxyCodeLine{00014\ \ \ \ \ T3\ m\_third;}
+\DoxyCodeLine{00015\ \};}
+
+\end{DoxyCode}

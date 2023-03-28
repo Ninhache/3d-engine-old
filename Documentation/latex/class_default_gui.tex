@@ -1,0 +1,65 @@
+\hypertarget{class_default_gui}{}\doxysection{Default\+Gui Class Reference}
+\label{class_default_gui}\index{DefaultGui@{DefaultGui}}
+Inheritance diagram for Default\+Gui\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_default_gui}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_default_gui_ae774bbf459567e0339aa2cc2eaaea697}\label{class_default_gui_ae774bbf459567e0339aa2cc2eaaea697}} 
+{\bfseries Default\+Gui} (bool show=false, std\+::vector$<$ \mbox{\hyperlink{class_default_gui}{Default\+Gui}} $\ast$ $>$ list=\{\})
+\item 
+\mbox{\Hypertarget{class_default_gui_a59c3047e87431ac3dd52e2f14922a8ab}\label{class_default_gui_a59c3047e87431ac3dd52e2f14922a8ab}} 
+void {\bfseries init} (GLFWwindow $\ast$window)
+\item 
+\mbox{\Hypertarget{class_default_gui_ae2b2fbbad98f2a336af74796b2c0b81a}\label{class_default_gui_ae2b2fbbad98f2a336af74796b2c0b81a}} 
+void {\bfseries close\+Library} ()
+\begin{DoxyCompactList}\small\item\em close the library properly according to the documentation. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_default_gui_a1159f5c88b19936809031d9e36661fe9}{render}} (\mbox{\hyperlink{class_scene}{Scene}} $\ast$)
+\begin{DoxyCompactList}\small\item\em render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_default_gui_a1c0c667898b4d25397f1578108343c93}\label{class_default_gui_a1c0c667898b4d25397f1578108343c93}} 
+bool {\bfseries is\+Showing} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_default_gui_afb187c95eb6ce46dee6b60124335d6d0}\label{class_default_gui_afb187c95eb6ce46dee6b60124335d6d0}} 
+bool {\bfseries show}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_default_gui_a1159f5c88b19936809031d9e36661fe9}\label{class_default_gui_a1159f5c88b19936809031d9e36661fe9}} 
+\index{DefaultGui@{DefaultGui}!render@{render}}
+\index{render@{render}!DefaultGui@{DefaultGui}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Default\+Gui\+::render (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene}{Scene}} $\ast$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+render the actual gui, the whole structure of a GUI is defined in the render function and is always similar \+: The gui can needs access to a scene, that\textquotesingle{}s why she\textquotesingle{}s passed as parameters 
+
+// The Begin method, taking the windows name as argument, and a boolean \+: // the boolean is to handle the windows close event. Im\+Gui\+::\+Begin(\char`\"{}\+Window\textquotesingle{}s name\char`\"{}, \&bool);
+
+// The structure is defined there, if you want to print a text there, use the according nodes.. Im\+Gui\+::\+Text(\char`\"{}\+Hello world!\char`\"{});
+
+// The end method, you\textquotesingle{}ve to put at the end of each GUI Im\+Gui\+::\+End();
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_user_parameters_abc3dcf6704376b869c7228cf70c133d6}{User\+Parameters}}, and \mbox{\hyperlink{class_scene_parameters_a8afb42c2a6d8d7e0ee6ae35b2324d353}{Scene\+Parameters}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/headers/gui.\+h\item 
+src/gui/gui.\+cpp\end{DoxyCompactItemize}

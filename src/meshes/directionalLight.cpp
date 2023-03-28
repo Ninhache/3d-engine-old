@@ -4,8 +4,9 @@
 
 int DirectionalLight::dirID = 0;
 
-DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 color, float specular, float ambiant) : Light(color)
+DirectionalLight::DirectionalLight(glm::vec3 direction, glm::vec3 color, float specular, float ambiant)
 {
+    this->color = color;
     this->m_specularStr = specular;
     this->m_ambiantStr = ambiant;
     this->lightDir = direction;

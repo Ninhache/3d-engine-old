@@ -1,0 +1,39 @@
+\hypertarget{texture_8h_source}{}\doxysection{texture.\+h}
+\label{texture_8h_source}\index{src/headers/texture.h@{src/headers/texture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TEXTURE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TEXTURE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}glad/glad.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <assimp/material.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stb/stb\_image.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_texture}{Texture}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_texture_a5abcf6682f19351f2e4878b2c7e8c820}{loadTextureInMemory}}(std::string,\ aiTextureType,\ \textcolor{keywordtype}{bool}\ flipTextures);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_texture}{Texture}}\ \mbox{\hyperlink{class_texture_ae5bcc8bb66ab1ab57cb637f398c44e6b}{getTextureFromFile}}(std::string\ filename,\ aiTextureType\ texture\_type,\ \textcolor{keywordtype}{bool}\ flipTextures);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_texture}{Texture}}\ \mbox{\hyperlink{class_texture_a0bbac1100e25e54e46a7b37a7978c107}{loadCubemap}}(std::vector<std::string>\ paths);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ aiTextureType\ \mbox{\hyperlink{class_texture_af040466f57c6a9c12e9b20abee873263}{getType}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ \ \ GLuint\ \mbox{\hyperlink{class_texture_a3fcc1f10d3416dd54c8f0c02d9cd2713}{getID}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ GLuint\ m\_ID;}
+\DoxyCodeLine{00062\ \ \ \ \ aiTextureType\ m\_texture\_type;}
+\DoxyCodeLine{00063\ \ \ \ \ std::string\ m\_filename;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ std::map<std::string,\ Texture>\ m\_map;}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{class_texture}{Texture}}(std::string,\ aiTextureType\ texture\_type,\ \textcolor{keywordtype}{bool}\ flipTextures);}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
