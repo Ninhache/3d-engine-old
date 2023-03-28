@@ -16,7 +16,7 @@ Framebuffer::Framebuffer(int width, int height, int nbAttachments, bool depthBuf
 		this->colorAttachements.push_back(textureID);
 
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, width, height, 0, GL_RGBA, GL_FLOAT, nullptr);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, nullptr);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -60,7 +60,7 @@ void Framebuffer::use(int width, int height) {
 		
 		for (unsigned int& id : this->colorAttachements) {
 			glBindTexture(GL_TEXTURE_2D, id);
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, width, height, 0, GL_RGBA, GL_FLOAT, nullptr);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB16F, width, height, 0, GL_RGB, GL_FLOAT, nullptr);
 
 		}
 		if (this->m_depthBuffer) {
@@ -87,7 +87,6 @@ void Framebuffer::setInputTextures(Shader& shader, int size) {
 		glActiveTexture(GL_TEXTURE0+i);
 		glBindTexture(GL_TEXTURE_2D, this->colorAttachements[i]);
 		shader.setInt(name,i);
-
 	}
 	
 	if (this->m_depthBuffer) {
