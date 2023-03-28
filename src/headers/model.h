@@ -151,6 +151,13 @@ public:
 	 */
 	bool& getActive();
 
+	/**
+	 * @brief get the directory of the model
+	 * 
+	 * @return directory - The directory is where the model is located
+	 */
+	std::string getDirectory();
+
 private:
 	std::string m_directory;
 	std::vector<Mesh> m_meshes;

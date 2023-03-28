@@ -222,3 +222,7 @@ bool &Model::getActive()
 {
 	return this->activated;
 }
+
+std::string Model::getDirectory() {
+	return this->m_directory;
+}

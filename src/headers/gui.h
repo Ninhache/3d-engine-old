@@ -14,7 +14,6 @@
 
 class Scene;
 
-
 class DefaultGui {
 	public:
 		DefaultGui(bool show = false, std::vector<DefaultGui*> list = {});
@@ -61,7 +60,7 @@ class UserParameters : public DefaultGui {
 	public:
 		UserParameters(bool);
 		void render(Scene*);
-		
+	private:
 		/**
 		 * @brief draw the cursors to manage the position of the lights
 		 * if the light has no position, the cursors will not be drawn
