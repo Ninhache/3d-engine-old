@@ -57,7 +57,7 @@ Texture Texture::loadCubemap(std::vector<std::string> paths)
     glBindTexture(GL_TEXTURE_CUBE_MAP, t.m_ID);
 
     int width, height, nrChannels;
-    for (int i = 0; i < paths.size(); i++)
+    for (size_t i = 0; i < paths.size(); i++)
     {
         unsigned char *data = stbi_load(paths[i].c_str(), &width, &height, &nrChannels, 0);
 
