@@ -70,6 +70,10 @@ public:
     void addShader(std::string name, Shader* shader);
     void addCubemap(std::string name, CubeMap* cubemap);
     void addFramebuffer(std::string name, Framebuffer* framebuffer);
+
+    /**
+     * @brief Add things to the scene to have something to render
+    */
     void setupScene();
 
     std::vector<Light*> getLights();
