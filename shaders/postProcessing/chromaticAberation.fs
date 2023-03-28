@@ -46,8 +46,7 @@ void bloom() {
     vec4 originalColor = texture2D(texture0, textCoord);
     vec4 bloomColor = originalColor + (blurColor / (kernel_size * kernel_size + 1));
 
-    // Output the result
-    FragColor = FragColor + ((blurColor / 25.0) * bloom_t.intensity);
+    FragColor = FragColor + (bloomColor * bloom_t.intensity);
 }
 
 void main() {
