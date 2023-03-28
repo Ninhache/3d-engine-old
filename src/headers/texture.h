@@ -45,6 +45,7 @@ public:
 	/**
 	 * @brief Get the Type of the texture
 	 * All different types of texture are specified in the material header of the assimp library
+	 * 
 	 * @return aiTextureType
 	 */
 	aiTextureType getType();
