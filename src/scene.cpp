@@ -74,6 +74,7 @@ void Scene::removeModel(Model* model) {
 
 	if (it != this->modelPool.end())
 		this->modelPool.erase(it);
+		free(model);
 }
 
 void Scene::addLight(Light* light) {
@@ -85,6 +86,7 @@ void Scene::removeLight(Light* light) {
 
 	if (it != this->lightPool.end())
 		this->lightPool.erase(it);
+		free(light);
 }
 
 std::vector<Light*> Scene::getLights() {
@@ -168,15 +170,7 @@ void Scene::renderLoop() {
 			fb->setInputTextures(*blur, 1);
 			fb->setOuputTexture(1);
 			sceneModel.draw(*blur);
-		}
-
-		else if (pProcessing.getBool("hdr")) {
-			// Draw hdr scene
-			Shader* hdr = m_shaders.find("hdr")->second;
-			fb->setInputTextures(*hdr, 1);
-			fb->setOuputTexture(1);
-			sceneModel.draw(*hdr);
-		}
+		}		
 		
 		Shader* pProcessingShader = m_shaders.find("postProcessing")->second;
 		pProcessing.updateUniforms(*pProcessingShader);
@@ -184,7 +178,7 @@ void Scene::renderLoop() {
 		//Default framebuffer
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glDisable(GL_DEPTH_TEST);
-		fb->setInputTextures(*pProcessingShader, 3);
+		fb->setInputTextures(*pProcessingShader, 2);
 		sceneModel.draw(*pProcessingShader);
 
 		this->m_gui.render(this);
@@ -267,11 +261,9 @@ void Scene::setupScene() {
 	this->addModel(new Model("models/fortressScaled/noSky.obj", glm::vec3(0.0f, -2.0f, -15.0f), 1.0f, false));
 	//this->addModel(new Model("models/higokumaru-honkai-impact-3rd/source/Higokumaru.fbx", glm::vec3(0.0f, 0.0f, -12.0f), 0.55f, false));
 
-
 	this->addShader("default", new Shader{ "shaders/default.vs", "shaders/default.fs" });
 	this->addShader("postProcessing", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/chromaticAberation.fs" });
 	this->addShader("blur", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/boxBlur.frag" });
-	this->addShader("hdr", new Shader{ "shaders/postProcessing.vs", "shaders/postProcessing/hdrShader.fs" });
 	this->addShader("outlineShader", new Shader{ "shaders/outline.vs", "shaders/outline.fs" });
 	this->addShader("lightShader", new Shader{ "shaders/default.vs", "shaders/light.fs" });
 	
