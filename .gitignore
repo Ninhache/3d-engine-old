@@ -45,3 +45,5 @@ x64/
 .VSCodeCounter/
 
 *.ini
+
+dependency/assimp-5.2.5/

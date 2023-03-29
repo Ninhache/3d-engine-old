@@ -1,3 +1,6 @@
+#Checks for cmake build in assimp
+[ -d "../dependency/assimp-5.2.5/bin/libassimp.so.5.2.4" ] || cd ../dependency/assimp-5.2.5 && cmake CMakeLists.txt && cmake --build . && cd ../../test
+
 #Checks for buid folder
 [ -d "build/" ] ||  mkdir build
 

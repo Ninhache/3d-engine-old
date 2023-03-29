@@ -5,8 +5,8 @@ get_filename_component(CURRENT_DIR ${CMAKE_CURRENT_LIST_FILE} DIRECTORY)
 get_filename_component(PARENT_DIR ${CURRENT_DIR} DIRECTORY)
 
 set(CMAKE_CXX_STANDARD 20)
-set(ASSIMP_INCLUDE_DIR ~/assimp/include)
-set(ASSIMP_LIBRARIES ~/assimp/bin/libassimp.so.5.2.5)
+set(ASSIMP_INCLUDE_DIR ${PARENT_DIR}/dependency/assimp-5.2.5/include)
+set(ASSIMP_LIBRARIES ${PARENT_DIR}/dependency/assimp-5.2.5/bin/libassimp.so.5.2.5)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 
