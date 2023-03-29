@@ -5,7 +5,7 @@
 
 # Template project: https://gitlab.com/pages/jekyll
 # Docs: https://docs.gitlab.com/ee/pages/
-image: ruby:3.2.3
+image: ruby:latest
 
 variables:
   JEKYLL_ENV: production
