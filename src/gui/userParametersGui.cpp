@@ -28,7 +28,7 @@ static void HelpMarker(const char* desc)
 }
 
 void UserParameters::render(Scene* scene) {
-    if (ImGui::Begin("Scene parameters", &this->show)) {
+    if (ImGui::Begin("Scene parameters")) {
         if (ImGui::CollapsingHeader("Camera")) {
             ImGui::SliderFloat("Mouse sensivity", &camera.getMouseSensitivity(), 0.1f, 1.0f, "Mouse sensivity : %.1f");
             ImGui::SliderFloat("Camera speed", &camera.getCameraSpeed(), 1.f, 30.0f, "Camera sensivity : %.1f");
@@ -37,12 +37,20 @@ void UserParameters::render(Scene* scene) {
         if (ImGui::CollapsingHeader("Scène")) {
             drawLightHeader(scene);
             drawModelHeader(scene);
+            drawSkyboxHeader(scene);
             drawEffectsHeader(scene);
         }
 
         ImGui::Separator();
     }
     ImGui::End();
+}
+
+void UserParameters::drawSkyboxHeader(Scene* scene) {
+    if (ImGui::TreeNode("Models")) {
+        // ImGui::Checkbox("Active", scene->get);
+        ImGui::TreePop();
+    }
 }
 
 void UserParameters::drawEffectsHeader(Scene* scene) {
