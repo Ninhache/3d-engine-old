@@ -34,6 +34,7 @@ int main(int argc, char **argv)
     doctest::Context context;
 
     GLFWwindow *window = initTest();
+
     int res = context.run(); // run
 
     if (context.shouldExit())
