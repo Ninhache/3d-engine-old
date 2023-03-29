@@ -59,6 +59,10 @@ public:
 	 */
 	void draw(glm::mat4 view, glm::mat4 projection);
 
+	bool& isActive(){
+		return this->active;
+	}
+
 protected:
 	// Texture of the cubemap containing all textures
 	Texture m_texture;
@@ -68,7 +72,7 @@ protected:
 	std::vector<float> m_vertices;
 
 private:
+	bool active = true;
 	unsigned int m_VAO, m_VBO;
 };
-
 #endif // CUBEMAP_MOCK_HEADER_FILE

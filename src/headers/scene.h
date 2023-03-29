@@ -84,6 +84,10 @@ public:
     static uint16_t width;
     static uint16_t height;
 
+    bool& getCubemapBool(std::string name) {
+        return this->m_cubemaps.find(name)->second->isActive();
+    }
+
 private:
     GLFWwindow* m_pWindow;
     DefaultGui m_gui;

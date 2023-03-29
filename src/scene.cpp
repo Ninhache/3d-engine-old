@@ -196,7 +196,10 @@ void Scene::drawScene(std::string shaderName) {
 
 	//Prevent writing to the stencil buffer
 	glStencilMask(0x00);
-	m_cubemaps.find("yokohama")->second->draw(camera.getLookAtMatrix(), projection);
+	CubeMap* cubemap = m_cubemaps.find("yokohama")->second;
+	if (cubemap->isActive()) {
+		cubemap->draw(camera.getLookAtMatrix(), projection);
+	}
 
 	//Must use the shader before calling glUniform()
 	Shader* shader = m_shaders.find(shaderName)->second;
@@ -325,3 +328,6 @@ std::map<std::string, Shader*> Scene::getShaders() {
 bool& Scene::getHdr() {
 	return this->hdr;
 }
+
+
+

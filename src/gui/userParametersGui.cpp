@@ -47,8 +47,8 @@ void UserParameters::render(Scene* scene) {
 }
 
 void UserParameters::drawSkyboxHeader(Scene* scene) {
-    if (ImGui::TreeNode("Models")) {
-        // ImGui::Checkbox("Active", scene->get);
+    if (ImGui::TreeNode("Skybox")) {
+        ImGui::Checkbox("Active", &scene->getCubemapBool("yokohama"));
         ImGui::TreePop();
     }
 }

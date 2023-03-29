@@ -104,6 +104,8 @@ public:
 	 * @param scene The scene to retrieve informations from
 	 */
 	void drawEffectsHeader(Scene *scene);
+
+	void drawSkyboxHeader(Scene *scene);
 };
 
 #endif // GUI_HEADER_FILE
