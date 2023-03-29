@@ -5,11 +5,32 @@
 A 3D Engine made in C++ and using the Opengl API
 
 ## Installation
-On linux run:
+
+### Engine
+
+On linux in root folder:  
+
+
 `chmod +x run.sh` to make the script executable
 
-then `./run.sh` will create the folder containing the program,
-compile and then execute it.
+then `./run.sh`
+
+
+> Note that **building assimp can take a long time**
+<hr>
+
+### Test
+
+On linux:
+
+`cd test` to go in the test folder    
+run the command `chmod +x run.sh`  
+then run the tests with `./run_test.sh`
+
+
+> Note that if you did not already build assimp **this can take a long time**
+
+<hr>
 
 ## Visuals
 <img src="public/images/scene.png">
