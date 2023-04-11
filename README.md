@@ -2,7 +2,7 @@
 
 
 ## Description
-A 3D Engine made in C++ and using the Opengl API
+This is a 3D engine made by ALMEIDA Néo and MOUGEL Victor using C++ and the OpenGL API.
 
 ## Installation
 
@@ -16,7 +16,8 @@ On linux in root folder:
 then `./run.sh`
 
 
-> Note that **building assimp can take a long time**
+> **Note**
+> **building assimp can take a long time**
 <hr>
 
 ### Test
@@ -27,8 +28,8 @@ On linux:
 run the command `chmod +x run.sh`  
 then run the tests with `./run_test.sh`
 
-
-> Note that if you did not already build assimp **this can take a long time**
+> **Note** 
+> **If you have not already built Assimp, this process may take a significant amount of time.**
 
 <hr>
 
@@ -59,4 +60,5 @@ The options in other sections like the light section are similar
 
 
 ## Authors and acknowledgment
-Victor Mougel and Néo Almeida
+- [ALMEIDA Néo](https://github.com/Ninhache)
+- [MOUGEL Victor](https://github.com/Cxentury)
